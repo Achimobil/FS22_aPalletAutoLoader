@@ -12,13 +12,29 @@
             <![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
 
 An example of how to use in your own mod you will find in the Strautmann SEK 802 Pallet Autoload.
-Currently only default Euro pallets, liquidTanks and bigbag pallets are possible, more will follow.]]>
+Currently only default Euro pallets, liquidTanks and bigbag pallets are possible, more will follow.
+
+How to use:
+Drive next to the pallets and then with R you can load one pallet after the other.
+Make sure you have selected the correct pallet type.
+The pallets are then as loaded by hand on the loading area. 
+Fasten with straps before you drive, otherwise it fell of.
+You can choose the unloading side and unload it.
+]]>
 </en>
         <de>
             <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
 
 Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
-Aktuell sind nur Standard Europaletten, Flüssigkeitentanks und Bigbag Paletten möglich, weiteres wird folgen.]]>
+Aktuell sind nur Standard Europaletten, Flüssigkeitentanks und Bigbag Paletten möglich, weiteres wird folgen.
+
+Bedienung:
+Fahrt neben die Paletten und dann mit R die Paletten nacheinander Laden.
+Achtet aber darauf, dass ihr auch dir richtigen Paletten ausgewählt habt.
+Die Paletten liegen dann wie von Hand geladen auf der Ladefläche. 
+Mit Gurten befestigen bevor ihre weiter fahrt, sonst rutscht das weg.
+Ihr könnt die Entladeseite wählen und entladen.
+]]>
 </de>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
