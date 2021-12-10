@@ -3,19 +3,25 @@
     <author>Achimobil</author>
     <version>1.0.0.0</version>
     <title>
-		<en>Pallet Autoload</en>
-		<de>Paletten Autoloader</de>
+		<en>Pallet Autoload Specialization</en>
+		<de>Paletten Autoloader Spezialisierung</de>
 		<ru>с автопогрузкой</ru>
     </title>
     <description>
         <en>
-            <![CDATA[]]>
+            <![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
+
+An example of how to use in your own mod you will find in the Strautmann SEK 802 Pallet Autoload.
+Currently only default Euro pallets, liquidTanks and bigbag pallets are possible, more will follow.]]>
 </en>
         <de>
-            <![CDATA[Basis für Paletten Autoloader Mods]]>
+            <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
+
+Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
+Aktuell sind nur Standard Europaletten, Flüssigkeitentanks und Bigbag Paletten möglich, weiteres wird folgen.]]>
 </de>
     </description>
-    <iconFilename>icon_sek802.dds</iconFilename>
+    <iconFilename>modIcon.dds</iconFilename>
     <multiplayer supported="true" />
 
 	<extraSourceFiles>
@@ -24,14 +30,14 @@
 		
 	<l10n>
 		<text name="aPalletAutoLoader_nothingToLoad"> 
-			<en>disable Autoload</en>
+			<en>Autoload: nothing</en>
 			<de>Autoload: nichts zu laden</de>
 			<ru>Автопогрузка: отключена</ru>
 		</text>
 		<text name="aPalletAutoLoader_loadPallets">
 			<en>enable Autoload</en>
 			<de>Autoload Paletten</de>
-			<ru>Автопогрузка: загрузить</ru>
+			<ru>Автопогрузка загрузить</ru>
 		</text>
 		<text name="function_PalletAutoload_Trailer"> 
 			<en>Trailer with Autoload for pallets</en> 

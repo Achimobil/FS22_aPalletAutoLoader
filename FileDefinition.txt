@@ -1,4 +1,4 @@
-*.dds
+modIcon.dds
 *.i3d
 *.lua
 *.xml
