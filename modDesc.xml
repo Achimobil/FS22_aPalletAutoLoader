@@ -23,12 +23,12 @@
     </extraSourceFiles>
 		
 	<l10n>
-		<text name="palletAutoLoader_nothingToLoad"> 
+		<text name="aPalletAutoLoader_nothingToLoad"> 
 			<en>disable Autoload</en>
 			<de>Autoload: nichts zu laden</de>
 			<ru>Автопогрузка: отключена</ru>
 		</text>
-		<text name="palletAutoLoader_loadPallets">
+		<text name="aPalletAutoLoader_loadPallets">
 			<en>enable Autoload</en>
 			<de>Autoload Paletten</de>
 			<ru>Автопогрузка: загрузить</ru>
@@ -43,37 +43,37 @@
 			<de>Paletten Autoloader</de>
 			<ru>Автопогрузка поддонов</ru>
 		</text>
-		<text name="palletAutoLoader_LoadingType"> 
+		<text name="aPalletAutoLoader_LoadingType"> 
 			<en>LoadingType</en> 
 			<de>Ladegut</de> 
 			<ru>Автопогрузка</ru>
 		</text>
-		<text name="palletAutoLoader_liquidTank"> 
+		<text name="aPalletAutoLoader_liquidTank"> 
 			<en>liquidTank</en> 
 			<de>Flüssigkeitstanks</de> 
 			<ru>Поддоны для жидкости</ru>
 		</text>
-		<text name="palletAutoLoader_euroPallet"> 
+		<text name="aPalletAutoLoader_euroPallet"> 
 			<en>euroPallet</en> 
 			<de>Euro Paletten</de> 
 			<ru>Поддоны</ru>
 		</text>
-		<text name="palletAutoLoader_bigBagPallet"> 
+		<text name="aPalletAutoLoader_bigBagPallet"> 
 			<en>bigBag Pallet</en> 
 			<de>Bigbag Paletten</de> 
 			<ru>Поддоны с МКР</ru>
 		</text>
-		<text name="palletAutoLoader_tipside"> 
+		<text name="aPalletAutoLoader_tipside"> 
 			<en>Tipside</en> 
 			<de>Abladeseite</de> 
 			<ru>Сторона разгрузки</ru>
 		</text>
-		<text name="palletAutoLoader_left"> 
+		<text name="aPalletAutoLoader_left"> 
 			<en>left</en> 
 			<de>Links</de> 
 			<ru>Слева</ru>
 		</text>
-		<text name="palletAutoLoader_right"> 
+		<text name="aPalletAutoLoader_right"> 
 			<en>right</en> 
 			<de>Rechts</de> 
 			<ru>Справа</ru>

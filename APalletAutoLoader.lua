@@ -3,7 +3,7 @@
 
 
 
-PalletAutoLoader = {}
+APalletAutoLoader = {}
 
 
 
@@ -12,19 +12,19 @@ PalletAutoLoader = {}
 
 
 ---
-function PalletAutoLoader.prerequisitesPresent(specializations)
+function APalletAutoLoader.prerequisitesPresent(specializations)
     return true
 end
 
 ---
-function PalletAutoLoader.initSpecialization()
-    print("init palletAutoLoader");
-    g_configurationManager:addConfigurationType("palletAutoLoader", g_i18n:getText("configuration_palletAutoLoader"), "palletAutoLoader", nil, nil, nil, ConfigurationUtil.SELECTOR_MULTIOPTION)
+function APalletAutoLoader.initSpecialization()
+    print("init aPalletAutoLoader");
+    g_configurationManager:addConfigurationType("aPalletAutoLoader", g_i18n:getText("configuration_aPalletAutoLoader"), "aPalletAutoLoader", nil, nil, nil, ConfigurationUtil.SELECTOR_MULTIOPTION)
     
     local schema = Vehicle.xmlSchema
-    schema:setXMLSpecializationType("PalletAutoLoader")
+    schema:setXMLSpecializationType("APalletAutoLoader")
     
-    local baseXmlPath = "vehicle.palletAutoLoader.PalletAutoLoaderConfigurations.PalletAutoLoaderConfiguration(?)"
+    local baseXmlPath = "vehicle.aPalletAutoLoader.APalletAutoLoaderConfigurations.APalletAutoLoaderConfiguration(?)"
     
     schema:register(XMLValueType.NODE_INDEX, baseXmlPath .. ".trigger#node", "Trigger node")
     schema:register(XMLValueType.NODE_INDEX, baseXmlPath .. ".pickupTriggers.pickupTrigger(?)#node", "Pickup trigger node")
@@ -44,42 +44,42 @@ function PalletAutoLoader.initSpecialization()
     schema:setXMLSpecializationType()
 
     local schemaSavegame = Vehicle.xmlSchemaSavegame
-    schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_palletAutoLoader.palletAutoLoader#lastUsedPalletTypeIndex", "Last used pallet type")
+    schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_aPalletAutoLoader.aPalletAutoLoader#lastUsedPalletTypeIndex", "Last used pallet type")
 end
 
 ---
-function PalletAutoLoader.registerFunctions(vehicleType)
-    SpecializationUtil.registerFunction(vehicleType, "getIsValidObject", PalletAutoLoader.getIsValidObject)
-    SpecializationUtil.registerFunction(vehicleType, "getIsAutoLoadingAllowed", PalletAutoLoader.getIsAutoLoadingAllowed)
-    SpecializationUtil.registerFunction(vehicleType, "getFirstValidLoadPlace", PalletAutoLoader.getFirstValidLoadPlace)
-    SpecializationUtil.registerFunction(vehicleType, "autoLoaderOverlapCallback", PalletAutoLoader.autoLoaderOverlapCallback)
-    SpecializationUtil.registerFunction(vehicleType, "autoLoaderTriggerCallback", PalletAutoLoader.autoLoaderTriggerCallback)
-    SpecializationUtil.registerFunction(vehicleType, "autoLoaderPickupTriggerCallback", PalletAutoLoader.autoLoaderPickupTriggerCallback)
-    SpecializationUtil.registerFunction(vehicleType, "onDeletePalletAutoLoaderObject", PalletAutoLoader.onDeletePalletAutoLoaderObject)
-    SpecializationUtil.registerFunction(vehicleType, "loadObject", PalletAutoLoader.loadObject)
-    SpecializationUtil.registerFunction(vehicleType, "unloadAll", PalletAutoLoader.unloadAll)
+function APalletAutoLoader.registerFunctions(vehicleType)
+    SpecializationUtil.registerFunction(vehicleType, "getIsValidObject", APalletAutoLoader.getIsValidObject)
+    SpecializationUtil.registerFunction(vehicleType, "getIsAutoLoadingAllowed", APalletAutoLoader.getIsAutoLoadingAllowed)
+    SpecializationUtil.registerFunction(vehicleType, "getFirstValidLoadPlace", APalletAutoLoader.getFirstValidLoadPlace)
+    SpecializationUtil.registerFunction(vehicleType, "autoLoaderOverlapCallback", APalletAutoLoader.autoLoaderOverlapCallback)
+    SpecializationUtil.registerFunction(vehicleType, "autoLoaderTriggerCallback", APalletAutoLoader.autoLoaderTriggerCallback)
+    SpecializationUtil.registerFunction(vehicleType, "autoLoaderPickupTriggerCallback", APalletAutoLoader.autoLoaderPickupTriggerCallback)
+    SpecializationUtil.registerFunction(vehicleType, "onDeleteAPalletAutoLoaderObject", APalletAutoLoader.onDeleteAPalletAutoLoaderObject)
+    SpecializationUtil.registerFunction(vehicleType, "loadObject", APalletAutoLoader.loadObject)
+    SpecializationUtil.registerFunction(vehicleType, "unloadAll", APalletAutoLoader.unloadAll)
 end
 
 ---
-function PalletAutoLoader.registerOverwrittenFunctions(vehicleType)
-    SpecializationUtil.registerOverwrittenFunction(vehicleType, "getDynamicMountTimeToMount", PalletAutoLoader.getDynamicMountTimeToMount)
+function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
+    SpecializationUtil.registerOverwrittenFunction(vehicleType, "getDynamicMountTimeToMount", APalletAutoLoader.getDynamicMountTimeToMount)
 end
 
 ---
-function PalletAutoLoader.registerEventListeners(vehicleType)
-    SpecializationUtil.registerEventListener(vehicleType, "onLoad", PalletAutoLoader)
-    SpecializationUtil.registerEventListener(vehicleType, "onPostLoad", PalletAutoLoader)
-    SpecializationUtil.registerEventListener(vehicleType, "onDelete", PalletAutoLoader)
-    SpecializationUtil.registerEventListener(vehicleType, "onRegisterActionEvents", PalletAutoLoader)
+function APalletAutoLoader.registerEventListeners(vehicleType)
+    SpecializationUtil.registerEventListener(vehicleType, "onLoad", APalletAutoLoader)
+    SpecializationUtil.registerEventListener(vehicleType, "onPostLoad", APalletAutoLoader)
+    SpecializationUtil.registerEventListener(vehicleType, "onDelete", APalletAutoLoader)
+    SpecializationUtil.registerEventListener(vehicleType, "onRegisterActionEvents", APalletAutoLoader)
     
-    SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", PalletAutoLoader)
-    SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", PalletAutoLoader)
+    SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", APalletAutoLoader)
+    SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", APalletAutoLoader)
 end
 
 ---
-function PalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForInputIgnoreSelection)
+function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForInputIgnoreSelection)
     if self.isClient then
-        local spec = self.spec_palletAutoLoader 
+        local spec = self.spec_aPalletAutoLoader 
         if spec == nil then
             return;
         end
@@ -91,49 +91,49 @@ function PalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForIn
         end
 
         if isActiveForInputIgnoreSelection then
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.ACTIVATE_OBJECT, self, PalletAutoLoader.actionEventToggleLoading, false, true, false, true, nil, nil, true, true)
+            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.ACTIVATE_OBJECT, self, APalletAutoLoader.actionEventToggleLoading, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
             spec.actionEventId = actionEventId;
             
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.IMPLEMENT_EXTRA3, self, PalletAutoLoader.actionEventToggleAutoLoadTypes, false, true, false, true, nil, nil, true, true)
+            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.IMPLEMENT_EXTRA3, self, APalletAutoLoader.actionEventToggleAutoLoadTypes, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
             spec.toggleAutoLoadTypesActionEventId = actionEventId;
             
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.TOGGLE_TIPSIDE, self, PalletAutoLoader.actionEventToggleTipside, false, true, false, true, nil, nil, true, true)
+            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.TOGGLE_TIPSIDE, self, APalletAutoLoader.actionEventToggleTipside, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
             spec.toggleTipsideActionEventId = actionEventId;
             
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.UNLOAD, self, PalletAutoLoader.actionEventUnloadAll, false, true, false, true, nil, nil, true, true)
+            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.UNLOAD, self, APalletAutoLoader.actionEventUnloadAll, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
             spec.unloadAllEventId = actionEventId;
             
             
-            PalletAutoLoader.updateActionText(self);
+            APalletAutoLoader.updateActionText(self);
         end
     end
 end
 
 ---
-function PalletAutoLoader.updateActionText(self)
+function APalletAutoLoader.updateActionText(self)
     if self.isClient then
-        local spec = self.spec_palletAutoLoader
+        local spec = self.spec_aPalletAutoLoader
         local text;
         if spec.objectsToLoadCount == 0 then
-            text = g_i18n:getText("palletAutoLoader_nothingToLoad")
+            text = g_i18n:getText("aPalletAutoLoader_nothingToLoad")
         else
-            text = g_i18n:getText("palletAutoLoader_loadPallets") .. ": " .. spec.objectsToLoadCount
+            text = g_i18n:getText("aPalletAutoLoader_loadPallets") .. ": " .. spec.objectsToLoadCount
         end
         g_inputBinding:setActionEventText(spec.actionEventId, text)
         
         local loadingText = ""
         if (spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
-            loadingText = g_i18n:getText("palletAutoLoader_LoadingType") .. ": " .. "unknown"
+            loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. "unknown"
         else
-            loadingText = g_i18n:getText("palletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("palletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
+            loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
         end
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
         
-        local tipsideText = g_i18n:getText("palletAutoLoader_tipside") .. ": " .. g_i18n:getText("palletAutoLoader_" .. spec.currentTipside)
+        local tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
         g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, tipsideText)
         
         -- deactivate when somthing is already loaded or not
@@ -143,8 +143,8 @@ function PalletAutoLoader.updateActionText(self)
 end
 
 ---
-function PalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue, callbackState, isAnalog)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader
     
     if not self.isServer then
         -- Ladebefehl in den stream schreiben
@@ -159,13 +159,13 @@ function PalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue,
                 break;
             end
         end
-        PalletAutoLoader.updateActionText(self);
+        APalletAutoLoader.updateActionText(self);
     end
 end
 
 ---
-function PalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader
     
     if spec.currentautoLoadTypeIndex >= #spec.autoLoadTypes then
         spec.currentautoLoadTypeIndex = 1;
@@ -173,12 +173,12 @@ function PalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, input
         spec.currentautoLoadTypeIndex = spec.currentautoLoadTypeIndex + 1;
     end
     self:raiseDirtyFlags(spec.dirtyFlag)
-    PalletAutoLoader.updateActionText(self);
+    APalletAutoLoader.updateActionText(self);
 end
 
 ---
-function PalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue, callbackState, isAnalog)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader
     
     if spec.currentTipside == "left" then
         spec.currentTipside = "right";
@@ -186,12 +186,12 @@ function PalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue,
         spec.currentTipside = "left";
     end
     self:raiseDirtyFlags(spec.dirtyFlag)
-    PalletAutoLoader.updateActionText(self);
+    APalletAutoLoader.updateActionText(self);
 end
 
 ---
-function PalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, callbackState, isAnalog)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader
     
     if not self.isServer then
         -- Entladebefehl in den stream schreiben mit entladeseite
@@ -199,20 +199,20 @@ function PalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, cal
         self:raiseDirtyFlags(spec.dirtyFlag)
     else
         self:unloadAll()
-        PalletAutoLoader.updateActionText(self);
+        APalletAutoLoader.updateActionText(self);
     end
 end
 
 ---Called on loading
 -- @param table savegame savegame
-function PalletAutoLoader:onLoad(savegame)
+function APalletAutoLoader:onLoad(savegame)
 
-    local palletAutoLoaderConfigurationId = Utils.getNoNil(self.configurations["palletAutoLoader"], 1)
-    local baseXmlPath = string.format("vehicle.palletAutoLoader.PalletAutoLoaderConfigurations.PalletAutoLoaderConfiguration(%d)", palletAutoLoaderConfigurationId -1)
+    local aPalletAutoLoaderConfigurationId = Utils.getNoNil(self.configurations["aPalletAutoLoader"], 1)
+    local baseXmlPath = string.format("vehicle.aPalletAutoLoader.APalletAutoLoaderConfigurations.APalletAutoLoaderConfiguration(%d)", aPalletAutoLoaderConfigurationId -1)
             
     -- hier für server und client
-    self.spec_palletAutoLoader = {}
-    local spec = self.spec_palletAutoLoader
+    self.spec_aPalletAutoLoader = {}
+    local spec = self.spec_aPalletAutoLoader
     spec.LoadNextObject = false;
     spec.callUnloadAll = true;
     spec.objectsToLoadCount = 0;    
@@ -243,7 +243,7 @@ function PalletAutoLoader:onLoad(savegame)
             local autoLoadObject = {}
             autoLoadObject.index = spec.loadArea["baseNode"]
             autoLoadObject.name = name
-            PalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
+            APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             autoLoadObject.places = {}
             local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
             
@@ -374,12 +374,12 @@ end
 
 ---Called after loading
 -- @param table savegame savegame
-function PalletAutoLoader:onPostLoad(savegame)
-    if savegame ~= nil and self.spec_palletAutoLoader ~= nil then
-        local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:onPostLoad(savegame)
+    if savegame ~= nil and self.spec_aPalletAutoLoader ~= nil then
+        local spec = self.spec_aPalletAutoLoader
 
         if not savegame.resetVehicles then
-            spec.currentautoLoadTypeIndex = savegame.xmlFile:getValue(savegame.key..".FS22_palletAutoLoader.palletAutoLoader#lastUsedPalletTypeIndex", 1)
+            spec.currentautoLoadTypeIndex = savegame.xmlFile:getValue(savegame.key..".FS22_aPalletAutoLoader.aPalletAutoLoader#lastUsedPalletTypeIndex", 1)
             if(spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
                 spec.currentautoLoadTypeIndex = 1;
             end
@@ -388,8 +388,8 @@ function PalletAutoLoader:onPostLoad(savegame)
 end
 
 ---
-function PalletAutoLoader:saveToXMLFile(xmlFile, key, usedModNames)
-    local spec = self.spec_palletAutoLoader 
+function APalletAutoLoader:saveToXMLFile(xmlFile, key, usedModNames)
+    local spec = self.spec_aPalletAutoLoader 
     if spec == nil then
         return;
     end
@@ -398,7 +398,7 @@ function PalletAutoLoader:saveToXMLFile(xmlFile, key, usedModNames)
 end
 
 ---
-function PalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
+function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     if (name == "euroPallet") then
         local function CheckType(object)
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return true end
@@ -447,8 +447,8 @@ function PalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 end
 
 ---
-function PalletAutoLoader:onDelete()
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:onDelete()
+    local spec = self.spec_aPalletAutoLoader
     if spec == nil then
         return;
     end
@@ -467,8 +467,8 @@ function PalletAutoLoader:onDelete()
 end
 
 ---
-function PalletAutoLoader:getIsValidObject(object)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:getIsValidObject(object)
+    local spec = self.spec_aPalletAutoLoader
             
     -- only when rootnode is object id it can be valid.
     if object.spec_mountable == nil or object.spec_mountable.componentNode ~= object.rootNode then
@@ -505,7 +505,7 @@ function PalletAutoLoader:getIsValidObject(object)
 end
 
 ---
-function PalletAutoLoader:getIsAutoLoadingAllowed()
+function APalletAutoLoader:getIsAutoLoadingAllowed()
     -- check if the vehicle has not fallen to side
     local _, y1, _ = getWorldTranslation(self.components[1].node)
     local _, y2, _ = localToWorld(self.components[1].node, 0, 1, 0)
@@ -517,13 +517,13 @@ function PalletAutoLoader:getIsAutoLoadingAllowed()
 end
 
 ---
-function PalletAutoLoader:getDynamicMountTimeToMount(superFunc)
+function APalletAutoLoader:getDynamicMountTimeToMount(superFunc)
     return self:getIsAutoLoadingAllowed() and -1 or math.huge
 end
 
 ---
-function PalletAutoLoader:getFirstValidLoadPlace()
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:getFirstValidLoadPlace()
+    local spec = self.spec_aPalletAutoLoader
 
     -- Hier die loading position und das loading objekt nehmen und die erste ladeposition dafür dynamisch suchen
     -- https://gdn.giants-software.com/documentation_scripting_fs19.php?version=engine&category=15&function=138
@@ -555,9 +555,9 @@ function PalletAutoLoader:getFirstValidLoadPlace()
 end
 
 ---
-function PalletAutoLoader:autoLoaderOverlapCallback(transformId)
+function APalletAutoLoader:autoLoaderOverlapCallback(transformId)
     if transformId ~= 0 and getHasClassId(transformId, ClassIds.SHAPE) then
-        local spec = self.spec_palletAutoLoader
+        local spec = self.spec_aPalletAutoLoader
 
         local object = g_currentMission:getNodeObject(transformId)
         if object ~= nil and object ~= self then
@@ -569,10 +569,10 @@ function PalletAutoLoader:autoLoaderOverlapCallback(transformId)
 end
 
 ---
-function PalletAutoLoader:loadObject(object)
+function APalletAutoLoader:loadObject(object)
     if object ~= nil then
         if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
-            local spec = self.spec_palletAutoLoader
+            local spec = self.spec_aPalletAutoLoader
             if spec.triggeredObjects[object] == nil then
                 if spec.numTriggeredObjects < spec.maxObjects then
                     local firstValidLoadPlace, currentLoadHeigt = self:getFirstValidLoadPlace()
@@ -595,7 +595,7 @@ function PalletAutoLoader:loadObject(object)
                         end
                         
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
-                        object.currentlyLoadedOnPalletAutoLoaderId = self.id;
+                        object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
                         
                         spec.triggeredObjects[object] = 0
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
@@ -620,11 +620,11 @@ function PalletAutoLoader:loadObject(object)
 end
 
 ---
-function PalletAutoLoader:unloadAll()
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:unloadAll()
+    local spec = self.spec_aPalletAutoLoader
 
     for object,_ in pairs(spec.triggeredObjects) do
-        if object ~= nil and (object.currentlyLoadedOnPalletAutoLoaderId == nil or object.currentlyLoadedOnPalletAutoLoaderId == self.id) then
+        if object ~= nil and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) then
             local objectNodeId = object.nodeId or object.components[1].node
             
             -- store current rotation to restore later
@@ -643,7 +643,7 @@ function PalletAutoLoader:unloadAll()
             addToPhysics(objectNodeId)
             
             if object.addDeleteListener ~= nil then
-                object:addDeleteListener(self, "onDeletePalletAutoLoaderObject")
+                object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
             end
         end
     end
@@ -658,8 +658,8 @@ end
 -- @param integer streamId stream ID
 -- @param integer timestamp timestamp
 -- @param table connection connection
-function PalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
+    local spec = self.spec_aPalletAutoLoader
 
     if not connection:getIsServer() then
         -- print("Received from Client");
@@ -687,12 +687,12 @@ function PalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         local numTriggeredObjects = streamReadInt32(streamId);
         if spec.numTriggeredObjects ~= numTriggeredObjects then
             spec.numTriggeredObjects = numTriggeredObjects;
-            PalletAutoLoader.updateActionText(self);
+            APalletAutoLoader.updateActionText(self);
         end
         local objectsToLoadCount = streamReadInt32(streamId);
         if spec.objectsToLoadCount ~= objectsToLoadCount then
             spec.objectsToLoadCount = objectsToLoadCount;
-            PalletAutoLoader.updateActionText(self);
+            APalletAutoLoader.updateActionText(self);
         end
     end
 end
@@ -702,8 +702,8 @@ end
 -- @param integer streamId stream ID
 -- @param table connection connection
 -- @param integer dirtyMask dirty mask
-function PalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
+    local spec = self.spec_aPalletAutoLoader
 
     if connection:getIsServer() then
         -- print("Send to Server");
@@ -723,25 +723,25 @@ function PalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
 end
 
 ---
-function PalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
+function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
     if otherActorId ~= 0 then
         local object = g_currentMission:getNodeObject(otherActorId)
         if object ~= nil then
             if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
-                local spec = self.spec_palletAutoLoader
+                local spec = self.spec_aPalletAutoLoader
                 if onEnter then
                     if spec.objectsToLoad[object.rootNode] == nil and spec.triggeredObjects[object] == nil then
                         spec.objectsToLoad[object.rootNode] = object;
                         spec.objectsToLoadCount = spec.objectsToLoadCount + 1;
                         self:raiseDirtyFlags(spec.dirtyFlag)
-                        PalletAutoLoader.updateActionText(self);
+                        APalletAutoLoader.updateActionText(self);
                     end
                 elseif onLeave then
                     if spec.objectsToLoad[object.rootNode] ~= nil then
                         spec.objectsToLoad[object.rootNode] = nil;
                         spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
                         self:raiseDirtyFlags(spec.dirtyFlag)
-                        PalletAutoLoader.updateActionText(self);
+                        APalletAutoLoader.updateActionText(self);
                     end
                 end
             end
@@ -756,8 +756,8 @@ end
 -- DebugUtil.printTableRecursively(loadingPattern,"_",0,2)
 
 ---
-function PalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
+    local spec = self.spec_aPalletAutoLoader
 
     if onEnter then
         local object = g_currentMission:getNodeObject(otherActorId)
@@ -770,7 +770,7 @@ function PalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, onE
 
                 if spec.triggeredObjects[object] == 0 then
                     if object.addDeleteListener ~= nil then
-                        object:addDeleteListener(self, "onDeletePalletAutoLoaderObject")
+                        object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                     end
                 end
 
@@ -805,8 +805,8 @@ function PalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, onE
 end
 
 ---
-function PalletAutoLoader:onDeletePalletAutoLoaderObject(object)
-    local spec = self.spec_palletAutoLoader
+function APalletAutoLoader:onDeleteAPalletAutoLoaderObject(object)
+    local spec = self.spec_aPalletAutoLoader
 
     if spec.triggeredObjects[object] ~= nil then
         spec.triggeredObjects[object] = nil
