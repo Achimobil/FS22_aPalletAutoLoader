@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="61">
+    <author>Achimobil</author>
+    <version>1.0.0.0</version>
+    <title>
+		<en>Pallet Autoload</en>
+		<de>Paletten Autoloader</de>
+		<ru>с автопогрузкой</ru>
+    </title>
+    <description>
+        <en>
+            <![CDATA[]]>
+</en>
+        <de>
+            <![CDATA[Basis für Paletten Autoloader Mods]]>
+</de>
+    </description>
+    <iconFilename>icon_sek802.dds</iconFilename>
+    <multiplayer supported="true" />
+
+	<extraSourceFiles>
+        <sourceFile filename="main.lua" />
+    </extraSourceFiles>
+		
+	<l10n>
+		<text name="palletAutoLoader_nothingToLoad"> 
+			<en>disable Autoload</en>
+			<de>Autoload: nichts zu laden</de>
+			<ru>Автопогрузка: отключена</ru>
+		</text>
+		<text name="palletAutoLoader_loadPallets">
+			<en>enable Autoload</en>
+			<de>Autoload Paletten</de>
+			<ru>Автопогрузка: загрузить</ru>
+		</text>
+		<text name="function_PalletAutoload_Trailer"> 
+			<en>Trailer with Autoload for pallets</en> 
+			<de>Anhänger mit Autoload für Paletten</de> 
+			<ru>Прицеп с автопогрузкой поддонов</ru>
+		</text>
+		<text name="PalletAutoload_Trailer"> 
+			<en>Pallet Autoload</en>
+			<de>Paletten Autoloader</de>
+			<ru>Автопогрузка поддонов</ru>
+		</text>
+		<text name="palletAutoLoader_LoadingType"> 
+			<en>LoadingType</en> 
+			<de>Ladegut</de> 
+			<ru>Автопогрузка</ru>
+		</text>
+		<text name="palletAutoLoader_liquidTank"> 
+			<en>liquidTank</en> 
+			<de>Flüssigkeitstanks</de> 
+			<ru>Поддоны для жидкости</ru>
+		</text>
+		<text name="palletAutoLoader_euroPallet"> 
+			<en>euroPallet</en> 
+			<de>Euro Paletten</de> 
+			<ru>Поддоны</ru>
+		</text>
+		<text name="palletAutoLoader_bigBagPallet"> 
+			<en>bigBag Pallet</en> 
+			<de>Bigbag Paletten</de> 
+			<ru>Поддоны с МКР</ru>
+		</text>
+		<text name="palletAutoLoader_tipside"> 
+			<en>Tipside</en> 
+			<de>Abladeseite</de> 
+			<ru>Сторона разгрузки</ru>
+		</text>
+		<text name="palletAutoLoader_left"> 
+			<en>left</en> 
+			<de>Links</de> 
+			<ru>Слева</ru>
+		</text>
+		<text name="palletAutoLoader_right"> 
+			<en>right</en> 
+			<de>Rechts</de> 
+			<ru>Справа</ru>
+		</text>
+	</l10n>
+</modDesc>
