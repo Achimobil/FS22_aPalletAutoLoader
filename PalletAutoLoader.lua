@@ -124,8 +124,13 @@ function PalletAutoLoader.updateActionText(self)
             text = g_i18n:getText("palletAutoLoader_loadPallets") .. ": " .. spec.objectsToLoadCount
         end
         g_inputBinding:setActionEventText(spec.actionEventId, text)
-                
-        local loadingText = g_i18n:getText("palletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("palletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
+        
+        local loadingText = ""
+        if (spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
+            loadingText = g_i18n:getText("palletAutoLoader_LoadingType") .. ": " .. "unknown"
+        else
+            loadingText = g_i18n:getText("palletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("palletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
+        end
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
         
         local tipsideText = g_i18n:getText("palletAutoLoader_tipside") .. ": " .. g_i18n:getText("palletAutoLoader_" .. spec.currentTipside)
