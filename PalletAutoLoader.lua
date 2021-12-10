@@ -44,7 +44,7 @@ function PalletAutoLoader.initSpecialization()
     schema:setXMLSpecializationType()
 
     local schemaSavegame = Vehicle.xmlSchemaSavegame
-    schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_strautmannSEK802_palletLoad.palletAutoLoader#lastUsedPalletTypeIndex", "Last used pallet type")
+    schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_palletAutoLoader.palletAutoLoader#lastUsedPalletTypeIndex", "Last used pallet type")
 end
 
 ---
@@ -379,7 +379,7 @@ function PalletAutoLoader:onPostLoad(savegame)
         local spec = self.spec_palletAutoLoader
 
         if not savegame.resetVehicles then
-            spec.currentautoLoadTypeIndex = savegame.xmlFile:getValue(savegame.key..".FS22_strautmannSEK802_palletLoad.palletAutoLoader#lastUsedPalletTypeIndex", 1)
+            spec.currentautoLoadTypeIndex = savegame.xmlFile:getValue(savegame.key..".FS22_palletAutoLoader.palletAutoLoader#lastUsedPalletTypeIndex", 1)
             if(spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
                 spec.currentautoLoadTypeIndex = 1;
             end
