@@ -219,6 +219,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.dirtyFlag = self:getNextDirtyFlag()
     spec.numTriggeredObjects = 0
     spec.currentTipside = "left";
+    spec.currentautoLoadTypeIndex = 1;
     
     -- load the loading area
     spec.loadArea = {};
@@ -238,7 +239,6 @@ function APalletAutoLoader:onLoad(savegame)
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
         spec.autoLoadTypes = {};
-        spec.currentautoLoadTypeIndex = 0;
         for i,name in ipairs(types) do
             local autoLoadObject = {}
             autoLoadObject.index = spec.loadArea["baseNode"]
@@ -684,14 +684,24 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         end
     else
         -- print("Received from Server");
+        local hasChanges = false;
         local numTriggeredObjects = streamReadInt32(streamId);
         if spec.numTriggeredObjects ~= numTriggeredObjects then
             spec.numTriggeredObjects = numTriggeredObjects;
-            APalletAutoLoader.updateActionText(self);
+            hasChanges = true;
         end
         local objectsToLoadCount = streamReadInt32(streamId);
         if spec.objectsToLoadCount ~= objectsToLoadCount then
             spec.objectsToLoadCount = objectsToLoadCount;
+            hasChanges = true;
+        end 
+        local currentautoLoadTypeIndex = streamReadInt32(streamId);
+        if spec.currentautoLoadTypeIndex ~= currentautoLoadTypeIndex then
+            spec.currentautoLoadTypeIndex = currentautoLoadTypeIndex;
+            hasChanges = true;
+        end   
+        
+        if hasChanges then
             APalletAutoLoader.updateActionText(self);
         end
     end
@@ -718,7 +728,8 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
     else
         -- print("Send to Client");
         streamWriteInt32(streamId, spec.numTriggeredObjects);
-        streamWriteInt32(streamId, spec.objectsToLoadCount);
+        streamWriteInt32(streamId, spec.objectsToLoadCount); 
+        streamWriteInt32(streamId, spec.currentautoLoadTypeIndex);
     end
 end
 
