@@ -250,20 +250,20 @@ function APalletAutoLoader:onLoad(savegame)
             -- paletten nebeneinander bestimmen
             -- vieviele passen ohne drehung?
             -- erst mal alle rotiert oder nicht rotiert als loading anfang
-            local restFirstNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.03);
-            local countNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.03) + 1
+            local restFirstNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.05);
+            local countNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.05) + 1
             
-            local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.03);
-            local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.03) + 1
+            local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
+            local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
             
             local loadingPattern = {}
             if restFirstNoRotation <= restFirstRotation then
                 -- auladen ohne rotation
                 for rowNumber = 0, (countNoRotation-1) do
-                    for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + 0.03) do
+                    for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + 0.05) do
                         local loadingPatternItem = {}
                         loadingPatternItem.rotation = 0;
-                        loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + 0.03)) - (restFirstNoRotation / 2)
+                        loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + 0.05)) - (restFirstNoRotation / 2)
                         loadingPatternItem.posZ = cornerZ - colPos
                         table.insert(loadingPattern, loadingPatternItem)
                     end
@@ -272,10 +272,10 @@ function APalletAutoLoader:onLoad(savegame)
                 -- aufladen mit rotation
                 for rowNumber = 0, (countRotation-1) do
                     -- schleife bis zur länge
-                    for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + 0.03) do
+                    for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + 0.05) do
                         local loadingPatternItem = {}
                         loadingPatternItem.rotation = (3.1415927 / 2);
-                        loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + 0.03)) - (restFirstRotation / 2)
+                        loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + 0.05)) - (restFirstRotation / 2)
                         loadingPatternItem.posZ = cornerZ - colPos
                         table.insert(loadingPattern, loadingPatternItem)
                     end
@@ -426,9 +426,9 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         end    
     
         autoLoadObject.CheckTypeMethod = CheckType
-        autoLoadObject.sizeX = 1.5
+        autoLoadObject.sizeX = 1.32
         autoLoadObject.sizeY = 2
-        autoLoadObject.sizeZ = 1.5
+        autoLoadObject.sizeZ = 1.32
     elseif (name == "bigBagPallet") then
         local function CheckType(object)
             for mappingName, _ in pairs(object.i3dMappings) do
