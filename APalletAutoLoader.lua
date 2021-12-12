@@ -117,6 +117,15 @@ end
 function APalletAutoLoader.updateActionText(self)
     if self.isClient then
         local spec = self.spec_aPalletAutoLoader
+        
+        if not spec.available then
+            g_inputBinding:setActionEventActive(spec.actionEventId, false)
+            g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, false)
+            g_inputBinding:setActionEventActive(spec.toggleTipsideActionEventId, false)
+            g_inputBinding:setActionEventActive(spec.unloadAllEventId, false)
+            return;
+        end
+        
         local text;
         if spec.objectsToLoadCount == 0 then
             text = g_i18n:getText("aPalletAutoLoader_nothingToLoad")
@@ -126,7 +135,7 @@ function APalletAutoLoader.updateActionText(self)
         g_inputBinding:setActionEventText(spec.actionEventId, text)
         
         local loadingText = ""
-        if (spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
+        if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. "unknown"
         else
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
@@ -220,6 +229,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.numTriggeredObjects = 0
     spec.currentTipside = "left";
     spec.currentautoLoadTypeIndex = 1;
+    spec.available = false;
     
     -- load the loading area
     spec.loadArea = {};
@@ -233,6 +243,7 @@ function APalletAutoLoader:onLoad(savegame)
         return;
     end
     
+    spec.available = true;
     
     local types = {"euroPallet","liquidTank","bigBagPallet"}  
     
@@ -380,7 +391,7 @@ function APalletAutoLoader:onPostLoad(savegame)
 
         if not savegame.resetVehicles then
             spec.currentautoLoadTypeIndex = savegame.xmlFile:getValue(savegame.key..".FS22_aPalletAutoLoader.aPalletAutoLoader#lastUsedPalletTypeIndex", 1)
-            if(spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
+            if(spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
                 spec.currentautoLoadTypeIndex = 1;
             end
         end
