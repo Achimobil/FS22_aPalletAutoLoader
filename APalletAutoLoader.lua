@@ -271,12 +271,15 @@ function APalletAutoLoader:onLoad(savegame)
             if restFirstNoRotation <= restFirstRotation then
                 -- auladen ohne rotation
                 for rowNumber = 0, (countNoRotation-1) do
+                    -- schleife bis zur länge
                     for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + 0.05) do
-                        local loadingPatternItem = {}
-                        loadingPatternItem.rotation = 0;
-                        loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + 0.05)) - (restFirstNoRotation / 2)
-                        loadingPatternItem.posZ = cornerZ - colPos
-                        table.insert(loadingPattern, loadingPatternItem)
+                        if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+                            local loadingPatternItem = {}
+                            loadingPatternItem.rotation = 0;
+                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + 0.05)) - (restFirstNoRotation / 2)
+                            loadingPatternItem.posZ = cornerZ - colPos
+                            table.insert(loadingPattern, loadingPatternItem)
+                        end
                     end
                 end
             else
@@ -284,16 +287,20 @@ function APalletAutoLoader:onLoad(savegame)
                 for rowNumber = 0, (countRotation-1) do
                     -- schleife bis zur länge
                     for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + 0.05) do
-                        local loadingPatternItem = {}
-                        loadingPatternItem.rotation = (3.1415927 / 2);
-                        loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + 0.05)) - (restFirstRotation / 2)
-                        loadingPatternItem.posZ = cornerZ - colPos
-                        table.insert(loadingPattern, loadingPatternItem)
+                        if (colPos + (autoLoadObject.sizeX / 2)) <= spec.loadArea["lenght"] then
+                            local loadingPatternItem = {}
+                            loadingPatternItem.rotation = (3.1415927 / 2);
+                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + 0.05)) - (restFirstRotation / 2)
+                            loadingPatternItem.posZ = cornerZ - colPos
+                            table.insert(loadingPattern, loadingPatternItem)
+                        end
                     end
                 end
             end
             
             table.sort(loadingPattern,compLoadingPattern)
+-- print("loadingPattern:" .. name)
+-- DebugUtil.printTableRecursively(loadingPattern,"_",0,2)
             
             for _,loadingPatternItem in ipairs(loadingPattern) do
                 local place = {}
@@ -543,7 +550,7 @@ function APalletAutoLoader:getFirstValidLoadPlace()
     local currentLoadHeigt = 0;
     local autoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
     local loadPlaces = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].places;
-    while currentLoadHeigt  <= spec.loadArea["height"] do
+    while (currentLoadHeigt + autoLoadType.sizeY)  <= spec.loadArea["height"] do
     
         for i=1, #loadPlaces do
             local loadPlace = loadPlaces[i]
