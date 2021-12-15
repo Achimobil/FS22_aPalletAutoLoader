@@ -168,6 +168,14 @@ function APalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue
                 break;
             end
         end
+        for object,_  in pairs(spec.balesToLoad) do
+        
+            local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
+            if isValidLoadType then
+                self:loadObject(object);
+                break;
+            end
+        end
         APalletAutoLoader.updateActionText(self);
     end
 end
@@ -245,7 +253,7 @@ function APalletAutoLoader:onLoad(savegame)
     
     spec.available = true;
     
-    local types = {"euroPallet","liquidTank","bigBagPallet"}  
+    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238"}  
     
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
@@ -322,6 +330,7 @@ function APalletAutoLoader:onLoad(savegame)
     
     if self.isServer then
         spec.objectsToLoad = {};
+        spec.balesToLoad = {};
 
         spec.triggerId = self.xmlFile:getValue(baseXmlPath .. ".trigger#node", nil, self.components, self.i3dMappings)
         if spec.triggerId ~= nil then
@@ -433,8 +442,9 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.2
-        autoLoadObject.sizeY = 1
+        autoLoadObject.sizeY = 0.8
         autoLoadObject.sizeZ = 0.8
+        autoLoadObject.type = "pallet"
     elseif (name == "liquidTank") then
         local function CheckType(object)
             if string.find(object.i3dFilename, "data/objects/pallets/liquidTank") then
@@ -447,6 +457,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeX = 1.32
         autoLoadObject.sizeY = 2
         autoLoadObject.sizeZ = 1.32
+        autoLoadObject.type = "pallet"
     elseif (name == "bigBagPallet") then
         local function CheckType(object)
             for mappingName, _ in pairs(object.i3dMappings) do
@@ -461,6 +472,20 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeX = 1.4
         autoLoadObject.sizeY = 2
         autoLoadObject.sizeZ = 1.2
+        autoLoadObject.type = "pallet"
+    elseif (name == "cottonRoundbale238") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/cottonModules/cottonRoundbale238.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.38
+        autoLoadObject.sizeY = 2.38
+        autoLoadObject.sizeZ = 2.38
+        autoLoadObject.type = "roundBale"
     end
 end
 
@@ -488,16 +513,21 @@ end
 function APalletAutoLoader:getIsValidObject(object)
     local spec = self.spec_aPalletAutoLoader
             
+-- print("i3dFilename: "..object.i3dFilename)
+-- DebugUtil.printTableRecursively(i3dFilename,"_",0,2)
+
     -- only when rootnode is object id it can be valid.
-    if object.spec_mountable == nil or object.spec_mountable.componentNode ~= object.rootNode then
-        return false;
-    end
+    -- if object.spec_mountable == nil or object.spec_mountable.componentNode ~= object.rootNode then
+-- print("not a spec_mountable")
+-- DebugUtil.printTableRecursively(object,"_",0,2)
+        -- return false;
+    -- end
     
     local objectFilename = object.configFileName or object.i3dFilename
     if objectFilename ~= nil then
         -- if not string.find(objectFilename, spec.supportedObject) then
-        if object.typeName ~= "pallet" then
-            return false
+        if object.typeName == "pallet" then
+            return true
         end
     else
         return false
@@ -506,8 +536,8 @@ function APalletAutoLoader:getIsValidObject(object)
     if object == self then
         return false
     end
-
-    if spec.useBales and (not object:isa(Bale) or not object:getAllowPickup()) then
+    
+    if not object:isa(Bale) or not object:getAllowPickup() then
         return false
     end
 
@@ -599,10 +629,19 @@ function APalletAutoLoader:loadObject(object)
                         local loadPlace = loadPlaces[firstValidLoadPlace]
                         local x,y,z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
                         local objectNodeId = object.nodeId or object.components[1].node
+                        local rx,ry,rz = getWorldRotation(loadPlace.node);
 
                         removeFromPhysics(objectNodeId)
+                        
+                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "roundBale" then
+                            y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
+                            rx = rx + (3.1415927 / 2);
+                            -- runballen müssen noch um die höhe hochgesetzt werden und gedreht
+                            -- setRotation(place.node, (3.1415927 / 2), loadingPatternItem.rotation, 0)
+                            -- setTranslation(place.node, loadingPatternItem.posX, cornerY+(autoLoadObject.sizeY / 2), loadingPatternItem.posZ)
+                        end
 
-                        setWorldRotation(objectNodeId, getWorldRotation(loadPlace.node))
+                        setWorldRotation(objectNodeId, rx,ry,rz)
                         setTranslation(objectNodeId, x, y, z)
 
                         addToPhysics(objectNodeId)
@@ -627,6 +666,11 @@ function APalletAutoLoader:loadObject(object)
                         
                         if spec.objectsToLoad[object.rootNode] ~= nil then
                             spec.objectsToLoad[object.rootNode] = nil;
+                            spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+                        end
+                        
+                        if spec.balesToLoad[object] ~= nil then
+                            spec.balesToLoad[object] = nil;
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
                         end
                         self:raiseDirtyFlags(spec.dirtyFlag)
@@ -759,18 +803,40 @@ function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActor
             if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
                 local spec = self.spec_aPalletAutoLoader
                 if onEnter then
-                    if spec.objectsToLoad[object.rootNode] == nil and spec.triggeredObjects[object] == nil then
-                        spec.objectsToLoad[object.rootNode] = object;
-                        spec.objectsToLoadCount = spec.objectsToLoadCount + 1;
-                        self:raiseDirtyFlags(spec.dirtyFlag)
-                        APalletAutoLoader.updateActionText(self);
+                    if not object:isa(Bale) then
+                        if spec.objectsToLoad[object.rootNode] == nil and spec.triggeredObjects[object] == nil then
+                            spec.objectsToLoad[object.rootNode] = object;
+                            spec.objectsToLoadCount = spec.objectsToLoadCount + 1;
+                            self:raiseDirtyFlags(spec.dirtyFlag)
+                            APalletAutoLoader.updateActionText(self);
+                        end
+                    else
+                        -- ballen sind keine objekte mit rootNode, also in andere liste packen?
+                        if spec.balesToLoad[object] == nil and spec.triggeredObjects[object] == nil then
+                            spec.balesToLoad[object] = true;
+                            spec.objectsToLoadCount = spec.objectsToLoadCount + 1;
+                            self:raiseDirtyFlags(spec.dirtyFlag)
+                            APalletAutoLoader.updateActionText(self);
+                        end
+                        
+-- print("autoLoaderPickupTriggerCallback object")
+-- DebugUtil.printTableRecursively(object,"_",0,2)
                     end
                 elseif onLeave then
-                    if spec.objectsToLoad[object.rootNode] ~= nil then
-                        spec.objectsToLoad[object.rootNode] = nil;
-                        spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
-                        self:raiseDirtyFlags(spec.dirtyFlag)
-                        APalletAutoLoader.updateActionText(self);
+                    if not object:isa(Bale) then
+                        if spec.objectsToLoad[object.rootNode] ~= nil then
+                            spec.objectsToLoad[object.rootNode] = nil;
+                            spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+                            self:raiseDirtyFlags(spec.dirtyFlag)
+                            APalletAutoLoader.updateActionText(self);
+                        end
+                    else
+                        if spec.balesToLoad[object] ~= nil then
+                            spec.balesToLoad[object] = nil;
+                            spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+                            self:raiseDirtyFlags(spec.dirtyFlag)
+                            APalletAutoLoader.updateActionText(self);
+                        end
                     end
                 end
             end
