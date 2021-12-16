@@ -12,7 +12,7 @@
             <![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
 
 An example of how to use in your own mod you will find in the Strautmann SEK 802 Pallet Autoload.
-Currently only default Euro pallets, liquidTanks and bigbag pallets are possible, more will follow.
+Currently only default Euro pallets, liquidTanks, bigbag pallets and Cotton Square Bales are possible, more will follow.
 
 How to use:
 Drive next to the pallets and then with R you can load one pallet after the other.
@@ -26,7 +26,7 @@ You can choose the unloading side and unload it.
             <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
 
 Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
-Aktuell sind nur Standard Europaletten, Flüssigkeitentanks und Bigbag Paletten möglich, weiteres wird folgen.
+Aktuell sind nur Standard Europaletten, Flüssigkeitentanks, Bigbag Paletten und Baumwollrundballen möglich, weiteres wird folgen.
 
 Bedienung:
 Fahrt neben die Paletten und dann mit R die Paletten nacheinander Laden.
@@ -84,6 +84,11 @@ Ihr könnt die Entladeseite wählen und entladen.
 			<en>bigBag Pallet</en> 
 			<de>Bigbag Paletten</de> 
 			<ru>Поддоны с МКР</ru>
+		</text>
+		<text name="aPalletAutoLoader_cottonRoundbale238"> 
+			<en>Cotton Squarebale</en> 
+			<de>Baumwollrundballen</de> 
+			<ru>Хлопок квадратный тюк</ru>
 		</text>
 		<text name="aPalletAutoLoader_tipside"> 
 			<en>Tipside</en> 
