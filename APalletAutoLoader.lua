@@ -432,7 +432,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
             
             for mappingName, _ in pairs(object.i3dMappings) do
-                if (mappingName == "euroPalletVis") then
+                if (mappingName == "euroPalletVis") or (mappingName == "pallet_vis") then
                 return true;
                 end
             end
