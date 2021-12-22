@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="61">
+<modDesc descVersion="63">
     <author>Achimobil</author>
     <version>1.0.0.0</version>
     <title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
-		<ru>с автопогрузкой</ru>
+		<ru>C автопогрузкой</ru>
     </title>
     <description>
         <en>
