@@ -648,7 +648,9 @@ function APalletAutoLoader:loadObject(object)
 
                         local vx, vy, vz = getLinearVelocity(self:getParentComponent(loadPlace.node))
                         if vx ~= nil then
-                            setLinearVelocity(objectNodeId, vx, vy, vz)
+                            setLinearVelocity(objectNodeId, vx, vy+1, vz)
+                        else
+                            setLinearVelocity(objectNodeId, 0, 1, 0)
                         end
                         
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
@@ -703,6 +705,7 @@ function APalletAutoLoader:unloadAll()
             setWorldRotation(objectNodeId, rx,ry,rz)
             setTranslation(objectNodeId, x, y, z)
             addToPhysics(objectNodeId)
+            setLinearVelocity(objectNodeId, 0, 1, 0)
             
             if object.addDeleteListener ~= nil then
                 object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
@@ -733,6 +736,14 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         if LoadNextObject then
             -- Load like on non dedi serverside
             for _, object in pairs(spec.objectsToLoad) do
+                local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
+                if isValidLoadType then
+                    self:loadObject(object);
+                    break;
+                end
+            end
+            for object,_  in pairs(spec.balesToLoad) do
+            
                 local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
                 if isValidLoadType then
                     self:loadObject(object);
