@@ -5,7 +5,7 @@
     <title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
-		<ru>C автопогрузкой</ru>
+		<ru>Автопогрузка</ru>
     </title>
     <description>
         <en>
@@ -88,7 +88,7 @@ Ihr könnt die Entladeseite wählen und entladen.
 		<text name="aPalletAutoLoader_cottonRoundbale238"> 
 			<en>Cotton Squarebale</en> 
 			<de>Baumwollrundballen</de> 
-			<ru>Хлопок квадратный тюк</ru>
+			<ru>Хлопок, круглый тюк</ru>
 		</text>
 		<text name="aPalletAutoLoader_tipside"> 
 			<en>Tipside</en> 
