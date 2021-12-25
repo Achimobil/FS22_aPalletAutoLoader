@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.0.0.0</version>
+    <version>1.0.1.0</version>
     <title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
@@ -20,6 +20,10 @@ Make sure you have selected the correct pallet type.
 The pallets are then as loaded by hand on the loading area. 
 Fasten with straps before you drive, otherwise it fell of.
 You can choose the unloading side and unload it.
+
+Changelog 1.0.1.0
+- Error for Cotton Square Bales on Dedi solved
+- small changed loading/unloading behavior to work against the wrong display of the Giants Engine in Dedi
 ]]>
 </en>
         <de>
@@ -34,6 +38,10 @@ Achtet aber darauf, dass ihr auch dir richtigen Paletten ausgewählt habt.
 Die Paletten liegen dann wie von Hand geladen auf der Ladefläche. 
 Mit Gurten befestigen bevor ihre weiter fahrt, sonst rutscht das weg.
 Ihr könnt die Entladeseite wählen und entladen.
+
+Changelog 1.0.1.0
+- Fehler für Baumwollrundballen auf Dedi behoben
+- kleine Anpassung an Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Giants Engine auf dem Dedi entgegenzuwirken
 ]]>
 </de>
     </description>
