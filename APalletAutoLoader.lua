@@ -529,6 +529,9 @@ function APalletAutoLoader:getIsValidObject(object)
         if object.typeName == "pallet" then
             return true
         end
+        if object.typeName == "treeSaplingPallet" then
+            return true
+        end
     else
         return false
     end
