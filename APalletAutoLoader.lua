@@ -651,10 +651,15 @@ function APalletAutoLoader:loadAllInRange()
             return true;
         else
             spec.timerId = nil;
+            if self.isClient then
+                -- todo: auf server testen ob es direkt geht oder nicht.
+                APalletAutoLoader.updateActionText(self);
+            end
+           
         end
     else
         if loaded then
-            spec.timerId = addTimer(250, "loadAllInRange", self);
+            spec.timerId = addTimer(50, "loadAllInRange", self);
         end
     end
 end
