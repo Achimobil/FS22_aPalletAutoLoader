@@ -113,5 +113,10 @@ Changelog 1.0.1.0
 			<de>Rechts</de> 
 			<ru>Справа</ru>
 		</text>
+		<text name="configuration_aPalletAutoLoader">
+			<en>Pallet Autoload</en>
+			<de>Paletten Autoloader</de>
+			<ru>Автопогрузка поддонов</ru>
+		</text>
 	</l10n>
 </modDesc>
