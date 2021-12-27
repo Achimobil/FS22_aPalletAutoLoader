@@ -627,15 +627,19 @@ function APalletAutoLoader:loadAllInRange()
     for _, object in pairs(spec.objectsToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
-            self:loadObject(object);
-            break;
+            local loaded = self:loadObject(object);
+            if loaded then 
+                break;
+            end
         end
     end
     for object,_  in pairs(spec.balesToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
-            self:loadObject(object);
-            break;
+            local loaded = self:loadObject(object);
+            if loaded then 
+                break;
+            end
         end
     end
 end
@@ -700,11 +704,14 @@ function APalletAutoLoader:loadObject(object)
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
                         end
                         self:raiseDirtyFlags(spec.dirtyFlag)
+                        return true;
                     end
                 end
             end
         end
     end
+    
+    return false;
 end
 
 ---
