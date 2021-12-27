@@ -253,7 +253,7 @@ function APalletAutoLoader:onLoad(savegame)
     
     spec.available = true;
     
-    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238"}  
+    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize"}  
     
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
@@ -430,6 +430,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         local function CheckType(object)
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return true end
             if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
+            if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
             
             for mappingName, _ in pairs(object.i3dMappings) do
                 if (mappingName == "euroPalletVis") or (mappingName == "pallet_vis") then
@@ -444,6 +445,20 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeX = 1.2
         autoLoadObject.sizeY = 0.8
         autoLoadObject.sizeZ = 0.8
+        autoLoadObject.type = "pallet"
+    elseif (name == "euroPalletOversize") then
+        local function CheckType(object)
+            if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return true end
+            if object.configFileName == "data/objects/ksAG/patentkali/patentkali.xml" then return true end
+            if object.configFileName == "data/objects/ksAG/epsoTop/epsoTop.xml" then return true end
+                        
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.3
+        autoLoadObject.sizeY = 0.8
+        autoLoadObject.sizeZ = 1.0
         autoLoadObject.type = "pallet"
     elseif (name == "liquidTank") then
         local function CheckType(object)

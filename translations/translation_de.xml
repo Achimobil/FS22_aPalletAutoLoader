@@ -19,5 +19,6 @@
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Ladegut ändern" />
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Abladeseite ändern" />
 		<text name="input_AL_UNLOAD" text="Paletten abladen" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Euro Paletten Übergröße" />
 	</texts>
 </l10n>

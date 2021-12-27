@@ -19,5 +19,6 @@
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType" />
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside" />
 		<text name="input_AL_UNLOAD" text="Unload Pallets" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded" />
 	</texts>
 </l10n>
