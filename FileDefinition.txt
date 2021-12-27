@@ -3,3 +3,4 @@ modIcon.dds
 *.lua
 *.xml
 *.shapes
+translations/*.*

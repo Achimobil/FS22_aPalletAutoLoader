@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<translationContributors>Achimobil</translationContributors>
+    <texts>
+		<text name="aPalletAutoLoader_nothingToLoad" text="Автопогрузка: отключена" />
+		<text name="aPalletAutoLoader_loadPallets" text="Автопогрузка загрузить" />
+		<text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов" />
+		<text name="PalletAutoload_Trailer" text="Автопогрузка поддонов" />
+		<text name="aPalletAutoLoader_LoadingType" text="Автопогрузка" />
+		<text name="aPalletAutoLoader_liquidTank" text="Поддоны для жидкости" />
+		<text name="aPalletAutoLoader_euroPallet" text="Поддоны" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Хлопок, круглый тюк" />
+		<text name="aPalletAutoLoader_tipside" text="Сторона разгрузки" />
+		<text name="aPalletAutoLoader_left" text="Слева" />
+		<text name="aPalletAutoLoader_right" text="Справа" />
+		<text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов" />
+	</texts>
+</l10n>

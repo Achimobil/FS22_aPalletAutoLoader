@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<translationContributors>Achimobil</translationContributors>
+    <texts>
+		<text name="aPalletAutoLoader_nothingToLoad" text="Autoload: nothing" />
+		<text name="aPalletAutoLoader_loadPallets" text="enable Autoload" />
+		<text name="function_PalletAutoload_Trailer" text="Trailer with Autoload for pallets" />
+		<text name="PalletAutoload_Trailer" text="Pallet Autoload" />
+		<text name="aPalletAutoLoader_LoadingType" text="LoadingType" />
+		<text name="aPalletAutoLoader_liquidTank" text="liquidTank" />
+		<text name="aPalletAutoLoader_euroPallet" text="euroPallet" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="bigBag Pallet" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Cotton Squarebale" />
+		<text name="aPalletAutoLoader_tipside" text="Tipside" />
+		<text name="aPalletAutoLoader_left" text="left" />
+		<text name="aPalletAutoLoader_right" text="right" />
+		<text name="configuration_aPalletAutoLoader" text="Pallet Autoload" />
+	</texts>
+</l10n>
