@@ -15,5 +15,9 @@
 		<text name="aPalletAutoLoader_left" text="left" />
 		<text name="aPalletAutoLoader_right" text="right" />
 		<text name="configuration_aPalletAutoLoader" text="Pallet Autoload" />
+		<text name="input_AL_LOAD_PALLET" text="Load Pallets" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside" />
+		<text name="input_AL_UNLOAD" text="Unload Pallets" />
 	</texts>
 </l10n>

@@ -51,5 +51,28 @@ Changelog 1.0.1.0
 	<extraSourceFiles>
         <sourceFile filename="main.lua" />
     </extraSourceFiles>
+
+    <inputBinding>
+        <actionBinding action="AL_LOAD_PALLET">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_r" />
+        </actionBinding>
+        <actionBinding action="AL_TOGGLE_LOADINGTYPE">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_z" />
+        </actionBinding>
+        <actionBinding action="AL_TOGGLE_TIPSIDE">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_u" />
+        </actionBinding>
+        <actionBinding action="AL_UNLOAD">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_i" />
+        </actionBinding>
+    </inputBinding>   
+    
+    <actions>
+        <action name="AL_LOAD_PALLET" />
+        <action name="AL_TOGGLE_LOADINGTYPE" />
+        <action name="AL_TOGGLE_TIPSIDE" />
+        <action name="AL_UNLOAD" />
+    </actions>
+    
 	<l10n filenamePrefix="translations/translation" />
 </modDesc>
