@@ -624,10 +624,12 @@ end
 function APalletAutoLoader:loadAllInRange()
     local spec = self.spec_aPalletAutoLoader
     
+    local loaded = false;
+    
     for _, object in pairs(spec.objectsToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
-            local loaded = self:loadObject(object);
+            loaded = self:loadObject(object);
             if loaded then 
                 break;
             end
@@ -636,10 +638,23 @@ function APalletAutoLoader:loadAllInRange()
     for object,_  in pairs(spec.balesToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
-            local loaded = self:loadObject(object);
+            loaded = self:loadObject(object);
             if loaded then 
                 break;
             end
+        end
+    end
+        
+    if spec.timerId ~= nil then
+        if loaded then
+            -- setTimerTime(spec.timerId, 250);
+            return true;
+        else
+            spec.timerId = nil;
+        end
+    else
+        if loaded then
+            spec.timerId = addTimer(250, "loadAllInRange", self);
         end
     end
 end
