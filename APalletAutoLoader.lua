@@ -58,6 +58,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "onDeleteAPalletAutoLoaderObject", APalletAutoLoader.onDeleteAPalletAutoLoaderObject)
     SpecializationUtil.registerFunction(vehicleType, "loadObject", APalletAutoLoader.loadObject)
     SpecializationUtil.registerFunction(vehicleType, "unloadAll", APalletAutoLoader.unloadAll)
+    SpecializationUtil.registerFunction(vehicleType, "loadAllInRange", APalletAutoLoader.loadAllInRange)
 end
 
 ---
@@ -160,22 +161,7 @@ function APalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue
         spec.LoadNextObject = true;
         self:raiseDirtyFlags(spec.dirtyFlag)
     else
-        for _, object in pairs(spec.objectsToLoad) do
-        
-            local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
-            if isValidLoadType then
-                self:loadObject(object);
-                break;
-            end
-        end
-        for object,_  in pairs(spec.balesToLoad) do
-        
-            local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
-            if isValidLoadType then
-                self:loadObject(object);
-                break;
-            end
-        end
+        self:loadAllInRange();
         APalletAutoLoader.updateActionText(self);
     end
 end
@@ -635,6 +621,26 @@ function APalletAutoLoader:autoLoaderOverlapCallback(transformId)
 end
 
 ---
+function APalletAutoLoader:loadAllInRange()
+    local spec = self.spec_aPalletAutoLoader
+    
+    for _, object in pairs(spec.objectsToLoad) do
+        local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
+        if isValidLoadType then
+            self:loadObject(object);
+            break;
+        end
+    end
+    for object,_  in pairs(spec.balesToLoad) do
+        local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
+        if isValidLoadType then
+            self:loadObject(object);
+            break;
+        end
+    end
+end
+
+---
 function APalletAutoLoader:loadObject(object)
     if object ~= nil then
         if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
@@ -753,21 +759,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         
         if LoadNextObject then
             -- Load like on non dedi serverside
-            for _, object in pairs(spec.objectsToLoad) do
-                local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
-                if isValidLoadType then
-                    self:loadObject(object);
-                    break;
-                end
-            end
-            for object,_  in pairs(spec.balesToLoad) do
-            
-                local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
-                if isValidLoadType then
-                    self:loadObject(object);
-                    break;
-                end
-            end
+            self:loadAllInRange();
         end
         
         if callUnloadAll then
