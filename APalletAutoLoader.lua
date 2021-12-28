@@ -161,8 +161,10 @@ function APalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue
         spec.LoadNextObject = true;
         self:raiseDirtyFlags(spec.dirtyFlag)
     else
-        self:loadAllInRange();
-        APalletAutoLoader.updateActionText(self);
+        if (spec.timerId == nil) then
+            self:loadAllInRange();
+            APalletAutoLoader.updateActionText(self);
+        end
     end
 end
 
@@ -647,19 +649,17 @@ function APalletAutoLoader:loadAllInRange()
         
     if spec.timerId ~= nil then
         if loaded then
-            -- setTimerTime(spec.timerId, 250);
             return true;
         else
             spec.timerId = nil;
             if self.isClient then
-                -- todo: auf server testen ob es direkt geht oder nicht.
                 APalletAutoLoader.updateActionText(self);
             end
            
         end
     else
         if loaded then
-            spec.timerId = addTimer(50, "loadAllInRange", self);
+            spec.timerId = addTimer(100, "loadAllInRange", self);
         end
     end
 end
@@ -781,7 +781,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         spec.currentTipside = streamReadString(streamId);
         local callUnloadAll = streamReadBool(streamId);
         
-        if LoadNextObject then
+        if LoadNextObject and spec.timerId == nil then
             -- Load like on non dedi serverside
             self:loadAllInRange();
         end
