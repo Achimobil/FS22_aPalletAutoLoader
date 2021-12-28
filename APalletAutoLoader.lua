@@ -1,6 +1,7 @@
 ---Specialization for automatically load objects onto a vehicle by Achimobil
 -- It is not allowed to copy my code complete or in Parts into other mods
-
+-- If you have any issues please report them in my Discord on the channel for the mod.
+-- https://discord.gg/Va7JNnEkcW
 
 APalletAutoLoader = {}
 
