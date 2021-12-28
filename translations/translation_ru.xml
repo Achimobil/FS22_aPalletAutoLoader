@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-	<translationContributors>Achimobil</translationContributors>
+	<translationContributors>nagor</translationContributors>
     <texts>
 		<text name="aPalletAutoLoader_nothingToLoad" text="Автопогрузка: отключена" />
-		<text name="aPalletAutoLoader_loadPallets" text="Автопогрузка загрузить" />
+		<text name="aPalletAutoLoader_loadPallets" text="Автопогрузка: погрузить" />
 		<text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов" />
 		<text name="PalletAutoload_Trailer" text="Автопогрузка поддонов" />
 		<text name="aPalletAutoLoader_LoadingType" text="Автопогрузка" />
@@ -11,14 +11,14 @@
 		<text name="aPalletAutoLoader_euroPallet" text="Поддоны" />
 		<text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Хлопок, круглый тюк" />
-		<text name="aPalletAutoLoader_tipside" text="Сторона разгрузки" />
+		<text name="aPalletAutoLoader_tipside" text="Сторона выгрузки" />
 		<text name="aPalletAutoLoader_left" text="Слева" />
 		<text name="aPalletAutoLoader_right" text="Справа" />
 		<text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов" />
-		<text name="input_AL_LOAD_PALLET" text="Load Pallets" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside" />
-		<text name="input_AL_UNLOAD" text="Unload Pallets" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded" />
+		<text name="input_AL_LOAD_PALLET" text="Погрузить" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Переключить тип поддонов/тюков" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Переключить сторону выгрузки" />
+		<text name="input_AL_UNLOAD" text="Выгрузить" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Негабаритные поддоны" />
 	</texts>
 </l10n>
