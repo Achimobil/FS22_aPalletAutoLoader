@@ -217,7 +217,7 @@ function APalletAutoLoader:onLoad(savegame)
     self.spec_aPalletAutoLoader = {}
     local spec = self.spec_aPalletAutoLoader
     spec.LoadNextObject = false;
-    spec.callUnloadAll = true;
+    spec.callUnloadAll = false;
     spec.objectsToLoadCount = 0;    
     spec.dirtyFlag = self:getNextDirtyFlag()
     spec.numTriggeredObjects = 0
@@ -697,8 +697,6 @@ function APalletAutoLoader:loadObject(object)
                         local vx, vy, vz = getLinearVelocity(self:getParentComponent(loadPlace.node))
                         if vx ~= nil then
                             setLinearVelocity(objectNodeId, vx, vy+1, vz)
-                        else
-                            setLinearVelocity(objectNodeId, 0, 1, 0)
                         end
                         
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
@@ -756,7 +754,6 @@ function APalletAutoLoader:unloadAll()
             setWorldRotation(objectNodeId, rx,ry,rz)
             setTranslation(objectNodeId, x, y, z)
             addToPhysics(objectNodeId)
-            setLinearVelocity(objectNodeId, 0, 1, 0)
             
             if object.addDeleteListener ~= nil then
                 object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
