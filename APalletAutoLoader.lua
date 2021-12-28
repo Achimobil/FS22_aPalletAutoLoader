@@ -241,6 +241,7 @@ function APalletAutoLoader:onLoad(savegame)
     
     spec.available = true;
     
+    -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
     local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize"}  
     
     -- create loadplaces automatically from load Area size
@@ -312,7 +313,9 @@ function APalletAutoLoader:onLoad(savegame)
                 table.insert(autoLoadObject.places, place)
             end
             
-            table.insert(spec.autoLoadTypes, autoLoadObject)
+            if #autoLoadObject.places ~= 0 then
+                table.insert(spec.autoLoadTypes, autoLoadObject)
+            end
         end
     end
     
@@ -489,7 +492,20 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeX = 2.38
         autoLoadObject.sizeY = 2.38
         autoLoadObject.sizeZ = 2.38
-        autoLoadObject.type = "roundBale"
+        autoLoadObject.type = "cottonRoundbale"
+    elseif (name == "cottonSquarebale488") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/cottonModules/cottonSquarebale488.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.44
+        autoLoadObject.sizeY = 2.44
+        autoLoadObject.sizeZ = 4.88
+        autoLoadObject.type = "cottonSquarebale"
     end
 end
 
@@ -682,12 +698,14 @@ function APalletAutoLoader:loadObject(object)
 
                         removeFromPhysics(objectNodeId)
                         
-                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "roundBale" then
+                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "cottonRoundbale" then
+                            -- Baumwollrundballen müssen noch um die höhe hochgesetzt werden und gedreht
                             y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
                             rx = rx + (3.1415927 / 2);
-                            -- runballen müssen noch um die höhe hochgesetzt werden und gedreht
-                            -- setRotation(place.node, (3.1415927 / 2), loadingPatternItem.rotation, 0)
-                            -- setTranslation(place.node, loadingPatternItem.posX, cornerY+(autoLoadObject.sizeY / 2), loadingPatternItem.posZ)
+                        end
+                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "cottonSquarebale" then
+                            -- Baumwollquaderballen müssen noch um die höhe hochgesetzt werden
+                            y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
                         end
 
                         setWorldRotation(objectNodeId, rx,ry,rz)
