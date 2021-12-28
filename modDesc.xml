@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.0.1.0</version>
+    <version>1.2.0.0</version>
     <title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
@@ -15,7 +15,7 @@ An example of how to use in your own mod you will find in the Strautmann SEK 802
 Currently only default Euro pallets, liquidTanks, bigbag pallets and Cotton Square Bales are possible, more will follow.
 
 How to use:
-Drive next to the pallets and then with R you can load one pallet after the other.
+Drive next to the pallets and then with [R] you can start the loading process.
 Make sure you have selected the correct pallet type.
 The pallets are then as loaded by hand on the loading area. 
 Fasten with straps before you drive, otherwise it fell of.
@@ -24,6 +24,14 @@ You can choose the unloading side and unload it.
 Changelog 1.0.1.0
 - Error for Cotton Square Bales on Dedi solved
 - small changed loading/unloading behavior to work against the wrong display of the Giants Engine in Dedi
+
+Changelog 1.0.1.0
+- Missing translations added for shop.
+- Change bindings to be configurable bindings for minimizing double usage.
+- Sapling pallets could now be loaded with the Euro pallet setting. 
+- New loading type for oversized Europallets like the ones from KsAG or Schaumann (smaller loading capacity).
+- Change loading to load everything automatic what is in range with one time pressing [R].
+- Pioneer pallet is now loadable with the oversized setting.
 ]]>
 </en>
         <de>
@@ -33,15 +41,24 @@ Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 
 Aktuell sind nur Standard Europaletten, Flüssigkeitentanks, Bigbag Paletten und Baumwollrundballen möglich, weiteres wird folgen.
 
 Bedienung:
-Fahrt neben die Paletten und dann mit R die Paletten nacheinander Laden.
-Achtet aber darauf, dass ihr auch dir richtigen Paletten ausgewählt habt.
+Fahrt neben die Paletten und dann mit [R] das laden starten.
+Achtet aber darauf, dass ihr auch dir richtigen Palettenart ausgewählt habt.
 Die Paletten liegen dann wie von Hand geladen auf der Ladefläche. 
-Mit Gurten befestigen bevor ihre weiter fahrt, sonst rutscht das weg.
+Mit Gurten befestigen bevor ihr weiter fahrt, sonst rutscht das weg.
 Ihr könnt die Entladeseite wählen und entladen.
 
 Changelog 1.0.1.0
 - Fehler für Baumwollrundballen auf Dedi behoben
 - kleine Anpassung an Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Giants Engine auf dem Dedi entgegenzuwirken
+
+Changelog 1.0.1.0
+- Fehlende Übersetzungen für Shop eingefügt.
+- Umstellung auf eigene Bindings um Doppelbelegungen zu minimieren.
+- Setzlingspaletten können jetzt mit Europlatten geladen werden.
+- Neue Ladetyp für Überladene Europaletten wie z.B. die von KsAG oder Schaumann (geringere Ladekapazität).
+- Ladeverhalten auf Automatisches aufladen aller Paletten in Reichweite umgebaut. Ein mal [R] und alles wird aufgeladen.
+- Palette von Pioneer fällt jetzt unter Überladene Europaletten.
+
 ]]>
 </de>
     </description>

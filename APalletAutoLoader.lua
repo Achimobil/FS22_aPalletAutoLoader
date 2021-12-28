@@ -1,6 +1,5 @@
----Specialization for automatically load objects onto a vehicle
-
-
+---Specialization for automatically load objects onto a vehicle by Achimobil
+-- It is not allowed to copy my code complete or in Parts into other mods
 
 
 APalletAutoLoader = {}
