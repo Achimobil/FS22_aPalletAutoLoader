@@ -6,6 +6,7 @@
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<ru>Автопогрузка</ru>
+		<it>Specializzazione caricamento automatico pallet</it>
     </title>
     <description>
         <en>
@@ -61,6 +62,33 @@ Changelog 1.2.0.0
 
 ]]>
 </de>
+        <it>
+            <![CDATA[Mod di base per l'utilizzo di mod con specializzazione caricamento automatico di pallet.
+
+È possibile trovare un esempio di come deve essere incorporata la specializzazione nel caricamento automatico per pallet Strautmann SEK 802.
+Attualmente sono possibili solo europallet standard, serbatoi per liquidi, pallet big bag e rotoballe di cotone, altri seguiranno.
+
+Come si usa:
+- Assicurati di aver selezionato il tipo di pallet corretto.
+- Avvicinati ai pallet e poi col tasto [R] per caricare.
+- I pallet sono quindi come caricati a mano sull'area di carico.
+- Fissa il carico con le cinghie prima di guidare, altrimenti cascano a terra.
+- Puoi scegliere il lato di scarico e scaricare col tasto I.
+
+Changelog:
+v1.0.1.0
+- Risolto un bug per le balle rotonde di cotone su Dedi
+- Piccolo aggiustamento al comportamento di carico/scarico per contrastare l'errata visualizzazione da parte del Giants Engine sul Dedi
+
+v1.2.0.0
+- Aggiunte traduzioni mancanti per il negozio.
+- Passaggio alle proprie associazioni per ridurre al minimo le doppie assegnazioni.
+- Ora è possibile caricare i pallet di alberello con l'impostazione Europallet.
+- Nuovo tipo di caricamento per Europallet sovradimensionati come quelli di KsAG o Schaumann (capacità di carico ridotta).
+- Il comportamento di caricamento è stato convertito in caricamento automatico di tutti i tipi di pallet a portata del raggio d'azione. Basta premere una volta il tasto [R] e tutto viene caricato.
+- Il pallet Pioneer è ora caricabile con l'impostazione sovradimensionata.
+]]>
+</it>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
     <multiplayer supported="true" />

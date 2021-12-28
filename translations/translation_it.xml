@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<translationContributors>Markus33 [ITA]</translationContributors>
+    <texts>
+		<text name="aPalletAutoLoader_nothingToLoad" text="Caricamento automatico: niente da caricare" />
+		<text name="aPalletAutoLoader_loadPallets" text="Abilita il caricamento automatico" />
+		<text name="function_PalletAutoload_Trailer" text="Rimorchio con caricamento automatico per pallet" />
+		<text name="PalletAutoload_Trailer" text="Caricatore automatico di pallet" />
+		<text name="aPalletAutoLoader_LoadingType" text="Tipo di caricamento" />
+		<text name="aPalletAutoLoader_liquidTank" text="Pallet contenitore liquidi" />
+		<text name="aPalletAutoLoader_euroPallet" text="Euro Pallet" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="Pallet BigBag" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Balle di cotone rotonde" />
+		<text name="aPalletAutoLoader_tipside" text="Lato di scarico" />
+		<text name="aPalletAutoLoader_left" text="Sinistra" />
+		<text name="aPalletAutoLoader_right" text="Destra" />
+		<text name="configuration_aPalletAutoLoader" text="Caricatore automatico di pallet" />
+		<text name="input_AL_LOAD_PALLET" text="Carica i pallet" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambia il tipo di carico" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambia il lato di scarico" />
+		<text name="input_AL_UNLOAD" text="Scarico pallet" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura" />
+	</texts>
+</l10n>
