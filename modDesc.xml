@@ -25,7 +25,7 @@ Changelog 1.0.1.0
 - Error for Cotton Square Bales on Dedi solved
 - small changed loading/unloading behavior to work against the wrong display of the Giants Engine in Dedi
 
-Changelog 1.0.1.0
+Changelog 1.2.0.0
 - Missing translations added for shop.
 - Change bindings to be configurable bindings for minimizing double usage.
 - Sapling pallets could now be loaded with the Euro pallet setting. 
@@ -51,7 +51,7 @@ Changelog 1.0.1.0
 - Fehler für Baumwollrundballen auf Dedi behoben
 - kleine Anpassung an Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Giants Engine auf dem Dedi entgegenzuwirken
 
-Changelog 1.0.1.0
+Changelog 1.2.0.0
 - Fehlende Übersetzungen für Shop eingefügt.
 - Umstellung auf eigene Bindings um Doppelbelegungen zu minimieren.
 - Setzlingspaletten können jetzt mit Europlatten geladen werden.
