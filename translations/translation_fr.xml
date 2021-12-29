@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <translationContributors>BOB51160</translationContributors>
+    <texts>
+        <text name="aPalletAutoLoader_nothingToLoad" text="Autoload : rien"/>
+        <text name="aPalletAutoLoader_loadPallets" text="activer le chargement automatique"/>
+        <text name="function_PalletAutoload_Trailer" text="Remorque avec chargement automatique pour palettes"/>
+        <text name="PalletAutoload_Trailer" text="Pallet Autoload"/>
+        <text name="aPalletAutoLoader_LoadingType" text="LoadingType"/>
+        <text name="aPalletAutoLoader_liquidTank" text="liquidTank"/>
+        <text name="aPalletAutoLoader_euroPallet" text="euroPallet"/>
+        <text name="aPalletAutoLoader_bigBagPallet" text="bigBag Pallet"/>
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Botte carrée de coton"/>
+        <text name="aPalletAutoLoader_tipside" text="Tipside"/>
+        <text name="aPalletAutoLoader_left" text="gauche"/>
+        <text name="aPalletAutoLoader_right" text="droite"/>
+        <text name="configuration_aPalletAutoLoader" text="Pallet AutoLoader"/>
+        <text name="input_AL_LOAD_PALLET" text="Charger les palettes"/>
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType"/>
+        <text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside"/>
+        <text name="input_AL_UNLOAD" text="Décharger les palettes"/>
+        <text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded"/>
+    </texts>
+</l10n>
