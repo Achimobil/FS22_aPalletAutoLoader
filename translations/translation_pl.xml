@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<translationContributors>Achimobil</translationContributors>
+    <texts>
+		<text name="aPalletAutoLoader_nothingToLoad" text="Autozaładunek: nic do załadowania" />
+		<text name="aPalletAutoLoader_loadPallets" text="Do Autozaładunku" />
+		<text name="function_PalletAutoload_Trailer" text="Przyczepa z automatycznym załadunkiem palet" />
+		<text name="PalletAutoload_Trailer" text="Autozaładunek Palet" />
+		<text name="aPalletAutoLoader_LoadingType" text="Wybrany typ" />
+		<text name="aPalletAutoLoader_liquidTank" text="LiquidTank" />
+		<text name="aPalletAutoLoader_euroPallet" text="Euro Palety" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="BigBag Palety" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Bele wełny" />
+		<text name="aPalletAutoLoader_tipside" text="Strona wyłądunku" />
+		<text name="aPalletAutoLoader_left" text="lewa" />
+		<text name="aPalletAutoLoader_right" text="prawa" />
+		<text name="configuration_aPalletAutoLoader" text="Autozaładunek Palet" />
+		<text name="input_AL_LOAD_PALLET" text="Załaduj Palety" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Wybierz typ" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Przełacz stronę wyładunku" />
+		<text name="input_AL_UNLOAD" text="Wyładuj Palety" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Nadwymiarowe europalety" />
+	</texts>
+</l10n>
