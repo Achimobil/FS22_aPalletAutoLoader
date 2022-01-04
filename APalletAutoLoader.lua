@@ -56,6 +56,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "autoLoaderTriggerCallback", APalletAutoLoader.autoLoaderTriggerCallback)
     SpecializationUtil.registerFunction(vehicleType, "autoLoaderPickupTriggerCallback", APalletAutoLoader.autoLoaderPickupTriggerCallback)
     SpecializationUtil.registerFunction(vehicleType, "onDeleteAPalletAutoLoaderObject", APalletAutoLoader.onDeleteAPalletAutoLoaderObject)
+    SpecializationUtil.registerFunction(vehicleType, "onDeleteObjectToLoad", APalletAutoLoader.onDeleteObjectToLoad)
     SpecializationUtil.registerFunction(vehicleType, "loadObject", APalletAutoLoader.loadObject)
     SpecializationUtil.registerFunction(vehicleType, "unloadAll", APalletAutoLoader.unloadAll)
     SpecializationUtil.registerFunction(vehicleType, "loadAllInRange", APalletAutoLoader.loadAllInRange)
@@ -296,17 +297,11 @@ function APalletAutoLoader:onLoad(savegame)
             end
             
             table.sort(loadingPattern,compLoadingPattern)
--- print("loadingPattern:" .. name)
--- DebugUtil.printTableRecursively(loadingPattern,"_",0,2)
             
             for _,loadingPatternItem in ipairs(loadingPattern) do
                 local place = {}
                 place.node = createTransformGroup("Loadplace")
                 link(autoLoadObject.index, place.node);
-                -- basispunkt und von da aus dann ausbreiten
-                -- hier mus ich das als pattern verteilen
-                -- local rX, rY, rZ = getRotation(autoLoadObject.index);
-                -- print("autoLoadObject.index rX:"..rX.." rY:"..rY.." rZ:"..rZ);
                 
                 setRotation(place.node, 0, loadingPatternItem.rotation, 0)
                 setTranslation(place.node, loadingPatternItem.posX, cornerY, loadingPatternItem.posZ)
@@ -348,22 +343,6 @@ function APalletAutoLoader:onLoad(savegame)
             i = i + 1
         end
         
-        -- erstellen eines Trigger nodes in lua
-        -- local trigger = {}
-        -- trigger.node = createTransformGroup("myTrigger")
-        -- link(spec.loadArea["baseNode"], trigger.node);
-        -- setRigidBodyType(trigger.node, RigidBodyType.KINEMATIC);
-        -- setVisibility(trigger.node, true);
-        -- setRotation(trigger.node, 0, 0, 0)
-        -- setTranslation(trigger.node, 3, 3, 3)
-        -- setScale(trigger.node, 3, 3, 3)
-        -- local object = g_currentMission:getNodeObject(spec.loadArea["baseNode"])
-        -- print("object")
-        -- DebugUtil.printTableRecursively(object,"_",0,2)
-        -- table.insert(spec.pickupTriggers, trigger)
-        -- addTrigger(trigger.node, "autoLoaderPickupTriggerCallback", self)
-        
-
         spec.triggeredObjects = {}
         
         spec.supportedObject = self.xmlFile:getValue(baseXmlPath .. "#supportedObject")
@@ -532,20 +511,9 @@ end
 ---
 function APalletAutoLoader:getIsValidObject(object)
     local spec = self.spec_aPalletAutoLoader
-            
--- print("i3dFilename: "..object.i3dFilename)
--- DebugUtil.printTableRecursively(i3dFilename,"_",0,2)
-
-    -- only when rootnode is object id it can be valid.
-    -- if object.spec_mountable == nil or object.spec_mountable.componentNode ~= object.rootNode then
--- print("not a spec_mountable")
--- DebugUtil.printTableRecursively(object,"_",0,2)
-        -- return false;
-    -- end
     
     local objectFilename = object.configFileName or object.i3dFilename
     if objectFilename ~= nil then
-        -- if not string.find(objectFilename, spec.supportedObject) then
         if object.typeName == "pallet" then
             return true
         end
@@ -873,6 +841,9 @@ function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActor
                             spec.objectsToLoadCount = spec.objectsToLoadCount + 1;
                             self:raiseDirtyFlags(spec.dirtyFlag)
                             APalletAutoLoader.updateActionText(self);
+                            if object.addDeleteListener ~= nil then
+                                object:addDeleteListener(self, "onDeleteObjectToLoad")
+                            end
                         end
                     else
                         -- ballen sind keine objekte mit rootNode, also in andere liste packen?
@@ -881,10 +852,10 @@ function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActor
                             spec.objectsToLoadCount = spec.objectsToLoadCount + 1;
                             self:raiseDirtyFlags(spec.dirtyFlag)
                             APalletAutoLoader.updateActionText(self);
+                            if object.addDeleteListener ~= nil then
+                                object:addDeleteListener(self, "onDeleteObjectToLoad")
+                            end
                         end
-                        
--- print("autoLoaderPickupTriggerCallback object")
--- DebugUtil.printTableRecursively(object,"_",0,2)
                     end
                 elseif onLeave then
                     if not object:isa(Bale) then
@@ -893,6 +864,9 @@ function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActor
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
                             self:raiseDirtyFlags(spec.dirtyFlag)
                             APalletAutoLoader.updateActionText(self);
+                            if object.removeDeleteListener ~= nil then
+                                object:removeDeleteListener(self, "onDeleteObjectToLoad")
+                            end
                         end
                     else
                         if spec.balesToLoad[object] ~= nil then
@@ -900,6 +874,9 @@ function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActor
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
                             self:raiseDirtyFlags(spec.dirtyFlag)
                             APalletAutoLoader.updateActionText(self);
+                            if object.removeDeleteListener ~= nil then
+                                object:removeDeleteListener(self, "onDeleteObjectToLoad")
+                            end
                         end
                     end
                 end
@@ -949,7 +926,7 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                         spec.numTriggeredObjects = spec.numTriggeredObjects - 1
 
                         if object.removeDeleteListener ~= nil then
-                            object:removeDeleteListener(self)
+                            object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                         end
                         self:raiseDirtyFlags(spec.dirtyFlag)
                     end
@@ -974,5 +951,26 @@ function APalletAutoLoader:onDeleteAPalletAutoLoaderObject(object)
         if next(spec.triggeredObjects) == nil then
             spec.currentPlace = 1
         end
+    end
+end
+
+---
+function APalletAutoLoader:onDeleteObjectToLoad(object)
+    local spec = self.spec_aPalletAutoLoader
+    
+    if spec.objectsToLoad[object.rootNode] ~= nil then
+        spec.objectsToLoad[object.rootNode] = nil;
+        spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+    end
+                        
+    if spec.balesToLoad[object] ~= nil then
+        spec.balesToLoad[object] = nil;
+        spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+    end
+    
+    if not self.isServer then
+        self:raiseDirtyFlags(spec.dirtyFlag)
+    else
+        APalletAutoLoader.updateActionText(self);
     end
 end
