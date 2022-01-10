@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.2.1.0</version>
+    <version>1.2.2.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -41,6 +41,9 @@ Changelog 1.2.1.0
 - Translations added for FR stolen from Illegal new release of my mod by BOB51160
 - Fixed lua bug when selling after unloading
 - Created my own mod icon
+
+Changelog 1.2.2.0
+- Translation in PL by Mayek
 ]]></en>
         <de>
             <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
@@ -73,6 +76,9 @@ Changelog 1.2.1.0
 - Übersetzungen in FR geklaut von Illegaler neuer Veröffentlichung meines Mods von BOB51160
 - lua Fehler beim verkaufen nach abladen behoben
 - Eigenes Mod Icon erstellt.
+
+Changelog 1.2.2.0
+- Übersetzung in PL von Mayek
 
 ]]></de>
         <it>
@@ -107,6 +113,9 @@ v1.2.1.0
 - Aggiunte traduzioni per FR rubato dalla nuova versione illegale della mia mod di BOB51160
 - Risolto bug lua durante la vendita dopo lo scarico
 - Ho creato la mia icona mod
+
+v1.2.2.0
+- Traduzione in PL di Mayek
 ]]></it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
@@ -139,6 +148,9 @@ Journal des modifications 1.2.1.0
 - Traductions ajoutées pour FR volées de la nouvelle version illégale de mon mod par BOB51160
 - Correction d'un bug lua lors de la vente après le déchargement
 - Création de ma propre icône de mod
+
+Journal des modifications 1.2.2.0
+- Traduction en PL par Mayek
 ]]></fr>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
