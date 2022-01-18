@@ -6,8 +6,8 @@
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
         <ru>Автопогрузка</ru>
-        <it>Specializzazione caricamento automatico pallet</it>
-        <fr>Spécialisation de chargement automatique de palettes</fr>
+        <it>Specializzazione Caricamento Automatico Pallet</it>
+        <fr>Spécialisation De Chargement Automatique De Palettes</fr>
     </title>
     <description>
         <en>
@@ -37,13 +37,14 @@ Changelog 1.2.0.0
 
 Changelog 1.2.1.0
 - Improved translation for RU by Nagor
-- Translation added for IT by Markus33 [ITA]
-- Translations added for FR stolen from Illegal new release of my mod by BOB51160
+- Translations added for IT by Markus33 [ITA]
+- Translations added for FR by BOB51160
 - Fixed lua bug when selling after unloading
 - Created my own mod icon
 
 Changelog 1.2.2.0
 - Translation in PL by Mayek
+- Predefines buttons for default gamepad
 ]]></en>
         <de>
             <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
@@ -73,12 +74,13 @@ Changelog 1.2.0.0
 Changelog 1.2.1.0
 - Verbesserte übersetzungen RU von nagor
 - Übersetzung in IT von Markus33 [ITA]
-- Übersetzungen in FR geklaut von Illegaler neuer Veröffentlichung meines Mods von BOB51160
+- Übersetzung in FR von BOB51160
 - lua Fehler beim verkaufen nach abladen behoben
 - Eigenes Mod Icon erstellt.
 
 Changelog 1.2.2.0
 - Übersetzung in PL von Mayek
+- Standard Gamepad Tasten vorbelegt
 
 ]]></de>
         <it>
@@ -110,12 +112,13 @@ v1.2.0.0
 v1.2.1.0
 - Traduzione migliorata per RU di Nagor
 - Aggiunta traduzione per IT da Markus33 [ITA]
-- Aggiunte traduzioni per FR rubato dalla nuova versione illegale della mia mod di BOB51160
+- Aggiunte traduzione per FR da BOB51160
 - Risolto bug lua durante la vendita dopo lo scarico
 - Ho creato la mia icona mod
 
 v1.2.2.0
 - Traduzione in PL di Mayek
+- Pulsanti predefiniti per il gamepad predefinito
 ]]></it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
@@ -144,13 +147,14 @@ Journal des modifications 1.2.0.0
 
 Journal des modifications 1.2.1.0
 - Traduction améliorée pour RU par Nagor
-- Traduction ajoutée pour l'informatique par Markus33 [ITA]
-- Traductions ajoutées pour FR volées de la nouvelle version illégale de mon mod par BOB51160
+- Traductions ajoutées pour IT par Markus33 [ITA]
+- Traductions ajoutées pour FR par BOB51160
 - Correction d'un bug lua lors de la vente après le déchargement
 - Création de ma propre icône de mod
 
 Journal des modifications 1.2.2.0
 - Traduction en PL par Mayek
+- Boutons prédéfinis pour la manette de jeu par défaut
 ]]></fr>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
