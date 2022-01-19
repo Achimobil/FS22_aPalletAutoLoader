@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<translationContributors>Keltibero</translationContributors>
+    <texts>
+		<text name="aPalletAutoLoader_nothingToLoad" text="Carga Automática: nada que cargar" />
+		<text name="aPalletAutoLoader_loadPallets" text="Activar Carga Automática" />
+		<text name="function_PalletAutoload_Trailer" text="Remolque con Carga Automática para palés" />
+		<text name="PalletAutoload_Trailer" text="Carga Automática de palés" />
+		<text name="aPalletAutoLoader_LoadingType" text="Tipo de carga" />
+		<text name="aPalletAutoLoader_liquidTank" text="Contenedor para líquidos (GRG)" />
+		<text name="aPalletAutoLoader_euroPallet" text="Europalé" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
+		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
+		<text name="aPalletAutoLoader_left" text="izquierda" />
+		<text name="aPalletAutoLoader_right" text="derecha" />
+		<text name="configuration_aPalletAutoLoader" text="Carga Automática de palés" />
+		<text name="input_AL_LOAD_PALLET" text="Cargar palés" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambiar tipo de carga" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga" />
+		<text name="input_AL_UNLOAD" text="Descargar palés" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado" />
+	</texts>
+</l10n>

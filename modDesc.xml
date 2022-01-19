@@ -8,6 +8,7 @@
         <ru>Автопогрузка</ru>
         <it>Specializzazione Caricamento Automatico Pallet</it>
         <fr>Spécialisation De Chargement Automatique De Palettes</fr>
+        <es>Especialización Carga Automática Palés</es>
     </title>
     <description>
         <en>
@@ -156,6 +157,42 @@ Journal des modifications 1.2.2.0
 - Traduction en PL par Mayek
 - Boutons prédéfinis pour la manette de jeu par défaut
 ]]></fr>
+    <es>
+            <![CDATA[Mod base para usar Mods con la especialización Carga Automática Palés
+
+Un ejemplo de cómo usarlo en su propio mod lo encontrará en Strautmann SEK 802 Pallet Autoload.
+Actualmente, solo admite los palés europeos (europalés) predeterminados, los tanques para líquidos (GRG), los palés de sacos grandes y las pacas redondas de algodón, seguirán más.
+
+Cómo utilizar:
+Conduzca junto a los palés y luego con [R] puede iniciar el proceso de carga.
+Asegúrese de haber seleccionado el tipo de palé correcto.
+Los palés se cargan entonces, como si se hubieran cargado a mano, en el área de carga.
+Asegure la carga con las cintas tensoras antes de conducir, de lo contrario, se puede caer.
+Puede elegir el lado de descarga y descargarlo.
+
+Registro de cambios 1.0.1.0
+- Error con las pacas redondas de algodón en Dedi solucionado
+- Pequeño cambio en el comportamiento de carga/descarga para contrarrestar la visualización incorrecta de Giants Engine en Dedi
+
+Registro de cambios 1.2.0.0
+- Se agregaron traducciones faltantes para la tienda.
+- Cambiar los enlaces para que sean enlaces configurables para minimizar el doble uso.
+- Los palés de plantones ahora se pueden cargar con la configuración de palé europeo.
+- Nuevo tipo de carga para Europalés sobredimensionados como los de KsAG o Schaumann (menor capacidad de carga).
+- Cambiado el comportamiento de carga para cargar automáticamente todo lo que está dentro del alcance con una sola pulsación de [R].
+- El palé Pioneer ahora se puede cargar con la configuración de Europalés sobredimensionados.
+
+Registro de cambios 1.2.1.0
+- Traducción mejorada para RU por Nagor
+- Traducciones agregadas para IT por Markus33 [ITA]
+- Traducciones añadidas para FR por BOB51160
+- Se corrigió el error de lua al vender después de descargar
+- Creé mi propio modIcon
+
+Registro de cambios 1.2.2.0
+- Traducción en PL por Mayek
+- Botones predefinidos para gamepad predeterminado
+]]></es>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
     <multiplayer supported="true"/>
