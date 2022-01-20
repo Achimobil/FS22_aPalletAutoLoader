@@ -76,6 +76,82 @@ function APalletAutoLoader.registerEventListeners(vehicleType)
     
     SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", APalletAutoLoader)
+    SpecializationUtil.registerEventListener(vehicleType, "onDraw", APalletAutoLoader)
+end
+
+function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelection)
+    local spec = self.spec_aPalletAutoLoader
+    
+    if not spec.showMarkers then return end
+    
+    if spec.loadArea["baseNode"] ~= nil then
+        -- DebugUtil.drawDebugReferenceAxisFromNode(spec.loadArea["baseNode"]);
+        
+        -- draw line around loading area
+        local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
+        local node = spec.loadArea["baseNode"]
+        local minX = (-spec.loadArea["width"]*0.5)+(cornerX-(spec.loadArea["width"]*0.5));
+        local maxX = (spec.loadArea["width"]*0.5)+(cornerX-(spec.loadArea["width"]*0.5));
+        local maxZ = (spec.loadArea["lenght"]*0.5)+(cornerZ-(spec.loadArea["lenght"]*0.5));
+        local minZ = (-spec.loadArea["lenght"]*0.5)+(cornerZ-(spec.loadArea["lenght"]*0.5));
+        local yOffset = cornerY;
+        local r = 0;
+        local g = 0.8;
+        local b = 0.8;
+
+        -- loading area
+        local leftFrontX, leftFrontY, leftFrontZ = localToWorld(node, minX, yOffset, maxZ)
+        local rightFrontX, rightFrontY, rightFrontZ = localToWorld(node, maxX, yOffset, maxZ)
+        local leftBackX, leftBackY, leftBackZ = localToWorld(node, minX, yOffset, minZ)
+        local rightBackX, rightBackY, rightBackZ = localToWorld(node, maxX, yOffset, minZ)
+        
+        drawDebugLine(leftFrontX, leftFrontY, leftFrontZ, r, g, b, rightFrontX, rightFrontY, rightFrontZ, r, g, b)
+        drawDebugLine(rightFrontX, rightFrontY, rightFrontZ, r, g, b, rightBackX, rightBackY, rightBackZ, r, g, b)
+        drawDebugLine(rightBackX, rightBackY, rightBackZ, r, g, b, leftBackX, leftBackY, leftBackZ, r, g, b)
+        drawDebugLine(leftBackX, leftBackY, leftBackZ, r, g, b, leftFrontX, leftFrontY, leftFrontZ, r, g, b)
+
+        -- unloading area
+        local offx, offY, offZ = unpack(spec.UnloadOffset[spec.currentTipside])
+        
+        minX = minX + offx;
+        maxX = maxX + offx;
+        maxZ = maxZ + offZ;
+        minZ = minZ + offZ;
+        yOffset = yOffset + offY;
+        
+        leftFrontX, leftFrontY, leftFrontZ = localToWorld(node, minX, yOffset, maxZ)
+        rightFrontX, rightFrontY, rightFrontZ = localToWorld(node, maxX, yOffset, maxZ)
+        leftBackX, leftBackY, leftBackZ = localToWorld(node, minX, yOffset, minZ)
+        rightBackX, rightBackY, rightBackZ = localToWorld(node, maxX, yOffset, minZ)
+        
+        drawDebugLine(leftFrontX, leftFrontY, leftFrontZ, r, g, b, rightFrontX, rightFrontY, rightFrontZ, r, g, b)
+        drawDebugLine(rightFrontX, rightFrontY, rightFrontZ, r, g, b, rightBackX, rightBackY, rightBackZ, r, g, b)
+        drawDebugLine(rightBackX, rightBackY, rightBackZ, r, g, b, leftBackX, leftBackY, leftBackZ, r, g, b)
+        drawDebugLine(leftBackX, leftBackY, leftBackZ, r, g, b, leftFrontX, leftFrontY, leftFrontZ, r, g, b)   
+
+        -- loadplaces
+        local autoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
+        local loadPlaces = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].places;
+        for i=1, #loadPlaces do
+            local loadPlace = loadPlaces[i]
+            
+            -- center node
+            -- DebugUtil.drawDebugReferenceAxisFromNode(loadPlace.node);
+            
+            -- square
+            if autoLoadType.type == "cottonRoundbale" then
+                local radius = autoLoadType.sizeX/2;
+                local vertical = false;
+                local offset = nil;
+                local color = {r,g,b};
+                DebugUtil.drawDebugCircleAtNode(loadPlace.node, radius, 20, color, vertical, offset)
+            else
+                local sizeX = autoLoadType.sizeX/2;
+                local sizeZ = autoLoadType.sizeZ/2;
+                DebugUtil.drawDebugRectangle(loadPlace.node, -sizeX, sizeX, -sizeZ, sizeZ, 0, r, g, b)
+            end
+        end
+    end
 end
 
 ---
@@ -109,6 +185,10 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
             spec.unloadAllEventId = actionEventId;
             
+            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_MARKERS, self, APalletAutoLoader.actionEventToggleMarkers, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
+            spec.toggleMarkerEventId = actionEventId;
+            
             
             APalletAutoLoader.updateActionText(self);
         end
@@ -125,6 +205,7 @@ function APalletAutoLoader.updateActionText(self)
             g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleTipsideActionEventId, false)
             g_inputBinding:setActionEventActive(spec.unloadAllEventId, false)
+            g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, false)
             return;
         end
         
@@ -150,6 +231,7 @@ function APalletAutoLoader.updateActionText(self)
         -- deactivate when somthing is already loaded or not
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0)
         g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
+        g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, true)
     end
 end
 
@@ -195,6 +277,12 @@ function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue
     APalletAutoLoader.updateActionText(self);
 end
 
+function APalletAutoLoader.actionEventToggleMarkers(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader
+    
+    spec.showMarkers = not spec.showMarkers;
+end
+
 ---
 function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
@@ -227,6 +315,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.currentTipside = "left";
     spec.currentautoLoadTypeIndex = 1;
     spec.available = false;
+    spec.showMarkers = false;
     
     -- load the loading area
     spec.loadArea = {};
@@ -235,6 +324,9 @@ function APalletAutoLoader:onLoad(savegame)
     spec.loadArea["lenght"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#lenght") or 5
     spec.loadArea["height"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#height") or 2
     spec.loadArea["width"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#width") or 2
+    spec.UnloadOffset = {}
+    spec.UnloadOffset["right"] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
+    spec.UnloadOffset["left"] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
     
     if spec.loadArea["baseNode"] == nil then
         return;
@@ -351,9 +443,6 @@ function APalletAutoLoader:onLoad(savegame)
         spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
         spec.useBales = self.xmlFile:getValue(baseXmlPath .. "#useBales", false)
         spec.useTensionBelts = self.xmlFile:getValue(baseXmlPath .. "#useTensionBelts", not GS_IS_MOBILE_VERSION)
-        spec.UnloadOffset = {}
-        spec.UnloadOffset["right"] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
-        spec.UnloadOffset["left"] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
     end
     
     spec.initialized = true;

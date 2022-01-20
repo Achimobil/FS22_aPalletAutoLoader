@@ -216,12 +216,16 @@ Registro de cambios 1.2.2.0
             <binding device="KB_MOUSE_DEFAULT" input="KEY_i"/>
             <binding device="0_XINPUT_GAMEPAD" input="BUTTON_15" axisComponent="+" neutralInput="0" index="1"/>
         </actionBinding>
+        <actionBinding action="AL_TOGGLE_MARKERS">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_u"/>
+        </actionBinding>
     </inputBinding>
     <actions>
         <action name="AL_LOAD_PALLET"/>
         <action name="AL_TOGGLE_LOADINGTYPE"/>
         <action name="AL_TOGGLE_TIPSIDE"/>
         <action name="AL_UNLOAD"/>
+        <action name="AL_TOGGLE_MARKERS"/>
     </actions>
     <l10n filenamePrefix="translations/translation"/>
 </modDesc>

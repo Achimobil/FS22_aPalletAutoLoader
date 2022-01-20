@@ -20,5 +20,6 @@
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambia il lato di scarico" />
 		<text name="input_AL_UNLOAD" text="Scarico pallet" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Mostra/Nascondi indicatori" />
 	</texts>
 </l10n>

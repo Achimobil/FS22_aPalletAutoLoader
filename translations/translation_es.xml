@@ -20,5 +20,6 @@
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga" />
 		<text name="input_AL_UNLOAD" text="Descargar palés" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Mostrar/ocultar marcadores" />
 	</texts>
 </l10n>

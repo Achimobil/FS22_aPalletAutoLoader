@@ -20,5 +20,6 @@
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Przełacz stronę wyładunku" />
 		<text name="input_AL_UNLOAD" text="Wyładuj Palety" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Nadwymiarowe europalety" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Pokaż/ukryj znaczniki" />
 	</texts>
 </l10n>

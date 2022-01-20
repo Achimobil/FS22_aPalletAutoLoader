@@ -20,5 +20,6 @@
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Переключить сторону выгрузки" />
 		<text name="input_AL_UNLOAD" text="Выгрузить" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Негабаритные поддоны" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Показать/скрыть маркеры" />
 	</texts>
 </l10n>
