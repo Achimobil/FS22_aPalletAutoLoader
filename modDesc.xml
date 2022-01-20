@@ -15,7 +15,7 @@
             <![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
 
 An example of how to use in your own mod you will find in the Strautmann SEK 802 Pallet Autoload.
-Currently only default Euro pallets, liquidTanks, bigbag pallets and Cotton Square Bales are possible, more will follow.
+Currently only default Euro pallets, liquidTanks, bigbag pallets and Cotton Round Bales are possible, more will follow.
 
 How to use:
 Drive next to the pallets and then with [R] you can start the loading process.
@@ -24,9 +24,11 @@ The pallets are then as loaded by hand on the loading area.
 Fasten with straps before you drive, otherwise it fell of.
 You can choose the unloading side and unload it.
 
+Instructions for build in and help you will find on the <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+
 Changelog 1.0.1.0
-- Error for Cotton Square Bales on Dedi solved
-- small changed loading/unloading behavior to work against the wrong display of the Giants Engine in Dedi
+- Error for Cotton Round Bales on Dedi solved
+- small changed loading/unloading behavior to work against the wrong display of the Engine in Dedi
 
 Changelog 1.2.0.0
 - Missing translations added for shop.
@@ -37,14 +39,13 @@ Changelog 1.2.0.0
 - Pioneer pallet is now loadable with the oversized setting.
 
 Changelog 1.2.1.0
-- Improved translation for RU by Nagor
-- Translations added for IT by Markus33 [ITA]
-- Translations added for FR by BOB51160
+- Improved translation for RU
+- Translations added for IT and FR
 - Fixed lua bug when selling after unloading
 - Created my own mod icon
 
 Changelog 1.2.2.0
-- Translation in PL by Mayek
+- Translations added for PL
 - Predefines buttons for default gamepad
 ]]></en>
         <de>
@@ -60,9 +61,11 @@ Die Paletten liegen dann wie von Hand geladen auf der Ladefläche. 
 Mit Gurten befestigen bevor ihr weiter fahrt, sonst rutscht das weg.
 Ihr könnt die Entladeseite wählen und entladen.
 
+Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+
 Changelog 1.0.1.0
 - Fehler für Baumwollrundballen auf Dedi behoben
-- kleine Anpassung an Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Giants Engine auf dem Dedi entgegenzuwirken
+- kleine Anpassung an Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Engine auf dem Dedi entgegenzuwirken
 
 Changelog 1.2.0.0
 - Fehlende Übersetzungen für Shop eingefügt.
@@ -73,14 +76,13 @@ Changelog 1.2.0.0
 - Palette von Pioneer fällt jetzt unter Überladene Europaletten.
 
 Changelog 1.2.1.0
-- Verbesserte übersetzungen RU von nagor
-- Übersetzung in IT von Markus33 [ITA]
-- Übersetzung in FR von BOB51160
+- Verbesserte übersetzungen RU
+- Übersetzung in IT und FR
 - lua Fehler beim verkaufen nach abladen behoben
 - Eigenes Mod Icon erstellt.
 
 Changelog 1.2.2.0
-- Übersetzung in PL von Mayek
+- Übersetzung in PL
 - Standard Gamepad Tasten vorbelegt
 
 ]]></de>
@@ -100,7 +102,7 @@ Come si usa:
 Changelog:
 v1.0.1.0
 - Risolto un bug per le balle rotonde di cotone su Dedi
-- Piccolo aggiustamento al comportamento di carico/scarico per contrastare l'errata visualizzazione da parte del Giants Engine sul Dedi
+- Piccolo aggiustamento al comportamento di carico/scarico per contrastare l'errata visualizzazione da parte del Engine sul Dedi
 
 v1.2.0.0
 - Aggiunte traduzioni mancanti per il negozio.
@@ -111,14 +113,13 @@ v1.2.0.0
 - Il pallet Pioneer è ora caricabile con l'impostazione sovradimensionata.
 
 v1.2.1.0
-- Traduzione migliorata per RU di Nagor
-- Aggiunta traduzione per IT da Markus33 [ITA]
-- Aggiunte traduzione per FR da BOB51160
+- Traduzione migliorata per RU
+- Aggiunta traduzione per IT è FR
 - Risolto bug lua durante la vendita dopo lo scarico
 - Ho creato la mia icona mod
 
 v1.2.2.0
-- Traduzione in PL di Mayek
+- Traduzione in PL
 - Pulsanti predefiniti per il gamepad predefinito
 ]]></it>
         <fr>
@@ -134,9 +135,11 @@ Les palettes sont alors comme chargées à la main sur la zone de chargement.
 Fixez avec des sangles avant de conduire, sinon il tombe.
 Vous pouvez choisir le côté de déchargement et le décharger.
 
+Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+
 Journal des modifications 1.0.1.0
 - Erreur pour les balles carrées de coton sur Dedi résolue
-- petite modification du comportement de chargement/déchargement pour lutter contre le mauvais affichage du moteur Giants dans Dedi
+- petite modification du comportement de chargement/déchargement pour lutter contre le mauvais affichage du moteur dans Dedi
 
 Journal des modifications 1.2.0.0
 - Traductions manquantes ajoutées pour la boutique.
@@ -147,14 +150,13 @@ Journal des modifications 1.2.0.0
 - La palette Pioneer est maintenant chargeable avec le réglage surdimensionné.
 
 Journal des modifications 1.2.1.0
-- Traduction améliorée pour RU par Nagor
-- Traductions ajoutées pour IT par Markus33 [ITA]
-- Traductions ajoutées pour FR par BOB51160
+- Traduction améliorée pour RU
+- Traductions ajoutées pour IT en FR
 - Correction d'un bug lua lors de la vente après le déchargement
 - Création de ma propre icône de mod
 
 Journal des modifications 1.2.2.0
-- Traduction en PL par Mayek
+- Traduction en PL
 - Boutons prédéfinis pour la manette de jeu par défaut
 ]]></fr>
     <es>
@@ -170,9 +172,11 @@ Los palés se cargan entonces, como si se hubieran cargado a mano, en el área d
 Asegure la carga con las cintas tensoras antes de conducir, de lo contrario, se puede caer.
 Puede elegir el lado de descarga y descargarlo.
 
+Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+
 Registro de cambios 1.0.1.0
 - Error con las pacas redondas de algodón en Dedi solucionado
-- Pequeño cambio en el comportamiento de carga/descarga para contrarrestar la visualización incorrecta de Giants Engine en Dedi
+- Pequeño cambio en el comportamiento de carga/descarga para contrarrestar la visualización incorrecta de Engine en Dedi
 
 Registro de cambios 1.2.0.0
 - Se agregaron traducciones faltantes para la tienda.
@@ -183,14 +187,13 @@ Registro de cambios 1.2.0.0
 - El palé Pioneer ahora se puede cargar con la configuración de Europalés sobredimensionados.
 
 Registro de cambios 1.2.1.0
-- Traducción mejorada para RU por Nagor
-- Traducciones agregadas para IT por Markus33 [ITA]
-- Traducciones añadidas para FR por BOB51160
+- Traducción mejorada para RU
+- Traducciones agregadas para IT en FR
 - Se corrigió el error de lua al vender después de descargar
 - Creé mi propio modIcon
 
 Registro de cambios 1.2.2.0
-- Traducción en PL por Mayek
+- Traducción en PL
 - Botones predefinidos para gamepad predeterminado
 ]]></es>
     </description>
