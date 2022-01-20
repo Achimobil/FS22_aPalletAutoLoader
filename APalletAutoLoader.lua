@@ -168,7 +168,7 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
             self:clearActionEventsTable(spec.actionEvents)
         end
 
-        if isActiveForInputIgnoreSelection then
+        if isActiveForInput then
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_LOAD_PALLET, self, APalletAutoLoader.actionEventToggleLoading, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
             spec.actionEventId = actionEventId;
