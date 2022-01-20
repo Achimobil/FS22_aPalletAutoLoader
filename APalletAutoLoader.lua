@@ -212,10 +212,12 @@ function APalletAutoLoader.updateActionText(self)
         local text;
         if spec.objectsToLoadCount == 0 then
             text = g_i18n:getText("aPalletAutoLoader_nothingToLoad")
+            g_inputBinding:setActionEventActive(spec.actionEventId, false)
         else
             text = g_i18n:getText("aPalletAutoLoader_loadPallets") .. ": " .. spec.objectsToLoadCount
+            g_inputBinding:setActionEventText(spec.actionEventId, text)
+            g_inputBinding:setActionEventActive(spec.actionEventId, true)
         end
-        g_inputBinding:setActionEventText(spec.actionEventId, text)
         
         local loadingText = ""
         if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
