@@ -97,7 +97,7 @@ Changelog 1.3.0.0
 - ES hinzugefügt
 - Be- und Entladebereiche können jetzt angezeigt werden. Standard [LCTRL] + [U]
 - Das Laden wird nur in F1 angezeigt, wenn es etwas zu laden gibt, um das tanken eines LKW nicht zu blockieren
-- Steuerelemente sind nur sichtbar, wenn der Autloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
+- Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
 
 ]]></de>
         <it>
