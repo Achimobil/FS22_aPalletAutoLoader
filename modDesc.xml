@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.2.2.0</version>
+    <version>1.3.0.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -47,6 +47,13 @@ Changelog 1.2.1.0
 Changelog 1.2.2.0
 - Translations added for PL
 - Predefines buttons for default gamepad
+
+Changelog 1.3.0.0
+- Changes to Mod Image and Description for the ModHub publish
+- Added ES
+- Loading and Unloading Areas can be shown now. Default [LCTRL] + [U]
+- Loading is only shown in F1 when there is something to load, to not block Truck refill diesel
+- Controls are only visible when the Trailer is active to solve problems with mutiple autloaders attached
 ]]></en>
         <de>
             <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
@@ -85,6 +92,13 @@ Changelog 1.2.2.0
 - Übersetzung in PL
 - Standard Gamepad Tasten vorbelegt
 
+Changelog 1.3.0.0
+- Änderungen am Mod Icon und der Beschreibung für die ModHub-Veröffentlichung
+- ES hinzugefügt
+- Be- und Entladebereiche können jetzt angezeigt werden. Standard [LCTRL] + [U]
+- Das Laden wird nur in F1 angezeigt, wenn es etwas zu laden gibt, um das tanken eines LKW nicht zu blockieren
+- Steuerelemente sind nur sichtbar, wenn der Autloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
+
 ]]></de>
         <it>
             <![CDATA[Mod di base per l'utilizzo di mod con specializzazione caricamento automatico di pallet.
@@ -121,6 +135,13 @@ v1.2.1.0
 v1.2.2.0
 - Traduzione in PL
 - Pulsanti predefiniti per il gamepad predefinito
+
+v1.3.0.0
+- Modifiche all'immagine Mod e alla descrizione per la pubblicazione ModHub
+- Aggiunta ES
+- Ora è possibile visualizzare le aree di carico e scarico. Predefinito [LCTRL] + [U]
+- Il caricamento viene mostrato in F1 solo quando c'è qualcosa da caricare, per non bloccare la ricarica del camion diesel
+- I controlli sono visibili solo quando il trailer è attivo per risolvere problemi con più caricatori automatici collegati
 ]]></it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
@@ -158,6 +179,13 @@ Journal des modifications 1.2.1.0
 Journal des modifications 1.2.2.0
 - Traduction en PL
 - Boutons prédéfinis pour la manette de jeu par défaut
+
+Journal des modifications 1.3.0.0
+- Modifications de l'image et de la description du mod pour la publication ModHub
+- ES ajoutée
+- Les zones de chargement et de déchargement peuvent être affichées maintenant. Par défaut [LCTRL] + [U]
+- Le chargement n'est affiché en F1 que lorsqu'il y a quelque chose à charger, pour ne pas bloquer la recharge diesel du camion
+- Les commandes ne sont visibles que lorsque la remorque est active pour résoudre les problèmes avec plusieurs chargeurs automatiques attachés
 ]]></fr>
     <es>
             <![CDATA[Mod base para usar Mods con la especialización Carga Automática Palés
@@ -195,6 +223,13 @@ Registro de cambios 1.2.1.0
 Registro de cambios 1.2.2.0
 - Traducción en PL
 - Botones predefinidos para gamepad predeterminado
+
+Registro de cambios 1.3.0.0
+- Cambios en la imagen y la descripción de Mod para la publicación de ModHub
+- ES añadida
+- Ahora se pueden mostrar las áreas de carga y descarga. Predeterminado [LCTRL] + [U]
+- La carga solo se muestra en F1 cuando hay algo que cargar, para no bloquear la recarga de diesel del camión.
+- Los controles solo son visibles cuando el tráiler está activo para resolver problemas con múltiples cargadores automáticos conectados
 ]]></es>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
