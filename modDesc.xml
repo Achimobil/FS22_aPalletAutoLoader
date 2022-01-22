@@ -128,20 +128,20 @@ v1.2.0.0
 
 v1.2.1.0
 - Traduzione migliorata per RU
-- Aggiunta traduzione per IT è FR
-- Risolto bug lua durante la vendita dopo lo scarico
-- Ho creato la mia icona mod
+- Aggiunta traduzione per IT e FR
+- Corretto l'errore lua durante la vendita dopo lo scarico
+- Creazione icona mod
 
 v1.2.2.0
 - Traduzione in PL
-- Pulsanti predefiniti per il gamepad predefinito
+- Pulsanti predefiniti pre-assegnati per il gamepad
 
 v1.3.0.0
-- Modifiche all'immagine Mod e alla descrizione per la pubblicazione ModHub
-- Aggiunta ES
-- Ora è possibile visualizzare le aree di carico e scarico. Predefinito [LCTRL] + [U]
-- Il caricamento viene mostrato in F1 solo quando c'è qualcosa da caricare, per non bloccare la ricarica del camion diesel
-- I controlli sono visibili solo quando il trailer è attivo per risolvere problemi con più caricatori automatici collegati
+- Modifiche all'icona Mod e alla descrizione per la pubblicazione sul ModHub
+- Aggiunto ES
+- Ora è possibile visualizzare le aree di carico e scarico. Tasti Predefiniti [LCTRL] + [U]
+- Il caricamento viene mostrato in F1 solo quando c'è qualcosa da caricare in modo da non bloccare il rifornimento del veicolo
+- I controlli sono visibili solo quando il trailer è attivo. Serve per risolvere i problemi con più caricatori automatici collegati
 ]]></it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
