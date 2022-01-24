@@ -56,50 +56,49 @@ Changelog 1.3.0.0
 - Controls are only visible when the Trailer is active to solve problems with mutiple autloaders attached
 ]]></en>
         <de>
-            <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
+<![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
 
 Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
-Aktuell sind nur Standard Europaletten, Flüssigkeitentanks, Bigbag Paletten und Baumwollrundballen möglich, weiteres wird folgen.
+Aktuell sind nur Standard Europaletten, Flüssigkeitstanks, Bigbag Paletten und Baumwollrundballen möglich, weiteres wird folgen.
 
 Bedienung:
-Fahrt neben die Paletten und dann mit [R] das laden starten.
-Achtet aber darauf, dass ihr auch dir richtigen Palettenart ausgewählt habt.
-Die Paletten liegen dann wie von Hand geladen auf der Ladefläche. 
-Mit Gurten befestigen bevor ihr weiter fahrt, sonst rutscht das weg.
+Fahrt neben die Paletten um dann mit [R] das laden zu starten.
+Achtet darauf, dass ihr auch die richtigen Palettenart ausgewählt habt.
+Die Paletten liegen dann, wie von Hand geladen, auf der Ladefläche. 
+Nicht vergessen das Ihr Spanngurte anlegt, sonst rutschen sie.
 Ihr könnt die Entladeseite wählen und entladen.
 
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
 
-Changelog 1.0.1.0
+Changelog 1.0.1.0:
 - Fehler für Baumwollrundballen auf Dedi behoben
-- kleine Anpassung an Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Engine auf dem Dedi entgegenzuwirken
+- kleine Anpassung am Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Engine auf dem Dedi entgegenzuwirken
 
-Changelog 1.2.0.0
+Changelog 1.2.0.0:
 - Fehlende Übersetzungen für Shop eingefügt.
-- Umstellung auf eigene Bindings um Doppelbelegungen zu minimieren.
+- Umstellung auf eigene Bindings, um Doppelbelegungen zu minimieren.
 - Setzlingspaletten können jetzt mit Europlatten geladen werden.
-- Neue Ladetyp für Überladene Europaletten wie z.B. die von KsAG oder Schaumann (geringere Ladekapazität).
-- Ladeverhalten auf Automatisches aufladen aller Paletten in Reichweite umgebaut. Ein mal [R] und alles wird aufgeladen.
-- Palette von Pioneer fällt jetzt unter Überladene Europaletten.
+- Neuer Ladetyp für überladene Europaletten wie z.B. die von KsAG oder Schaumann (geringere Ladekapazität).
+- Ladeverhalten auf Automatisches Aufladen aller Paletten in Reichweite umgebaut. Einmal [R] drücken und alles wird aufgeladen.
+- Palette von Pioneer fällt jetzt unter überladene Europaletten.
 
-Changelog 1.2.1.0
-- Verbesserte übersetzungen RU
+Changelog 1.2.1.0:
+- RU Übersetzung verbessert
 - Übersetzung in IT und FR
 - lua Fehler beim verkaufen nach abladen behoben
 - Eigenes Mod Icon erstellt.
 
-Changelog 1.2.2.0
+Changelog 1.2.2.0:
 - Übersetzung in PL
 - Standard Gamepad Tasten vorbelegt
 
-Changelog 1.3.0.0
+Changelog 1.3.0.0:
 - Änderungen am Mod Icon und der Beschreibung für die ModHub-Veröffentlichung
 - ES hinzugefügt
 - Be- und Entladebereiche können jetzt angezeigt werden. Standard [LCTRL] + [U]
 - Das Laden wird nur in F1 angezeigt, wenn es etwas zu laden gibt, um das tanken eines LKW nicht zu blockieren
-- Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
-
-]]></de>
+- Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben]]>
+        </de>
         <it>
             <![CDATA[Mod di base per l'utilizzo di mod con specializzazione caricamento automatico di pallet.
 
