@@ -10,7 +10,7 @@
 		<text name="aPalletAutoLoader_liquidTank" text="Contenedor para líquidos (GRG)" />
 		<text name="aPalletAutoLoader_euroPallet" text="Europalé" />
 		<text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Algodón para pacas redondas" />
 		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
 		<text name="aPalletAutoLoader_left" text="izquierda" />
 		<text name="aPalletAutoLoader_right" text="derecha" />

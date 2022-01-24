@@ -10,7 +10,7 @@
 		<text name="aPalletAutoLoader_liquidTank" text="Pallet contenitore liquidi" />
 		<text name="aPalletAutoLoader_euroPallet" text="Euro Pallet" />
 		<text name="aPalletAutoLoader_bigBagPallet" text="Pallet BigBag" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Balle di cotone rotonde" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Rotoballa di cotone" />
 		<text name="aPalletAutoLoader_tipside" text="Lato di scarico" />
 		<text name="aPalletAutoLoader_left" text="Sinistra" />
 		<text name="aPalletAutoLoader_right" text="Destra" />
