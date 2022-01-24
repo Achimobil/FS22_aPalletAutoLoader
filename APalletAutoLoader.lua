@@ -492,6 +492,10 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return false end
             if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
             if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
+        
+            if object.i3dMappings == nil then 
+                return false;
+            end
             
             for mappingName, _ in pairs(object.i3dMappings) do
                 if (mappingName == "euroPalletVis") or (mappingName == "pallet_vis") then
@@ -537,6 +541,11 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "pallet"
     elseif (name == "bigBagPallet") then
         local function CheckType(object)
+        
+            if object.i3dMappings == nil then 
+                return false;
+            end
+            
             for mappingName, _ in pairs(object.i3dMappings) do
                 if (mappingName == "bigBagPallet_vis") then
                 return true;
