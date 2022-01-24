@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.3.0.0</version>
+    <version>1.3.1.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -24,7 +24,7 @@ The pallets are then as loaded by hand on the loading area.
 Fasten with straps before you drive, otherwise it fell of.
 You can choose the unloading side and unload it.
 
-Instructions for build in and help you will find on the <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog 1.0.1.0
 - Error for Cotton Round Bales on Dedi solved
@@ -54,6 +54,9 @@ Changelog 1.3.0.0
 - Loading and Unloading Areas can be shown now. Default [LCTRL] + [U]
 - Loading is only shown in F1 when there is something to load, to not block Truck refill diesel
 - Controls are only visible when the Trailer is active to solve problems with mutiple autloaders attached
+
+Changelog 1.3.1.0
+- Changes for ModHub publish
 ]]></en>
         <de>
 <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
@@ -68,7 +71,7 @@ Die Paletten liegen dann, wie von Hand geladen, auf der Ladefläche.
 Nicht vergessen das Ihr Spanngurte anlegt, sonst rutschen sie.
 Ihr könnt die Entladeseite wählen und entladen.
 
-Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog 1.0.1.0:
 - Fehler für Baumwollrundballen auf Dedi behoben
@@ -97,7 +100,10 @@ Changelog 1.3.0.0:
 - ES hinzugefügt
 - Be- und Entladebereiche können jetzt angezeigt werden. Standard [LCTRL] + [U]
 - Das Laden wird nur in F1 angezeigt, wenn es etwas zu laden gibt, um das tanken eines LKW nicht zu blockieren
-- Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben]]>
+- Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
+
+Changelog 1.3.0.0:
+- Änderungen für ModHub-Veröffentlichung]]>
         </de>
         <it>
             <![CDATA[Mod di base per l'utilizzo di mod con specializzazione caricamento automatico di pallet.
@@ -141,6 +147,9 @@ v1.3.0.0
 - Ora è possibile visualizzare le aree di carico e scarico. Tasti Predefiniti [LCTRL] + [U]
 - Il caricamento viene mostrato in F1 solo quando c'è qualcosa da caricare in modo da non bloccare il rifornimento del veicolo
 - I controlli sono visibili solo quando il trailer è attivo. Serve per risolvere i problemi con più caricatori automatici collegati
+
+v1.3.1.0
+- Modifiche per la pubblicazione di ModHub
 ]]></it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
@@ -155,7 +164,7 @@ Les palettes sont alors comme chargées à la main sur la zone de chargement.
 Fixez avec des sangles avant de conduire, sinon il tombe.
 Vous pouvez choisir le côté de déchargement et le décharger.
 
-Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Journal des modifications 1.0.1.0
 - Erreur pour les balles carrées de coton sur Dedi résolue
@@ -185,6 +194,9 @@ Journal des modifications 1.3.0.0
 - Les zones de chargement et de déchargement peuvent être affichées maintenant. Par défaut [LCTRL] + [U]
 - Le chargement n'est affiché en F1 que lorsqu'il y a quelque chose à charger, pour ne pas bloquer la recharge diesel du camion
 - Les commandes ne sont visibles que lorsque la remorque est active pour résoudre les problèmes avec plusieurs chargeurs automatiques attachés
+
+Journal des modifications 1.3.1.0
+- Modifications pour la publication ModHub
 ]]></fr>
     <es>
             <![CDATA[Mod base para usar Mods con la especialización Carga Automática Palés
@@ -199,7 +211,7 @@ Los palés se cargan entonces, como si se hubieran cargado a mano, en el área d
 Asegure la carga con las cintas tensoras antes de conducir, de lo contrario, se puede caer.
 Puede elegir el lado de descarga y descargarlo.
 
-Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://discord.gg/Va7JNnEkcW">Discord</a>
+Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Registro de cambios 1.0.1.0
 - Error con las pacas redondas de algodón en Dedi solucionado
@@ -229,6 +241,9 @@ Registro de cambios 1.3.0.0
 - Ahora se pueden mostrar las áreas de carga y descarga. Predeterminado [LCTRL] + [U]
 - La carga solo se muestra en F1 cuando hay algo que cargar, para no bloquear la recarga de diesel del camión.
 - Los controles solo son visibles cuando el tráiler está activo para resolver problemas con múltiples cargadores automáticos conectados
+
+Registro de cambios 1.3.1.0
+- Cambios para la publicación de ModHub
 ]]></es>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
