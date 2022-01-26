@@ -5,12 +5,12 @@
 		<text name="aPalletAutoLoader_nothingToLoad" text="Carga Automática: nada que cargar" />
 		<text name="aPalletAutoLoader_loadPallets" text="Activar Carga Automática" />
 		<text name="function_PalletAutoload_Trailer" text="Remolque con Carga Automática para palés" />
-		<text name="PalletAutoload_Trailer" text="Carga Automática de palés" />
+		<text name="PalletAutoload_Trailer" text="Remolque de plataforma" />
 		<text name="aPalletAutoLoader_LoadingType" text="Tipo de carga" />
 		<text name="aPalletAutoLoader_liquidTank" text="Contenedor para líquidos (GRG)" />
 		<text name="aPalletAutoLoader_euroPallet" text="Europalé" />
 		<text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Algodón para pacas redondas" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
 		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
 		<text name="aPalletAutoLoader_left" text="izquierda" />
 		<text name="aPalletAutoLoader_right" text="derecha" />
