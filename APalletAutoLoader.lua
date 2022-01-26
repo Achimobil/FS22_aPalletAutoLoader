@@ -139,7 +139,7 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
             -- DebugUtil.drawDebugReferenceAxisFromNode(loadPlace.node);
             
             -- square
-            if autoLoadType.type == "cottonRoundbale" then
+            if autoLoadType.type == "roundbale" then
                 local radius = autoLoadType.sizeX/2;
                 local vertical = false;
                 local offset = nil;
@@ -337,7 +337,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.available = true;
     
     -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize"}  
+    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize", "roundbale125"}  
     
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
@@ -358,17 +358,22 @@ function APalletAutoLoader:onLoad(savegame)
             
             local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
             local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
+            local backDistance = 0.05;
+            if autoLoadObject.type == "roundbale" then
+                -- rundballen ein bischen mehr platz geben wegen der runden kollision
+                backDistance = 0.07;
+            end
             
             local loadingPattern = {}
             if restFirstNoRotation <= restFirstRotation then
                 -- auladen ohne rotation
                 for rowNumber = 0, (countNoRotation-1) do
                     -- schleife bis zur länge
-                    for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + 0.05) do
+                    for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
                         if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
                             local loadingPatternItem = {}
                             loadingPatternItem.rotation = 0;
-                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + 0.05)) - (restFirstNoRotation / 2)
+                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restFirstNoRotation / 2)
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
                         end
@@ -378,11 +383,11 @@ function APalletAutoLoader:onLoad(savegame)
                 -- aufladen mit rotation
                 for rowNumber = 0, (countRotation-1) do
                     -- schleife bis zur länge
-                    for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + 0.05) do
+                    for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + backDistance) do
                         if (colPos + (autoLoadObject.sizeX / 2)) <= spec.loadArea["lenght"] then
                             local loadingPatternItem = {}
                             loadingPatternItem.rotation = (3.1415927 / 2);
-                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + 0.05)) - (restFirstRotation / 2)
+                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + backDistance)) - (restFirstRotation / 2)
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
                         end
@@ -571,7 +576,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeX = 2.38
         autoLoadObject.sizeY = 2.38
         autoLoadObject.sizeZ = 2.38
-        autoLoadObject.type = "cottonRoundbale"
+        autoLoadObject.type = "roundbale"
     elseif (name == "cottonSquarebale488") then
         local function CheckType(object)
             if string.find(object.i3dFilename, "data/objects/cottonModules/cottonSquarebale488.i3d") then
@@ -585,6 +590,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeY = 2.44
         autoLoadObject.sizeZ = 4.88
         autoLoadObject.type = "cottonSquarebale"
+    elseif (name == "roundbale125") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/roundbales/roundbale125/roundbale125.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.25
+        autoLoadObject.sizeY = 1.20
+        autoLoadObject.sizeZ = 1.25
+        autoLoadObject.type = "roundbale"
     end
 end
 
@@ -766,7 +784,7 @@ function APalletAutoLoader:loadObject(object)
 
                         removeFromPhysics(objectNodeId)
                         
-                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "cottonRoundbale" then
+                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "roundbale" then
                             -- Baumwollrundballen müssen noch um die höhe hochgesetzt werden und gedreht
                             y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
                             rx = rx + (3.1415927 / 2);
