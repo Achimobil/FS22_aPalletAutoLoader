@@ -776,13 +776,26 @@ function APalletAutoLoader:getFirstValidLoadPlace()
             -- collision mask : all bits except bit 13, 23, 30
             spec.foundObject = false 
                     
-            -- TODO: Kollision rund berechnen für rundballen mit richtigem kreis, Kugel klappt nich bei den großen ballen
             if autoLoadType.type == "roundbale" then
-                overlapSphere(x, y + (autoLoadType.sizeY / 2), z, autoLoadType.sizeX / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+                -- Kollision rund berechnen für Rundballen mit simuliertem Kreis, Kugel klappt nicht bei den großen ballen wegen der höhe
+                -- eine virtel umdrehung als konstante
+                local rotationQuarter = (3.1415927 / 2);
+                local testRuns = 3;
+                
+                -- länge des quadrates im kreis berechnen für x und z
+                -- radius = seitenlänge / Wurzel 2
+                -- seitenlänge = radius * Wurzel 2
+                local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
+                
+                -- für jeden teil einen test machen
+                for i = 1, testRuns do
+                    overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+                end
             else
                 overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
             end
 
+            -- sollte auf true sein, wenn eine rotation was gefunden hat
             if not spec.foundObject then
                 return i, currentLoadHeigt
             end
