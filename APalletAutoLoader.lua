@@ -731,7 +731,11 @@ function APalletAutoLoader:getFirstValidLoadPlace()
             spec.foundObject = false 
                     
             -- TODO: Kollision rund berechnen für rundballen
-            overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+            if autoLoadType.type == "roundbale" then
+                overlapSphere(x, y + (autoLoadType.sizeY / 2), z, autoLoadType.sizeX / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+            else
+                overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+            end
 
             if not spec.foundObject then
                 return i, currentLoadHeigt
