@@ -337,7 +337,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.available = true;
     
     -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize", "roundbale125"}  
+    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize", "roundbale125", "roundbale150"}  
     
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
@@ -361,37 +361,57 @@ function APalletAutoLoader:onLoad(savegame)
             local backDistance = 0.05;
             if autoLoadObject.type == "roundbale" then
                 -- rundballen ein bischen mehr platz geben wegen der runden kollision
-                backDistance = 0.07;
+                backDistance = 0.05;
             end
             
             local loadingPattern = {}
             if restFirstNoRotation <= restFirstRotation or autoLoadObject.type == "roundbale" then
                 -- auladen ohne rotation
                 -- rundballen generell hier, weil sind ja rund
-                if restFirstNoRotation >= (autoLoadObject.sizeX / 2) and autoLoadObject.type == "roundbale" and countNoRotation == 1 then
+                if autoLoadObject.type == "roundbale" and countNoRotation == 1 then
                     -- wenn rundballen und noch genug platz, versetzt laden um mehr auf die fläche zu bekommen
                     -- hierbei aber nur, wenn die restfläche mindestens so viel ist, wie der halbe durchmesser zur einfachen Verteilung, komplexer kann später
                     
+                    -- position der zwei reihen
+                    local rowX1 = (cornerX - (autoLoadObject.sizeX / 2))
+                    local rowX2 = (cornerX - spec.loadArea["width"] + (autoLoadObject.sizeX / 2))
+                    
+                    -- abweichende distanz berechnen aus dem abstand der beiden Reihen und dem durchmesser
+                    -- a² + b² = c²
+                    -- a = wurzel aus c² - b²
+                    local optimalDistanceZ = math.sqrt(math.pow(autoLoadObject.sizeX + backDistance, 2) - math.pow((rowX1 - rowX2), 2)) * 2;
+                    
+                    -- minimale distanz nur aus der größe und en abstand
+                    local minimalDistanceZ = (autoLoadObject.sizeZ + backDistance);
+                    
+                    -- die höhere der beiden distanzen muss benutzt werden
+                    local distanceZ = math.max(optimalDistanceZ, minimalDistanceZ);
+                    
+                    print("autoLoadObject.name:" .. autoLoadObject.name);
+                    print("autoLoadObject.sizeX:" .. autoLoadObject.sizeX);
+                    print("rowX1:" .. rowX1);
+                    print("rowX2:" .. rowX2);
+                    print("optimalDistanceZ:" ..optimalDistanceZ );
+                    print("distanceZ:" .. distanceZ);                    
+                    
                     -- schleifen bis zur länge links und rechts ausgericht
                     -- linke seite
-                    local rowX = (cornerX - (autoLoadObject.sizeX / 2))
-                    for colPos = (autoLoadObject.sizeZ / 2), (spec.loadArea["lenght"]), (autoLoadObject.sizeZ + backDistance) do
+                    for colPos = (autoLoadObject.sizeZ / 2), (spec.loadArea["lenght"]), distanceZ do
                         if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
                             local loadingPatternItem = {}
                             loadingPatternItem.rotation = 0;
-                            loadingPatternItem.posX = rowX
+                            loadingPatternItem.posX = rowX1
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
                         end
                     end
                     -- rechte seite
-                    -- 2. reihe um die hälfte des ballens nach hinten schieben
-                    rowX = (cornerX - spec.loadArea["width"] + (autoLoadObject.sizeX / 2))
-                    for colPos = (autoLoadObject.sizeZ), (spec.loadArea["lenght"]), (autoLoadObject.sizeZ + backDistance) do
+                    -- 2. reihe um die hälfte des abstandes nach hinten schieben
+                    for colPos = (autoLoadObject.sizeZ / 2) + (distanceZ / 2), (spec.loadArea["lenght"]), distanceZ do
                         if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
                             local loadingPatternItem = {}
                             loadingPatternItem.rotation = 0;
-                            loadingPatternItem.posX = rowX
+                            loadingPatternItem.posX = rowX2
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
                         end
@@ -634,6 +654,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeY = 1.20
         autoLoadObject.sizeZ = 1.25
         autoLoadObject.type = "roundbale"
+    elseif (name == "roundbale150") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/roundbales/roundbale150/roundbale150.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.50
+        autoLoadObject.sizeY = 1.20
+        autoLoadObject.sizeZ = 1.50
+        autoLoadObject.type = "roundbale"
     end
 end
 
@@ -730,7 +763,7 @@ function APalletAutoLoader:getFirstValidLoadPlace()
             -- collision mask : all bits except bit 13, 23, 30
             spec.foundObject = false 
                     
-            -- TODO: Kollision rund berechnen für rundballen
+            -- TODO: Kollision rund berechnen für rundballen mit richtigem kreis, Kugel klappt nich bei den großen ballen
             if autoLoadType.type == "roundbale" then
                 overlapSphere(x, y + (autoLoadType.sizeY / 2), z, autoLoadType.sizeX / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
             else
