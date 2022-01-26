@@ -361,7 +361,7 @@ function APalletAutoLoader:onLoad(savegame)
             local backDistance = 0.05;
             if autoLoadObject.type == "roundbale" then
                 -- rundballen ein bischen mehr platz geben wegen der runden kollision
-                backDistance = 0.05;
+                backDistance = 0.07;
             end
             
             local loadingPattern = {}
