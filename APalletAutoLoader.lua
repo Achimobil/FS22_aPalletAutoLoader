@@ -337,7 +337,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.available = true;
     
     -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize", "roundbale125", "roundbale150"}  
+    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize", "roundbale125", "roundbale150", "roundbale180"}  
     
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
@@ -666,6 +666,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeX = 1.50
         autoLoadObject.sizeY = 1.20
         autoLoadObject.sizeZ = 1.50
+        autoLoadObject.type = "roundbale"
+    elseif (name == "roundbale180") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/roundbales/roundbale180/roundbale180.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.80
+        autoLoadObject.sizeY = 1.20
+        autoLoadObject.sizeZ = 1.80
         autoLoadObject.type = "roundbale"
     end
 end
