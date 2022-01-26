@@ -365,17 +365,48 @@ function APalletAutoLoader:onLoad(savegame)
             end
             
             local loadingPattern = {}
-            if restFirstNoRotation <= restFirstRotation then
+            if restFirstNoRotation <= restFirstRotation or autoLoadObject.type == "roundbale" then
                 -- auladen ohne rotation
-                for rowNumber = 0, (countNoRotation-1) do
-                    -- schleife bis zur länge
-                    for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
+                -- rundballen generell hier, weil sind ja rund
+                if restFirstNoRotation >= (autoLoadObject.sizeX / 2) and autoLoadObject.type == "roundbale" and countNoRotation == 1 then
+                    -- wenn rundballen und noch genug platz, versetzt laden um mehr auf die fläche zu bekommen
+                    -- hierbei aber nur, wenn die restfläche mindestens so viel ist, wie der halbe durchmesser zur einfachen Verteilung, komplexer kann später
+                    
+                    -- schleifen bis zur länge links und rechts ausgericht
+                    -- linke seite
+                    local rowX = (cornerX - (autoLoadObject.sizeX / 2))
+                    for colPos = (autoLoadObject.sizeZ / 2), (spec.loadArea["lenght"]), (autoLoadObject.sizeZ + backDistance) do
                         if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
                             local loadingPatternItem = {}
                             loadingPatternItem.rotation = 0;
-                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restFirstNoRotation / 2)
+                            loadingPatternItem.posX = rowX
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
+                        end
+                    end
+                    -- rechte seite
+                    -- 2. reihe um die hälfte des ballens nach hinten schieben
+                    rowX = (cornerX - spec.loadArea["width"] + (autoLoadObject.sizeX / 2))
+                    for colPos = (autoLoadObject.sizeZ), (spec.loadArea["lenght"]), (autoLoadObject.sizeZ + backDistance) do
+                        if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+                            local loadingPatternItem = {}
+                            loadingPatternItem.rotation = 0;
+                            loadingPatternItem.posX = rowX
+                            loadingPatternItem.posZ = cornerZ - colPos
+                            table.insert(loadingPattern, loadingPatternItem)
+                        end
+                    end
+                else
+                    for rowNumber = 0, (countNoRotation-1) do
+                        -- schleife bis zur länge
+                        for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
+                            if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+                                local loadingPatternItem = {}
+                                loadingPatternItem.rotation = 0;
+                                loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restFirstNoRotation / 2)
+                                loadingPatternItem.posZ = cornerZ - colPos
+                                table.insert(loadingPattern, loadingPatternItem)
+                            end
                         end
                     end
                 end
@@ -698,6 +729,8 @@ function APalletAutoLoader:getFirstValidLoadPlace()
             
             -- collision mask : all bits except bit 13, 23, 30
             spec.foundObject = false 
+                    
+            -- TODO: Kollision rund berechnen für rundballen
             overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
 
             if not spec.foundObject then
