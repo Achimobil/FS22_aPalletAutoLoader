@@ -21,5 +21,8 @@
         <text name="input_AL_UNLOAD" text="Décharger les palettes"/>
         <text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded"/>
 		<text name="input_AL_TOGGLE_MARKERS" text="Afficher/masquer les marqueurs" />
+		<text name="aPalletAutoLoader_roundbale125" text="Balle ronde 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Balle ronde 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Balle ronde 180" />
     </texts>
 </l10n>

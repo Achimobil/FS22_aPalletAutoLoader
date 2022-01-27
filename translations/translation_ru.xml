@@ -21,5 +21,8 @@
 		<text name="input_AL_UNLOAD" text="Выгрузить" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Негабаритные поддоны" />
 		<text name="input_AL_TOGGLE_MARKERS" text="Показать/скрыть маркеры" />
+		<text name="aPalletAutoLoader_roundbale125" text="Круглый тюк 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Круглый тюк 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Круглый тюк 180" />
 	</texts>
 </l10n>

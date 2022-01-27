@@ -21,5 +21,8 @@
 		<text name="input_AL_UNLOAD" text="Wyładuj Palety" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Nadwymiarowe europalety" />
 		<text name="input_AL_TOGGLE_MARKERS" text="Pokaż/ukryj znaczniki" />
+		<text name="aPalletAutoLoader_roundbale125" text="Bela 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Bela 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Bela 180" />
 	</texts>
 </l10n>

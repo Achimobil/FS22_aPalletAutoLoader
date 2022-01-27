@@ -336,8 +336,17 @@ function APalletAutoLoader:onLoad(savegame)
     
     spec.available = true;
     
+    spec.useBales = self.xmlFile:getValue(baseXmlPath .. "#useBales", false)
+    
     -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-    local types = {"euroPallet","liquidTank","bigBagPallet","cottonRoundbale238","euroPalletOversize", "roundbale125", "roundbale150", "roundbale180"}  
+    local types = {"euroPallet","liquidTank","bigBagPallet","euroPalletOversize"}
+    
+    if spec.useBales then
+        table.insert(types, "cottonRoundbale238");
+        table.insert(types, "roundbale125");
+        table.insert(types, "roundbale150");
+        table.insert(types, "roundbale180");
+    end
     
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
@@ -385,14 +394,7 @@ function APalletAutoLoader:onLoad(savegame)
                     local minimalDistanceZ = (autoLoadObject.sizeZ + backDistance);
                     
                     -- die höhere der beiden distanzen muss benutzt werden
-                    local distanceZ = math.max(optimalDistanceZ, minimalDistanceZ);
-                    
-                    print("autoLoadObject.name:" .. autoLoadObject.name);
-                    print("autoLoadObject.sizeX:" .. autoLoadObject.sizeX);
-                    print("rowX1:" .. rowX1);
-                    print("rowX2:" .. rowX2);
-                    print("optimalDistanceZ:" ..optimalDistanceZ );
-                    print("distanceZ:" .. distanceZ);                    
+                    local distanceZ = math.max(optimalDistanceZ, minimalDistanceZ);                
                     
                     -- schleifen bis zur länge links und rechts ausgericht
                     -- linke seite
@@ -499,7 +501,6 @@ function APalletAutoLoader:onLoad(savegame)
 
         spec.fillUnitIndex = self.xmlFile:getValue(baseXmlPath .. "#fillUnitIndex")
         spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
-        spec.useBales = self.xmlFile:getValue(baseXmlPath .. "#useBales", false)
         spec.useTensionBelts = self.xmlFile:getValue(baseXmlPath .. "#useTensionBelts", not GS_IS_MOBILE_VERSION)
     end
     

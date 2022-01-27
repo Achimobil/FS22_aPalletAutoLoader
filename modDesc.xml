@@ -57,6 +57,9 @@ Changelog 1.3.0.0
 
 Changelog 1.3.1.0
 - Changes for ModHub publish
+
+Changelog 1.4.0.0
+- Add default round bales 125/150/180. Must be enabled by the modder of the trailer (useBales="true")
 ]]></en>
         <de>
 <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
@@ -103,7 +106,10 @@ Changelog 1.3.0.0:
 - Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
 
 Changelog 1.3.1.0:
-- Änderungen für ModHub-Veröffentlichung]]>
+- Änderungen für ModHub-Veröffentlichung
+
+Changelog 1.4.0.0
+- Standard-Rundballen 125/150/180 können jetzt geladen werden. Muss vom Modder des Trailers aktiviert werden (useBales="true")]]>
         </de>
         <it>
             <![CDATA[Mod di base per l'utilizzo di mod con specializzazione caricamento automatico di pallet.
@@ -150,6 +156,9 @@ v1.3.0.0
 
 v1.3.1.0
 - Modifiche per la pubblicazione di ModHub
+
+v1.4.0.0
+- Aggiungi rotoballe predefinite 125/150/180. Deve essere abilitato dal modder del trailer (useBales="true")
 ]]></it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
@@ -197,6 +206,9 @@ Journal des modifications 1.3.0.0
 
 Journal des modifications 1.3.1.0
 - Modifications pour la publication ModHub
+
+Journal des modifications 1.4.0.0
+- Ajouter des balles rondes par défaut 125/150/180. Doit être activé par le moddeur de la bande-annonce (useBales="true")
 ]]></fr>
     <es>
             <![CDATA[Mod base para usar Mods con la especialización Carga Automática Palés
@@ -244,6 +256,9 @@ Registro de cambios 1.3.0.0
 
 Registro de cambios 1.3.1.0
 - Cambios para la publicación de ModHub
+
+Registro de cambios 1.4.0.0
+- Agregar pacas redondas predeterminadas 125/150/180. Debe estar habilitado por el modder del tráiler (useBales="true")
 ]]></es>
     </description>
     <iconFilename>modIcon.dds</iconFilename>

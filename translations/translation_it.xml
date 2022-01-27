@@ -21,5 +21,8 @@
 		<text name="input_AL_UNLOAD" text="Scarico pallet" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura" />
 		<text name="input_AL_TOGGLE_MARKERS" text="Mostra/Nascondi indicatori" />
+		<text name="aPalletAutoLoader_roundbale125" text="Rotoballa 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Rotoballa 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Rotoballa 180" />
 	</texts>
 </l10n>

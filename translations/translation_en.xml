@@ -21,5 +21,8 @@
 		<text name="input_AL_UNLOAD" text="Unload Pallets" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded" />
 		<text name="input_AL_TOGGLE_MARKERS" text="Show/Hide Markers" />
+		<text name="aPalletAutoLoader_roundbale125" text="Round bale 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Round bale 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Round bale 180" />
 	</texts>
 </l10n>
