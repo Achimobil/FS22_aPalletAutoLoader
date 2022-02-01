@@ -144,7 +144,7 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
                 local vertical = false;
                 local offset = nil;
                 local color = {r,g,b};
-                DebugUtil.drawDebugCircleAtNode(loadPlace.node, radius, 20, color, vertical, offset)
+                DebugUtil.drawDebugCircleAtNode(loadPlace.node, radius, 12, color, vertical, offset)
             else
                 local sizeX = autoLoadType.sizeX/2;
                 local sizeZ = autoLoadType.sizeZ/2;
@@ -788,8 +788,11 @@ function APalletAutoLoader:getFirstValidLoadPlace()
                 -- seitenlänge = radius * Wurzel 2
                 local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
                 
+                -- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
+                ry = ry + (3.1415927 / 12);
+                    
                 -- für jeden teil einen test machen
-                for i = 1, testRuns do
+                for i = 1, testRuns do 
                     overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
                 end
             else
@@ -885,6 +888,8 @@ function APalletAutoLoader:loadObject(object)
                             -- Baumwollrundballen müssen noch um die höhe hochgesetzt werden und gedreht
                             y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
                             rx = rx + (3.1415927 / 2);
+                            -- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
+                            ry = ry + (3.1415927 / 12);
                         end
                         if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "cottonSquarebale" then
                             -- Baumwollquaderballen müssen noch um die höhe hochgesetzt werden
