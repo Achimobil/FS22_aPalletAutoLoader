@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+	<translationContributors>the.geremy, Mara</translationContributors>
+    <texts>
+		<text name="aPalletAutoLoader_nothingToLoad" text="Autoload: nic pro naložení" />
+		<text name="aPalletAutoLoader_loadPallets" text="automaticky naložit" />
+		<text name="function_PalletAutoload_Trailer" text="Přívěs s autoloadem na palety" />
+		<text name="PalletAutoload_Trailer" text="Autoload na palety" />
+		<text name="aPalletAutoLoader_LoadingType" text="Typ nákladu" />
+		<text name="aPalletAutoLoader_liquidTank" text="Nádoba na kapaliny" />
+		<text name="aPalletAutoLoader_euroPallet" text="Europaleta" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="BigBag paleta" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Kulatý balík bavlny" />
+		<text name="aPalletAutoLoader_tipside" text="Strana vyložení" />
+		<text name="aPalletAutoLoader_left" text="vlevo" />
+		<text name="aPalletAutoLoader_right" text="vpravo" />
+		<text name="configuration_aPalletAutoLoader" text="Autoload na palety" />
+		<text name="input_AL_LOAD_PALLET" text="Naložit Palety" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Přepnout typ nákladu" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Přepnout stranu vyložení" />
+		<text name="input_AL_UNLOAD" text="Vyložit Palety" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalety nadměrné" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Ukázat/Skrýt značky" />
+		<text name="aPalletAutoLoader_roundbale125" text="Kulatý balík 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Kulatý balík 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Kulatý balík 180" />
+	</texts>
+</l10n>
