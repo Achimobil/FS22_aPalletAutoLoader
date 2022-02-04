@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.4.0.0</version>
+    <version>1.4.1.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -15,7 +15,7 @@
             <![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
 
 An example of how to use in your own mod you will find in the Strautmann SEK 802 Pallet Autoload.
-Currently only default Euro pallets, liquidTanks, bigbag pallets and Cotton Round Bales are possible, more will follow.
+Currently only default Euro pallets, liquidTanks, bigbag pallets and Round Bales are possible, more will follow.
 
 How to use:
 Drive next to the pallets and then with [R] you can start the loading process.
@@ -60,12 +60,18 @@ Changelog 1.3.1.0
 
 Changelog 1.4.0.0
 - Add default round bales 125/150/180. Must be enabled by the modder of the trailer (useBales="true")
+
+Changelog 1.4.1.0
+- Size of liquid tank corrected for better loading
+- Round bale loading optimized
+- Icons for modder added in mod
+- Translation in CZ
 ]]></en>
         <de>
 <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
 
 Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
-Aktuell sind nur Standard Europaletten, Flüssigkeitstanks, Bigbag Paletten und Baumwollrundballen möglich, weiteres wird folgen.
+Aktuell sind nur Standard Europaletten, Flüssigkeitstanks, Bigbag Paletten und Rundballen möglich, weiteres wird folgen.
 
 Bedienung:
 Fahrt neben die Paletten um dann mit [R] das laden zu starten.
@@ -109,13 +115,20 @@ Changelog 1.3.1.0:
 - Änderungen für ModHub-Veröffentlichung
 
 Changelog 1.4.0.0
-- Standard-Rundballen 125/150/180 können jetzt geladen werden. Muss vom Modder des Trailers aktiviert werden (useBales="true")]]>
+- Standard-Rundballen 125/150/180 können jetzt geladen werden. Muss vom Modder des Trailers aktiviert werden (useBales="true")
+
+Changelog 1.4.1.0
+- Größe vom Flüssigkeitentank korrigiert für besseres Laden
+- Rundballen Laden optimiert
+- Icons für Modder in Mod eingefügt
+- Übersetzung in CZ
+]]>
         </de>
         <it>
             <![CDATA[Mod di base per l'utilizzo di mod con specializzazione caricamento automatico di pallet.
 
 È possibile trovare un esempio di come deve essere incorporata la specializzazione nel caricamento automatico per pallet Strautmann SEK 802.
-Attualmente sono possibili solo europallet standard, serbatoi per liquidi, pallet big bag e rotoballe di cotone, altri seguiranno.
+Attualmente sono possibili solo europallet standard, serbatoi per liquidi, pallet big bag e rotoballe, altri seguiranno.
 
 Come si usa:
 - Assicurati di aver selezionato il tipo di pallet corretto.
@@ -159,12 +172,18 @@ v1.3.1.0
 
 v1.4.0.0
 - Aggiungi rotoballe predefinite 125/150/180. Deve essere abilitato dal modder del trailer (useBales="true")
+
+v1.4.1.0
+- Dimensione del serbatoio dei liquidi corretta per un migliore caricamento
+- Carico delle balle rotonde ottimizzato
+- Icone per modder aggiunte al mod
+- Traduzione in CZ
 ]]></it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
 
 Vous trouverez un exemple d'utilisation dans votre propre mod dans le Strautmann SEK 802 Pallet Autoload.
-Actuellement, seules les palettes européennes par défaut, les réservoirs de liquide, les palettes bigbag et les balles carrées en coton sont possibles, d'autres suivront.
+Actuellement, seules les palettes européennes par défaut, les réservoirs de liquide, les palettes bigbag et les balles rondes sont possibles, d'autres suivront.
 
 Comment utiliser:
 Conduisez à côté des palettes, puis avec R, vous pouvez charger une palette après l'autre.
@@ -209,12 +228,18 @@ Journal des modifications 1.3.1.0
 
 Journal des modifications 1.4.0.0
 - Ajouter des balles rondes par défaut 125/150/180. Doit être activé par le moddeur de la bande-annonce (useBales="true")
+
+Journal des modifications 1.4.1.0
+- Correction de la taille du réservoir de liquide pour un meilleur chargement
+- Optimisation du chargement des balles rondes
+- Ajout d'icônes pour les moddeurs dans le mod
+- Traduction en CZ
 ]]></fr>
-    <es>
+        <es>
             <![CDATA[Mod base para usar Mods con la especialización Carga Automática Palés
 
 Un ejemplo de cómo usarlo en su propio mod lo encontrará en Strautmann SEK 802 Pallet Autoload.
-Actualmente, solo admite los palés europeos (europalés) predeterminados, los tanques para líquidos (GRG), los palés de sacos grandes y las pacas redondas de algodón, seguirán más.
+Actualmente, solo admite los palés europeos (europalés) predeterminados, los tanques para líquidos (GRG), los palés de sacos grandes y las pacas redondas, seguirán más.
 
 Cómo utilizar:
 Conduzca junto a los palés y luego con [R] puede iniciar el proceso de carga.
@@ -259,7 +284,14 @@ Registro de cambios 1.3.1.0
 
 Registro de cambios 1.4.0.0
 - Agregar pacas redondas predeterminadas 125/150/180. Debe estar habilitado por el modder del tráiler (useBales="true")
-]]></es>
+
+Registro de cambios 1.4.1.0
+- Tamaño del depósito de líquido corregido para una mejor carga
+- Carga de pacas redondas optimizada
+- Iconos para el modder añadidos al mod
+- Traducción en CZ
+]]>
+        </es>
     </description>
     <iconFilename>modIcon.dds</iconFilename>
     <multiplayer supported="true"/>
