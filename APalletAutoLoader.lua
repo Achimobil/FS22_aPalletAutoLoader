@@ -647,6 +647,9 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if string.find(object.i3dFilename, "data/objects/roundbales/roundbale125/roundbale125.i3d") then
                 return true;
             end
+            if string.find(object.i3dFilename, "data/objects/roundbales/biomass/biomassBale125.i3d") then
+                return true;
+            end
             return false;
         end    
     
