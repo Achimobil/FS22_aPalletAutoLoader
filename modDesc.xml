@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.4.1.0</version>
+    <version>1.4.2.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -66,7 +66,11 @@ Changelog 1.4.1.0
 - Round bale loading optimized
 - Icons for modder added in mod
 - Translation in CZ
-]]></en>
+
+Changelog 1.4.2.0
+- 125cm wood chips bales added
+]]>
+        </en>
         <de>
 <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
 
@@ -122,6 +126,9 @@ Changelog 1.4.1.0
 - Rundballen Laden optimiert
 - Icons für Modder in Mod eingefügt
 - Übersetzung in CZ
+
+Changelog 1.4.2.0
+- 125cm Hackschnitzel Ballen hinzugefügt
 ]]>
         </de>
         <it>
@@ -178,7 +185,11 @@ v1.4.1.0
 - Carico delle balle rotonde ottimizzato
 - Icone per modder aggiunte al mod
 - Traduzione in CZ
-]]></it>
+
+v1.4.2.0
+- Balle di cippato da 125 cm aggiunte
+]]>
+        </it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
 
@@ -234,7 +245,11 @@ Journal des modifications 1.4.1.0
 - Optimisation du chargement des balles rondes
 - Ajout d'icônes pour les moddeurs dans le mod
 - Traduction en CZ
-]]></fr>
+
+Journal des modifications 1.4.2.0
+- Ajout de balles de copeaux de bois de 125 cm
+]]>
+        </fr>
         <es>
             <![CDATA[Mod base para usar Mods con la especialización Carga Automática Palés
 
@@ -290,6 +305,9 @@ Registro de cambios 1.4.1.0
 - Carga de pacas redondas optimizada
 - Iconos para el modder añadidos al mod
 - Traducción en CZ
+
+Registro de cambios 1.4.2.0
+- Fardos de virutas de madera de 125 cm añadidos
 ]]>
         </es>
     </description>
