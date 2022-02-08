@@ -10,6 +10,7 @@
 		<text name="aPalletAutoLoader_liquidTank" text="Поддоны для жидкости" />
 		<text name="aPalletAutoLoader_euroPallet" text="Поддоны" />
 		<text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
+		<text name="aPalletAutoLoader_bigBag" text="Bigbags" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Круглый тюк хлопка" />
 		<text name="aPalletAutoLoader_tipside" text="Сторона выгрузки" />
 		<text name="aPalletAutoLoader_left" text="Слева" />
