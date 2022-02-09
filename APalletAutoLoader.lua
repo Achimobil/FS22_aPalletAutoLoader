@@ -906,30 +906,31 @@ function APalletAutoLoader:loadObject(object)
                 if spec.numTriggeredObjects < spec.maxObjects then
                     local firstValidLoadPlace, currentLoadHeigt = self:getFirstValidLoadPlace()
                     if firstValidLoadPlace ~= -1 then
-                        local loadPlaces = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].places;
+                        local currentAutoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
+                        local loadPlaces = currentAutoLoadType.places;
                         local loadPlace = loadPlaces[firstValidLoadPlace]
                         local x,y,z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
                         local objectNodeId = object.nodeId or object.components[1].node
                         local rx,ry,rz = getWorldRotation(loadPlace.node);
 
                         --bigBags have two components and appear as vehicle, so we treat them differently
-                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "bigBag" then
+                        if currentAutoLoadType.type == "bigBag" then
                             object:removeFromPhysics()
                             object:setAbsolutePosition(x, y, z, rx, ry, rz)
                             object:addToPhysics()
                         else
                             removeFromPhysics(objectNodeId)
                             
-                            if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "roundbale" then
+                            if currentAutoLoadType.type == "roundbale" then
                                 -- Baumwollrundballen müssen noch um die höhe hochgesetzt werden und gedreht
-                                y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
+                                y = y + (currentAutoLoadType.sizeY / 2)
                                 rx = rx + (3.1415927 / 2);
                                 -- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
                                 ry = ry + (3.1415927 / 12);
                             end
-                            if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "cottonSquarebale" then
+                            if currentAutoLoadType.type == "cottonSquarebale" then
                                 -- Baumwollquaderballen müssen noch um die höhe hochgesetzt werden
-                                y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
+                                y = y + (currentAutoLoadType.sizeY / 2)
                             end
 
                             setWorldRotation(objectNodeId, rx,ry,rz)
