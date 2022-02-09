@@ -913,8 +913,8 @@ function APalletAutoLoader:loadObject(object)
                         local objectNodeId = object.nodeId or object.components[1].node
                         local rx,ry,rz = getWorldRotation(loadPlace.node);
 
-                        --bigBags have two components and appear as vehicle, so we treat them differently
-                        if currentAutoLoadType.type == "bigBag" then
+                        -- bigBags and pallets have two components and appear as vehicle, so we treat them differently
+                        if currentAutoLoadType.type == "bigBag" or currentAutoLoadType.type == "pallet" then
                             object:removeFromPhysics()
                             object:setAbsolutePosition(x, y, z, rx, ry, rz)
                             object:addToPhysics()
@@ -922,14 +922,15 @@ function APalletAutoLoader:loadObject(object)
                             removeFromPhysics(objectNodeId)
                             
                             if currentAutoLoadType.type == "roundbale" then
-                                -- Baumwollrundballen müssen noch um die höhe hochgesetzt werden und gedreht
+                                -- round bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
                                 y = y + (currentAutoLoadType.sizeY / 2)
+                                -- round bales also must be rotated by 90° in x to have the flat side on the bottom
                                 rx = rx + (3.1415927 / 2);
-                                -- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
+                                -- round bales must be rotated with 15° so the collision edge is not pointing to the left and right border
                                 ry = ry + (3.1415927 / 12);
                             end
                             if currentAutoLoadType.type == "cottonSquarebale" then
-                                -- Baumwollquaderballen müssen noch um die höhe hochgesetzt werden
+                                -- cotton square bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
                                 y = y + (currentAutoLoadType.sizeY / 2)
                             end
 
@@ -937,11 +938,11 @@ function APalletAutoLoader:loadObject(object)
                             setTranslation(objectNodeId, x, y, z)
 
                             addToPhysics(objectNodeId)
+                        end
 
-                            local vx, vy, vz = getLinearVelocity(self:getParentComponent(loadPlace.node))
-                            if vx ~= nil then
-                                setLinearVelocity(objectNodeId, vx, vy+1, vz)
-                            end
+                        local vx, vy, vz = getLinearVelocity(self:getParentComponent(loadPlace.node))
+                        if vx ~= nil then
+                            setLinearVelocity(objectNodeId, vx, vy+1, vz)
                         end
                         
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
