@@ -339,7 +339,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.useBales = self.xmlFile:getValue(baseXmlPath .. "#useBales", false)
     
     -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-    local types = {"euroPallet","liquidTank","bigBagPallet","euroPalletOversize"}
+    local types = {"euroPallet","liquidTank","bigBagPallet","bigBag","euroPalletOversize"}
     
     if spec.useBales then
         table.insert(types, "cottonRoundbale238");
@@ -616,6 +616,26 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeY = 2
         autoLoadObject.sizeZ = 1.2
         autoLoadObject.type = "pallet"
+	elseif (name == "bigBag") then
+        local function CheckType(object)
+        
+            if object.i3dMappings == nil then 
+                return false;
+            end
+            
+            for mappingName, _ in pairs(object.i3dMappings) do
+                if (mappingName == "bigBag_vis") then
+                return true;
+                end
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1
+        autoLoadObject.sizeY = 1.55
+        autoLoadObject.sizeZ = 0.85
+        autoLoadObject.type = "bigBag"
     elseif (name == "cottonRoundbale238") then
         local function CheckType(object)
             if string.find(object.i3dFilename, "data/objects/cottonModules/cottonRoundbale238.i3d") then
@@ -719,6 +739,9 @@ function APalletAutoLoader:getIsValidObject(object)
         if object.typeName == "treeSaplingPallet" then
             return true
         end
+        if object.typeName == "bigBag" then
+            return true
+        end
     else
         return false
     end
@@ -808,7 +831,11 @@ function APalletAutoLoader:getFirstValidLoadPlace()
             end
         end
         
-        currentLoadHeigt = currentLoadHeigt + 0.1
+		if autoLoadType.type == "bigBag" then
+			break
+		else
+			currentLoadHeigt = currentLoadHeigt + 0.1
+		end
     end
 
     return -1, 0
@@ -885,30 +912,37 @@ function APalletAutoLoader:loadObject(object)
                         local objectNodeId = object.nodeId or object.components[1].node
                         local rx,ry,rz = getWorldRotation(loadPlace.node);
 
-                        removeFromPhysics(objectNodeId)
-                        
-                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "roundbale" then
-                            -- Baumwollrundballen müssen noch um die höhe hochgesetzt werden und gedreht
-                            y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
-                            rx = rx + (3.1415927 / 2);
-                            -- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
-                            ry = ry + (3.1415927 / 12);
-                        end
-                        if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "cottonSquarebale" then
-                            -- Baumwollquaderballen müssen noch um die höhe hochgesetzt werden
-                            y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
-                        end
+						--bigBags have two components and appear as vehicle, so we treat them differently
+						if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "bigBag" then
+							object:removeFromPhysics()
+							object:setAbsolutePosition(x, y, z, rx, ry, rz)
+							object:addToPhysics()
+						else
+							removeFromPhysics(objectNodeId)
+							
+							if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "roundbale" then
+								-- Baumwollrundballen müssen noch um die höhe hochgesetzt werden und gedreht
+								y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
+								rx = rx + (3.1415927 / 2);
+								-- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
+								ry = ry + (3.1415927 / 12);
+							end
+							if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "cottonSquarebale" then
+								-- Baumwollquaderballen müssen noch um die höhe hochgesetzt werden
+								y = y + (spec.autoLoadTypes[spec.currentautoLoadTypeIndex].sizeY / 2)
+							end
 
-                        setWorldRotation(objectNodeId, rx,ry,rz)
-                        setTranslation(objectNodeId, x, y, z)
+							setWorldRotation(objectNodeId, rx,ry,rz)
+							setTranslation(objectNodeId, x, y, z)
 
-                        addToPhysics(objectNodeId)
+							addToPhysics(objectNodeId)
 
-                        local vx, vy, vz = getLinearVelocity(self:getParentComponent(loadPlace.node))
-                        if vx ~= nil then
-                            setLinearVelocity(objectNodeId, vx, vy+1, vz)
+							local vx, vy, vz = getLinearVelocity(self:getParentComponent(loadPlace.node))
+							if vx ~= nil then
+								setLinearVelocity(objectNodeId, vx, vy+1, vz)
+							end
                         end
-                        
+						
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
                         object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
                         
@@ -959,11 +993,18 @@ function APalletAutoLoader:unloadAll()
             --local x,y,z = localToWorld(objectNodeId, -3, -0.5, 0);
             local x,y,z = localToWorld(objectNodeId, unpack(spec.UnloadOffset[spec.currentTipside]));
 
-            -- move object and restore rotation
-            removeFromPhysics(objectNodeId)
-            setWorldRotation(objectNodeId, rx,ry,rz)
-            setTranslation(objectNodeId, x, y, z)
-            addToPhysics(objectNodeId)
+			--bigBags have two components and appear as vehicle, so we treat them differently
+			if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "bigBag" then
+				object:removeFromPhysics()
+				object:setAbsolutePosition(x, y, z, rx, ry, rz)
+				object:addToPhysics()
+			else
+				-- move object and restore rotation
+				removeFromPhysics(objectNodeId)
+				setWorldRotation(objectNodeId, rx,ry,rz)
+				setTranslation(objectNodeId, x, y, z)
+				addToPhysics(objectNodeId)
+			end
             
             if object.addDeleteListener ~= nil then
                 object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")

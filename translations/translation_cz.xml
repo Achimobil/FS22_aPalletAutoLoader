@@ -10,6 +10,7 @@
 		<text name="aPalletAutoLoader_liquidTank" text="Nádoba na kapaliny" />
 		<text name="aPalletAutoLoader_euroPallet" text="Europaleta" />
 		<text name="aPalletAutoLoader_bigBagPallet" text="BigBag paleta" />
+		<text name="aPalletAutoLoader_bigBag" text="Bigbags" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Kulatý balík bavlny" />
 		<text name="aPalletAutoLoader_tipside" text="Strana vyložení" />
 		<text name="aPalletAutoLoader_left" text="vlevo" />
