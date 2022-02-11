@@ -942,7 +942,7 @@ function APalletAutoLoader:loadObject(object)
 
                         local vx, vy, vz = getLinearVelocity(self:getParentComponent(loadPlace.node))
                         if vx ~= nil then
-                            setLinearVelocity(objectNodeId, vx, vy+1, vz)
+                            setLinearVelocity(objectNodeId, vx, vy, vz)
                         end
                         
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
