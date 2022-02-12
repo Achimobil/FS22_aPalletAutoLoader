@@ -469,6 +469,7 @@ function APalletAutoLoader:onLoad(savegame)
     if self.isServer then
         spec.objectsToLoad = {};
         spec.balesToLoad = {};
+        spec.objectsToJoint = {}
 
         spec.triggerId = self.xmlFile:getValue(baseXmlPath .. ".trigger#node", nil, self.components, self.i3dMappings)
         if spec.triggerId ~= nil then
@@ -889,6 +890,18 @@ function APalletAutoLoader:loadAllInRange()
                 APalletAutoLoader.updateActionText(self);
             end
            
+            -- release all joints
+            for _,jointData  in pairs(spec.objectsToJoint) do
+				removeJoint(jointData.jointIndex)
+				delete(jointData.jointTransform)
+            end
+            
+            spec.objectsToJoint = {};
+            
+            if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
+                self:setAllTensionBeltsActive(false, false)
+                self:setAllTensionBeltsActive(true, false)
+            end
         end
     else
         if loaded then
@@ -951,13 +964,40 @@ function APalletAutoLoader:loadObject(object)
                         spec.triggeredObjects[object] = 0
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
 
-                        if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
-                            self:setAllTensionBeltsActive(false, false)
-                            --- PAUSE !!!
-                            
-                            self:setAllTensionBeltsActive(true, false)
+                        -- Create Joint to keep the object on the place even if moving
+                        if spec.objectsToJoint[objectNodeId] == nil then
+                            local constr = JointConstructor.new()
+
+                            constr:setActors(self.spec_tensionBelts.jointNode, objectNodeId)
+
+                            local jointTransform = createTransformGroup("tensionBeltJoint")
+
+                            link(self.spec_tensionBelts.linkNode, jointTransform)
+
+                            local x, y, z = localToWorld(objectNodeId, getCenterOfMass(objectNodeId))
+
+                            setWorldTranslation(jointTransform, x, y, z)
+                            constr:setJointTransforms(jointTransform, jointTransform)
+                            constr:setRotationLimit(0, 0, 0)
+                            constr:setRotationLimit(1, 0, 0)
+                            constr:setRotationLimit(2, 0, 0)
+
+                            local springForce = 1000
+                            local springDamping = 10
+
+                            constr:setRotationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+                            constr:setTranslationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+
+                            local jointIndex = constr:finalize()
+
+                            -- save info for release items
+                            spec.objectsToJoint[objectNodeId] = {
+                                jointIndex = jointIndex,
+                                jointTransform = jointTransform,
+                                object = object
+                            }
                         end
-                        
+                                                
                         if spec.objectsToLoad[object.rootNode] ~= nil then
                             spec.objectsToLoad[object.rootNode] = nil;
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
@@ -1015,8 +1055,8 @@ function APalletAutoLoader:unloadAll()
     end
     spec.triggeredObjects = {}
     spec.numTriggeredObjects = 0
+    self:setAllTensionBeltsActive(false, false)
     self:raiseDirtyFlags(spec.dirtyFlag)
-
 end
 
 
