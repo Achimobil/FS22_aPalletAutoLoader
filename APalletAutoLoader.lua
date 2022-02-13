@@ -439,7 +439,7 @@ function APalletAutoLoader:onLoad(savegame)
                     for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + backDistance) do
                         if (colPos + (autoLoadObject.sizeX / 2)) <= spec.loadArea["lenght"] then
                             local loadingPatternItem = {}
-                            loadingPatternItem.rotation = (3.1415927 / 2);
+                            loadingPatternItem.rotation = math.rad(90);
                             loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + backDistance)) - (restFirstRotation / 2)
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
@@ -807,7 +807,7 @@ function APalletAutoLoader:getFirstValidLoadPlace()
             if autoLoadType.type == "roundbale" then
                 -- Kollision rund berechnen für Rundballen mit simuliertem Kreis, Kugel klappt nicht bei den großen ballen wegen der höhe
                 -- eine virtel umdrehung als konstante
-                local rotationQuarter = (3.1415927 / 2);
+                local rotationQuarter = math.rad(90);
                 local testRuns = 3;
                 
                 -- länge des quadrates im kreis berechnen für x und z
@@ -816,7 +816,7 @@ function APalletAutoLoader:getFirstValidLoadPlace()
                 local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
                 
                 -- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
-                ry = ry + (3.1415927 / 12);
+                ry = ry + math.rad(15);
                     
                 -- für jeden teil einen test machen
                 for i = 1, testRuns do 
@@ -938,9 +938,9 @@ function APalletAutoLoader:loadObject(object)
                                 -- round bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
                                 y = y + (currentAutoLoadType.sizeY / 2)
                                 -- round bales also must be rotated by 90° in x to have the flat side on the bottom
-                                rx = rx + (3.1415927 / 2);
+                                rx = rx + math.rad(90);
                                 -- round bales must be rotated with 15° so the collision edge is not pointing to the left and right border
-                                ry = ry + (3.1415927 / 12);
+                                ry = ry + math.rad(15);
                             end
                             if currentAutoLoadType.type == "cottonSquarebale" then
                                 -- cotton square bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
