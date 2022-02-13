@@ -582,6 +582,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/ksAG/patentkali/patentkali.xml" then return true end
             if object.configFileName == "data/objects/ksAG/epsoTop/epsoTop.xml" then return true end
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return true end
+            if string.find(object.i3dFilename, "FS22_Pallets_And_Bags_Pack/Pallets") then return true end
                         
             return false;
         end    
