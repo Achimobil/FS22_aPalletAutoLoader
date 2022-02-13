@@ -455,7 +455,14 @@ function APalletAutoLoader:onLoad(savegame)
                 place.node = createTransformGroup("Loadplace")
                 link(autoLoadObject.index, place.node);
                 
-                setRotation(place.node, 0, loadingPatternItem.rotation, 0)
+                -- Round bales must be rotated with 15° so the collision edge is not pointing to the left and right border.
+                -- Had to be done here, because at moving object it is not stabel basen on the direction the trailer looks to.
+                local currentRotation = loadingPatternItem.rotation;
+                if autoLoadObject.type == "roundbale" then
+                    currentRotation = currentRotation + 15;
+                end
+                
+                setRotation(place.node, 0, currentRotation, 0)
                 setTranslation(place.node, loadingPatternItem.posX, cornerY, loadingPatternItem.posZ)
                 table.insert(autoLoadObject.places, place)
             end
@@ -815,9 +822,6 @@ function APalletAutoLoader:getFirstValidLoadPlace()
                 -- seitenlänge = radius * Wurzel 2
                 local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
                 
-                -- Runballen um 15° drehen damit die Kollisionsspitze nicht auf die Bordwand zeigt.
-                ry = ry + math.rad(15);
-                    
                 -- für jeden teil einen test machen
                 for i = 1, testRuns do 
                     overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
@@ -939,8 +943,6 @@ function APalletAutoLoader:loadObject(object)
                                 y = y + (currentAutoLoadType.sizeY / 2)
                                 -- round bales also must be rotated by 90° in x to have the flat side on the bottom
                                 rx = rx + math.rad(90);
-                                -- round bales must be rotated with 15° so the collision edge is not pointing to the left and right border
-                                ry = ry + math.rad(15);
                             end
                             if currentAutoLoadType.type == "cottonSquarebale" then
                                 -- cotton square bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
