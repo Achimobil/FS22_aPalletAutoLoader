@@ -557,6 +557,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return false end
             if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
             if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
+            if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
         
             if object.i3dMappings == nil then 
                 return false;
