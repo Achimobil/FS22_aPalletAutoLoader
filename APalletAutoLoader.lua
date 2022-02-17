@@ -346,6 +346,7 @@ function APalletAutoLoader:onLoad(savegame)
         table.insert(types, "roundbale125");
         table.insert(types, "roundbale150");
         table.insert(types, "roundbale180");
+        table.insert(types, "squarebale240");
     end
     
     -- create loadplaces automatically from load Area size
@@ -368,7 +369,7 @@ function APalletAutoLoader:onLoad(savegame)
             local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
             local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
             local backDistance = 0.05;
-            if autoLoadObject.type == "roundbale" then
+            if autoLoadObject.type == "roundbale" or autoLoadObject.type == "squarebale" then
                 -- rundballen ein bischen mehr platz geben wegen der runden kollision
                 backDistance = 0.07;
             end
@@ -714,6 +715,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeY = 1.20
         autoLoadObject.sizeZ = 1.80
         autoLoadObject.type = "roundbale"
+    elseif (name == "squarebale240") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/squarebales/squarebale240/squarebale240.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.40
+        autoLoadObject.sizeY = 1.00
+        autoLoadObject.sizeZ = 1.20
+        autoLoadObject.type = "squarebale"
     end
 end
 
@@ -828,6 +842,11 @@ function APalletAutoLoader:getFirstValidLoadPlace()
                 for i = 1, testRuns do 
                     overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
                 end
+            elseif autoLoadType.type == "squarebale" then
+                -- eine virtel umdrehung als konstante
+                --ry = ry + math.rad(90);
+                
+                overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
             else
                 overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
             end
@@ -945,6 +964,12 @@ function APalletAutoLoader:loadObject(object)
                                 y = y + (currentAutoLoadType.sizeY / 2)
                                 -- round bales also must be rotated by 90° in x to have the flat side on the bottom
                                 rx = rx + math.rad(90);
+                            end
+                            if currentAutoLoadType.type == "squarebale" then
+                                -- square bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
+                                y = y + (currentAutoLoadType.sizeY / 2)
+                                -- square bales also must be rotated by 90° in x to have the flat side on the bottom
+                                ry = ry + math.rad(90);
                             end
                             if currentAutoLoadType.type == "cottonSquarebale" then
                                 -- cotton square bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
