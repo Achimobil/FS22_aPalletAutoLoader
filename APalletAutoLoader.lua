@@ -346,6 +346,7 @@ function APalletAutoLoader:onLoad(savegame)
         table.insert(types, "roundbale125");
         table.insert(types, "roundbale150");
         table.insert(types, "roundbale180");
+        table.insert(types, "squarebale220");
         table.insert(types, "squarebale240");
     end
     
@@ -725,6 +726,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.40
+        autoLoadObject.sizeY = 1.00
+        autoLoadObject.sizeZ = 1.20
+        autoLoadObject.type = "squarebale"
+    elseif (name == "squarebale220") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/squarebales/squarebale220/squarebale220.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.20
         autoLoadObject.sizeY = 1.00
         autoLoadObject.sizeZ = 1.20
         autoLoadObject.type = "squarebale"
