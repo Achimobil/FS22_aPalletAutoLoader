@@ -346,6 +346,7 @@ function APalletAutoLoader:onLoad(savegame)
         table.insert(types, "roundbale125");
         table.insert(types, "roundbale150");
         table.insert(types, "roundbale180");
+        table.insert(types, "squarebale180");
         table.insert(types, "squarebale220");
         table.insert(types, "squarebale240");
     end
@@ -370,7 +371,7 @@ function APalletAutoLoader:onLoad(savegame)
             local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
             local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
             local backDistance = 0.05;
-            if autoLoadObject.type == "roundbale" or autoLoadObject.type == "squarebale" then
+            if autoLoadObject.type == "roundbale" then
                 -- rundballen ein bischen mehr platz geben wegen der runden kollision
                 backDistance = 0.07;
             end
@@ -739,6 +740,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.20
+        autoLoadObject.sizeY = 1.00
+        autoLoadObject.sizeZ = 1.20
+        autoLoadObject.type = "squarebale"
+    elseif (name == "squarebale180") then
+        local function CheckType(object)
+            if string.find(object.i3dFilename, "data/objects/squarebales/squarebale180/squarebale180.i3d") then
+                return true;
+            end
+            return false;
+        end    
+    
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.80
         autoLoadObject.sizeY = 1.00
         autoLoadObject.sizeZ = 1.20
         autoLoadObject.type = "squarebale"
