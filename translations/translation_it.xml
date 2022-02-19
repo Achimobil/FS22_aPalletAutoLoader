@@ -25,5 +25,8 @@
 		<text name="aPalletAutoLoader_roundbale125" text="Rotoballa 125" />
 		<text name="aPalletAutoLoader_roundbale150" text="Rotoballa 150" />
 		<text name="aPalletAutoLoader_roundbale180" text="Rotoballa 180" />
+		<text name="aPalletAutoLoader_squarebale180" text="Balla quadrata 180" />
+		<text name="aPalletAutoLoader_squarebale220" text="Balla quadrata 220" />
+		<text name="aPalletAutoLoader_squarebale240" text="Balla quadrata 240" />
 	</texts>
 </l10n>

@@ -25,5 +25,8 @@
 		<text name="aPalletAutoLoader_roundbale125" text="Bela 125" />
 		<text name="aPalletAutoLoader_roundbale150" text="Bela 150" />
 		<text name="aPalletAutoLoader_roundbale180" text="Bela 180" />
+		<text name="aPalletAutoLoader_squarebale180" text="Kostka 180" />
+		<text name="aPalletAutoLoader_squarebale220" text="Kostka 220" />
+		<text name="aPalletAutoLoader_squarebale240" text="Kostka 240" />
 	</texts>
 </l10n>

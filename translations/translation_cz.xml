@@ -25,5 +25,8 @@
 		<text name="aPalletAutoLoader_roundbale125" text="Kulatý balík 125" />
 		<text name="aPalletAutoLoader_roundbale150" text="Kulatý balík 150" />
 		<text name="aPalletAutoLoader_roundbale180" text="Kulatý balík 180" />
+		<text name="aPalletAutoLoader_squarebale180" text="Hranatý balík 180" />
+		<text name="aPalletAutoLoader_squarebale220" text="Hranatý balík 220" />
+		<text name="aPalletAutoLoader_squarebale240" text="Hranatý balík 240" />
 	</texts>
 </l10n>

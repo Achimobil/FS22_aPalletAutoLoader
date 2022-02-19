@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.4.2.0</version>
+    <version>1.5.0.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -15,7 +15,16 @@
             <![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
 
 An example of how to use in your own mod you will find in the Strautmann SEK 802 Pallet Autoload.
-Currently only default Euro pallets, liquidTanks, bigbag pallets and Round Bales are possible, more will follow.
+Currently supported from the standard game:
+- Standard Euro pallets
+- Liquid tanks
+- Big bag pallets
+- Round bales
+- Square bales 180/220/240
+- Bigbags
+Pallets from the following mods can be used:
+- Package Of Premium Pallets And Bags
+- HoT Fries Factory
 
 How to use:
 Drive next to the pallets and then with [R] you can start the loading process.
@@ -69,13 +78,31 @@ Changelog 1.4.1.0
 
 Changelog 1.4.2.0
 - 125cm wood chips bales added
+
+Changelog 1.5.0.0
+- Bigbags hinzugefügt
+- Übersetzungen verbessert
+- Spanngurte automatisch anziehen. Muss vom Modder des Trailers aktiviert werden (useTensionBelts="true")
+- Ballen laden in Bewegung verbessert
+- Support von Mod "Paket Von Premium-Paletten Und Säcken"
+- Support von Mod "HoT Pommes Factory"
+- Quaderballen 180/220/240 hinzugefügt
 ]]>
         </en>
         <de>
 <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
 
 Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
-Aktuell sind nur Standard Europaletten, Flüssigkeitstanks, Bigbag Paletten und Rundballen möglich, weiteres wird folgen.
+Aktuell wird aus dem Standard Spiel unterstützt:
+- Standard Europaletten
+- Flüssigkeitstanks
+- Bigbag Paletten
+- Rundballen
+- Quaderballen 180/220/240
+- Bigbags
+Palleten aus den folgenden Mods sind nutzbar:
+- Paket Von Premium-Paletten Und Säcken
+- HoT Pommes Factory
 
 Bedienung:
 Fahrt neben die Paletten um dann mit [R] das laden zu starten.
@@ -129,13 +156,31 @@ Changelog 1.4.1.0
 
 Changelog 1.4.2.0
 - 125cm Hackschnitzel Ballen hinzugefügt
+
+Changelog 1.5.0.0
+- Bigbags hinzugefügt
+- Übersetzungen verbessert
+- Spanngurte automatisch anziehen. Muss vom Modder des Trailers aktiviert werden (useTensionBelts="true")
+- Ballen laden in Bewegung verbessert
+- Support von Mod "Paket Von Premium-Paletten Und Säcken"
+- Support von Mod "HoT Pommes Factory"
+- Quaderballen 180/220/240 hinzugefügt
 ]]>
         </de>
         <it>
             <![CDATA[Mod di base per l'utilizzo di mod con specializzazione caricamento automatico di pallet.
 
 È possibile trovare un esempio di come deve essere incorporata la specializzazione nel caricamento automatico per pallet Strautmann SEK 802.
-Attualmente sono possibili solo europallet standard, serbatoi per liquidi, pallet big bag e rotoballe, altri seguiranno.
+Attualmente supportato dal gioco standard:
+- Euro pallet standard
+- Serbatoi per liquidi
+- Pallet di borse grandi
+- Balle rotonde
+- Balle quadrate 180/220/240
+- Bigbags
+Si possono usare i pallet dei seguenti mod:
+- Pacchetto di pallet e borse Premium
+- Fabbrica di patatine fritte HoT
 
 Come si usa:
 - Assicurati di aver selezionato il tipo di pallet corretto.
@@ -188,13 +233,31 @@ v1.4.1.0
 
 v1.4.2.0
 - Balle di cippato da 125 cm aggiunte
+
+v1.5.0.0
+- Bigbags ha aggiunto
+- Traduzioni migliorate
+- Le cinghie di tensione si stringono automaticamente. Deve essere attivato dal modder del rimorchio (useTensionBelts="true")
+- Caricamento delle balle in movimento migliorato
+- Supporto del mod "Pacchetto di pallet e sacchi Premium".
+- Supporto del mod "HoT Pommes Factory
+- Aggiunta di balle quadrate 180/220/240
 ]]>
         </it>
         <fr>
             <![CDATA[Mod de base pour l'utilisation de mods avec la spécialisation Pallet Autoload
 
 Vous trouverez un exemple d'utilisation dans votre propre mod dans le Strautmann SEK 802 Pallet Autoload.
-Actuellement, seules les palettes européennes par défaut, les réservoirs de liquide, les palettes bigbag et les balles rondes sont possibles, d'autres suivront.
+Actuellement, le jeu standard est pris en charge :
+- Europalettes standard
+- Réservoirs de liquide
+- Palettes bigbag
+- Balles rondes
+- Balles cubiques 180/220/240
+- Bigbags
+Les palettes des Mods suivants sont utilisables :
+- Paquet De Palettes Premium Et De Sacs
+- Usine de frites HoT
 
 Comment utiliser:
 Conduisez à côté des palettes, puis avec R, vous pouvez charger une palette après l'autre.
@@ -248,13 +311,33 @@ Journal des modifications 1.4.1.0
 
 Journal des modifications 1.4.2.0
 - Ajout de balles de copeaux de bois de 125 cm
+
+Journal des modifications 1.5.0.0
+- Ajout de bigbags
+- amélioration des traductions
+- Serrage automatique des sangles de serrage. Doit être activé par le moddeur de la remorque (useTensionBelts="true").
+- Amélioration du chargement des balles en mouvement
+- Support du mod "Paquet de palettes Premium et de sacs".
+- Support du mod "HoT Pommes Factory".
+- Ajout des balles cubiques 180/220/240
 ]]>
         </fr>
         <es>
             <![CDATA[Mod base para usar Mods con la especialización Carga Automática Palés
 
 Un ejemplo de cómo usarlo en su propio mod lo encontrará en Strautmann SEK 802 Pallet Autoload.
-Actualmente, solo admite los palés europeos (europalés) predeterminados, los tanques para líquidos (GRG), los palés de sacos grandes y las pacas redondas, seguirán más.
+Actualmente es compatible con el juego estándar:
+- Europalets estándar
+- Tanques de líquido
+- Paletas Big bag
+- Pacas redondas
+- Pacas cuadradas 180/220/240
+- Bigbags
+Se pueden utilizar las paletas de los siguientes mods:
+- Paquete de paletas y bolsas de primera calidad
+- Fábrica de patatas fritas HoT
+
+
 
 Cómo utilizar:
 Conduzca junto a los palés y luego con [R] puede iniciar el proceso de carga.
@@ -308,6 +391,15 @@ Registro de cambios 1.4.1.0
 
 Registro de cambios 1.4.2.0
 - Fardos de virutas de madera de 125 cm añadidos
+
+Registro de cambios 1.5.0.0
+- Bigbags añadió
+- Mejora de las traducciones
+- Las correas de tensión se tensan automáticamente. Debe ser activado por el modder del remolque (useTensionBelts="true")
+- Mejora de la carga de balas en movimiento
+- Soporte del mod "Paquete de Paletas y Sacos Premium".
+- Soporte del mod "HoT Pommes Factory
+- Pacas cuadradas añadidas 180/220/240
 ]]>
         </es>
     </description>
