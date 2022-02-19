@@ -727,7 +727,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.40
-        autoLoadObject.sizeY = 1.00
+        autoLoadObject.sizeY = 0.86
         autoLoadObject.sizeZ = 1.20
         autoLoadObject.type = "squarebale"
     elseif (name == "squarebale220") then
@@ -740,7 +740,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.20
-        autoLoadObject.sizeY = 1.00
+        autoLoadObject.sizeY = 0.85
         autoLoadObject.sizeZ = 1.20
         autoLoadObject.type = "squarebale"
     elseif (name == "squarebale180") then
@@ -753,7 +753,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.80
-        autoLoadObject.sizeY = 1.00
+        autoLoadObject.sizeY = 0.87
         autoLoadObject.sizeZ = 1.20
         autoLoadObject.type = "squarebale"
     end
@@ -881,14 +881,22 @@ function APalletAutoLoader:getFirstValidLoadPlace()
 
             -- sollte auf true sein, wenn eine rotation was gefunden hat
             if not spec.foundObject then
+                -- print("height: " .. currentLoadHeigt)
                 return i, currentLoadHeigt
             end
         end
         
         if autoLoadType.type == "bigBag" then
             break
+        elseif autoLoadType.type == "squarebale" then
+            if currentLoadHeigt == 0 then
+                -- when balse we can directly jump the size up for the second line for performance reason
+                currentLoadHeigt = autoLoadType.sizeY + 0.01
+            else
+                currentLoadHeigt = currentLoadHeigt + 0.01
+            end
         else
-            currentLoadHeigt = currentLoadHeigt + 0.1
+            currentLoadHeigt = currentLoadHeigt + 0.05
         end
     end
 
