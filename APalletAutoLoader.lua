@@ -358,6 +358,7 @@ function APalletAutoLoader:onLoad(savegame)
             local autoLoadObject = {}
             autoLoadObject.index = spec.loadArea["baseNode"]
             autoLoadObject.name = name
+            autoLoadObject.nameTranslated = g_i18n:getText("aPalletAutoLoader_" .. name)
             APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             autoLoadObject.places = {}
             local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
