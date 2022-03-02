@@ -13,8 +13,8 @@
 		<text name="aPalletAutoLoader_bigBag" text="Bigbags" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Round bale cotton" />
 		<text name="aPalletAutoLoader_tipside" text="Tipside" />
-		<text name="aPalletAutoLoader_left" text="left" />
-		<text name="aPalletAutoLoader_right" text="right" />
+		<text name="aPalletAutoLoader_1" text="left" />
+		<text name="aPalletAutoLoader_2" text="right" />
 		<text name="configuration_aPalletAutoLoader" text="Pallet Autoload" />
 		<text name="input_AL_LOAD_PALLET" text="Load Pallets" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType" />

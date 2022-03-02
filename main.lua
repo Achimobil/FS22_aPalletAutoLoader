@@ -6,6 +6,10 @@ local modName = g_currentModName or "unknown"
 ---Init the mod.
 local function init()
     g_specializationManager:addSpecialization("aPalletAutoLoader", "APalletAutoLoader", modDirectory .. "APalletAutoLoader.lua", nil)
+    
+    -- load events
+    local path = modDirectory .. "Events/SetTipsideEventEvent.lua";
+    source(path)
 end
 
 init()

@@ -13,8 +13,8 @@
 		<text name="aPalletAutoLoader_bigBag" text="Worki typu Bigbag" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Bela bawełny" />
 		<text name="aPalletAutoLoader_tipside" text="Strona wyłądunku" />
-		<text name="aPalletAutoLoader_left" text="lewa" />
-		<text name="aPalletAutoLoader_right" text="prawa" />
+		<text name="aPalletAutoLoader_1" text="lewa" />
+		<text name="aPalletAutoLoader_2" text="prawa" />
 		<text name="configuration_aPalletAutoLoader" text="Autozaładunek Palet" />
 		<text name="input_AL_LOAD_PALLET" text="Załaduj Palety" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Wybierz typ" />

@@ -5,3 +5,4 @@ modIcon.dds
 *.shapes
 translations/*.*
 Images/*.*
+Events/*.*

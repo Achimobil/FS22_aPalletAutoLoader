@@ -13,8 +13,8 @@
 		<text name="aPalletAutoLoader_bigBag" text="Big bag" />
         <text name="aPalletAutoLoader_cottonRoundbale238" text="Balle ronde coton"/>
         <text name="aPalletAutoLoader_tipside" text="Tipside"/>
-        <text name="aPalletAutoLoader_left" text="gauche"/>
-        <text name="aPalletAutoLoader_right" text="droite"/>
+        <text name="aPalletAutoLoader_1" text="gauche"/>
+        <text name="aPalletAutoLoader_2" text="droite"/>
         <text name="configuration_aPalletAutoLoader" text="Pallet AutoLoader"/>
         <text name="input_AL_LOAD_PALLET" text="Charger les palettes"/>
         <text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType"/>

@@ -5,11 +5,10 @@
 
 APalletAutoLoader = {}
 
-
-
-
-
-
+APalletAutoLoaderTipsides = {
+    LEFT = 1,
+    RIGHT = 2
+}
 
 ---
 function APalletAutoLoader.prerequisitesPresent(specializations)
@@ -60,6 +59,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "loadObject", APalletAutoLoader.loadObject)
     SpecializationUtil.registerFunction(vehicleType, "unloadAll", APalletAutoLoader.unloadAll)
     SpecializationUtil.registerFunction(vehicleType, "loadAllInRange", APalletAutoLoader.loadAllInRange)
+    SpecializationUtil.registerFunction(vehicleType, "SetTipside", APalletAutoLoader.SetTipside)
 end
 
 ---
@@ -266,17 +266,27 @@ function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inpu
     APalletAutoLoader.updateActionText(self);
 end
 
----
 function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
     
-    if spec.currentTipside == "left" then
-        spec.currentTipside = "right";
-    else
-        spec.currentTipside = "left";
+    local newTipside = APalletAutoLoaderTipsides.LEFT;
+    
+    if spec.currentTipside == APalletAutoLoaderTipsides.LEFT then
+        newTipside = APalletAutoLoaderTipsides.RIGHT;
     end
-    self:raiseDirtyFlags(spec.dirtyFlag)
-    APalletAutoLoader.updateActionText(self);
+    
+    SetTipsideEventEvent.sendEvent(self, newTipside)
+end
+
+function APalletAutoLoader:SetTipside(tipsideIndex)
+    local spec = self.spec_aPalletAutoLoader
+    
+    spec.currentTipside = tipsideIndex;
+    
+    if self.isClient then
+        -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
+        APalletAutoLoader.updateActionText(self);
+    end
 end
 
 function APalletAutoLoader.actionEventToggleMarkers(self, actionName, inputValue, callbackState, isAnalog)
@@ -314,7 +324,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.objectsToLoadCount = 0;    
     spec.dirtyFlag = self:getNextDirtyFlag()
     spec.numTriggeredObjects = 0
-    spec.currentTipside = "left";
+    spec.currentTipside = APalletAutoLoaderTipsides.LEFT;
     spec.currentautoLoadTypeIndex = 1;
     spec.available = false;
     spec.showMarkers = false;
@@ -327,8 +337,8 @@ function APalletAutoLoader:onLoad(savegame)
     spec.loadArea["height"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#height") or 2
     spec.loadArea["width"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#width") or 2
     spec.UnloadOffset = {}
-    spec.UnloadOffset["right"] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
-    spec.UnloadOffset["left"] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
+    spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
+    spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
     
     if spec.loadArea["baseNode"] == nil then
         return;
@@ -1137,7 +1147,6 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         -- print("Received from Client");
         local LoadNextObject = streamReadBool(streamId);
         spec.currentautoLoadTypeIndex = streamReadInt32(streamId);
-        spec.currentTipside = streamReadString(streamId);
         local callUnloadAll = streamReadBool(streamId);
         
         if LoadNextObject and spec.timerId == nil then
@@ -1166,6 +1175,11 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
             spec.currentautoLoadTypeIndex = currentautoLoadTypeIndex;
             hasChanges = true;
         end   
+        local currentTipside = streamReadInt32(streamId);
+        if spec.currentTipside ~= currentTipside then
+            spec.currentTipside = currentTipside;
+            hasChanges = true;
+        end   
         
         if hasChanges then
             APalletAutoLoader.updateActionText(self);
@@ -1185,7 +1199,6 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
         -- print("Send to Server");
         streamWriteBool(streamId, spec.LoadNextObject)
         streamWriteInt32(streamId, spec.currentautoLoadTypeIndex)
-        streamWriteString(streamId, spec.currentTipside)
         streamWriteBool(streamId, spec.callUnloadAll)
         
         -- zurücksetzen
@@ -1196,6 +1209,7 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
         streamWriteInt32(streamId, spec.numTriggeredObjects);
         streamWriteInt32(streamId, spec.objectsToLoadCount); 
         streamWriteInt32(streamId, spec.currentautoLoadTypeIndex);
+        streamWriteInt32(streamId, spec.currentTipside)
     end
 end
 

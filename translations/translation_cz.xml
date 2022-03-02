@@ -13,8 +13,8 @@
 		<text name="aPalletAutoLoader_bigBag" text="BigBag" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Kulatý balík bavlny" />
 		<text name="aPalletAutoLoader_tipside" text="Strana vyložení" />
-		<text name="aPalletAutoLoader_left" text="vlevo" />
-		<text name="aPalletAutoLoader_right" text="vpravo" />
+		<text name="aPalletAutoLoader_1" text="vlevo" />
+		<text name="aPalletAutoLoader_2" text="vpravo" />
 		<text name="configuration_aPalletAutoLoader" text="Autoload na palety" />
 		<text name="input_AL_LOAD_PALLET" text="Naložit Palety" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Přepnout typ nákladu" />

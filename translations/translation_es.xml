@@ -13,8 +13,8 @@
 		<text name="aPalletAutoLoader_bigBag" text="Sacos grandes" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
 		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
-		<text name="aPalletAutoLoader_left" text="izquierda" />
-		<text name="aPalletAutoLoader_right" text="derecha" />
+		<text name="aPalletAutoLoader_1" text="izquierda" />
+		<text name="aPalletAutoLoader_2" text="derecha" />
 		<text name="configuration_aPalletAutoLoader" text="Carga Automática de palés" />
 		<text name="input_AL_LOAD_PALLET" text="Cargar palés" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambiar tipo de carga" />
