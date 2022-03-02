@@ -275,7 +275,7 @@ function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue
         newTipside = APalletAutoLoaderTipsides.RIGHT;
     end
     
-    SetTipsideEventEvent.sendEvent(self, newTipside)
+    SetTipsideEvent.sendEvent(self, newTipside)
 end
 
 function APalletAutoLoader:SetTipside(tipsideIndex)

@@ -8,7 +8,7 @@ local function init()
     g_specializationManager:addSpecialization("aPalletAutoLoader", "APalletAutoLoader", modDirectory .. "APalletAutoLoader.lua", nil)
     
     -- load events
-    local path = modDirectory .. "Events/SetTipsideEventEvent.lua";
+    local path = modDirectory .. "Events/SetTipsideEvent.lua";
     source(path)
 end
 
