@@ -60,6 +60,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "unloadAll", APalletAutoLoader.unloadAll)
     SpecializationUtil.registerFunction(vehicleType, "loadAllInRange", APalletAutoLoader.loadAllInRange)
     SpecializationUtil.registerFunction(vehicleType, "SetTipside", APalletAutoLoader.SetTipside)
+    SpecializationUtil.registerFunction(vehicleType, "SetAutoloadType", APalletAutoLoader.SetAutoloadType)
 end
 
 ---
@@ -257,13 +258,25 @@ end
 function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
     
+    local newAutoLoadTypeIndex;
     if spec.currentautoLoadTypeIndex >= #spec.autoLoadTypes then
-        spec.currentautoLoadTypeIndex = 1;
+        newAutoLoadTypeIndex = 1;
     else
-        spec.currentautoLoadTypeIndex = spec.currentautoLoadTypeIndex + 1;
+        newAutoLoadTypeIndex = spec.currentautoLoadTypeIndex + 1;
     end
-    self:raiseDirtyFlags(spec.dirtyFlag)
-    APalletAutoLoader.updateActionText(self);
+    
+    SetAutoloadTypeEvent.sendEvent(self, newAutoLoadTypeIndex)
+end
+
+function APalletAutoLoader:SetAutoloadType(newAutoLoadTypeIndex)
+    local spec = self.spec_aPalletAutoLoader
+    
+    spec.currentautoLoadTypeIndex = newAutoLoadTypeIndex;
+    
+    if self.isClient then
+        -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
+        APalletAutoLoader.updateActionText(self);
+    end
 end
 
 function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue, callbackState, isAnalog)
@@ -1146,7 +1159,6 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
     if not connection:getIsServer() then
         -- print("Received from Client");
         local LoadNextObject = streamReadBool(streamId);
-        spec.currentautoLoadTypeIndex = streamReadInt32(streamId);
         local callUnloadAll = streamReadBool(streamId);
         
         if LoadNextObject and spec.timerId == nil then
@@ -1198,7 +1210,6 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
     if connection:getIsServer() then
         -- print("Send to Server");
         streamWriteBool(streamId, spec.LoadNextObject)
-        streamWriteInt32(streamId, spec.currentautoLoadTypeIndex)
         streamWriteBool(streamId, spec.callUnloadAll)
         
         -- zurücksetzen

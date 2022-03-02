@@ -1,46 +1,46 @@
-SetTipsideEventEvent = {}
-local SetTipsideEventEvent_mt = Class(SetTipsideEventEvent, Event)
-InitEventClass(SetTipsideEventEvent, "SetTipsideEventEvent")
+SetAutoloadTypeEvent = {}
+local SetAutoloadTypeEvent_mt = Class(SetAutoloadTypeEvent, Event)
+InitEventClass(SetAutoloadTypeEvent, "SetAutoloadTypeEvent")
 
 ---
-function SetTipsideEventEvent.emptyNew()
-    local self = Event.new(SetTipsideEventEvent_mt)
+function SetAutoloadTypeEvent.emptyNew()
+    local self = Event.new(SetAutoloadTypeEvent_mt)
     return self
 end
 
 ---
-function SetTipsideEventEvent.new(aPalletAutoLoader, tipsideIndex)
-    local self = SetTipsideEventEvent.emptyNew()
+function SetAutoloadTypeEvent.new(aPalletAutoLoader, autoloadTypeIndex)
+    local self = SetAutoloadTypeEvent.emptyNew()
     
     self.aPalletAutoLoader = aPalletAutoLoader
-    self.tipsideIndex = tipsideIndex
+    self.autoloadTypeIndex = autoloadTypeIndex
 
     return self
 end
 
 ---
-function SetTipsideEventEvent:readStream(streamId, connection)
+function SetAutoloadTypeEvent:readStream(streamId, connection)
     self.aPalletAutoLoader = NetworkUtil.readNodeObject(streamId)
-    self.tipsideIndex = streamReadInt32(streamId)
+    self.autoloadTypeIndex = streamReadInt32(streamId)
     
     self:run(connection)
 end
 
 ---
-function SetTipsideEventEvent:writeStream(streamId, connection)
+function SetAutoloadTypeEvent:writeStream(streamId, connection)
     NetworkUtil.writeNodeObject(streamId, self.aPalletAutoLoader) 
-    streamWriteInt32(streamId, self.tipsideIndex)
+    streamWriteInt32(streamId, self.autoloadTypeIndex)
 end
 
 ---
-function SetTipsideEventEvent:run(connection)
-    assert(not connection:getIsServer(), "SetTipsideEventEvent is client to server only")
+function SetAutoloadTypeEvent:run(connection)
+    assert(not connection:getIsServer(), "SetAutoloadTypeEvent is client to server only")
 
     -- eintragen was vom client gebraucht wird in die spec
     local spec = self.aPalletAutoLoader;
-    spec:SetTipside(self.tipsideIndex)
+    spec:SetAutoloadType(self.autoloadTypeIndex)
 end
 
-function SetTipsideEventEvent.sendEvent(aPalletAutoLoader, tipsideIndex)
-    g_client:getServerConnection():sendEvent(SetTipsideEventEvent.new(aPalletAutoLoader, tipsideIndex))
+function SetAutoloadTypeEvent.sendEvent(aPalletAutoLoader, autoloadTypeIndex)
+    g_client:getServerConnection():sendEvent(SetAutoloadTypeEvent.new(aPalletAutoLoader, autoloadTypeIndex))
 end

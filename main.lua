@@ -9,6 +9,7 @@ local function init()
     
     -- load events
     local path = modDirectory .. "Events/SetTipsideEvent.lua";
+    local path = modDirectory .. "Events/SetAutoloadTypeEvent.lua";
     source(path)
 end
 
