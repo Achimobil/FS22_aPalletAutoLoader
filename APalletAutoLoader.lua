@@ -235,7 +235,7 @@ function APalletAutoLoader.updateActionText(self)
         if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. "unknown"
         else
-            loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
+            loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (max. " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems .. ")"
         end
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
         
@@ -379,6 +379,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.loadArea["lenght"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#lenght") or 5
     spec.loadArea["height"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#height") or 2
     spec.loadArea["width"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#width") or 2
+    spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
     spec.UnloadOffset = {}
     spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
@@ -524,6 +525,12 @@ function APalletAutoLoader:onLoad(savegame)
                 table.insert(autoLoadObject.places, place)
             end
             
+            local amountPerLayer = #autoLoadObject.places;
+            local maxLayers = math.floor(spec.loadArea["height"] / autoLoadObject.sizeY);
+            if autoLoadObject.type == "bigBag" then maxLayers = 1 end
+            local maxAmountForLayers = amountPerLayer * maxLayers;
+            autoLoadObject.maxItems = math.min(maxAmountForLayers, spec.maxObjects); 
+            
             if #autoLoadObject.places ~= 0 then
                 table.insert(spec.autoLoadTypes, autoLoadObject)
             end
@@ -565,7 +572,6 @@ function APalletAutoLoader:onLoad(savegame)
         spec.supportedObject = self.xmlFile:getValue(baseXmlPath .. "#supportedObject")
 
         spec.fillUnitIndex = self.xmlFile:getValue(baseXmlPath .. "#fillUnitIndex")
-        spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
         spec.useTensionBelts = self.xmlFile:getValue(baseXmlPath .. "#useTensionBelts", not GS_IS_MOBILE_VERSION)
     end
     
