@@ -1138,7 +1138,13 @@ function APalletAutoLoader:loadObject(object)
                             spec.balesToLoad[object] = nil;
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
                         end
+                        
+                        if spec.numTriggeredObjects >= currentAutoLoadType.maxItems then
+                            spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
+                        end
+                        
                         self:raiseDirtyFlags(spec.dirtyFlag)
+                        
                         return true;
                     else
                         spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
