@@ -20,7 +20,6 @@ function APalletAutoLoader.prerequisitesPresent(specializations)
     return true
 end
 
----
 function APalletAutoLoader.initSpecialization()
     print("init aPalletAutoLoader");
     g_configurationManager:addConfigurationType("aPalletAutoLoader", g_i18n:getText("configuration_aPalletAutoLoader"), "aPalletAutoLoader", nil, nil, nil, ConfigurationUtil.SELECTOR_MULTIOPTION)
@@ -51,7 +50,6 @@ function APalletAutoLoader.initSpecialization()
     schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_aPalletAutoLoader.aPalletAutoLoader#lastUsedPalletTypeIndex", "Last used pallet type")
 end
 
----
 function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "getIsValidObject", APalletAutoLoader.getIsValidObject)
     SpecializationUtil.registerFunction(vehicleType, "getIsAutoLoadingAllowed", APalletAutoLoader.getIsAutoLoadingAllowed)
@@ -70,12 +68,11 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
 end
 
----
 function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
     SpecializationUtil.registerOverwrittenFunction(vehicleType, "getDynamicMountTimeToMount", APalletAutoLoader.getDynamicMountTimeToMount)
+	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getUseTurnedOnSchema", APalletAutoLoader.getUseTurnedOnSchema)
 end
 
----
 function APalletAutoLoader.registerEventListeners(vehicleType)
     SpecializationUtil.registerEventListener(vehicleType, "onLoad", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onPostLoad", APalletAutoLoader)
@@ -1424,4 +1421,9 @@ function APalletAutoLoader:onDeleteObjectToLoad(object)
     else
         APalletAutoLoader.updateActionText(self);
     end
+end
+
+function APalletAutoLoader:getUseTurnedOnSchema()
+    local spec = self.spec_aPalletAutoLoader
+	return spec.loadingState == APalletAutoLoaderLoadingState.RUNNING
 end
