@@ -2,8 +2,8 @@
 <l10n>
 	<translationContributors>the.geremy, Mara</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_nothingToLoad" text="Autoload: nic pro naložení" />
-		<text name="aPalletAutoLoader_loadPallets" text="automaticky naložit" />
+		<text name="aPalletAutoLoader_stopLoading" text="Deaktivace automatického načítání" />
+		<text name="aPalletAutoLoader_startLoading" text="Aktivace automatického načítání" />
 		<text name="function_PalletAutoload_Trailer" text="Přívěs s autoloadem na palety" />
 		<text name="PalletAutoload_Trailer" text="Autoload na palety" />
 		<text name="aPalletAutoLoader_LoadingType" text="Typ nákladu" />

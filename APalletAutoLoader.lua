@@ -10,6 +10,11 @@ APalletAutoLoaderTipsides = {
     RIGHT = 2
 }
 
+APalletAutoLoaderLoadingState = {
+    STOPPED = 1,
+    RUNNING = 2
+}
+
 ---
 function APalletAutoLoader.prerequisitesPresent(specializations)
     return true
@@ -61,6 +66,8 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "loadAllInRange", APalletAutoLoader.loadAllInRange)
     SpecializationUtil.registerFunction(vehicleType, "SetTipside", APalletAutoLoader.SetTipside)
     SpecializationUtil.registerFunction(vehicleType, "SetAutoloadType", APalletAutoLoader.SetAutoloadType)
+    SpecializationUtil.registerFunction(vehicleType, "SetLoadingState", APalletAutoLoader.SetLoadingState)
+    SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
 end
 
 ---
@@ -155,7 +162,6 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
     end
 end
 
----
 function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForInputIgnoreSelection)
     if self.isClient then
         local spec = self.spec_aPalletAutoLoader 
@@ -196,7 +202,6 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
     end
 end
 
----
 function APalletAutoLoader.updateActionText(self)
     if self.isClient then
         local spec = self.spec_aPalletAutoLoader
@@ -210,16 +215,22 @@ function APalletAutoLoader.updateActionText(self)
             return;
         end
         
-        local text;
-        if spec.objectsToLoadCount == 0 then
-            text = g_i18n:getText("aPalletAutoLoader_nothingToLoad")
-            g_inputBinding:setActionEventActive(spec.actionEventId, false)
+        if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
+            local text = g_i18n:getText("aPalletAutoLoader_startLoading")
+            if spec.objectsToLoadCount ~= 0 then text = text  .. ": " .. spec.objectsToLoadCount end
+            g_inputBinding:setActionEventText(spec.actionEventId, text)
+            if spec.objectsToLoadCount == 0 and spec.numTriggeredObjects == 0 then
+                g_inputBinding:setActionEventActive(spec.actionEventId, false)
+            else
+                g_inputBinding:setActionEventActive(spec.actionEventId, true)
+            end
         else
-            text = g_i18n:getText("aPalletAutoLoader_loadPallets") .. ": " .. spec.objectsToLoadCount
+            local text = g_i18n:getText("aPalletAutoLoader_stopLoading")
+            if spec.objectsToLoadCount ~= 0 then text = text  .. ": " .. spec.objectsToLoadCount end
             g_inputBinding:setActionEventText(spec.actionEventId, text)
             g_inputBinding:setActionEventActive(spec.actionEventId, true)
-        end
-        
+        end         
+                
         local loadingText = ""
         if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. "unknown"
@@ -238,23 +249,43 @@ function APalletAutoLoader.updateActionText(self)
     end
 end
 
----
 function APalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
     
-    if not self.isServer then
-        -- Ladebefehl in den stream schreiben
-        spec.LoadNextObject = true;
-        self:raiseDirtyFlags(spec.dirtyFlag)
+    if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
+        SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.RUNNING)
     else
-        if (spec.timerId == nil) then
-            self:loadAllInRange();
-            APalletAutoLoader.updateActionText(self);
-        end
+        SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.STOPPED)
     end
 end
 
----
+function APalletAutoLoader:SetLoadingState(newLoadingState)
+    local spec = self.spec_aPalletAutoLoader
+    
+    spec.loadingState = newLoadingState;
+    
+    if self.isClient then
+        -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
+        APalletAutoLoader.updateActionText(self);
+    end
+    
+    if self.isServer then
+        -- Starten des Ladetimers, wenn der neue Status aktiv ist
+        if spec.loadingState == APalletAutoLoaderLoadingState.RUNNING then
+            self:StartLoading();
+        end
+        
+    end
+end
+
+function APalletAutoLoader:StartLoading()
+    local spec = self.spec_aPalletAutoLoader
+    
+    if (spec.timerId ~= nil) then return end;
+    
+    self:loadAllInRange();
+end
+
 function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
     
@@ -308,7 +339,6 @@ function APalletAutoLoader.actionEventToggleMarkers(self, actionName, inputValue
     spec.showMarkers = not spec.showMarkers;
 end
 
----
 function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
     
@@ -332,7 +362,6 @@ function APalletAutoLoader:onLoad(savegame)
     -- hier für server und client
     self.spec_aPalletAutoLoader = {}
     local spec = self.spec_aPalletAutoLoader
-    spec.LoadNextObject = false;
     spec.callUnloadAll = false;
     spec.objectsToLoadCount = 0;    
     spec.dirtyFlag = self:getNextDirtyFlag()
@@ -341,6 +370,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.currentautoLoadTypeIndex = 1;
     spec.available = false;
     spec.showMarkers = false;
+    spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
     
     -- load the loading area
     spec.loadArea = {};
@@ -950,6 +980,9 @@ function APalletAutoLoader:loadAllInRange()
     for _, object in pairs(spec.objectsToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
+            if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then 
+                break;
+            end
             loaded = self:loadObject(object);
             if loaded then 
                 break;
@@ -959,6 +992,9 @@ function APalletAutoLoader:loadAllInRange()
     for object,_  in pairs(spec.balesToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
+            if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then 
+                break;
+            end
             loaded = self:loadObject(object);
             if loaded then 
                 break;
@@ -1098,6 +1134,8 @@ function APalletAutoLoader:loadObject(object)
                         end
                         self:raiseDirtyFlags(spec.dirtyFlag)
                         return true;
+                    else
+                        spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
                     end
                 end
             end
@@ -1110,6 +1148,8 @@ end
 ---
 function APalletAutoLoader:unloadAll()
     local spec = self.spec_aPalletAutoLoader
+    
+    spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
 
     for object,_ in pairs(spec.triggeredObjects) do
         if object ~= nil and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) then
@@ -1158,13 +1198,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
 
     if not connection:getIsServer() then
         -- print("Received from Client");
-        local LoadNextObject = streamReadBool(streamId);
         local callUnloadAll = streamReadBool(streamId);
-        
-        if LoadNextObject and spec.timerId == nil then
-            -- Load like on non dedi serverside
-            self:loadAllInRange();
-        end
         
         if callUnloadAll then
             self:unloadAll()
@@ -1192,6 +1226,11 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
             spec.currentTipside = currentTipside;
             hasChanges = true;
         end   
+        local loadingState = streamReadInt32(streamId);
+        if spec.loadingState ~= loadingState then
+            spec.loadingState = loadingState;
+            hasChanges = true;
+        end   
         
         if hasChanges then
             APalletAutoLoader.updateActionText(self);
@@ -1209,11 +1248,9 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
 
     if connection:getIsServer() then
         -- print("Send to Server");
-        streamWriteBool(streamId, spec.LoadNextObject)
         streamWriteBool(streamId, spec.callUnloadAll)
         
         -- zurücksetzen
-        spec.LoadNextObject = false;
         spec.callUnloadAll = false;
     else
         -- print("Send to Client");
@@ -1221,6 +1258,7 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
         streamWriteInt32(streamId, spec.objectsToLoadCount); 
         streamWriteInt32(streamId, spec.currentautoLoadTypeIndex);
         streamWriteInt32(streamId, spec.currentTipside)
+        streamWriteInt32(streamId, spec.loadingState)
     end
 end
 
@@ -1253,6 +1291,10 @@ function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActor
                                 object:addDeleteListener(self, "onDeleteObjectToLoad")
                             end
                         end
+                    end
+                    -- Ladevorgang starten, wenn Laden aktiv
+                    if spec.loadingState == APalletAutoLoaderLoadingState.RUNNING then
+                        self:StartLoading();
                     end
                 elseif onLeave then
                     if not object:isa(Bale) then

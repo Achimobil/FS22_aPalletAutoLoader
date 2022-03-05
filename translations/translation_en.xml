@@ -2,8 +2,8 @@
 <l10n>
 	<translationContributors>Achimobil</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_nothingToLoad" text="Autoload: nothing" />
-		<text name="aPalletAutoLoader_loadPallets" text="enable Autoload" />
+		<text name="aPalletAutoLoader_stopLoading" text="Disable Autoload" />
+		<text name="aPalletAutoLoader_startLoading" text="Enable Autoload" />
 		<text name="function_PalletAutoload_Trailer" text="Trailer with Autoload for pallets" />
 		<text name="PalletAutoload_Trailer" text="Pallet Autoload" />
 		<text name="aPalletAutoLoader_LoadingType" text="LoadingType" />

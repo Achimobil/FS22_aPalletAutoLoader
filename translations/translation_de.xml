@@ -2,8 +2,8 @@
 <l10n>
 	<translationContributors>Achimobil</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_nothingToLoad" text="Autoload: nichts zu laden" />
-		<text name="aPalletAutoLoader_loadPallets" text="Autoload Paletten" />
+		<text name="aPalletAutoLoader_stopLoading" text="Autoload abschalten" />
+		<text name="aPalletAutoLoader_startLoading" text="Autoload einschalten" />
 		<text name="function_PalletAutoload_Trailer" text="Anhänger mit Autoload für Paletten" />
 		<text name="PalletAutoload_Trailer" text="Paletten Autoloader" />
 		<text name="aPalletAutoLoader_LoadingType" text="Ladegut" />

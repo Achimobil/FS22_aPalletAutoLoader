@@ -2,8 +2,8 @@
 <l10n>
 	<translationContributors>nagor</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_nothingToLoad" text="Автопогрузка: отключена" />
-		<text name="aPalletAutoLoader_loadPallets" text="Автопогрузка: погрузить" />
+		<text name="aPalletAutoLoader_stopLoading" text="Деактивировать автозагрузку" />
+		<text name="aPalletAutoLoader_startLoading" text="Активировать автозагрузку" />
 		<text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов" />
 		<text name="PalletAutoload_Trailer" text="Автопогрузка поддонов" />
 		<text name="aPalletAutoLoader_LoadingType" text="Автопогрузка" />
