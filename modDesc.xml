@@ -83,13 +83,20 @@ Changelog 1.4.2.0
 - 125cm wood chips bales added
 
 Changelog 1.5.0.0
-- Bigbags hinzugefügt
-- Übersetzungen verbessert
-- Spanngurte automatisch anziehen. Muss vom Modder des Trailers aktiviert werden (useTensionBelts="true")
-- Ballen laden in Bewegung verbessert
-- Support von Mod "Paket Von Premium-Paletten Und Säcken"
-- Support von Mod "HoT Pommes Factory"
-- Quaderballen 180/220/240 hinzugefügt
+- Bigbags added
+- Translations improved
+- Tension belts automatically tightened. Must be activated by the trailer modder (useTensionBelts="true")
+- Bale loading in motion improved
+- Support of mod "Package of Premium Pallets and Sacks".
+- Support of mod "HoT Pommes Factory
+- Added square bales 180/220/240
+
+Changelog 1.6.0.0
+- Modification of the communication with the Dedi Server to improve the performance.
+- Loading mode now remains active until the trailer is full or it is switched off. Tension belts are tightened in between if the trailer supports it.
+- Vehicle scheme shows when loading is activated.
+- Maximum capacity displayed when load selection is made.
+- Automatic tensioning straps deactivated on Dedi Server because of the bug from patch 1.3.
 ]]>
         </en>
         <de>
@@ -171,6 +178,13 @@ Changelog 1.5.0.0
 - Support von Mod "Paket Von Premium-Paletten Und Säcken"
 - Support von Mod "HoT Pommes Factory"
 - Quaderballen 180/220/240 hinzugefügt
+
+Changelog 1.6.0.0
+- Umbau der Kommunikation mit dem Dedi Server zur Verbesserung der Performance.
+- Lademodus bleibt nun aktiv bis der Trailer voll ist oder er abgeschaltet wird. Spangurte werden zwischendurch angezogen, wenn der Trailer das unterstützt.
+- Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
+- Anzeige der Maximal Kapazität bei der Ladegutauswahl.
+- Automatische Spanngurte deaktiviert auf Dedi Server wegen dem Fehler aus Patch 1.3
 ]]>
         </de>
         <it>
@@ -251,6 +265,13 @@ v1.5.0.0
 - Supporto del mod "Pacchetto di pallet e sacchi Premium".
 - Supporto del mod "HoT Pommes Factory
 - Aggiunta di balle quadrate 180/220/240
+
+v1.6.0.0
+- Modifica della comunicazione con il server Dedi per migliorare le prestazioni.
+- La modalità di carico ora rimane attiva fino a quando il rimorchio è pieno o viene spento. Le cinghie di tensione si stringono tra loro se il rimorchio lo sostiene.
+- Lo schema del veicolo mostra quando il caricamento è attivato.
+- Capacità massima visualizzata quando si seleziona il carico.
+- Cinghie di tensionamento automatico disattivate su Dedi Server a causa del bug della patch 1.3.
 ]]>
         </it>
         <fr>
@@ -332,6 +353,13 @@ Journal des modifications 1.5.0.0
 - Support du mod "Paquet de palettes Premium et de sacs".
 - Support du mod "HoT Pommes Factory".
 - Ajout des balles cubiques 180/220/240
+
+Journal des modifications 1.6.0.0
+- Modification de la communication avec le serveur Dedi pour améliorer les performances.
+- Le mode de chargement reste désormais actif jusqu'à ce que la remorque soit pleine ou qu'elle soit éteinte. Les ceintures de sécurité sont mises en place de temps en temps si la remorque le permet.
+- Le schéma du véhicule indique si le chargement est activé.
+- Affichage de la capacité maximale lors de la sélection du chargement.
+- Sangles automatiques désactivées sur le serveur Dedi à cause du bug du patch 1.3.
 ]]>
         </fr>
         <es>
@@ -413,6 +441,13 @@ Registro de cambios 1.5.0.0
 - Soporte del mod "Paquete de Paletas y Sacos Premium".
 - Soporte del mod "HoT Pommes Factory
 - Pacas cuadradas añadidas 180/220/240
+
+Registro de cambios 1.6.0.0
+- Modificación de la comunicación con el Servidor Dedi para mejorar el rendimiento.
+- El modo de carga ahora permanece activo hasta que el remolque esté lleno o se apague. Los cinturones de tensión se tensan entre ellos si el remolque lo soporta.
+- El esquema del vehículo muestra cuando se activa la carga.
+- Visualización de la capacidad máxima durante la selección de la carga.
+- Correas de tensión automáticas desactivadas en el Servidor Dedi debido al error del parche 1.3.
 ]]>
         </es>
     </description>
