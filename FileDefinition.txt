@@ -4,5 +4,4 @@ modIcon.dds
 *.xml
 *.shapes
 translations/*.*
-Images/*.*
 Events/*.*
