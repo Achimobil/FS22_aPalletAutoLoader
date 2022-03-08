@@ -38,28 +38,6 @@ You can also switch it off yourself with [R].
 
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
-Changelog 1.0.1.0
-- Error for Cotton Round Bales on Dedi solved
-- small changed loading/unloading behavior to work against the wrong display of the Engine in Dedi
-
-Changelog 1.2.0.0
-- Missing translations added for shop.
-- Change bindings to be configurable bindings for minimizing double usage.
-- Sapling pallets could now be loaded with the Euro pallet setting. 
-- New loading type for oversized Europallets like the ones from KsAG or Schaumann (smaller loading capacity).
-- Change loading to load everything automatic what is in range with one time pressing [R].
-- Pioneer pallet is now loadable with the oversized setting.
-
-Changelog 1.2.1.0
-- Improved translation for RU
-- Translations added for IT and FR
-- Fixed lua bug when selling after unloading
-- Created my own mod icon
-
-Changelog 1.2.2.0
-- Translations added for PL
-- Predefines buttons for default gamepad
-
 Changelog 1.3.0.0
 - Changes to Mod Image and Description for the ModHub publish
 - Added ES
@@ -126,28 +104,6 @@ Ihr könnt es aber auch mit [R] wieder selbst abschalten.
 
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
-Changelog 1.0.1.0:
-- Fehler für Baumwollrundballen auf Dedi behoben
-- kleine Anpassung am Lade/Entlade Verhalten um der Fehlerhaften Anzeige durch die Engine auf dem Dedi entgegenzuwirken
-
-Changelog 1.2.0.0:
-- Fehlende Übersetzungen für Shop eingefügt.
-- Umstellung auf eigene Bindings, um Doppelbelegungen zu minimieren.
-- Setzlingspaletten können jetzt mit Europlatten geladen werden.
-- Neuer Ladetyp für überladene Europaletten wie z.B. die von KsAG oder Schaumann (geringere Ladekapazität).
-- Ladeverhalten auf Automatisches Aufladen aller Paletten in Reichweite umgebaut. Einmal [R] drücken und alles wird aufgeladen.
-- Palette von Pioneer fällt jetzt unter überladene Europaletten.
-
-Changelog 1.2.1.0:
-- RU Übersetzung verbessert
-- Übersetzung in IT und FR
-- lua Fehler beim verkaufen nach abladen behoben
-- Eigenes Mod Icon erstellt.
-
-Changelog 1.2.2.0:
-- Übersetzung in PL
-- Standard Gamepad Tasten vorbelegt
-
 Changelog 1.3.0.0:
 - Änderungen am Mod Icon und der Beschreibung für die ModHub-Veröffentlichung
 - ES hinzugefügt
@@ -213,28 +169,6 @@ Il caricamento si spegne automaticamente quando non c'è più area di carico.
 Potete anche spegnerlo voi stessi con [R].
 
 Changelog:
-v1.0.1.0
-- Risolto un bug per le balle rotonde di cotone su Dedi
-- Piccolo aggiustamento al comportamento di carico/scarico per contrastare l'errata visualizzazione da parte del Engine sul Dedi
-
-v1.2.0.0
-- Aggiunte traduzioni mancanti per il negozio.
-- Passaggio alle proprie associazioni per ridurre al minimo le doppie assegnazioni.
-- Ora è possibile caricare i pallet di alberello con l'impostazione Europallet.
-- Nuovo tipo di caricamento per Europallet sovradimensionati come quelli di KsAG o Schaumann (capacità di carico ridotta).
-- Il comportamento di caricamento è stato convertito in caricamento automatico di tutti i tipi di pallet a portata del raggio d'azione. Basta premere una volta il tasto [R] e tutto viene caricato.
-- Il pallet Pioneer è ora caricabile con l'impostazione sovradimensionata.
-
-v1.2.1.0
-- Traduzione migliorata per RU
-- Aggiunta traduzione per IT e FR
-- Corretto l'errore lua durante la vendita dopo lo scarico
-- Creazione icona mod
-
-v1.2.2.0
-- Traduzione in PL
-- Pulsanti predefiniti pre-assegnati per il gamepad
-
 v1.3.0.0
 - Modifiche all'icona Mod e alla descrizione per la pubblicazione sul ModHub
 - Aggiunto ES
@@ -301,28 +235,6 @@ Vous pouvez également le désactiver vous-même avec [R].
 
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
-Journal des modifications 1.0.1.0
-- Erreur pour les balles carrées de coton sur Dedi résolue
-- petite modification du comportement de chargement/déchargement pour lutter contre le mauvais affichage du moteur dans Dedi
-
-Journal des modifications 1.2.0.0
-- Traductions manquantes ajoutées pour la boutique.
-- Modifiez les liaisons en liaisons configurables pour minimiser la double utilisation.
-- Les palettes de gaules peuvent maintenant être chargées avec le réglage de l'Europalette.
-- Nouveau type de chargement pour les europalettes surdimensionnées comme celles de KsAG ou Schaumann (capacité de chargement moindre).
-- Modifiez le chargement pour charger automatiquement tout ce qui est à portée en appuyant une fois sur [R].
-- La palette Pioneer est maintenant chargeable avec le réglage surdimensionné.
-
-Journal des modifications 1.2.1.0
-- Traduction améliorée pour RU
-- Traductions ajoutées pour IT en FR
-- Correction d'un bug lua lors de la vente après le déchargement
-- Création de ma propre icône de mod
-
-Journal des modifications 1.2.2.0
-- Traduction en PL
-- Boutons prédéfinis pour la manette de jeu par défaut
-
 Journal des modifications 1.3.0.0
 - Modifications de l'image et de la description du mod pour la publication ModHub
 - ES ajoutée
@@ -388,28 +300,6 @@ La carga se desconecta automáticamente cuando no hay más zona de carga.
 También puedes apagarlo tú mismo con [R].
 
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
-
-Registro de cambios 1.0.1.0
-- Error con las pacas redondas de algodón en Dedi solucionado
-- Pequeño cambio en el comportamiento de carga/descarga para contrarrestar la visualización incorrecta de Engine en Dedi
-
-Registro de cambios 1.2.0.0
-- Se agregaron traducciones faltantes para la tienda.
-- Cambiar los enlaces para que sean enlaces configurables para minimizar el doble uso.
-- Los palés de plantones ahora se pueden cargar con la configuración de palé europeo.
-- Nuevo tipo de carga para Europalés sobredimensionados como los de KsAG o Schaumann (menor capacidad de carga).
-- Cambiado el comportamiento de carga para cargar automáticamente todo lo que está dentro del alcance con una sola pulsación de [R].
-- El palé Pioneer ahora se puede cargar con la configuración de Europalés sobredimensionados.
-
-Registro de cambios 1.2.1.0
-- Traducción mejorada para RU
-- Traducciones agregadas para IT en FR
-- Se corrigió el error de lua al vender después de descargar
-- Creé mi propio modIcon
-
-Registro de cambios 1.2.2.0
-- Traducción en PL
-- Botones predefinidos para gamepad predeterminado
 
 Registro de cambios 1.3.0.0
 - Cambios en la imagen y la descripción de Mod para la publicación de ModHub
