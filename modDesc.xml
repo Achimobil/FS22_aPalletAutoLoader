@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.5.0.0</version>
+    <version>1.6.0.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -25,13 +25,16 @@ Currently supported from the standard game:
 Pallets from the following mods can be used:
 - Package Of Premium Pallets And Bags
 - HoT Fries Factory
+In addition, all Euro pallets that are constructed according to the principle of the basic play pallets.
 
-How to use:
-Drive next to the pallets and then with [R] you can start the loading process.
-Make sure you have selected the correct pallet type.
-The pallets are then as loaded by hand on the loading area. 
-Fasten with straps before you drive, otherwise it fell of.
-You can choose the unloading side and unload it.
+Operation:
+Drive next to a pallet or bale and activate the load with [R].
+Make sure that you have selected the correct load.
+The pallets or bales will then lie on the loading area as if they were loaded by hand. 
+Do not forget to fasten the straps, otherwise they will slip.
+You can select the unloading side with [U] and unload with [I].
+The loading switches off automatically when there is no more loading area.
+You can also switch it off yourself with [R].
 
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
@@ -103,13 +106,16 @@ Aktuell wird aus dem Standard Spiel unterstützt:
 Palleten aus den folgenden Mods sind nutzbar:
 - Paket Von Premium-Paletten Und Säcken
 - HoT Pommes Factory
+Außerdem alle Euro Paletten, die nach dem Prinzip der Basis Spiel Paletten aufgebaut sind.
 
 Bedienung:
-Fahrt neben die Paletten um dann mit [R] das laden zu starten.
-Achtet darauf, dass ihr auch die richtigen Palettenart ausgewählt habt.
-Die Paletten liegen dann, wie von Hand geladen, auf der Ladefläche. 
+Fahrt neben eine Palette oder einen Ballen und aktiviert mit [R] das laden.
+Achtet darauf, dass ihr auch das richtige Ladegut ausgewählt habt.
+Die Paletten oder Ballen liegen dann, wie von Hand geladen, auf der Ladefläche. 
 Nicht vergessen das Ihr Spanngurte anlegt, sonst rutschen sie.
-Ihr könnt die Entladeseite wählen und entladen.
+Ihr könnt die Entladeseite mit [U] wählen und mit [I] entladen.
+Das Laden schaltet sich automatisch ab, wenn kein Ladeplatz mehr gefunden wird.
+Ihr könnt es aber auch mit [R] wieder selbst abschalten.
 
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
@@ -181,13 +187,16 @@ Attualmente supportato dal gioco standard:
 Si possono usare i pallet dei seguenti mod:
 - Pacchetto di pallet e borse Premium
 - Fabbrica di patatine fritte HoT
+Inoltre, tutti gli Euro pallet che sono costruiti secondo il principio dei pallet di base del gioco.
 
-Come si usa:
-- Assicurati di aver selezionato il tipo di pallet corretto.
-- Avvicinati ai pallet e poi col tasto [R] per caricare.
-- I pallet sono quindi come caricati a mano sull'area di carico.
-- Fissa il carico con le cinghie prima di guidare, altrimenti cascano a terra.
-- Puoi scegliere il lato di scarico e scaricare col tasto I.
+Operazione:
+Guida accanto a un pallet o a una balla e attiva il carico con [R].
+Assicuratevi di aver selezionato il carico corretto.
+I pallet o le balle giacciono poi sull'area di carico come se fossero stati caricati a mano. 
+Non dimenticate di allacciare le cinghie, altrimenti scivoleranno.
+Potete selezionare il lato di scarico con [U] e scaricare con [I].
+Il caricamento si spegne automaticamente quando non c'è più area di carico.
+Potete anche spegnerlo voi stessi con [R].
 
 Changelog:
 v1.0.1.0
@@ -258,13 +267,16 @@ Actuellement, le jeu standard est pris en charge :
 Les palettes des Mods suivants sont utilisables :
 - Paquet De Palettes Premium Et De Sacs
 - Usine de frites HoT
+En outre, toutes les palettes Europe construites selon le principe des palettes de jeu de base.
 
-Comment utiliser:
-Conduisez à côté des palettes, puis avec R, vous pouvez charger une palette après l'autre.
-Assurez-vous d'avoir sélectionné le bon type de palette.
-Les palettes sont alors comme chargées à la main sur la zone de chargement.
-Fixez avec des sangles avant de conduire, sinon il tombe.
-Vous pouvez choisir le côté de déchargement et le décharger.
+Manipulation :
+Roulez à côté d'une palette ou d'une balle et activez le chargement avec [R].
+Veillez à ce que vous ayez sélectionné le bon chargement.
+Les palettes ou les balles sont alors posées sur la surface de chargement comme si elles étaient chargées manuellement. 
+N'oubliez pas d'attacher les sangles, sinon elles glisseront.
+Vous pouvez sélectionner le côté de déchargement avec [U] et décharger avec [I].
+Le chargement s'arrête automatiquement lorsqu'il n'y a plus de surface de chargement.
+Vous pouvez également le désactiver vous-même avec [R].
 
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
@@ -336,15 +348,16 @@ Actualmente es compatible con el juego estándar:
 Se pueden utilizar las paletas de los siguientes mods:
 - Paquete de paletas y bolsas de primera calidad
 - Fábrica de patatas fritas HoT
+Además, todas las europaletas que se construyen según el principio de las paletas de juego básicas.
 
-
-
-Cómo utilizar:
-Conduzca junto a los palés y luego con [R] puede iniciar el proceso de carga.
-Asegúrese de haber seleccionado el tipo de palé correcto.
-Los palés se cargan entonces, como si se hubieran cargado a mano, en el área de carga.
-Asegure la carga con las cintas tensoras antes de conducir, de lo contrario, se puede caer.
-Puede elegir el lado de descarga y descargarlo.
+Operación:
+Conduzca junto a un palé o paca y active la carga con [R].
+Asegúrese de que ha seleccionado la carga correcta.
+Las paletas o balas se depositarán entonces en la zona de carga como si se hubieran cargado a mano. 
+No olvides abrochar las correas, de lo contrario se deslizarán.
+Puede seleccionar el lado de descarga con [U] y descargar con [I].
+La carga se desconecta automáticamente cuando no hay más zona de carga.
+También puedes apagarlo tú mismo con [R].
 
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
