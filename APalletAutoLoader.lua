@@ -236,8 +236,7 @@ function APalletAutoLoader.updateActionText(self)
         end
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
         
-        local tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
-        g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, tipsideText)
+        g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, spec.tipsideText)
         
         -- deactivate when somthing is already loaded or not
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0)
@@ -323,6 +322,7 @@ function APalletAutoLoader:SetTipside(tipsideIndex)
     local spec = self.spec_aPalletAutoLoader
     
     spec.currentTipside = tipsideIndex;
+    spec.tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
     
     if self.isClient then
         -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
@@ -364,6 +364,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.dirtyFlag = self:getNextDirtyFlag()
     spec.numTriggeredObjects = 0
     spec.currentTipside = APalletAutoLoaderTipsides.LEFT;
+    spec.tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
     spec.currentautoLoadTypeIndex = 1;
     spec.available = false;
     spec.showMarkers = false;
