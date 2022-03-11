@@ -672,7 +672,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.34
-        autoLoadObject.sizeY = 2
+        autoLoadObject.sizeY = 1.5
         autoLoadObject.sizeZ = 1.34
         autoLoadObject.type = "pallet"
     elseif (name == "bigBagPallet") then
