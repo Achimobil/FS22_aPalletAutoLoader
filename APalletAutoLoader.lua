@@ -87,6 +87,9 @@ end
 function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelection)
     local spec = self.spec_aPalletAutoLoader
     
+    local loadingText = g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (" .. spec.numTriggeredObjects .. " / " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems .. ")"
+    g_currentMission:addExtraPrintText(loadingText);
+    
     if not spec.showMarkers then return end
     
     if spec.loadArea["baseNode"] ~= nil then
@@ -232,7 +235,7 @@ function APalletAutoLoader.updateActionText(self)
         if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. "unknown"
         else
-            loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (max. " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems .. ")"
+            loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
         end
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
         
