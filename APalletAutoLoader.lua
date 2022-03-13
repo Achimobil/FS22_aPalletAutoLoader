@@ -74,6 +74,9 @@ end
 function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
     SpecializationUtil.registerOverwrittenFunction(vehicleType, "getDynamicMountTimeToMount", APalletAutoLoader.getDynamicMountTimeToMount)
 	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getUseTurnedOnSchema", APalletAutoLoader.getUseTurnedOnSchema)
+	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
+	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFillLevel", APalletAutoLoader.getFillUnitFillLevel)
+	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFreeCapacity", APalletAutoLoader.getFillUnitFreeCapacity)
 end
 
 function APalletAutoLoader.registerEventListeners(vehicleType)
@@ -90,8 +93,10 @@ end
 function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelection)
     local spec = self.spec_aPalletAutoLoader
     
-    local loadingText = g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (" .. spec.numTriggeredObjects .. " / " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems .. ")"
-    g_currentMission:addExtraPrintText(loadingText);
+    if spec.autoLoadTypes ~= nil then
+        local loadingText = g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (" .. spec.numTriggeredObjects .. " / " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems .. ")"
+        g_currentMission:addExtraPrintText(loadingText);
+    end
     
     if not spec.showMarkers then return end
     
@@ -1440,4 +1445,37 @@ end
 function APalletAutoLoader:getUseTurnedOnSchema()
     local spec = self.spec_aPalletAutoLoader
 	return spec.loadingState == APalletAutoLoaderLoadingState.RUNNING
+end
+
+function APalletAutoLoader:getFillUnitCapacity(superFunc, fillUnitIndex)
+    local spec = self.spec_aPalletAutoLoader
+
+    if spec == nil or spec.loadArea["baseNode"] == nil then
+        return superFunc(self, fillUnitIndex);
+    end
+
+    return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems;
+    
+end
+
+function APalletAutoLoader:getFillUnitFillLevel(superFunc, fillUnitIndex)
+    local spec = self.spec_aPalletAutoLoader
+
+    if spec == nil or spec.loadArea["baseNode"] == nil then
+        return superFunc(self, fillUnitIndex);
+    end
+
+    return spec.numTriggeredObjects;
+    
+end
+
+function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
+    local spec = self.spec_aPalletAutoLoader
+
+    if spec == nil or spec.loadArea["baseNode"] == nil then
+        return superFunc(self, fillUnitIndex);
+    end
+
+    return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems - spec.numTriggeredObjects;
+    
 end
