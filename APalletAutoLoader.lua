@@ -68,6 +68,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "SetAutoloadType", APalletAutoLoader.SetAutoloadType)
     SpecializationUtil.registerFunction(vehicleType, "SetLoadingState", APalletAutoLoader.SetLoadingState)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
+    SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
 end
 
 function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
@@ -285,6 +286,12 @@ function APalletAutoLoader:StartLoading()
     if (spec.timerId ~= nil) then return end;
     
     self:loadAllInRange();
+end
+
+function APalletAutoLoader:GetAutoloadTypes()
+    local spec = self.spec_aPalletAutoLoader;
+    
+    return spec.autoLoadTypes;
 end
 
 function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
