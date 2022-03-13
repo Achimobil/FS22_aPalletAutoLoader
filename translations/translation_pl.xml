@@ -15,6 +15,7 @@
 		<text name="aPalletAutoLoader_tipside" text="Strona wyłądunku" />
 		<text name="aPalletAutoLoader_1" text="lewa" />
 		<text name="aPalletAutoLoader_2" text="prawa" />
+		<text name="aPalletAutoLoader_3" text="Middle" />
 		<text name="configuration_aPalletAutoLoader" text="Autozaładunek Palet" />
 		<text name="input_AL_LOAD_PALLET" text="Załaduj Palety" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Wybierz typ" />

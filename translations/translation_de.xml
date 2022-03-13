@@ -15,6 +15,7 @@
 		<text name="aPalletAutoLoader_tipside" text="Abladeseite" />
 		<text name="aPalletAutoLoader_1" text="Links" />
 		<text name="aPalletAutoLoader_2" text="Rechts" />
+		<text name="aPalletAutoLoader_3" text="Mitte" />
 		<text name="configuration_aPalletAutoLoader" text="Paletten Autoloader" />
 		<text name="input_AL_LOAD_PALLET" text="Paletten aufladen" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Ladegut ändern" />

@@ -15,6 +15,7 @@
 		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
 		<text name="aPalletAutoLoader_1" text="izquierda" />
 		<text name="aPalletAutoLoader_2" text="derecha" />
+		<text name="aPalletAutoLoader_3" text="Medio" />
 		<text name="configuration_aPalletAutoLoader" text="Carga Automática de palés" />
 		<text name="input_AL_LOAD_PALLET" text="Cargar palés" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambiar tipo de carga" />

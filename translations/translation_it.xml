@@ -15,6 +15,7 @@
 		<text name="aPalletAutoLoader_tipside" text="Lato di scarico" />
 		<text name="aPalletAutoLoader_1" text="Sinistra" />
 		<text name="aPalletAutoLoader_2" text="Destra" />
+		<text name="aPalletAutoLoader_3" text="Medio" />
 		<text name="configuration_aPalletAutoLoader" text="Caricatore automatico di pallet" />
 		<text name="input_AL_LOAD_PALLET" text="Carica i pallet" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambia il tipo di carico" />

@@ -15,6 +15,7 @@
 		<text name="aPalletAutoLoader_tipside" text="Сторона выгрузки" />
 		<text name="aPalletAutoLoader_1" text="Слева" />
 		<text name="aPalletAutoLoader_2" text="Справа" />
+		<text name="aPalletAutoLoader_3" text="Средний" />
 		<text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов" />
 		<text name="input_AL_LOAD_PALLET" text="Погрузить" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Переключить тип поддонов/тюков" />
