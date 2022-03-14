@@ -94,7 +94,9 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
     local spec = self.spec_aPalletAutoLoader
     
     if spec.autoLoadTypes ~= nil then
-        local loadingText = g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (" .. spec.numTriggeredObjects .. " / " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems .. ")"
+        local maxItems = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems;
+        if spec.isFullLoaded then maxItems = spec.numTriggeredObjects; end
+        local loadingText = g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (" .. spec.numTriggeredObjects .. " / " .. maxItems .. ")"
         g_currentMission:addExtraPrintText(loadingText);
     end
     
@@ -290,6 +292,7 @@ function APalletAutoLoader:StartLoading()
     
     if (spec.timerId ~= nil) then return end;
     
+    spec.isFullLoaded = false;
     self:loadAllInRange();
 end
 
@@ -380,6 +383,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.objectsToLoadCount = 0;    
     spec.dirtyFlag = self:getNextDirtyFlag()
     spec.numTriggeredObjects = 0
+    spec.isFullLoaded = false;
     spec.currentTipside = APalletAutoLoaderTipsides.LEFT;
     spec.tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
     spec.currentautoLoadTypeIndex = 1;
@@ -1164,6 +1168,7 @@ function APalletAutoLoader:loadObject(object)
                         return true;
                     else
                         spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
+                        spec.isFullLoaded = true;
                     end
                 end
             end
@@ -1178,6 +1183,7 @@ function APalletAutoLoader:unloadAll()
     local spec = self.spec_aPalletAutoLoader
     
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
+    spec.isFullLoaded = false;
 
     for object,_ in pairs(spec.triggeredObjects) do
         if object ~= nil and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) then
@@ -1259,6 +1265,11 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
             spec.loadingState = loadingState;
             hasChanges = true;
         end   
+        local isFullLoaded = streamReadInt32(streamId);
+        if spec.isFullLoaded ~= isFullLoaded then
+            spec.isFullLoaded = isFullLoaded;
+            hasChanges = true;
+        end   
         
         if hasChanges then
             APalletAutoLoader.updateActionText(self);
@@ -1287,6 +1298,7 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
         streamWriteInt32(streamId, spec.currentautoLoadTypeIndex);
         streamWriteInt32(streamId, spec.currentTipside)
         streamWriteInt32(streamId, spec.loadingState)
+        streamWriteInt32(streamId, spec.isFullLoaded)
     end
 end
 
@@ -1476,6 +1488,10 @@ function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
         return superFunc(self, fillUnitIndex);
     end
 
+    if spec.isFullLoaded then 
+        return 0;
+    end
+    
     return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems - spec.numTriggeredObjects;
     
 end
