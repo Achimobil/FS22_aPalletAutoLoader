@@ -1450,7 +1450,7 @@ end
 function APalletAutoLoader:getFillUnitCapacity(superFunc, fillUnitIndex)
     local spec = self.spec_aPalletAutoLoader
 
-    if spec == nil or spec.loadArea["baseNode"] == nil then
+    if spec == nil or spec.loadArea["baseNode"] == nil or fillUnitIndex ~= nil then
         return superFunc(self, fillUnitIndex);
     end
 
@@ -1461,7 +1461,7 @@ end
 function APalletAutoLoader:getFillUnitFillLevel(superFunc, fillUnitIndex)
     local spec = self.spec_aPalletAutoLoader
 
-    if spec == nil or spec.loadArea["baseNode"] == nil then
+    if spec == nil or spec.loadArea["baseNode"] == nil or fillUnitIndex ~= nil then
         return superFunc(self, fillUnitIndex);
     end
 
@@ -1472,7 +1472,7 @@ end
 function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
     local spec = self.spec_aPalletAutoLoader
 
-    if spec == nil or spec.loadArea["baseNode"] == nil then
+    if spec == nil or spec.loadArea["baseNode"] == nil or fillUnitIndex ~= nil then
         return superFunc(self, fillUnitIndex);
     end
 
