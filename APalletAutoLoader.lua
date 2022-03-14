@@ -547,7 +547,7 @@ function APalletAutoLoader:onLoad(savegame)
             local maxAmountForLayers = amountPerLayer * maxLayers;
             autoLoadObject.maxItems = math.min(maxAmountForLayers, spec.maxObjects); 
             
-            if #autoLoadObject.places ~= 0 then
+            if #autoLoadObject.places ~= 0 and autoLoadObject.maxItems ~= 0 then
                 table.insert(spec.autoLoadTypes, autoLoadObject)
             end
         end
@@ -653,7 +653,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.2
-        autoLoadObject.sizeY = 0.8
+        autoLoadObject.sizeY = 1.0
         autoLoadObject.sizeZ = 0.8
         autoLoadObject.type = "pallet"
     elseif (name == "euroPalletOversize") then
@@ -669,7 +669,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.3
-        autoLoadObject.sizeY = 0.8
+        autoLoadObject.sizeY = 1.0
         autoLoadObject.sizeZ = 1.0
         autoLoadObject.type = "pallet"
     elseif (name == "liquidTank") then
@@ -702,7 +702,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.4
-        autoLoadObject.sizeY = 2
+        autoLoadObject.sizeY = 1.5
         autoLoadObject.sizeZ = 1.2
         autoLoadObject.type = "pallet"
     elseif (name == "bigBag") then
