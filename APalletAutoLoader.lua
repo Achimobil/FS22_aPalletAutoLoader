@@ -641,13 +641,14 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
             if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
             if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
+            if string.find(object.configFileName, "pallets/euroPallets") then return true end
         
             if object.i3dMappings == nil then 
                 return false;
             end
             
             for mappingName, _ in pairs(object.i3dMappings) do
-                if (mappingName == "euroPalletVis") or (mappingName == "pallet_vis") then
+                if (mappingName == "euroPalletVis") or (mappingName == "pallet_vis") or (mappingName == "grapePallet_vis") then
                 return true;
                 end
             end
