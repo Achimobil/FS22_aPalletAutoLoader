@@ -680,9 +680,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "pallet"
     elseif (name == "liquidTank") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/pallets/liquidTank") then
-                return true;
-            end
+            if string.find(object.i3dFilename, "data/objects/pallets/liquidTank") then return true end
+            if string.find(object.configFileName, "pallets/liquidTank") then return true end
             return false;
         end    
     
@@ -693,6 +692,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "pallet"
     elseif (name == "bigBagPallet") then
         local function CheckType(object)
+            if string.find(object.configFileName, "pallets/bigBagPallet") then return true end
         
             if object.i3dMappings == nil then 
                 return false;
@@ -713,6 +713,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "pallet"
     elseif (name == "bigBag") then
         local function CheckType(object)
+            if string.find(object.configFileName, "pallets/bigBag/") then return true end
         
             if object.i3dMappings == nil then 
                 return false;
