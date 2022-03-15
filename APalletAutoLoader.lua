@@ -1117,7 +1117,7 @@ function APalletAutoLoader:loadObject(object)
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
 
                         -- Create Joint to keep the object on the place even if moving
-                        if spec.objectsToJoint[objectNodeId] == nil then
+                        if spec.objectsToJoint[objectNodeId] == nil and self.spec_tensionBelts ~= nil and self.spec_tensionBelts.jointNode ~= nil then
                             local constr = JointConstructor.new()
 
                             constr:setActors(self.spec_tensionBelts.jointNode, objectNodeId)
