@@ -20,7 +20,7 @@
 		<text name="input_AL_LOAD_PALLET" text="Load Pallets" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType" />
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside" />
-		<text name="input_AL_UNLOAD" text="Unload Pallets" />
+		<text name="input_AL_UNLOAD" text="Unload here" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded" />
 		<text name="input_AL_TOGGLE_MARKERS" text="Show/Hide Markers" />
 		<text name="aPalletAutoLoader_roundbale125" text="Round bale 125" />

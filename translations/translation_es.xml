@@ -20,7 +20,7 @@
 		<text name="input_AL_LOAD_PALLET" text="Cargar palés" />
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambiar tipo de carga" />
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga" />
-		<text name="input_AL_UNLOAD" text="Descargar palés" />
+		<text name="input_AL_UNLOAD" text="Descargar aquí" />
 		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado" />
 		<text name="input_AL_TOGGLE_MARKERS" text="Mostrar/ocultar marcadores" />
 		<text name="aPalletAutoLoader_roundbale125" text="Paca redonda 125" />
