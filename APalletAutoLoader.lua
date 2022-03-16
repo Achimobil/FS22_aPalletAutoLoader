@@ -1268,7 +1268,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
             spec.loadingState = loadingState;
             hasChanges = true;
         end   
-        local isFullLoaded = streamReadInt32(streamId);
+        local isFullLoaded = streamReadBool(streamId);
         if spec.isFullLoaded ~= isFullLoaded then
             spec.isFullLoaded = isFullLoaded;
             hasChanges = true;
@@ -1301,7 +1301,7 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
         streamWriteInt32(streamId, spec.currentautoLoadTypeIndex);
         streamWriteInt32(streamId, spec.currentTipside)
         streamWriteInt32(streamId, spec.loadingState)
-        streamWriteInt32(streamId, spec.isFullLoaded)
+        streamWriteBool(streamId, spec.isFullLoaded)
     end
 end
 
