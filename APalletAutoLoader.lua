@@ -641,7 +641,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
             if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
             if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
-            if string.find(object.configFileName, "/euroPallets/") then return true end
+            if object.configFileName ~= nil and string.find(object.configFileName, "/euroPallets/") then return true end
         
             if object.i3dMappings == nil then 
                 return false;
@@ -668,7 +668,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/ksAG/epsoTop/epsoTop.xml" then return true end
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return true end
             if string.find(object.i3dFilename, "FS22_Pallets_And_Bags_Pack/Pallets") then return true end
-            if string.find(object.configFileName, "/euroPalletsOversized/") then return true end
+            if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletsOversized/") then return true end
                         
             return false;
         end    
@@ -681,7 +681,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     elseif (name == "liquidTank") then
         local function CheckType(object)
             if string.find(object.i3dFilename, "data/objects/pallets/liquidTank") then return true end
-            if string.find(object.configFileName, "/liquidTank/") then return true end
+            if object.configFileName ~= nil and string.find(object.configFileName, "/liquidTank/") then return true end
             return false;
         end    
     
@@ -692,7 +692,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "pallet"
     elseif (name == "bigBagPallet") then
         local function CheckType(object)
-            if string.find(object.configFileName, "/bigBagPallet/") then return true end
+            if object.configFileName ~= nil and string.find(object.configFileName, "/bigBagPallet/") then return true end
         
             if object.i3dMappings == nil then 
                 return false;
@@ -713,7 +713,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "pallet"
     elseif (name == "bigBag") then
         local function CheckType(object)
-            if string.find(object.configFileName, "/bigBag/") then return true end
+            if object.configFileName ~= nil and string.find(object.configFileName, "/bigBag/") then return true end
         
             if object.i3dMappings == nil then 
                 return false;
