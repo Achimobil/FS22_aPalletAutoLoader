@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.6.1.0</version>
+    <version>1.6.1.1</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -82,6 +82,9 @@ Changelog 1.6.1.0
 - Palette sizes adapted to average values of new mods
 - Automatic ratchet straps re-enabled on Dedi Server. Until Giants has patched this <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">this mod</a> is necessary.
 - Modders can now also make their own palettes loadable through the folder structure. Details on the wiki.
+
+Changelog 1.6.1.1
+- Sync Fix for Server
 ]]>
         </en>
         <de>
@@ -155,6 +158,9 @@ Changelog 1.6.1.0
 - Paletten Größen angepasst an durchnittliche Werte neuer Mods
 - Automatische Spanngurte wieder aktiviert auf Dedi Server. Bis Giants das gepatched hat ist <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">dieser Mod</a> notwendig.
 - Modder können ihre eigenen Paletten nun zusätzlich durch die Ordnerstruktur ladbar machen. Details im Wiki.
+
+Changelog 1.6.1.1
+- Sync Fix for Server
 ]]>
         </de>
         <it>
@@ -227,6 +233,9 @@ v1.6.1.0
 - Dimensioni della tavolozza adattate ai valori medi delle nuove mod
 - Cinghie a cricchetto automatiche riabilitate su Dedi Server. Fino a quando Giants non avrà corretto questa <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">questa mod</a> è necessaria.
 - I modder ora possono anche rendere caricabili le proprie tavolozze attraverso la struttura delle cartelle. Dettagli sul wiki.
+
+Changelog 1.6.1.1
+- Sync Fix for Server
 ]]>
         </it>
         <fr>
@@ -300,6 +309,9 @@ Journal des modifications 1.6.1.0
 - Tailles de palettes adaptées aux valeurs moyennes des nouveaux mods
 - Sangles à cliquet automatiques réactivées sur Dedi Server. Jusqu'à ce que Giants ait corrigé ce <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">ce mod</a> est nécessaire.
 - Les moddeurs peuvent désormais rendre leurs propres palettes chargeables via la structure des dossiers. Détails sur le wiki.
+
+Changelog 1.6.1.1
+- Sync Fix for Server
 ]]>
         </fr>
         <es>
@@ -373,6 +385,9 @@ Registro de cambios 1.6.1.0
 - Tamaños de paleta adaptados a valores medios de nuevos mods.
 - Correas de trinquete automáticas reactivadas en Dedi Server. Hasta que Giants haya parcheado este <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">este mod</a> es necesario.
 - Los modders ahora también pueden hacer que sus propias paletas se puedan cargar a través de la estructura de carpetas. Detalles en la wiki.
+
+Changelog 1.6.1.1
+- Sync Fix for Server
 ]]>
         </es>
     </description>
