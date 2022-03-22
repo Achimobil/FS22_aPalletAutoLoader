@@ -69,14 +69,23 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "SetLoadingState", APalletAutoLoader.SetLoadingState)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
+    
+    if vehicleType.functions["getFillUnitCapacity"] == nil then
+        SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
+        SpecializationUtil.registerFunction(vehicleType, "getFillUnitFillLevel", APalletAutoLoader.getFillUnitFillLevel)
+        SpecializationUtil.registerFunction(vehicleType, "getFillUnitFreeCapacity", APalletAutoLoader.getFillUnitFreeCapacity)
+    end
 end
 
 function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
     SpecializationUtil.registerOverwrittenFunction(vehicleType, "getDynamicMountTimeToMount", APalletAutoLoader.getDynamicMountTimeToMount)
 	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getUseTurnedOnSchema", APalletAutoLoader.getUseTurnedOnSchema)
-	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
-	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFillLevel", APalletAutoLoader.getFillUnitFillLevel)
-	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFreeCapacity", APalletAutoLoader.getFillUnitFreeCapacity)
+    
+    if vehicleType.functions["getFillUnitCapacity"] ~= nil then
+        SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
+        SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFillLevel", APalletAutoLoader.getFillUnitFillLevel)
+        SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFreeCapacity", APalletAutoLoader.getFillUnitFreeCapacity)
+    end
 end
 
 function APalletAutoLoader.registerEventListeners(vehicleType)
