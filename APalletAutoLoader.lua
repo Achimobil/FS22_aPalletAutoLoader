@@ -172,6 +172,11 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
                 local offset = nil;
                 local color = {r,g,b};
                 DebugUtil.drawDebugCircleAtNode(loadPlace.node, radius, 12, color, vertical, offset)
+            elseif autoLoadType.type == "squarebale" then
+                -- switch sizeZ and sizeX here because it is used 90° turned
+                local sizeX = autoLoadType.sizeZ/2;
+                local sizeZ = autoLoadType.sizeX/2;
+                DebugUtil.drawDebugRectangle(loadPlace.node, -sizeX, sizeX, -sizeZ, sizeZ, 0, r, g, b)
             else
                 local sizeX = autoLoadType.sizeX/2;
                 local sizeZ = autoLoadType.sizeZ/2;
@@ -547,6 +552,10 @@ function APalletAutoLoader:onLoad(savegame)
                 local currentRotation = loadingPatternItem.rotation;
                 if autoLoadObject.type == "roundbale" then
                     currentRotation = currentRotation + 15;
+                end
+                if autoLoadObject.type == "squarebale" then
+                    -- turn tthe place by 90° to need no rotation on loading
+                    currentRotation = currentRotation + math.rad(90);
                 end
                 
                 setRotation(place.node, 0, currentRotation, 0)
@@ -963,10 +972,9 @@ function APalletAutoLoader:getFirstValidLoadPlace()
                     overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
                 end
             elseif autoLoadType.type == "squarebale" then
-                -- eine virtel umdrehung als konstante
-                --ry = ry + math.rad(90);
+                -- switch sizeZ and sizeX here because it is used 90° turned
                 
-                overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+                overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeZ / 2, autoLoadType.sizeY / 2, autoLoadType.sizeX / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
             else
                 overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
             end
@@ -1102,8 +1110,6 @@ function APalletAutoLoader:loadObject(object)
                             if currentAutoLoadType.type == "squarebale" then
                                 -- square bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
                                 y = y + (currentAutoLoadType.sizeY / 2)
-                                -- square bales also must be rotated by 90° in x to have the flat side on the bottom
-                                ry = ry + math.rad(90);
                             end
                             if currentAutoLoadType.type == "cottonSquarebale" then
                                 -- cotton square bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
