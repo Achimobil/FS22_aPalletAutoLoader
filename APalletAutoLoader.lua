@@ -72,7 +72,11 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
+    end
+    if vehicleType.functions["getFillUnitFillLevel"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitFillLevel", APalletAutoLoader.getFillUnitFillLevel)
+    end
+    if vehicleType.functions["getFillUnitFreeCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitFreeCapacity", APalletAutoLoader.getFillUnitFreeCapacity)
     end
 end
@@ -83,7 +87,11 @@ function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
     
     if vehicleType.functions["getFillUnitCapacity"] ~= nil then
         SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
+    end
+    if vehicleType.functions["getFillUnitFillLevel"] ~= nil then
         SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFillLevel", APalletAutoLoader.getFillUnitFillLevel)
+    end
+    if vehicleType.functions["getFillUnitFreeCapacity"] ~= nil then
         SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitFreeCapacity", APalletAutoLoader.getFillUnitFreeCapacity)
     end
 end
