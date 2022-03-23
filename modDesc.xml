@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.6.1.2</version>
+    <version>1.6.2.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -75,6 +75,10 @@ Changelog:
 
 1.6.1.2
 - Fix for Wool pallet
+
+1.6.2.0
+- External access optimised
+- Square bale loading behaviour optimised
 ]]>
         </en>
         <de>
@@ -140,6 +144,10 @@ Changelog:
 
 1.6.1.2
 - Fix für Wollpalette
+
+1.6.2.0
+- Externe Zugriffsmöglichkeiten optimiert
+- Quaderballen Ladeverhalten optimiert
 ]]>
         </de>
         <it>
@@ -203,6 +211,10 @@ Changelog:
 
 1.6.1.2
 - Fix for Wool pallet
+
+1.6.2.0
+- Accesso esterno ottimizzato
+- Comportamento di carico delle balle quadrate ottimizzato
 ]]>
         </it>
         <fr>
@@ -268,6 +280,10 @@ Journal des modifications:
 
 1.6.1.2
 - Fix for Wool pallet
+
+1.6.2.0
+- Accès externe optimisé
+- Comportement de chargement des balles cubiques optimisé
 ]]>
         </fr>
         <es>
@@ -333,6 +349,10 @@ Registro de cambios:
 
 1.6.1.2
 - Fix for Wool pallet
+
+1.6.2.0
+- Acceso externo optimizado
+- Comportamiento de carga de balas cuadradas optimizado
 ]]>
         </es>
     </description>
