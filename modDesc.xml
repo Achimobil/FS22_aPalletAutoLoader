@@ -38,29 +38,19 @@ You can also switch it off yourself with [R].
 
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
-Changelog 1.3.0.0
+Changelog:
+1.3.1.0
 - Changes to Mod Image and Description for the ModHub publish
 - Added ES
 - Loading and Unloading Areas can be shown now. Default [LCTRL] + [U]
 - Loading is only shown in F1 when there is something to load, to not block Truck refill diesel
 - Controls are only visible when the Trailer is active to solve problems with mutiple autloaders attached
 
-Changelog 1.3.1.0
-- Changes for ModHub publish
-
-Changelog 1.4.0.0
+1.5.0.0
 - Add default round bales 125/150/180. Must be enabled by the modder of the trailer (useBales="true")
-
-Changelog 1.4.1.0
 - Size of liquid tank corrected for better loading
-- Round bale loading optimized
 - Icons for modder added in mod
 - Translation in CZ
-
-Changelog 1.4.2.0
-- 125cm wood chips bales added
-
-Changelog 1.5.0.0
 - Bigbags added
 - Translations improved
 - Tension belts automatically tightened. Must be activated by the trailer modder (useTensionBelts="true")
@@ -69,21 +59,21 @@ Changelog 1.5.0.0
 - Support of mod "HoT Pommes Factory"
 - Added square bales 180/220/240
 
-Changelog 1.6.0.0
+1.6.0.0
 - Modification of the communication with the Dedi Server to improve the performance.
 - Loading mode now remains active until the trailer is full or it is switched off. Tension belts are tightened in between if the trailer supports it.
 - Vehicle scheme shows when loading is activated.
 - Maximum capacity displayed when load selection is made.
 - Automatic tensioning straps deactivated on Dedi Server because of the bug from patch 1.3.
 
-Changelog 1.6.1.0
+1.6.1.0
 - Possibility for external mods to access the functions created
 - Selected cargo is now displayed as extra text in the help menu
 - Palette sizes adapted to average values of new mods
 - Automatic ratchet straps re-enabled on Dedi Server. Until Giants has patched this <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">this mod</a> is necessary.
 - Modders can now also make their own palettes loadable through the folder structure. Details on the wiki.
 
-Changelog 1.6.1.2
+1.6.1.2
 - Fix for Wool pallet
 ]]>
         </en>
@@ -114,52 +104,41 @@ Ihr könnt es aber auch mit [R] wieder selbst abschalten.
 
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
-Changelog 1.3.0.0:
+Changelog:
+1.3.1.0
 - Änderungen am Mod Icon und der Beschreibung für die ModHub-Veröffentlichung
 - ES hinzugefügt
 - Be- und Entladebereiche können jetzt angezeigt werden. Standard [LCTRL] + [U]
 - Das Laden wird nur in F1 angezeigt, wenn es etwas zu laden gibt, um das tanken eines LKW nicht zu blockieren
 - Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
 
-Changelog 1.3.1.0:
-- Änderungen für ModHub-Veröffentlichung
-
-Changelog 1.4.0.0
+1.5.0.0
 - Standard-Rundballen 125/150/180 können jetzt geladen werden. Muss vom Modder des Trailers aktiviert werden (useBales="true")
-
-Changelog 1.4.1.0
 - Größe vom Flüssigkeitentank korrigiert für besseres Laden
-- Rundballen Laden optimiert
 - Icons für Modder in Mod eingefügt
 - Übersetzung in CZ
-
-Changelog 1.4.2.0
-- 125cm Hackschnitzel Ballen hinzugefügt
-
-Changelog 1.5.0.0
 - Bigbags hinzugefügt
 - Übersetzungen verbessert
 - Spanngurte automatisch anziehen. Muss vom Modder des Trailers aktiviert werden (useTensionBelts="true")
-- Ballen laden in Bewegung verbessert
 - Support von Mod "Paket Von Premium-Paletten Und Säcken"
 - Support von Mod "HoT Pommes Factory"
 - Quaderballen 180/220/240 hinzugefügt
 
-Changelog 1.6.0.0
+1.6.0.0
 - Umbau der Kommunikation mit dem Dedi Server zur Verbesserung der Performance.
 - Lademodus bleibt nun aktiv bis der Trailer voll ist oder er abgeschaltet wird. Spangurte werden zwischendurch angezogen, wenn der Trailer das unterstützt.
 - Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
 - Anzeige der Maximal Kapazität bei der Ladegutauswahl.
 - Automatische Spanngurte deaktiviert auf Dedi Server wegen dem Fehler aus Patch 1.3
 
-Changelog 1.6.1.0
+1.6.1.0
 - Möglichkeit für externe Mods zum zugriff auf die Funktionen geschaffen
 - Gewähltes Ladegut wird jetzt als Extra Text im Hilfe Menü angezeigt
 - Paletten Größen angepasst an durchnittliche Werte neuer Mods
 - Automatische Spanngurte wieder aktiviert auf Dedi Server. Bis Giants das gepatched hat ist <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">dieser Mod</a> notwendig.
 - Modder können ihre eigenen Paletten nun zusätzlich durch die Ordnerstruktur ladbar machen. Details im Wiki.
 
-Changelog 1.6.1.2
+1.6.1.2
 - Fix für Wollpalette
 ]]>
         </de>
@@ -189,52 +168,40 @@ Il caricamento si spegne automaticamente quando non c'è più area di carico.
 Potete anche spegnerlo voi stessi con [R].
 
 Changelog:
-v1.3.0.0
+1.3.1.0
 - Modifiche all'icona Mod e alla descrizione per la pubblicazione sul ModHub
 - Aggiunto ES
 - Ora è possibile visualizzare le aree di carico e scarico. Tasti Predefiniti [LCTRL] + [U]
 - Il caricamento viene mostrato in F1 solo quando c'è qualcosa da caricare in modo da non bloccare il rifornimento del veicolo
 - I controlli sono visibili solo quando il trailer è attivo. Serve per risolvere i problemi con più caricatori automatici collegati
 
-v1.3.1.0
-- Modifiche per la pubblicazione di ModHub
-
-v1.4.0.0
+1.5.0.0
 - Aggiungi rotoballe predefinite 125/150/180. Deve essere abilitato dal modder del trailer (useBales="true")
-
-v1.4.1.0
 - Dimensione del serbatoio dei liquidi corretta per un migliore caricamento
-- Carico delle balle rotonde ottimizzato
 - Icone per modder aggiunte al mod
 - Traduzione in CZ
-
-v1.4.2.0
-- Balle di cippato da 125 cm aggiunte
-
-v1.5.0.0
 - Bigbags ha aggiunto
 - Traduzioni migliorate
 - Le cinghie di tensione si stringono automaticamente. Deve essere attivato dal modder del rimorchio (useTensionBelts="true")
-- Caricamento delle balle in movimento migliorato
 - Supporto del mod "Pacchetto di pallet e sacchi Premium".
 - Supporto del mod "HoT Pommes Factory
 - Aggiunta di balle quadrate 180/220/240
 
-v1.6.0.0
+1.6.0.0
 - Modifica della comunicazione con il server Dedi per migliorare le prestazioni.
 - La modalità di carico ora rimane attiva fino a quando il rimorchio è pieno o viene spento. Le cinghie di tensione si stringono tra loro se il rimorchio lo sostiene.
 - Lo schema del veicolo mostra quando il caricamento è attivato.
 - Capacità massima visualizzata quando si seleziona il carico.
 - Cinghie di tensionamento automatico disattivate su Dedi Server a causa del bug della patch 1.3.
 
-v1.6.1.0
+1.6.1.0
 - Possibilità per mod esterne di accedere alle funzioni create
 - Il carico selezionato viene ora visualizzato come testo extra nel menu di aiuto
 - Dimensioni della tavolozza adattate ai valori medi delle nuove mod
 - Cinghie a cricchetto automatiche riabilitate su Dedi Server. Fino a quando Giants non avrà corretto questa <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">questa mod</a> è necessaria.
 - I modder ora possono anche rendere caricabili le proprie tavolozze attraverso la struttura delle cartelle. Dettagli sul wiki.
 
-Changelog 1.6.1.2
+1.6.1.2
 - Fix for Wool pallet
 ]]>
         </it>
@@ -265,52 +232,41 @@ Vous pouvez également le désactiver vous-même avec [R].
 
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
-Journal des modifications 1.3.0.0
+Journal des modifications:
+1.3.1.0
 - Modifications de l'image et de la description du mod pour la publication ModHub
 - ES ajoutée
 - Les zones de chargement et de déchargement peuvent être affichées maintenant. Par défaut [LCTRL] + [U]
 - Le chargement n'est affiché en F1 que lorsqu'il y a quelque chose à charger, pour ne pas bloquer la recharge diesel du camion
 - Les commandes ne sont visibles que lorsque la remorque est active pour résoudre les problèmes avec plusieurs chargeurs automatiques attachés
 
-Journal des modifications 1.3.1.0
-- Modifications pour la publication ModHub
-
-Journal des modifications 1.4.0.0
+1.5.0.0
 - Ajouter des balles rondes par défaut 125/150/180. Doit être activé par le moddeur de la bande-annonce (useBales="true")
-
-Journal des modifications 1.4.1.0
 - Correction de la taille du réservoir de liquide pour un meilleur chargement
-- Optimisation du chargement des balles rondes
 - Ajout d'icônes pour les moddeurs dans le mod
 - Traduction en CZ
-
-Journal des modifications 1.4.2.0
-- Ajout de balles de copeaux de bois de 125 cm
-
-Journal des modifications 1.5.0.0
 - Ajout de bigbags
 - amélioration des traductions
 - Serrage automatique des sangles de serrage. Doit être activé par le moddeur de la remorque (useTensionBelts="true").
-- Amélioration du chargement des balles en mouvement
 - Support du mod "Paquet de palettes Premium et de sacs".
 - Support du mod "HoT Pommes Factory".
 - Ajout des balles cubiques 180/220/240
 
-Journal des modifications 1.6.0.0
+1.6.0.0
 - Modification de la communication avec le serveur Dedi pour améliorer les performances.
 - Le mode de chargement reste désormais actif jusqu'à ce que la remorque soit pleine ou qu'elle soit éteinte. Les ceintures de sécurité sont mises en place de temps en temps si la remorque le permet.
 - Le schéma du véhicule indique si le chargement est activé.
 - Affichage de la capacité maximale lors de la sélection du chargement.
 - Sangles automatiques désactivées sur le serveur Dedi à cause du bug du patch 1.3.
 
-Journal des modifications 1.6.1.0
+1.6.1.0
 - Possibilité pour les mods externes d'accéder aux fonctions créées
 - La cargaison sélectionnée est maintenant affichée sous forme de texte supplémentaire dans le menu d'aide
 - Tailles de palettes adaptées aux valeurs moyennes des nouveaux mods
 - Sangles à cliquet automatiques réactivées sur Dedi Server. Jusqu'à ce que Giants ait corrigé ce <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">ce mod</a> est nécessaire.
 - Les moddeurs peuvent désormais rendre leurs propres palettes chargeables via la structure des dossiers. Détails sur le wiki.
 
-Changelog 1.6.1.2
+1.6.1.2
 - Fix for Wool pallet
 ]]>
         </fr>
@@ -341,52 +297,41 @@ También puedes apagarlo tú mismo con [R].
 
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
-Registro de cambios 1.3.0.0
+Registro de cambios:
+1.3.1.0
 - Cambios en la imagen y la descripción de Mod para la publicación de ModHub
 - ES añadida
 - Ahora se pueden mostrar las áreas de carga y descarga. Predeterminado [LCTRL] + [U]
 - La carga solo se muestra en F1 cuando hay algo que cargar, para no bloquear la recarga de diesel del camión.
 - Los controles solo son visibles cuando el tráiler está activo para resolver problemas con múltiples cargadores automáticos conectados
 
-Registro de cambios 1.3.1.0
-- Cambios para la publicación de ModHub
-
-Registro de cambios 1.4.0.0
+1.5.0.0
 - Agregar pacas redondas predeterminadas 125/150/180. Debe estar habilitado por el modder del tráiler (useBales="true")
-
-Registro de cambios 1.4.1.0
 - Tamaño del depósito de líquido corregido para una mejor carga
-- Carga de pacas redondas optimizada
 - Iconos para el modder añadidos al mod
 - Traducción en CZ
-
-Registro de cambios 1.4.2.0
-- Fardos de virutas de madera de 125 cm añadidos
-
-Registro de cambios 1.5.0.0
 - Bigbags añadió
 - Mejora de las traducciones
 - Las correas de tensión se tensan automáticamente. Debe ser activado por el modder del remolque (useTensionBelts="true")
-- Mejora de la carga de balas en movimiento
 - Soporte del mod "Paquete de Paletas y Sacos Premium".
 - Soporte del mod "HoT Pommes Factory
 - Pacas cuadradas añadidas 180/220/240
 
-Registro de cambios 1.6.0.0
+1.6.0.0
 - Modificación de la comunicación con el Servidor Dedi para mejorar el rendimiento.
 - El modo de carga ahora permanece activo hasta que el remolque esté lleno o se apague. Los cinturones de tensión se tensan entre ellos si el remolque lo soporta.
 - El esquema del vehículo muestra cuando se activa la carga.
 - Visualización de la capacidad máxima durante la selección de la carga.
 - Correas de tensión automáticas desactivadas en el Servidor Dedi debido al error del parche 1.3.
 
-Registro de cambios 1.6.1.0
+1.6.1.0
 - Posibilidad de mods externos para acceder a las funciones creadas
 - La carga seleccionada ahora se muestra como texto adicional en el menú de ayuda
 - Tamaños de paleta adaptados a valores medios de nuevos mods.
 - Correas de trinquete automáticas reactivadas en Dedi Server. Hasta que Giants haya parcheado este <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">este mod</a> es necesario.
 - Los modders ahora también pueden hacer que sus propias paletas se puedan cargar a través de la estructura de carpetas. Detalles en la wiki.
 
-Changelog 1.6.1.2
+1.6.1.2
 - Fix for Wool pallet
 ]]>
         </es>
