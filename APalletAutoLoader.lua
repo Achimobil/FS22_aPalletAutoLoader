@@ -1284,6 +1284,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         local currentTipside = streamReadInt32(streamId);
         if spec.currentTipside ~= currentTipside then
             spec.currentTipside = currentTipside;
+            spec.tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
             hasChanges = true;
         end   
         local loadingState = streamReadInt32(streamId);
