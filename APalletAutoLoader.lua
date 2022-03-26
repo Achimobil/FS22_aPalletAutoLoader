@@ -760,9 +760,9 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "bigBag"
     elseif (name == "cottonRoundbale238") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/cottonModules/cottonRoundbale238.i3d") then
-                return true;
-            end
+            if string.find(object.i3dFilename, "cottonModules/cottonRoundbale238.i3d") then return true end
+            if string.find(object.i3dFilename, "lavenderModules/lavenderRoundbale238.i3d") then return true end
+            
             return false;
         end    
     
@@ -773,9 +773,9 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "roundbale"
     elseif (name == "cottonSquarebale488") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/cottonModules/cottonSquarebale488.i3d") then
-                return true;
-            end
+            if string.find(object.i3dFilename, "cottonModules/cottonSquarebale488.i3d") then return true end
+            if string.find(object.i3dFilename, "lavenderModules/lavenderSquarebale488.i3d") then return true end
+            
             return false;
         end    
     
@@ -786,10 +786,10 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "cottonSquarebale"
     elseif (name == "roundbale125") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/roundbales/roundbale125/roundbale125.i3d") then
+            if string.find(object.i3dFilename, "roundbales/roundbale125/roundbale125.i3d") then
                 return true;
             end
-            if string.find(object.i3dFilename, "data/objects/roundbales/biomass/biomassBale125.i3d") then
+            if string.find(object.i3dFilename, "roundbales/biomass/biomassBale125.i3d") then
                 return true;
             end
             return false;
@@ -802,7 +802,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "roundbale"
     elseif (name == "roundbale150") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/roundbales/roundbale150/roundbale150.i3d") then
+            if string.find(object.i3dFilename, "roundbales/roundbale150/roundbale150.i3d") then
                 return true;
             end
             return false;
@@ -815,7 +815,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "roundbale"
     elseif (name == "roundbale180") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/roundbales/roundbale180/roundbale180.i3d") then
+            if string.find(object.i3dFilename, "roundbales/roundbale180/roundbale180.i3d") then
                 return true;
             end
             return false;
@@ -828,7 +828,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "roundbale"
     elseif (name == "squarebale240") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/squarebales/squarebale240/squarebale240.i3d") then
+            if string.find(object.i3dFilename, "squarebales/squarebale240/squarebale240.i3d") then
                 return true;
             end
             return false;
@@ -841,7 +841,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "squarebale"
     elseif (name == "squarebale220") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/squarebales/squarebale220/squarebale220.i3d") then
+            if string.find(object.i3dFilename, "squarebales/squarebale220/squarebale220.i3d") then
                 return true;
             end
             return false;
@@ -854,7 +854,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "squarebale"
     elseif (name == "squarebale180") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "data/objects/squarebales/squarebale180/squarebale180.i3d") then
+            if string.find(object.i3dFilename, "squarebales/squarebale180/squarebale180.i3d") then
                 return true;
             end
             return false;
