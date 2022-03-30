@@ -210,7 +210,7 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
         if isActiveForInput then
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_LOAD_PALLET, self, APalletAutoLoader.actionEventToggleLoading, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
-            spec.actionEventId = actionEventId;
+            spec.toggleLoadingActionEventId = actionEventId;
             
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_LOADINGTYPE, self, APalletAutoLoader.actionEventToggleAutoLoadTypes, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
@@ -239,7 +239,7 @@ function APalletAutoLoader.updateActionText(self)
         local spec = self.spec_aPalletAutoLoader
         
         if not spec.available then
-            g_inputBinding:setActionEventActive(spec.actionEventId, false)
+            g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleTipsideActionEventId, false)
             g_inputBinding:setActionEventActive(spec.unloadAllEventId, false)
@@ -247,21 +247,16 @@ function APalletAutoLoader.updateActionText(self)
             return;
         end
         
+        -- different texts for the toggle loading key
+        local text;
         if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
-            local text = g_i18n:getText("aPalletAutoLoader_startLoading")
-            if spec.objectsToLoadCount ~= 0 then text = text  .. ": " .. spec.objectsToLoadCount end
-            g_inputBinding:setActionEventText(spec.actionEventId, text)
-            if spec.objectsToLoadCount == 0 and spec.numTriggeredObjects == 0 then
-                g_inputBinding:setActionEventActive(spec.actionEventId, false)
-            else
-                g_inputBinding:setActionEventActive(spec.actionEventId, true)
-            end
+            text = g_i18n:getText("aPalletAutoLoader_startLoading")
         else
-            local text = g_i18n:getText("aPalletAutoLoader_stopLoading")
-            if spec.objectsToLoadCount ~= 0 then text = text  .. ": " .. spec.objectsToLoadCount end
-            g_inputBinding:setActionEventText(spec.actionEventId, text)
-            g_inputBinding:setActionEventActive(spec.actionEventId, true)
-        end         
+            text = g_i18n:getText("aPalletAutoLoader_stopLoading")
+        end 
+        if spec.objectsToLoadCount ~= 0 then text = text  .. ": " .. spec.objectsToLoadCount end
+        g_inputBinding:setActionEventText(spec.toggleLoadingActionEventId, text)
+        g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, true)   
                 
         local loadingText = ""
         if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then

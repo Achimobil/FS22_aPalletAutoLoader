@@ -363,8 +363,8 @@ Registro de cambios:
     </extraSourceFiles>
     <inputBinding>
         <actionBinding action="AL_LOAD_PALLET">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_r"/>
-            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_11" axisComponent="+" neutralInput="0" index="1"/>
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_b"/>
+            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_4" axisComponent="+" neutralInput="0" index="1"/>
         </actionBinding>
         <actionBinding action="AL_TOGGLE_LOADINGTYPE">
             <binding device="KB_MOUSE_DEFAULT" input="KEY_z"/>
