@@ -28,13 +28,13 @@ Pallets from the following mods can be used:
 In addition, all Euro pallets that are constructed according to the principle of the basic play pallets.
 
 Operation:
-Drive next to a pallet or bale and activate the load with [R].
+Activate loading with [B] and then drive next to a pallet or bale to load it.
 Make sure that you have selected the correct load.
 The pallets or bales will then lie on the loading area as if they were loaded by hand. 
 Do not forget to fasten the straps, otherwise they will slip.
 You can select the unloading side with [U] and unload with [I].
 The loading switches off automatically when there is no more loading area.
-You can also switch it off yourself with [R].
+You can also switch it off yourself with [B].
 
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
@@ -104,13 +104,13 @@ Paletten aus den folgenden Mods sind nutzbar:
 Außerdem alle Euro Paletten, die nach dem Prinzip der Basis Spiel Paletten aufgebaut sind.
 
 Bedienung:
-Fahrt neben eine Palette oder einen Ballen und aktiviert mit [R] das laden.
+Aktiviert das Laden mit [B] und fahrt dann neben eine Palette oder einen Ballen um ihn auf zu laden.
 Achtet darauf, dass ihr auch das richtige Ladegut ausgewählt habt.
 Die Paletten oder Ballen liegen dann, wie von Hand geladen, auf der Ladefläche. 
 Nicht vergessen das Ihr Spanngurte anlegt, sonst rutschen sie.
 Ihr könnt die Entladeseite mit [U] wählen und mit [I] entladen.
 Das Laden schaltet sich automatisch ab, wenn kein Ladeplatz mehr gefunden wird.
-Ihr könnt es aber auch mit [R] wieder selbst abschalten.
+Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
@@ -179,13 +179,13 @@ Si possono usare i pallet dei seguenti mod:
 Inoltre, tutti gli Euro pallet che sono costruiti secondo il principio dei pallet di base del gioco.
 
 Operazione:
-Guida accanto a un pallet o a una balla e attiva il carico con [R].
+Attivare il caricamento con [B] e poi guidare accanto a un pallet o a una balla per caricarla.
 Assicuratevi di aver selezionato il carico corretto.
 I pallet o le balle giacciono poi sull'area di carico come se fossero stati caricati a mano. 
 Non dimenticate di allacciare le cinghie, altrimenti scivoleranno.
 Potete selezionare il lato di scarico con [U] e scaricare con [I].
 Il caricamento si spegne automaticamente quando non c'è più area di carico.
-Potete anche spegnerlo voi stessi con [R].
+Potete anche spegnerlo voi stessi con [B].
 
 Changelog:
 1.3.1.0
@@ -252,13 +252,13 @@ Les palettes des Mods suivants sont utilisables :
 En outre, toutes les palettes Europe construites selon le principe des palettes de jeu de base.
 
 Manipulation :
-Roulez à côté d'une palette ou d'une balle et activez le chargement avec [R].
+Active le chargement avec [B] et roule ensuite à côté d'une palette ou d'une balle pour la charger.
 Veillez à ce que vous ayez sélectionné le bon chargement.
 Les palettes ou les balles sont alors posées sur la surface de chargement comme si elles étaient chargées manuellement. 
 N'oubliez pas d'attacher les sangles, sinon elles glisseront.
 Vous pouvez sélectionner le côté de déchargement avec [U] et décharger avec [I].
 Le chargement s'arrête automatiquement lorsqu'il n'y a plus de surface de chargement.
-Vous pouvez également le désactiver vous-même avec [R].
+Vous pouvez également le désactiver vous-même avec [B].
 
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
@@ -327,13 +327,13 @@ Se pueden utilizar las paletas de los siguientes mods:
 Además, todas las europaletas que se construyen según el principio de las paletas de juego básicas.
 
 Operación:
-Conduzca junto a un palé o paca y active la carga con [R].
+Active la carga con [B] y luego conduzca junto a un palé o paca para cargarlo.
 Asegúrese de que ha seleccionado la carga correcta.
 Las paletas o balas se depositarán entonces en la zona de carga como si se hubieran cargado a mano. 
 No olvides abrochar las correas, de lo contrario se deslizarán.
 Puede seleccionar el lado de descarga con [U] y descargar con [I].
 La carga se desconecta automáticamente cuando no hay más zona de carga.
-También puedes apagarlo tú mismo con [R].
+También puedes apagarlo tú mismo con [B].
 
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
