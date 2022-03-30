@@ -269,7 +269,7 @@ function APalletAutoLoader.updateActionText(self)
         g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, spec.tipsideText)
         
         -- deactivate when somthing is already loaded or not
-        g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0)
+        g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
         g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
         g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, true)
     end
