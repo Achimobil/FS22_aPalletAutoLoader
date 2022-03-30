@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="63">
     <author>Achimobil</author>
-    <version>1.6.2.0</version>
+    <version>1.7.0.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -79,6 +79,12 @@ Changelog:
 1.6.2.0
 - External access optimised
 - Square bale loading behaviour optimised
+
+1.7.0.0
+- Changed activation to LS standard for loading wagon [B] and always activatable. 
+- Text of unloading page in F1 on Dedi fixed.
+- Support of Multifruit Pack bales incl. lavender round bales (loadable as cotton round bales)
+- Load only selectable when load mode is deactivated
 ]]>
         </en>
         <de>
@@ -148,6 +154,12 @@ Changelog:
 1.6.2.0
 - Externe Zugriffsmöglichkeiten optimiert
 - Quaderballen Ladeverhalten optimiert
+
+1.7.0.0
+- Änderung der Aktivierung auf LS Standard für Ladewagen [B] und immer aktivierbar. 
+- Text der Entladeseite im F1 auf Dedi gefixed
+- Support von Multifruit Pack Ballen inkl. Lavendel Rundballen (ladebar als Baumwoll Rundballen)
+- Ladegut nur noch wählbar, wenn der Lademodus deaktiviert ist
 ]]>
         </de>
         <it>
@@ -215,6 +227,12 @@ Changelog:
 1.6.2.0
 - Accesso esterno ottimizzato
 - Comportamento di carico delle balle quadrate ottimizzato
+
+1.7.0.0
+- Cambiata l'attivazione a LS standard per il carro di carico [B] e sempre attivabile. 
+- Testo di scarico della pagina in F1 su Dedi corretto.
+- Supporto di balle Multifruit Pack incl. balle rotonde di lavanda (caricabili come balle rotonde di cotone)
+- Carico selezionabile solo quando la modalità di carico è disattivata
 ]]>
         </it>
         <fr>
@@ -284,6 +302,12 @@ Journal des modifications:
 1.6.2.0
 - Accès externe optimisé
 - Comportement de chargement des balles cubiques optimisé
+
+1.7.0.0
+- Changement de l'activation en LS standard pour les autochargeuses [B] et toujours activable. 
+- Correction du texte de la page de déchargement dans le F1 sur Dedi.
+- Support des balles Multifruit Pack, y compris les balles rondes de lavande (chargeables comme des balles rondes de coton).
+- Le chargement ne peut plus être sélectionné que si le mode de chargement est désactivé
 ]]>
         </fr>
         <es>
@@ -353,6 +377,12 @@ Registro de cambios:
 1.6.2.0
 - Acceso externo optimizado
 - Comportamiento de carga de balas cuadradas optimizado
+
+1.7.0.0
+- Se ha cambiado la activación a la norma LS para el vagón de carga [B] y siempre se puede activar. 
+- Texto de descarga de la página en F1 en Dedi arreglado.
+- Soporte de balas Multifruit Pack incl. balas redondas de lavanda (cargables como balas redondas de algodón)
+- Carga sólo seleccionable cuando el modo de carga está desactivado
 ]]>
         </es>
     </description>
