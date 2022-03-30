@@ -616,9 +616,9 @@ function APalletAutoLoader:onLoad(savegame)
         spec.useTensionBelts = self.xmlFile:getValue(baseXmlPath .. "#useTensionBelts", not GS_IS_MOBILE_VERSION)
         
         -- fix for dedi problem with sync by deactivate tension belts on server
-        if g_dedicatedServer ~= nil then
-            spec.useTensionBelts = false;
-        end
+        -- if g_dedicatedServer ~= nil then
+            -- spec.useTensionBelts = false;
+        -- end
     end
     
     spec.initialized = true;

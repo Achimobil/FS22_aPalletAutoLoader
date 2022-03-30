@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="64">
     <author>Achimobil</author>
-    <version>1.7.0.0</version>
+    <version>1.7.0.1</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -86,6 +86,9 @@ Changelog:
 - Support of Multifruit Pack bales incl. lavender round bales (loadable as cotton round bales)
 - Load only selectable when load mode is deactivated
 - Automatic tightening straps on dedicated server disabled due to engine sync errors
+
+1.7.0.1
+- enable automatic tension belts
 ]]>
         </en>
         <de>
@@ -162,6 +165,9 @@ Changelog:
 - Support von Multifruit Pack Ballen inkl. Lavendel Rundballen (ladebar als Baumwoll Rundballen)
 - Ladegut nur noch wählbar, wenn der Lademodus deaktiviert ist
 - Automatische Spanngurte auf Dedicated Server deaktiviert wegen der Sync Fehler der Engine
+
+1.7.0.1
+- enable automatic tension belts
 ]]>
         </de>
         <it>
@@ -236,6 +242,9 @@ Changelog:
 - Supporto di balle Multifruit Pack incl. balle rotonde di lavanda (caricabili come balle rotonde di cotone)
 - Carico selezionabile solo quando la modalità di carico è disattivata
 - Cinghie di serraggio automatiche sul server dedicato disattivate a causa di errori di sincronizzazione del motore
+
+1.7.0.1
+- enable automatic tension belts
 ]]>
         </it>
         <fr>
@@ -312,6 +321,9 @@ Journal des modifications:
 - Support des balles Multifruit Pack, y compris les balles rondes de lavande (chargeables comme des balles rondes de coton).
 - Le chargement ne peut plus être sélectionné que si le mode de chargement est désactivé
 - Sangles de serrage automatique désactivées sur les serveurs dédiés en raison des erreurs de synchronisation du moteur
+
+1.7.0.1
+- enable automatic tension belts
 ]]>
         </fr>
         <es>
@@ -388,6 +400,9 @@ Registro de cambios:
 - Soporte de balas Multifruit Pack incl. balas redondas de lavanda (cargables como balas redondas de algodón)
 - Carga sólo seleccionable cuando el modo de carga está desactivado
 - Desactivación de las correas de apriete automático en el servidor dedicado debido a errores de sincronización del motor
+
+1.7.0.1
+- enable automatic tension belts
 ]]>
         </es>
     </description>
