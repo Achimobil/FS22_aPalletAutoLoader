@@ -426,7 +426,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.MIDDLE] = self.xmlFile:getValue(baseXmlPath .. "#UnloadMiddleOffset", "0 0 0", true)
-    spec.UnloadOffset[APalletAutoLoaderTipsides.BACK] = self.xmlFile:getValue(baseXmlPath .. "#UnloadBackOffset", "0 -0.5 -10", true)
+    spec.UnloadOffset[APalletAutoLoaderTipsides.BACK] = self.xmlFile:getValue(baseXmlPath .. "#UnloadBackOffset", "0 -0.5 -" .. (spec.loadArea["lenght"]+1), true)
     
     if spec.loadArea["baseNode"] == nil then
         return;
