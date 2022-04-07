@@ -50,6 +50,7 @@ function APalletAutoLoader.initSpecialization()
 
     local schemaSavegame = Vehicle.xmlSchemaSavegame
     schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_aPalletAutoLoader.aPalletAutoLoader#lastUsedPalletTypeIndex", "Last used pallet type")
+    schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_aPalletAutoLoader.aPalletAutoLoader#lastUseTensionBelts", "Last used tension belts setting")
 end
 
 function APalletAutoLoader.registerFunctions(vehicleType)
@@ -69,6 +70,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "SetLoadingState", APalletAutoLoader.SetLoadingState)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
+    SpecializationUtil.registerFunction(vehicleType, "SetTensionBeltsValue", APalletAutoLoader.SetTensionBeltsValue)
     
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -228,6 +230,9 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
             spec.toggleMarkerEventId = actionEventId;
             
+            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_AUTOMATIC_TENSIONBELTS, self, APalletAutoLoader.actionEventToggleAutomaticTensionBelts, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
+            spec.toggleAutomaticTensionBeltsEventId = actionEventId;
             
             APalletAutoLoader.updateActionText(self);
         end
@@ -267,6 +272,12 @@ function APalletAutoLoader.updateActionText(self)
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
         
         g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, spec.tipsideText)
+        
+        local tensionBeltText = g_i18n:getText("aPalletAutoLoader_TensionBeltsNotActive");
+        if spec.useTensionBelts then
+            tensionBeltText = g_i18n:getText("aPalletAutoLoader_TensionBeltsActive");
+        end
+        g_inputBinding:setActionEventText(spec.toggleAutomaticTensionBeltsEventId, tensionBeltText)
         
         -- deactivate when somthing is already loaded or not
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
@@ -386,10 +397,26 @@ function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, ca
     end
 end
 
+function APalletAutoLoader.actionEventToggleAutomaticTensionBelts(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader
+        
+    SetAutomaticTensionBeltsEvent.sendEvent(self, not spec.useTensionBelts)
+end
+
+function APalletAutoLoader:SetTensionBeltsValue(newTensionBeltsValue)
+    local spec = self.spec_aPalletAutoLoader
+    
+    spec.useTensionBelts = newTensionBeltsValue;
+    
+    if self.isClient then
+        -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
+        APalletAutoLoader.updateActionText(self);
+    end
+end
+
 ---Called on loading
 -- @param table savegame savegame
 function APalletAutoLoader:onLoad(savegame)
-
     local aPalletAutoLoaderConfigurationId = Utils.getNoNil(self.configurations["aPalletAutoLoader"], 1)
     local baseXmlPath = string.format("vehicle.aPalletAutoLoader.APalletAutoLoaderConfigurations.APalletAutoLoaderConfiguration(%d)", aPalletAutoLoaderConfigurationId -1)
             
@@ -645,6 +672,10 @@ function APalletAutoLoader:onPostLoad(savegame)
             if(spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
                 spec.currentautoLoadTypeIndex = 1;
             end
+            local useTensionBelts = savegame.xmlFile:getBool(savegame.key..".FS22_aPalletAutoLoader.aPalletAutoLoader#lastUseTensionBelts", nil)
+            if(useTensionBelts ~= nil) then
+                spec.useTensionBelts = useTensionBelts;
+            end
         end
     end
 end
@@ -657,6 +688,9 @@ function APalletAutoLoader:saveToXMLFile(xmlFile, key, usedModNames)
     end
 
     xmlFile:setValue(key.."#lastUsedPalletTypeIndex", spec.currentautoLoadTypeIndex)
+    if spec.useTensionBelts ~= nil then
+        xmlFile:setBool(key.."#lastUseTensionBelts", spec.useTensionBelts)
+    end
 end
 
 ---
@@ -1297,6 +1331,11 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
             spec.isFullLoaded = isFullLoaded;
             hasChanges = true;
         end   
+        local useTensionBelts = streamReadBool(streamId);
+        if spec.useTensionBelts ~= useTensionBelts then
+            spec.useTensionBelts = useTensionBelts;
+            hasChanges = true;
+        end   
         
         if hasChanges then
             APalletAutoLoader.updateActionText(self);
@@ -1326,6 +1365,7 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
         streamWriteInt32(streamId, spec.currentTipside)
         streamWriteInt32(streamId, spec.loadingState)
         streamWriteBool(streamId, spec.isFullLoaded)
+        streamWriteBool(streamId, spec.useTensionBelts)
     end
 end
 

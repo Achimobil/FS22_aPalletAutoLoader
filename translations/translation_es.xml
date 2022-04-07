@@ -29,5 +29,7 @@
 		<text name="aPalletAutoLoader_squarebale180" text="Paca rectangular 180" />
 		<text name="aPalletAutoLoader_squarebale220" text="Paca rectangular 220" />
 		<text name="aPalletAutoLoader_squarebale240" text="Paca rectangular 240" />
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Correas de tensión desactivadas" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Correas tensoras activadas" />
 	</texts>
 </l10n>

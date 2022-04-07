@@ -29,5 +29,7 @@
 		<text name="aPalletAutoLoader_squarebale180" text="Kostka 180" />
 		<text name="aPalletAutoLoader_squarebale220" text="Kostka 220" />
 		<text name="aPalletAutoLoader_squarebale240" text="Kostka 240" />
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Taśmy napinające wyłączone" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Aktywacja pasów napinających" />
 	</texts>
 </l10n>

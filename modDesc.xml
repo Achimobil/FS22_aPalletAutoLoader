@@ -431,6 +431,9 @@ Registro de cambios:
         <actionBinding action="AL_TOGGLE_MARKERS">
             <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_u"/>
         </actionBinding>
+        <actionBinding action="AL_TOGGLE_AUTOMATIC_TENSIONBELTS">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_j"/>
+        </actionBinding>
     </inputBinding>
     <actions>
         <action name="AL_LOAD_PALLET"/>
@@ -438,6 +441,7 @@ Registro de cambios:
         <action name="AL_TOGGLE_TIPSIDE"/>
         <action name="AL_UNLOAD"/>
         <action name="AL_TOGGLE_MARKERS"/>
+        <action name="AL_TOGGLE_AUTOMATIC_TENSIONBELTS"/>
     </actions>
     <l10n filenamePrefix="translations/translation"/>
 </modDesc>

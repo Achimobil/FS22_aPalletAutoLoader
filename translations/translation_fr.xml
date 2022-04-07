@@ -29,5 +29,7 @@
 		<text name="aPalletAutoLoader_squarebale180" text="Balle carrée 180" />
 		<text name="aPalletAutoLoader_squarebale220" text="Balle carrée 220" />
 		<text name="aPalletAutoLoader_squarebale240" text="Balle carrée 240" />
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Sangles de serrage désactivées" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Sangles de serrage activées" />
     </texts>
 </l10n>

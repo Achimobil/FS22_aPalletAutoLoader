@@ -29,5 +29,7 @@
 		<text name="aPalletAutoLoader_squarebale180" text="Balla quadrata 180" />
 		<text name="aPalletAutoLoader_squarebale220" text="Balla quadrata 220" />
 		<text name="aPalletAutoLoader_squarebale240" text="Balla quadrata 240" />
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Cinghie di tensione disattivate" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Cinghie di tensione attivate" />
 	</texts>
 </l10n>
