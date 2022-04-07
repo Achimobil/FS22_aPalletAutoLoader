@@ -981,6 +981,7 @@ end
 function APalletAutoLoader:getFirstValidLoadPlace()
     local spec = self.spec_aPalletAutoLoader
 
+    if spec.usedPositions == nil then spec.usedPositions = {} end
     -- Hier die loading position und das loading objekt nehmen und die erste ladeposition dafür dynamisch suchen
     -- https://gdn.giants-software.com/documentation_scripting_fs19.php?version=engine&category=15&function=138
     -- overlapBox scheint zu prüfen, ob der angegebene Bereich frei ist
@@ -991,40 +992,47 @@ function APalletAutoLoader:getFirstValidLoadPlace()
     while (currentLoadHeigt + autoLoadType.sizeY)  <= spec.loadArea["height"] do
     
         for i=1, #loadPlaces do
-            local loadPlace = loadPlaces[i]
-            local x, y, z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
-            local rx, ry, rz = getWorldRotation(loadPlace.node)
+            local positionIndex = i .. "-" .. currentLoadHeigt;
             
-            -- collision mask : all bits except bit 13, 23, 30
-            spec.foundObject = false 
+            if spec.usedPositions[positionIndex] == nil
+            then
+                local loadPlace = loadPlaces[i]
+                local x, y, z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
+                local rx, ry, rz = getWorldRotation(loadPlace.node)
+                -- collision mask : all bits except bit 13, 23, 30
+                spec.foundObject = false 
+                        
+                if autoLoadType.type == "roundbale" then
+                    -- Kollision rund berechnen für Rundballen mit simuliertem Kreis, Kugel klappt nicht bei den großen ballen wegen der höhe
+                    -- eine virtel umdrehung als konstante
+                    local rotationQuarter = math.rad(90);
+                    local testRuns = 3;
                     
-            if autoLoadType.type == "roundbale" then
-                -- Kollision rund berechnen für Rundballen mit simuliertem Kreis, Kugel klappt nicht bei den großen ballen wegen der höhe
-                -- eine virtel umdrehung als konstante
-                local rotationQuarter = math.rad(90);
-                local testRuns = 3;
-                
-                -- länge des quadrates im kreis berechnen für x und z
-                -- radius = seitenlänge / Wurzel 2
-                -- seitenlänge = radius * Wurzel 2
-                local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
-                
-                -- für jeden teil einen test machen
-                for i = 1, testRuns do 
-                    overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+                    -- länge des quadrates im kreis berechnen für x und z
+                    -- radius = seitenlänge / Wurzel 2
+                    -- seitenlänge = radius * Wurzel 2
+                    local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
+                    
+                    -- für jeden teil einen test machen
+                    for i = 1, testRuns do 
+                        overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+                    end
+                elseif autoLoadType.type == "squarebale" then
+                    -- switch sizeZ and sizeX here because it is used 90° turned
+                    
+                    overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeZ / 2, autoLoadType.sizeY / 2, autoLoadType.sizeX / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
+                else
+                    overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
                 end
-            elseif autoLoadType.type == "squarebale" then
-                -- switch sizeZ and sizeX here because it is used 90° turned
                 
-                overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeZ / 2, autoLoadType.sizeY / 2, autoLoadType.sizeX / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
-            else
-                overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
-            end
-
-            -- sollte auf true sein, wenn eine rotation was gefunden hat
-            if not spec.foundObject then
-                -- print("height: " .. currentLoadHeigt)
-                return i, currentLoadHeigt
+                -- save checked position to skip on next run
+                if spec.usedPositions[positionIndex] == nil then spec.usedPositions[positionIndex] = true end;
+                
+                -- sollte auf true sein, wenn eine rotation was gefunden hat
+                if not spec.foundObject then
+                    -- print("height: " .. currentLoadHeigt)
+                    return i, currentLoadHeigt
+                end
             end
         end
         
@@ -1220,14 +1228,16 @@ function APalletAutoLoader:loadObject(object)
                         end
                         
                         if spec.numTriggeredObjects >= currentAutoLoadType.maxItems then
-                            spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
+                            spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
+                            spec.usedPositions = {};
                         end
                         
                         self:raiseDirtyFlags(spec.dirtyFlag)
                         
                         return true;
                     else
-                        spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
+                        spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
+                        spec.usedPositions = {};
                         spec.isFullLoaded = true;
                     end
                 end
@@ -1242,7 +1252,8 @@ end
 function APalletAutoLoader:unloadAll()
     local spec = self.spec_aPalletAutoLoader
     
-    spec.loadingState = APalletAutoLoaderLoadingState.STOPPED
+    spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
+    spec.usedPositions = {};
     spec.isFullLoaded = false;
 
     for object,_ in pairs(spec.triggeredObjects) do
