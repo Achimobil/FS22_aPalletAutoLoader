@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="64">
     <author>Achimobil</author>
-    <version>1.7.0.1</version>
+    <version>1.7.1.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -87,8 +87,12 @@ Changelog:
 - Load only selectable when load mode is deactivated
 - Automatic tightening straps on dedicated server disabled due to engine sync errors
 
-1.7.0.1
-- enable automatic tension belts
+1.7.1.0
+- Automatic tension belts on dedi server activated again reguarging the settings the modder of the vehicle has defined.
+- Automatic tension belts can now be activated/deactivated per vehicle by [lctrl]+[J]. This is stored per vehicle.
+- Optimize finding valid loadplace by remembering invalid load places as long as the loader is active.
+- add unloading side backwards for all vehicles by default. Position can configured by the modder.
+- Change priorities of the keybinding to have main controls better visible in the F1 Help.
 ]]>
         </en>
         <de>
@@ -166,8 +170,12 @@ Changelog:
 - Ladegut nur noch wählbar, wenn der Lademodus deaktiviert ist
 - Automatische Spanngurte auf Dedicated Server deaktiviert wegen der Sync Fehler der Engine
 
-1.7.0.1
-- enable automatic tension belts
+1.7.1.0
+- Automatische Spanngurte auf dem dedi-Server werden wieder aktiviert und regeln die Einstellungen, die der Modder des Fahrzeugs festgelegt hat.
+- Automatische Spanngurte können nun pro Fahrzeug mit [lctrl]+[J] aktiviert/deaktiviert werden. Dies wird pro Fahrzeug gespeichert.
+- Optimiert die Suche nach gültigen Ladeplätzen, indem ungültige Ladeplätze gespeichert werden, solange der Lader aktiv ist.
+- Entladeseite rückwärts für alle Fahrzeuge als Standard hinzufügen. Position kann vom Modder konfiguriert werden.
+- Ändern Sie die Prioritäten der Tastenbelegung, um die Hauptsteuerungen in der F1-Hilfe besser sichtbar zu machen.
 ]]>
         </de>
         <it>
@@ -243,8 +251,12 @@ Changelog:
 - Carico selezionabile solo quando la modalità di carico è disattivata
 - Cinghie di serraggio automatiche sul server dedicato disattivate a causa di errori di sincronizzazione del motore
 
-1.7.0.1
-- enable automatic tension belts
+1.7.1.0
+- Le cinghie di tensione automatiche sul server dedi si attivano di nuovo regolando le impostazioni che il modder del veicolo ha definito.
+- Le cinghie di tensione automatiche possono ora essere attivate/disattivate per veicolo con [lctrl]+[J]. Questo viene memorizzato per veicolo.
+- Ottimizzare la ricerca di posti di carico validi ricordando i posti di carico non validi finché il caricatore è attivo.
+- aggiungere il lato di scarico all'indietro per tutti i veicoli in modo predefinito. La posizione può essere configurata dal modder.
+- Cambiare le priorità del keybinding per avere controlli principali meglio visibili nella Guida F1.
 ]]>
         </it>
         <fr>
@@ -322,8 +334,14 @@ Journal des modifications:
 - Le chargement ne peut plus être sélectionné que si le mode de chargement est désactivé
 - Sangles de serrage automatique désactivées sur les serveurs dédiés en raison des erreurs de synchronisation du moteur
 
-1.7.0.1
-- enable automatic tension belts
+1.7.1.0
+- Les courroies de tension automatiques sur le serveur dedi sont à nouveau activées en fonction des paramètres définis par le moddeur du véhicule.
+- Les courroies de tension automatiques peuvent maintenant être activées/désactivées par véhicule par [lctrl]+[J]. Ceci est stocké par véhicule.
+- Optimisation de la recherche de lieux de chargement valides en mémorisant les lieux de chargement invalides tant que le chargeur est actif.
+- Ajout d'un côté de déchargement en arrière pour tous les véhicules par défaut. La position peut être configurée par le moddeur.
+- Changement des priorités du keybinding pour que les contrôles principaux soient mieux visibles dans l'aide F1.
+
+Traduit avec www.DeepL.com/Translator (version gratuite)
 ]]>
         </fr>
         <es>
@@ -401,8 +419,12 @@ Registro de cambios:
 - Carga sólo seleccionable cuando el modo de carga está desactivado
 - Desactivación de las correas de apriete automático en el servidor dedicado debido a errores de sincronización del motor
 
-1.7.0.1
-- enable automatic tension belts
+1.7.1.0
+- Los cinturones de tensión automáticos en el servidor dedi vuelven a activarse reguardando los ajustes que el modder del vehículo ha definido.
+- Los cinturones de tensión automáticos pueden ahora ser activados/desactivados por vehículo mediante [lctrl]+[J]. Esto se almacena por vehículo.
+- Optimizar la búsqueda de lugares de carga válidos recordando los lugares de carga no válidos mientras el cargador esté activo.
+- Añadir el lado de descarga hacia atrás para todos los vehículos por defecto. La posición puede ser configurada por el modder.
+- Cambiar las prioridades del keybinding para que los controles principales sean más visibles en la Ayuda F1.
 ]]>
         </es>
     </description>
