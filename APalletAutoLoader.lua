@@ -251,6 +251,7 @@ function APalletAutoLoader.updateActionText(self)
             g_inputBinding:setActionEventActive(spec.toggleTipsideActionEventId, false)
             g_inputBinding:setActionEventActive(spec.unloadAllEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, false)
+            g_inputBinding:setActionEventActive(spec.toggleAutomaticTensionBeltsEventId, false)
             return;
         end
         
@@ -285,6 +286,7 @@ function APalletAutoLoader.updateActionText(self)
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
         g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
         g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, true)
+        g_inputBinding:setActionEventActive(spec.toggleAutomaticTensionBeltsEventId, true)
     end
 end
 
