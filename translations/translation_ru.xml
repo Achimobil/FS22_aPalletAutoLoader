@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-	<translationContributors>nagor</translationContributors>
+    <translationContributors>nagor</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Деактивировать автозагрузку" />
-		<text name="aPalletAutoLoader_startLoading" text="Активировать автозагрузку" />
-		<text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов" />
-		<text name="PalletAutoload_Trailer" text="Автопогрузка поддонов" />
-		<text name="aPalletAutoLoader_LoadingType" text="Автопогрузка" />
-		<text name="aPalletAutoLoader_liquidTank" text="Поддоны для жидкости" />
-		<text name="aPalletAutoLoader_euroPallet" text="Поддоны" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
-		<text name="aPalletAutoLoader_bigBag" text="Большие мешки" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Круглый тюк хлопка" />
-		<text name="aPalletAutoLoader_tipside" text="Сторона выгрузки" />
-		<text name="aPalletAutoLoader_1" text="Слева" />
-		<text name="aPalletAutoLoader_2" text="Справа" />
-		<text name="aPalletAutoLoader_3" text="Средний" />
-		<text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов" />
-		<text name="input_AL_LOAD_PALLET" text="Погрузить" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Переключить тип поддонов/тюков" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Переключить сторону выгрузки" />
-		<text name="input_AL_UNLOAD" text="Разгрузиться здесь" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="Негабаритные поддоны" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Показать/скрыть маркеры" />
-		<text name="aPalletAutoLoader_roundbale125" text="Круглый тюк 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Круглый тюк 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Круглый тюк 180" />
-		<text name="aPalletAutoLoader_squarebale180" text="Квадратный тюк 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Квадратный тюк 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Квадратный тюк 240" />
-	</texts>
+        <text name="aPalletAutoLoader_stopLoading" text="Деактивировать автозагрузку" />
+        <text name="aPalletAutoLoader_startLoading" text="Активировать автозагрузку" />
+        <text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов" />
+        <text name="PalletAutoload_Trailer" text="Автопогрузка поддонов" />
+        <text name="aPalletAutoLoader_LoadingType" text="Автопогрузка" />
+        <text name="aPalletAutoLoader_liquidTank" text="Поддоны для жидкости" />
+        <text name="aPalletAutoLoader_euroPallet" text="Поддоны" />
+        <text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
+        <text name="aPalletAutoLoader_bigBag" text="Большие мешки" />
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Круглый тюк хлопка" />
+        <text name="aPalletAutoLoader_tipside" text="Сторона выгрузки" />
+        <text name="aPalletAutoLoader_1" text="Слева" />
+        <text name="aPalletAutoLoader_2" text="Справа" />
+        <text name="aPalletAutoLoader_3" text="Средний" />
+        <text name="aPalletAutoLoader_4" text="задний" />
+        <text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов" />
+        <text name="input_AL_LOAD_PALLET" text="Погрузить" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Переключить тип поддонов/тюков" />
+        <text name="input_AL_TOGGLE_TIPSIDE" text="Переключить сторону выгрузки" />
+        <text name="input_AL_UNLOAD" text="Разгрузиться здесь" />
+        <text name="aPalletAutoLoader_euroPalletOversize" text="Негабаритные поддоны" />
+        <text name="input_AL_TOGGLE_MARKERS" text="Показать/скрыть маркеры" />
+        <text name="aPalletAutoLoader_roundbale125" text="Круглый тюк 125" />
+        <text name="aPalletAutoLoader_roundbale150" text="Круглый тюк 150" />
+        <text name="aPalletAutoLoader_roundbale180" text="Круглый тюк 180" />
+        <text name="aPalletAutoLoader_squarebale180" text="Квадратный тюк 180" />
+        <text name="aPalletAutoLoader_squarebale220" text="Квадратный тюк 220" />
+        <text name="aPalletAutoLoader_squarebale240" text="Квадратный тюк 240" />
+    </texts>
 </l10n>

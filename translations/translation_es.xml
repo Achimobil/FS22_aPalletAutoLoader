@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-	<translationContributors>Keltibero</translationContributors>
+    <translationContributors>Keltibero</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Desactivar la carga automática" />
-		<text name="aPalletAutoLoader_startLoading" text="Activar la carga automática" />
-		<text name="function_PalletAutoload_Trailer" text="Remolque con Carga Automática para palés" />
-		<text name="PalletAutoload_Trailer" text="Remolque de plataforma" />
-		<text name="aPalletAutoLoader_LoadingType" text="Tipo de carga" />
-		<text name="aPalletAutoLoader_liquidTank" text="Contenedor para líquidos (GRG)" />
-		<text name="aPalletAutoLoader_euroPallet" text="Europalé" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes" />
-		<text name="aPalletAutoLoader_bigBag" text="Sacos grandes" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
-		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
-		<text name="aPalletAutoLoader_1" text="izquierda" />
-		<text name="aPalletAutoLoader_2" text="derecha" />
-		<text name="aPalletAutoLoader_3" text="Medio" />
-		<text name="configuration_aPalletAutoLoader" text="Carga Automática de palés" />
-		<text name="input_AL_LOAD_PALLET" text="Cargar palés" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambiar tipo de carga" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga" />
-		<text name="input_AL_UNLOAD" text="Descargar aquí" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Mostrar/ocultar marcadores" />
-		<text name="aPalletAutoLoader_roundbale125" text="Paca redonda 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Paca redonda 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Paca redonda 180" />
-		<text name="aPalletAutoLoader_squarebale180" text="Paca rectangular 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Paca rectangular 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Paca rectangular 240" />
-	</texts>
+        <text name="aPalletAutoLoader_stopLoading" text="Desactivar la carga automática" />
+        <text name="aPalletAutoLoader_startLoading" text="Activar la carga automática" />
+        <text name="function_PalletAutoload_Trailer" text="Remolque con Carga Automática para palés" />
+        <text name="PalletAutoload_Trailer" text="Remolque de plataforma" />
+        <text name="aPalletAutoLoader_LoadingType" text="Tipo de carga" />
+        <text name="aPalletAutoLoader_liquidTank" text="Contenedor para líquidos (GRG)" />
+        <text name="aPalletAutoLoader_euroPallet" text="Europalé" />
+        <text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes" />
+        <text name="aPalletAutoLoader_bigBag" text="Sacos grandes" />
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
+        <text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
+        <text name="aPalletAutoLoader_1" text="izquierda" />
+        <text name="aPalletAutoLoader_2" text="derecha" />
+        <text name="aPalletAutoLoader_3" text="Medio" />
+        <text name="aPalletAutoLoader_4" text="trasero" />
+        <text name="configuration_aPalletAutoLoader" text="Carga Automática de palés" />
+        <text name="input_AL_LOAD_PALLET" text="Cargar palés" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambiar tipo de carga" />
+        <text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga" />
+        <text name="input_AL_UNLOAD" text="Descargar aquí" />
+        <text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado" />
+        <text name="input_AL_TOGGLE_MARKERS" text="Mostrar/ocultar marcadores" />
+        <text name="aPalletAutoLoader_roundbale125" text="Paca redonda 125" />
+        <text name="aPalletAutoLoader_roundbale150" text="Paca redonda 150" />
+        <text name="aPalletAutoLoader_roundbale180" text="Paca redonda 180" />
+        <text name="aPalletAutoLoader_squarebale180" text="Paca rectangular 180" />
+        <text name="aPalletAutoLoader_squarebale220" text="Paca rectangular 220" />
+        <text name="aPalletAutoLoader_squarebale240" text="Paca rectangular 240" />
+    </texts>
 </l10n>

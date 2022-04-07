@@ -8,7 +8,8 @@ APalletAutoLoader = {}
 APalletAutoLoaderTipsides = {
     LEFT = 1,
     RIGHT = 2,
-    MIDDLE = 3
+    MIDDLE = 3,
+    BACK = 4
 }
 
 APalletAutoLoaderLoadingState = {
@@ -40,6 +41,7 @@ function APalletAutoLoader.initSpecialization()
     schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadRightOffset", "Offset for Unload right")
     schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadLeftOffset", "Offset for Unload left")
     schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadMiddleOffset", "Offset for Unload middle")
+    schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadBackOffset", "Offset for Unload back")
     schema:register(XMLValueType.NODE_INDEX, baseXmlPath .. ".loadArea#baseNode", "Base node for loading")
     schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. ".loadArea#leftRightCornerOffset", "Offset for the left corner, loading will be done starting this point")
     schema:register(XMLValueType.FLOAT, baseXmlPath .. ".loadArea#lenght", "length of the loadArea")
@@ -350,6 +352,10 @@ function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue
     
     if spec.currentTipside == APalletAutoLoaderTipsides.LEFT then
         newTipside = APalletAutoLoaderTipsides.RIGHT;
+    elseif spec.currentTipside == APalletAutoLoaderTipsides.RIGHT then
+        newTipside = APalletAutoLoaderTipsides.MIDDLE;
+    elseif spec.currentTipside == APalletAutoLoaderTipsides.MIDDLE then
+        newTipside = APalletAutoLoaderTipsides.BACK;
     end
     
     SetTipsideEvent.sendEvent(self, newTipside)
@@ -420,6 +426,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.MIDDLE] = self.xmlFile:getValue(baseXmlPath .. "#UnloadMiddleOffset", "0 0 0", true)
+    spec.UnloadOffset[APalletAutoLoaderTipsides.BACK] = self.xmlFile:getValue(baseXmlPath .. "#UnloadBackOffset", "0 -0.5 -10", true)
     
     if spec.loadArea["baseNode"] == nil then
         return;

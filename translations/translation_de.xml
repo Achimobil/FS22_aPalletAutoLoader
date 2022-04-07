@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-	<translationContributors>Achimobil</translationContributors>
+    <translationContributors>Achimobil</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Autoload abschalten" />
-		<text name="aPalletAutoLoader_startLoading" text="Autoload einschalten" />
-		<text name="function_PalletAutoload_Trailer" text="Anhänger mit Autoload für Paletten" />
-		<text name="PalletAutoload_Trailer" text="Paletten Autoloader" />
-		<text name="aPalletAutoLoader_LoadingType" text="Ladegut" />
-		<text name="aPalletAutoLoader_liquidTank" text="Flüssigkeitstanks" />
-		<text name="aPalletAutoLoader_euroPallet" text="Euro Paletten" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="Bigbag Paletten" />
-		<text name="aPalletAutoLoader_bigBag" text="Bigbags" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Rundballen Baumwolle" />
-		<text name="aPalletAutoLoader_tipside" text="Abladeseite" />
-		<text name="aPalletAutoLoader_1" text="Links" />
-		<text name="aPalletAutoLoader_2" text="Rechts" />
-		<text name="aPalletAutoLoader_3" text="Mitte" />
-		<text name="configuration_aPalletAutoLoader" text="Paletten Autoloader" />
-		<text name="input_AL_LOAD_PALLET" text="Paletten aufladen" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Ladegut ändern" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Abladeseite ändern" />
-		<text name="input_AL_UNLOAD" text="Hier abladen" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="Euro Paletten Übergröße" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Markierungen anzeigen/ausblenden" />
-		<text name="aPalletAutoLoader_roundbale125" text="Rundballen 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Rundballen 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Rundballen 180" />
-		<text name="aPalletAutoLoader_squarebale180" text="Quaderballen 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Quaderballen 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Quaderballen 240" />
-	</texts>
+        <text name="aPalletAutoLoader_stopLoading" text="Autoload abschalten" />
+        <text name="aPalletAutoLoader_startLoading" text="Autoload einschalten" />
+        <text name="function_PalletAutoload_Trailer" text="Anhänger mit Autoload für Paletten" />
+        <text name="PalletAutoload_Trailer" text="Paletten Autoloader" />
+        <text name="aPalletAutoLoader_LoadingType" text="Ladegut" />
+        <text name="aPalletAutoLoader_liquidTank" text="Flüssigkeitstanks" />
+        <text name="aPalletAutoLoader_euroPallet" text="Euro Paletten" />
+        <text name="aPalletAutoLoader_bigBagPallet" text="Bigbag Paletten" />
+        <text name="aPalletAutoLoader_bigBag" text="Bigbags" />
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Rundballen Baumwolle" />
+        <text name="aPalletAutoLoader_tipside" text="Abladeseite" />
+        <text name="aPalletAutoLoader_1" text="Links" />
+        <text name="aPalletAutoLoader_2" text="Rechts" />
+        <text name="aPalletAutoLoader_3" text="Mitte" />
+        <text name="aPalletAutoLoader_4" text="Hinten" />
+        <text name="configuration_aPalletAutoLoader" text="Paletten Autoloader" />
+        <text name="input_AL_LOAD_PALLET" text="Paletten aufladen" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Ladegut ändern" />
+        <text name="input_AL_TOGGLE_TIPSIDE" text="Abladeseite ändern" />
+        <text name="input_AL_UNLOAD" text="Hier abladen" />
+        <text name="aPalletAutoLoader_euroPalletOversize" text="Euro Paletten Übergröße" />
+        <text name="input_AL_TOGGLE_MARKERS" text="Markierungen anzeigen/ausblenden" />
+        <text name="aPalletAutoLoader_roundbale125" text="Rundballen 125" />
+        <text name="aPalletAutoLoader_roundbale150" text="Rundballen 150" />
+        <text name="aPalletAutoLoader_roundbale180" text="Rundballen 180" />
+        <text name="aPalletAutoLoader_squarebale180" text="Quaderballen 180" />
+        <text name="aPalletAutoLoader_squarebale220" text="Quaderballen 220" />
+        <text name="aPalletAutoLoader_squarebale240" text="Quaderballen 240" />
+    </texts>
 </l10n>

@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-	<translationContributors>Markus33 [ITA]</translationContributors>
+    <translationContributors>Markus33 [ITA]</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Disattivare il carico automatico" />
-		<text name="aPalletAutoLoader_startLoading" text="Attivare il caricamento automatico" />
-		<text name="function_PalletAutoload_Trailer" text="Rimorchio con caricamento automatico per pallet" />
-		<text name="PalletAutoload_Trailer" text="Caricatore automatico di pallet" />
-		<text name="aPalletAutoLoader_LoadingType" text="Tipo di caricamento" />
-		<text name="aPalletAutoLoader_liquidTank" text="Pallet contenitore liquidi" />
-		<text name="aPalletAutoLoader_euroPallet" text="Euro Pallet" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="Pallet BigBag" />
-		<text name="aPalletAutoLoader_bigBag" text="Grandi sacchi" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Rotoballa di cotone" />
-		<text name="aPalletAutoLoader_tipside" text="Lato di scarico" />
-		<text name="aPalletAutoLoader_1" text="Sinistra" />
-		<text name="aPalletAutoLoader_2" text="Destra" />
-		<text name="aPalletAutoLoader_3" text="Medio" />
-		<text name="configuration_aPalletAutoLoader" text="Caricatore automatico di pallet" />
-		<text name="input_AL_LOAD_PALLET" text="Carica i pallet" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambia il tipo di carico" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambia il lato di scarico" />
-		<text name="input_AL_UNLOAD" text="Scarica qui" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Mostra/Nascondi indicatori" />
-		<text name="aPalletAutoLoader_roundbale125" text="Rotoballa 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Rotoballa 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Rotoballa 180" />
-		<text name="aPalletAutoLoader_squarebale180" text="Balla quadrata 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Balla quadrata 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Balla quadrata 240" />
-	</texts>
+        <text name="aPalletAutoLoader_stopLoading" text="Disattivare il carico automatico" />
+        <text name="aPalletAutoLoader_startLoading" text="Attivare il caricamento automatico" />
+        <text name="function_PalletAutoload_Trailer" text="Rimorchio con caricamento automatico per pallet" />
+        <text name="PalletAutoload_Trailer" text="Caricatore automatico di pallet" />
+        <text name="aPalletAutoLoader_LoadingType" text="Tipo di caricamento" />
+        <text name="aPalletAutoLoader_liquidTank" text="Pallet contenitore liquidi" />
+        <text name="aPalletAutoLoader_euroPallet" text="Euro Pallet" />
+        <text name="aPalletAutoLoader_bigBagPallet" text="Pallet BigBag" />
+        <text name="aPalletAutoLoader_bigBag" text="Grandi sacchi" />
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Rotoballa di cotone" />
+        <text name="aPalletAutoLoader_tipside" text="Lato di scarico" />
+        <text name="aPalletAutoLoader_1" text="Sinistra" />
+        <text name="aPalletAutoLoader_2" text="Destra" />
+        <text name="aPalletAutoLoader_3" text="Medio" />
+        <text name="aPalletAutoLoader_4" text="Posteriore" />
+        <text name="configuration_aPalletAutoLoader" text="Caricatore automatico di pallet" />
+        <text name="input_AL_LOAD_PALLET" text="Carica i pallet" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambia il tipo di carico" />
+        <text name="input_AL_TOGGLE_TIPSIDE" text="Cambia il lato di scarico" />
+        <text name="input_AL_UNLOAD" text="Scarica qui" />
+        <text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura" />
+        <text name="input_AL_TOGGLE_MARKERS" text="Mostra/Nascondi indicatori" />
+        <text name="aPalletAutoLoader_roundbale125" text="Rotoballa 125" />
+        <text name="aPalletAutoLoader_roundbale150" text="Rotoballa 150" />
+        <text name="aPalletAutoLoader_roundbale180" text="Rotoballa 180" />
+        <text name="aPalletAutoLoader_squarebale180" text="Balla quadrata 180" />
+        <text name="aPalletAutoLoader_squarebale220" text="Balla quadrata 220" />
+        <text name="aPalletAutoLoader_squarebale240" text="Balla quadrata 240" />
+    </texts>
 </l10n>
