@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-	<translationContributors>Achimobil</translationContributors>
+    <translationContributors>Achimobil</translationContributors>
     <texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Disable Autoload" />
-		<text name="aPalletAutoLoader_startLoading" text="Enable Autoload" />
-		<text name="function_PalletAutoload_Trailer" text="Trailer with Autoload for pallets" />
-		<text name="PalletAutoload_Trailer" text="Pallet Autoload" />
-		<text name="aPalletAutoLoader_LoadingType" text="LoadingType" />
-		<text name="aPalletAutoLoader_liquidTank" text="liquidTank" />
-		<text name="aPalletAutoLoader_euroPallet" text="euroPallet" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="BigBag Pallets" />
-		<text name="aPalletAutoLoader_bigBag" text="Bigbags" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Round bale cotton" />
-		<text name="aPalletAutoLoader_tipside" text="Tipside" />
-		<text name="aPalletAutoLoader_1" text="left" />
-		<text name="aPalletAutoLoader_2" text="right" />
-		<text name="aPalletAutoLoader_3" text="Middle" />
-		<text name="configuration_aPalletAutoLoader" text="Pallet Autoload" />
-		<text name="input_AL_LOAD_PALLET" text="Load Pallets" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside" />
-		<text name="input_AL_UNLOAD" text="Unload here" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Show/Hide Markers" />
-		<text name="aPalletAutoLoader_roundbale125" text="Round bale 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Round bale 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Round bale 180" />
-		<text name="aPalletAutoLoader_squarebale180" text="Square bale 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Square bale 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Square bale 240" />
+        <text name="aPalletAutoLoader_stopLoading" text="Disable Autoload" />
+        <text name="aPalletAutoLoader_startLoading" text="Enable Autoload" />
+        <text name="function_PalletAutoload_Trailer" text="Trailer with Autoload for pallets" />
+        <text name="PalletAutoload_Trailer" text="Pallet Autoload" />
+        <text name="aPalletAutoLoader_LoadingType" text="LoadingType" />
+        <text name="aPalletAutoLoader_liquidTank" text="liquidTank" />
+        <text name="aPalletAutoLoader_euroPallet" text="euroPallet" />
+        <text name="aPalletAutoLoader_bigBagPallet" text="BigBag Pallets" />
+        <text name="aPalletAutoLoader_bigBag" text="Bigbags" />
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Round bale cotton" />
+        <text name="aPalletAutoLoader_tipside" text="Tipside" />
+        <text name="aPalletAutoLoader_1" text="left" />
+        <text name="aPalletAutoLoader_2" text="right" />
+        <text name="aPalletAutoLoader_3" text="Middle" />
+        <text name="aPalletAutoLoader_4" text="Back" />
+        <text name="configuration_aPalletAutoLoader" text="Pallet Autoload" />
+        <text name="input_AL_LOAD_PALLET" text="Load Pallets" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType" />
+        <text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside" />
+        <text name="input_AL_UNLOAD" text="Unload here" />
+        <text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded" />
+        <text name="input_AL_TOGGLE_MARKERS" text="Show/Hide Markers" />
+        <text name="aPalletAutoLoader_roundbale125" text="Round bale 125" />
+        <text name="aPalletAutoLoader_roundbale150" text="Round bale 150" />
+        <text name="aPalletAutoLoader_roundbale180" text="Round bale 180" />
+        <text name="aPalletAutoLoader_squarebale180" text="Square bale 180" />
+        <text name="aPalletAutoLoader_squarebale220" text="Square bale 220" />
+        <text name="aPalletAutoLoader_squarebale240" text="Square bale 240" />
 		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Tensioning straps deactivated" />
 		<text name="aPalletAutoLoader_TensionBeltsActive" text="Tensioning straps activated" />
-	</texts>
+    </texts>
 </l10n>
