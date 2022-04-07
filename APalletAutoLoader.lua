@@ -423,8 +423,8 @@ function APalletAutoLoader:onLoad(savegame)
     spec.loadArea["width"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#width") or 2
     spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
     spec.UnloadOffset = {}
-    spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-3 -0.5 0", true)
-    spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", "3 -0.5 0", true)
+    spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-" .. (spec.loadArea["width"]+1) .. " -0.5 0", true)
+    spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", (spec.loadArea["width"]+1) .. " -0.5 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.MIDDLE] = self.xmlFile:getValue(baseXmlPath .. "#UnloadMiddleOffset", "0 0 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.BACK] = self.xmlFile:getValue(baseXmlPath .. "#UnloadBackOffset", "0 -0.5 -" .. (spec.loadArea["lenght"]+1), true)
     
