@@ -364,8 +364,6 @@ function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue
     if spec.currentTipside == APalletAutoLoaderTipsides.LEFT then
         newTipside = APalletAutoLoaderTipsides.RIGHT;
     elseif spec.currentTipside == APalletAutoLoaderTipsides.RIGHT then
-        newTipside = APalletAutoLoaderTipsides.MIDDLE;
-    elseif spec.currentTipside == APalletAutoLoaderTipsides.MIDDLE then
         newTipside = APalletAutoLoaderTipsides.BACK;
     end
     
