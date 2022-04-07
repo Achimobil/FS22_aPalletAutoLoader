@@ -209,11 +209,11 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
 
         if isActiveForInput then
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_LOAD_PALLET, self, APalletAutoLoader.actionEventToggleLoading, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
+            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_VERY_HIGH)
             spec.toggleLoadingActionEventId = actionEventId;
             
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_LOADINGTYPE, self, APalletAutoLoader.actionEventToggleAutoLoadTypes, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
+            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_VERY_HIGH)
             spec.toggleAutoLoadTypesActionEventId = actionEventId;
             
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_TIPSIDE, self, APalletAutoLoader.actionEventToggleTipside, false, true, false, true, nil, nil, true, true)
@@ -221,7 +221,7 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
             spec.toggleTipsideActionEventId = actionEventId;
             
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOAD, self, APalletAutoLoader.actionEventUnloadAll, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
+            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_HIGH)
             spec.unloadAllEventId = actionEventId;
             
             local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_MARKERS, self, APalletAutoLoader.actionEventToggleMarkers, false, true, false, true, nil, nil, true, true)
