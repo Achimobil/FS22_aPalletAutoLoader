@@ -88,11 +88,11 @@ Changelog:
 - Automatic tightening straps on dedicated server disabled due to engine sync errors
 
 1.7.1.0
-- Automatic tension belts on dedi server activated again reguarging the settings the modder of the vehicle has defined.
+- Automatic tension belts on dedi server activated again regarding the settings the modder of the vehicle has defined.
 - Automatic tension belts can now be activated/deactivated per vehicle by [lctrl]+[J]. This is stored per vehicle.
-- Optimize finding valid loadplace by remembering invalid load places as long as the loader is active.
+- Optimize finding valid load place by remembering invalid load places as long as the loader is active.
 - add unloading side backwards for all vehicles by default. Position can configured by the modder.
-- Change priorities of the keybinding to have main controls better visible in the F1 Help.
+- Change priorities of the key binding to have main controls better visible in the F1 Help.
 ]]>
         </en>
         <de>
