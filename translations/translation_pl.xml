@@ -32,5 +32,6 @@
         <text name="aPalletAutoLoader_squarebale240" text="Kostka 240" />
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Taśmy napinające wyłączone" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Aktywacja pasów napinających" />
+        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Przełączanie automatycznego napinania pasów" />
     </texts>
 </l10n>

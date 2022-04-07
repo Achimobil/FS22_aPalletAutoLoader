@@ -32,5 +32,6 @@
         <text name="aPalletAutoLoader_squarebale240" text="Hranatý balík 240" />
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Deaktivované napínací popruhy" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Aktivace napínacích popruhů" />
+        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Přepínání automatického napínání řemenů" />
     </texts>
 </l10n>

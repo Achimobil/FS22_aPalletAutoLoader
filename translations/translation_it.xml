@@ -32,5 +32,6 @@
         <text name="aPalletAutoLoader_squarebale240" text="Balla quadrata 240" />
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Cinghie di tensione disattivate" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Cinghie di tensione attivate" />
+        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alzare la tensione automatica delle cinghie" />
     </texts>
 </l10n>

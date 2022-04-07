@@ -21,7 +21,7 @@ end
 ---
 function SetAutomaticTensionBeltsEvent:readStream(streamId, connection)
     self.aPalletAutoLoader = NetworkUtil.readNodeObject(streamId)
-    self.newTensionBeltsValue = streamReadInt32(streamId)
+    self.newTensionBeltsValue = streamReadBool(streamId)
     
     self:run(connection)
 end
@@ -29,7 +29,7 @@ end
 ---
 function SetAutomaticTensionBeltsEvent:writeStream(streamId, connection)
     NetworkUtil.writeNodeObject(streamId, self.aPalletAutoLoader) 
-    streamWriteInt32(streamId, self.newTensionBeltsValue)
+    streamWriteBool(streamId, self.newTensionBeltsValue)
 end
 
 ---

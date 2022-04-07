@@ -30,7 +30,8 @@
         <text name="aPalletAutoLoader_squarebale180" text="Square bale 180" />
         <text name="aPalletAutoLoader_squarebale220" text="Square bale 220" />
         <text name="aPalletAutoLoader_squarebale240" text="Square bale 240" />
-        <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Tensioning straps deactivated" />
-        <text name="aPalletAutoLoader_TensionBeltsActive" text="Tensioning straps activated" />
+        <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Tension belts deactivated" />
+        <text name="aPalletAutoLoader_TensionBeltsActive" text="Tensionin belts activated" />
+        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Toggle automatic tensionin belts" />
     </texts>
 </l10n>

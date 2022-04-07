@@ -32,5 +32,6 @@
         <text name="aPalletAutoLoader_squarebale240" text="Квадратный тюк 240" />
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Натяжные ремни деактивированы" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Натяжные ремни активированы" />
+        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Переключатель автоматического натяжения ремней" />
     </texts>
 </l10n>

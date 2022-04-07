@@ -440,6 +440,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.available = false;
     spec.showMarkers = false;
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
+    spec.useTensionBelts = false;
     
     -- load the loading area
     spec.loadArea = {};
