@@ -90,9 +90,9 @@ Changelog:
 1.7.1.0
 - Automatic tension belts on dedi server activated again regarding the settings the modder of the vehicle has defined.
 - Automatic tension belts can now be activated/deactivated per vehicle by [lctrl]+[J]. This is stored per vehicle.
-- Optimize finding valid load place by remembering invalid load places as long as the loader is active.
+- Optimized searching valid load place by remembering invalid load places as long as the loader is active.
 - add unloading side backwards for all vehicles by default. Position can configured by the modder.
-- Change priorities of the key binding to have main controls better visible in the F1 Help.
+- Changed priorities of the key binding to have important entries better visible in the F1 Help.
 ]]>
         </en>
         <de>
@@ -171,11 +171,11 @@ Changelog:
 - Automatische Spanngurte auf Dedicated Server deaktiviert wegen der Sync Fehler der Engine
 
 1.7.1.0
-- Automatische Spanngurte auf dem dedi-Server werden wieder aktiviert und regeln die Einstellungen, die der Modder des Fahrzeugs festgelegt hat.
+- Automatische Spanngurte auf dem dedi-Server sind wieder aktiviert und berücksichtigen die Einstellungen, die der Modder des Fahrzeugs festgelegt hat.
 - Automatische Spanngurte können nun pro Fahrzeug mit [lctrl]+[J] aktiviert/deaktiviert werden. Dies wird pro Fahrzeug gespeichert.
-- Optimiert die Suche nach gültigen Ladeplätzen, indem ungültige Ladeplätze gespeichert werden, solange der Lader aktiv ist.
+- Die Suche nach gültigen Ladeplätzen wurde optimiert, indem ungültige Ladeplätze gespeichert werden, solange der Lader aktiv ist.
 - Entladeseite rückwärts für alle Fahrzeuge als Standard hinzufügen. Position kann vom Modder konfiguriert werden.
-- Ändern Sie die Prioritäten der Tastenbelegung, um die Hauptsteuerungen in der F1-Hilfe besser sichtbar zu machen.
+- Prioritäten der Tastenbelegung geändert, um wichtige Einträge in der F1-Hilfe besser sichtbar zu machen.
 ]]>
         </de>
         <it>
