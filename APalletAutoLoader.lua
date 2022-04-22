@@ -935,6 +935,10 @@ end
 function APalletAutoLoader:getIsValidObject(object)
     local spec = self.spec_aPalletAutoLoader
     
+    if object.currentlyLoadedOnAPalletAutoLoaderId ~= nil then
+        return false;
+    end
+    
     local objectFilename = object.configFileName or object.i3dFilename
     if objectFilename ~= nil then
         if object.typeName == "pallet" then
@@ -1291,6 +1295,8 @@ function APalletAutoLoader:unloadAll()
                 addToPhysics(objectNodeId)
             end
             
+            object.currentlyLoadedOnAPalletAutoLoaderId = nil;
+            
             if object.addDeleteListener ~= nil then
                 object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
             end
@@ -1457,7 +1463,6 @@ end
 -- print("loadingPattern")
 -- DebugUtil.printTableRecursively(loadingPattern,"_",0,2)
 
----
 function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
     local spec = self.spec_aPalletAutoLoader
 
@@ -1468,6 +1473,7 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                 if spec.triggeredObjects[object] == nil then
                     spec.triggeredObjects[object] = 0
                     spec.numTriggeredObjects = spec.numTriggeredObjects + 1
+                    object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
                 end
 
                 if spec.triggeredObjects[object] == 0 then
@@ -1483,14 +1489,16 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
     elseif onLeave then
         local object = g_currentMission:getNodeObject(otherActorId)
         if object ~= nil then
-            if self:getIsValidObject(object) then
+-- print("test");
+            -- if self:getIsValidObject(object) then
                 if spec.triggeredObjects[object] ~= nil then
                     spec.triggeredObjects[object] = spec.triggeredObjects[object] - 1
 
                     if spec.triggeredObjects[object] == 0 then
                         spec.triggeredObjects[object] = nil
                         spec.numTriggeredObjects = spec.numTriggeredObjects - 1
-
+                        object.currentlyLoadedOnAPalletAutoLoaderId = nil;
+                        
                         if object.removeDeleteListener ~= nil then
                             object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                         end
@@ -1501,7 +1509,7 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                         spec.currentPlace = 1
                     end
                 end
-            end
+            -- end
         end
     end
 end
