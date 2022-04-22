@@ -1215,7 +1215,7 @@ function APalletAutoLoader:loadObject(object)
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
                         object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
                         
-                        spec.triggeredObjects[object] = 0
+                        spec.triggeredObjects[object] = true
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
 
                         -- Create Joint to keep the object on the place even if moving
@@ -1493,45 +1493,35 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
         if object ~= nil then
             if self:getIsValidObject(object) then
                 if spec.triggeredObjects[object] == nil then
-                    spec.triggeredObjects[object] = 0
+                    spec.triggeredObjects[object] = true
                     spec.numTriggeredObjects = spec.numTriggeredObjects + 1
                     object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
                 end
 
-                if spec.triggeredObjects[object] == 0 then
-                    if object.addDeleteListener ~= nil then
-                        object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
-                    end
+                if object.addDeleteListener ~= nil then
+                    object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                 end
 
-                spec.triggeredObjects[object] = spec.triggeredObjects[object] + 1
                 self:raiseDirtyFlags(spec.dirtyFlag)
             end
         end
     elseif onLeave then
         local object = g_currentMission:getNodeObject(otherActorId)
         if object ~= nil then
--- print("test");
-            -- if self:getIsValidObject(object) then
-                if spec.triggeredObjects[object] ~= nil then
-                    spec.triggeredObjects[object] = spec.triggeredObjects[object] - 1
-
-                    if spec.triggeredObjects[object] == 0 then
-                        spec.triggeredObjects[object] = nil
-                        spec.numTriggeredObjects = spec.numTriggeredObjects - 1
-                        object.currentlyLoadedOnAPalletAutoLoaderId = nil;
-                        
-                        if object.removeDeleteListener ~= nil then
-                            object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
-                        end
-                        self:raiseDirtyFlags(spec.dirtyFlag)
-                    end
-
-                    if next(spec.triggeredObjects) == nil then
-                        spec.currentPlace = 1
-                    end
+            if spec.triggeredObjects[object] ~= nil then
+                spec.triggeredObjects[object] = nil
+                spec.numTriggeredObjects = spec.numTriggeredObjects - 1
+                object.currentlyLoadedOnAPalletAutoLoaderId = nil;
+                
+                if object.removeDeleteListener ~= nil then
+                    object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                 end
-            -- end
+                self:raiseDirtyFlags(spec.dirtyFlag)
+
+                if next(spec.triggeredObjects) == nil then
+                    spec.currentPlace = 1
+                end
+            end
         end
     end
 end
