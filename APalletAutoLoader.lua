@@ -109,8 +109,21 @@ function APalletAutoLoader.registerEventListeners(vehicleType)
     SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onDraw", APalletAutoLoader)
+    
+    SpecializationUtil.registerEventListener(vehicleType, "onAIFieldWorkerStart", APalletAutoLoader)
+    SpecializationUtil.registerEventListener(vehicleType, "onAIFieldWorkerEnd", APalletAutoLoader)
 end
 
+function APalletAutoLoader:onAIFieldWorkerStart()
+    -- Aufklappen, anschalten oder was sonst noch fehlt.
+    SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.RUNNING)
+end
+
+function APalletAutoLoader:onAIFieldWorkerEnd()
+    -- Zuklappen, ausschalten oder was sonst noch fehlt.
+    SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.STOPPED)
+end
+    
 function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelection)
     local spec = self.spec_aPalletAutoLoader
     
