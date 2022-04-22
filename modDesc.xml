@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="64">
     <author>Achimobil</author>
-    <version>1.7.1.1</version>
+    <version>1.7.2.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -39,6 +39,13 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.7.2.0
+- The loading bay memory list is now also reset when the system is switched off.
+- Autoloaders can no longer take pallets from the loading area of another autoloader (multiple trailers)
+- onAIFieldWorker events implemented
+- Straps now have a 2 second delay between loosening and tightening to improve server sync with patch 1.4
+- Dropped pallets or pallets taken down by hand are now not moved again during unloading
+
 1.7.1.1
 - Fix stream error
 - Add missing translation
@@ -127,6 +134,13 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.7.2.0
+- Merkliste der Ladeplätze wird beim abschalten jetzt auch zurückgesetzt
+- Autoloader können sich die Paletten nicht mehr von der Ladefläche eines anderen Autoloaders weg nehmen (mehrfache Anhänger)
+- onAIFieldWorker events implementiert
+- Spanngurte haben nun eine 2 Sekunden Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync mit Patch 1.4
+- Runtergefallene oder von Hand runtergenommene Paletten werden jetzt beim abladen nicht noch mal versetzt
+
 1.7.1.1
 - Stream-Fehler behoben
 - Fehlende Übersetzung hinzufügen
@@ -212,6 +226,13 @@ Il caricamento si spegne automaticamente quando non c'è più area di carico.
 Potete anche spegnerlo voi stessi con [B].
 
 Changelog:
+1.7.2.0
+- La lista della memoria della baia di carico viene ora resettata anche quando il sistema viene spento.
+- Gli autoloader non possono più prendere pallet dall'area di carico di un altro autoloader (rimorchi multipli)
+- eventi onAIFieldWorker implementati
+- Le cinghie ora hanno un ritardo di 2 secondi tra il rilascio e il serraggio per migliorare la sincronizzazione del server con la patch 1.4
+- I pallet caduti o i pallet presi a mano non vengono più spostati durante lo scarico
+
 1.7.1.1
 - Fissa l'errore di flusso
 - Aggiungere la traduzione mancante
@@ -299,6 +320,13 @@ Vous pouvez également le désactiver vous-même avec [B].
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Journal des modifications:
+1.7.2.0
+- La liste de mémorisation des emplacements de chargement est désormais réinitialisée lors de la désactivation.
+- Les autochargeurs ne peuvent plus prendre les palettes de l'aire de chargement d'un autre autochargeur (remorques multiples).
+- Implémentation des événements onAIFieldWorker.
+- Les sangles de serrage ont maintenant un délai de 2 secondes entre le relâchement et le serrage pour améliorer la synchronisation du serveur avec le patch 1.4
+- Les palettes tombées ou enlevées manuellement ne sont plus déplacées lors du déchargement.
+
 1.7.1.1
 - Correction d'une erreur de flux
 - Ajout de la traduction manquante
@@ -386,6 +414,12 @@ También puedes apagarlo tú mismo con [B].
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Registro de cambios:
+1.7.2.0
+- La lista de la memoria del muelle de carga ahora también se restablece cuando se apaga el sistema.
+- Los autocargadores ya no pueden tomar palés de la zona de carga de otro autocargador (remolques múltiples)
+- Eventos onAIFieldWorker implementados
+- Las correas ahora tienen un retraso de 2 segundos entre el aflojamiento y el apriete para mejorar la sincronización del servidor con el parche 1.4
+- Las paletas que se caen o que se bajan a mano no se vuelven a mover durante la descarga
 
 1.7.1.1
 - Corregir el error de flujo
