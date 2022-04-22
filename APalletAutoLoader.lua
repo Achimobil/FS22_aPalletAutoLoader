@@ -73,6 +73,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
     SpecializationUtil.registerFunction(vehicleType, "SetTensionBeltsValue", APalletAutoLoader.SetTensionBeltsValue)
+    SpecializationUtil.registerFunction(vehicleType, "fastenBelts", APalletAutoLoader.fastenBelts)
     
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -1142,14 +1143,22 @@ function APalletAutoLoader:loadAllInRange()
             spec.objectsToJoint = {};
             
             if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
+                spec.beltsTimerId = addTimer(2000, "fastenBelts", self);
                 self:setAllTensionBeltsActive(false, false)
-                self:setAllTensionBeltsActive(true, false)
             end
         end
     else
         if loaded then
             spec.timerId = addTimer(100, "loadAllInRange", self);
         end
+    end
+end
+
+function APalletAutoLoader:fastenBelts()
+    local spec = self.spec_aPalletAutoLoader
+    self:setAllTensionBeltsActive(true, false)
+    if spec.beltsTimerId ~= nil then
+        spec.beltsTimerId = nil;
     end
 end
 
