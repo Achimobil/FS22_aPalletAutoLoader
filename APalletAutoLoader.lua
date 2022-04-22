@@ -304,6 +304,7 @@ function APalletAutoLoader:SetLoadingState(newLoadingState)
     local spec = self.spec_aPalletAutoLoader
     
     spec.loadingState = newLoadingState;
+    spec.usedPositions = {};
     
     if self.isClient then
         -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
