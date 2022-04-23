@@ -278,7 +278,10 @@ function APalletAutoLoader.updateActionText(self)
         end 
         if spec.objectsToLoadCount ~= 0 then text = text  .. ": " .. spec.objectsToLoadCount end
         g_inputBinding:setActionEventText(spec.toggleLoadingActionEventId, text)
+        -- this line to have the loading always active
         g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, true)   
+        -- this line to have loading only active when there is something in range, in code for private versions which wants to not activate loading always
+        -- g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, spec.objectsToLoadCount ~= 0 or spec.numTriggeredObjects ~= 0)   
                 
         local loadingText = ""
         if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
