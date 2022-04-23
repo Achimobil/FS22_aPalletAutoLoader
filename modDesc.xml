@@ -43,7 +43,7 @@ Changelog:
 - The loading bay memory list is now also reset when the system is switched off.
 - Autoloaders can no longer take pallets from the loading area of another autoloader (multiple trailers)
 - onAIFieldWorker events implemented
-- Straps now have a 2 second delay between loosening and tightening to improve server sync with patch 1.4
+- Tension belts now have a delay between loosening and tightening to improve server sync with patch 1.4. On the server 1.5 seconds in single player 0.2 seconds. Feedback on this is welcome.
 - Dropped pallets or pallets taken down by hand are now not moved again during unloading
 
 1.7.1.1
@@ -138,7 +138,7 @@ Changelog:
 - Merkliste der Ladeplätze wird beim abschalten jetzt auch zurückgesetzt
 - Autoloader können sich die Paletten nicht mehr von der Ladefläche eines anderen Autoloaders weg nehmen (mehrfache Anhänger)
 - onAIFieldWorker events implementiert
-- Spanngurte haben nun eine 2 Sekunden Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync mit Patch 1.4
+- Spanngurte haben nun eine Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync mit Patch 1.4. Auf dem Server 1,5 Sekunden im Single Player 0,2 Sekunden. Rückmeldungen hierzu sind erwünscht.
 - Runtergefallene oder von Hand runtergenommene Paletten werden jetzt beim abladen nicht noch mal versetzt
 
 1.7.1.1
@@ -230,7 +230,7 @@ Changelog:
 - La lista della memoria della baia di carico viene ora resettata anche quando il sistema viene spento.
 - Gli autoloader non possono più prendere pallet dall'area di carico di un altro autoloader (rimorchi multipli)
 - eventi onAIFieldWorker implementati
-- Le cinghie ora hanno un ritardo di 2 secondi tra il rilascio e il serraggio per migliorare la sincronizzazione del server con la patch 1.4
+- Le cinghie di tensione ora hanno un ritardo tra l'allentamento e il serraggio per migliorare la sincronizzazione del server con la patch 1.4. Sul server 1,5 secondi in single player 0,2 secondi. Il feedback su questo è benvenuto.
 - I pallet caduti o i pallet presi a mano non vengono più spostati durante lo scarico
 
 1.7.1.1
@@ -324,7 +324,7 @@ Journal des modifications:
 - La liste de mémorisation des emplacements de chargement est désormais réinitialisée lors de la désactivation.
 - Les autochargeurs ne peuvent plus prendre les palettes de l'aire de chargement d'un autre autochargeur (remorques multiples).
 - Implémentation des événements onAIFieldWorker.
-- Les sangles de serrage ont maintenant un délai de 2 secondes entre le relâchement et le serrage pour améliorer la synchronisation du serveur avec le patch 1.4
+- Les sangles de serrage ont désormais un délai entre le desserrage et le serrage pour améliorer la synchronisation du serveur avec le patch 1.4. 1,5 seconde sur le serveur et 0,2 seconde en mode solo. Les commentaires à ce sujet sont les bienvenus.
 - Les palettes tombées ou enlevées manuellement ne sont plus déplacées lors du déchargement.
 
 1.7.1.1
@@ -418,7 +418,7 @@ Registro de cambios:
 - La lista de la memoria del muelle de carga ahora también se restablece cuando se apaga el sistema.
 - Los autocargadores ya no pueden tomar palés de la zona de carga de otro autocargador (remolques múltiples)
 - Eventos onAIFieldWorker implementados
-- Las correas ahora tienen un retraso de 2 segundos entre el aflojamiento y el apriete para mejorar la sincronización del servidor con el parche 1.4
+- Los cinturones de tensión tienen ahora un retardo entre el aflojamiento y el apriete para mejorar la sincronización con el servidor con el parche 1.4. En el servidor 1,5 segundos en el jugador individual 0,2 segundos. Se agradecen los comentarios al respecto.
 - Las paletas que se caen o que se bajan a mano no se vuelven a mover durante la descarga
 
 1.7.1.1
