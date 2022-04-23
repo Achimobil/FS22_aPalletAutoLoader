@@ -459,6 +459,11 @@ function APalletAutoLoader:onLoad(savegame)
     spec.showMarkers = false;
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
     spec.useTensionBelts = false;
+    spec.tensionBeltsDelay = 200;
+    
+    if g_dedicatedServer ~= nil then
+        spec.tensionBeltsDelay = 1500;
+    end
     
     -- load the loading area
     spec.loadArea = {};
@@ -1146,7 +1151,7 @@ function APalletAutoLoader:loadAllInRange()
             spec.objectsToJoint = {};
             
             if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
-                spec.beltsTimerId = addTimer(2000, "fastenBelts", self);
+                spec.beltsTimerId = addTimer(spec.tensionBeltsDelay, "fastenBelts", self);
                 self:setAllTensionBeltsActive(false, false)
             end
         end
