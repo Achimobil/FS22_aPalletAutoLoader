@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="64">
+<modDesc descVersion="65">
     <author>Achimobil</author>
-    <version>1.7.2.0</version>
+    <version>1.7.3.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -134,6 +134,9 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.7.3.0
+- Fix für Triggerfehler aus Patch 1.4
+
 1.7.2.0
 - Merkliste der Ladeplätze wird beim abschalten jetzt auch zurückgesetzt
 - Autoloader können sich die Paletten nicht mehr von der Ladefläche eines anderen Autoloaders weg nehmen (mehrfache Anhänger)

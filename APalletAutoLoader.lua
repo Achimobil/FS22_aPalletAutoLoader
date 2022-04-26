@@ -1222,6 +1222,10 @@ function APalletAutoLoader:loadObject(object)
                         
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
                         object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
+
+                        if object.addDeleteListener ~= nil then
+                            object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
+                        end
                         
                         spec.triggeredObjects[object] = true
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
@@ -1327,8 +1331,8 @@ function APalletAutoLoader:unloadAll()
             
             object.currentlyLoadedOnAPalletAutoLoaderId = nil;
             
-            if object.addDeleteListener ~= nil then
-                object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
+            if object.removeDeleteListener ~= nil then
+                object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
             end
         end
     end
