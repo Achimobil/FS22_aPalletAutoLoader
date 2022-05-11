@@ -73,7 +73,6 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
     SpecializationUtil.registerFunction(vehicleType, "SetTensionBeltsValue", APalletAutoLoader.SetTensionBeltsValue)
-    SpecializationUtil.registerFunction(vehicleType, "fastenBelts", APalletAutoLoader.fastenBelts)
     
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -640,6 +639,11 @@ function APalletAutoLoader:onLoad(savegame)
         spec.objectsToLoad = {};
         spec.balesToLoad = {};
         spec.objectsToJoint = {}
+        spec.beltsTimer = Timer.new(spec.tensionBeltsDelay);
+        spec.beltsTimer:setFinishCallback(
+            function()
+                self:setAllTensionBeltsActive(true, false);
+            end);
 
         spec.triggerId = self.xmlFile:getValue(baseXmlPath .. ".trigger#node", nil, self.components, self.i3dMappings)
         if spec.triggerId ~= nil then
@@ -1151,11 +1155,7 @@ function APalletAutoLoader:loadAllInRange()
             spec.objectsToJoint = {};
             
             if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
-                -- will this reset the timer?
-                if spec.beltsTimerId ~= nil then
-                    removeTimer(spec.beltsTimerId);
-                end
-                spec.beltsTimerId = addTimer(spec.tensionBeltsDelay, "fastenBelts", self);
+                spec.beltsTimer:start(false);
                 self:setAllTensionBeltsActive(false, false)
             end
         end
@@ -1166,15 +1166,6 @@ function APalletAutoLoader:loadAllInRange()
     end
 end
 
-function APalletAutoLoader:fastenBelts()
-    local spec = self.spec_aPalletAutoLoader
-    self:setAllTensionBeltsActive(true, false)
-    if spec.beltsTimerId ~= nil then
-        spec.beltsTimerId = nil;
-    end
-end
-
----
 function APalletAutoLoader:loadObject(object)
     if object ~= nil then
         if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
@@ -1299,7 +1290,6 @@ function APalletAutoLoader:loadObject(object)
     return false;
 end
 
----
 function APalletAutoLoader:unloadAll()
     local spec = self.spec_aPalletAutoLoader
     
