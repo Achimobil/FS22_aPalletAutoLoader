@@ -1151,6 +1151,10 @@ function APalletAutoLoader:loadAllInRange()
             spec.objectsToJoint = {};
             
             if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
+                -- will this reset the timer?
+                if spec.beltsTimerId ~= nil then
+                    removeTimer(spec.beltsTimerId);
+                end
                 spec.beltsTimerId = addTimer(spec.tensionBeltsDelay, "fastenBelts", self);
                 self:setAllTensionBeltsActive(false, false)
             end
