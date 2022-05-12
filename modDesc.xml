@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="65">
     <author>Achimobil</author>
-    <version>1.7.3.0 RC2</version>
+    <version>1.7.3.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -39,6 +39,10 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.7.3.0
+- Lua Trigger error solved caused by update 1.4
+- Tension Belt trigger reworked
+
 1.7.2.0
 - The loading bay memory list is now also reset when the system is switched off.
 - Autoloaders can no longer take pallets from the loading area of another autoloader (multiple trailers)
@@ -135,7 +139,8 @@ Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.o
 
 Changelog:
 1.7.3.0
-- Fix für Triggerfehler aus Patch 1.4
+- Lua-Trigger-Fehler behoben, der durch Update 1.4 verursacht wurde
+- Tension Belt Trigger überarbeitet
 
 1.7.2.0
 - Merkliste der Ladeplätze wird beim abschalten jetzt auch zurückgesetzt
@@ -229,6 +234,10 @@ Il caricamento si spegne automaticamente quando non c'è più area di carico.
 Potete anche spegnerlo voi stessi con [B].
 
 Changelog:
+1.7.3.0
+- Risolto l'errore Lua Trigger causato dall'aggiornamento 1.4
+- Rielaborazione dell'innesco della cinghia di tensione
+
 1.7.2.0
 - La lista della memoria della baia di carico viene ora resettata anche quando il sistema viene spento.
 - Gli autoloader non possono più prendere pallet dall'area di carico di un altro autoloader (rimorchi multipli)
@@ -323,6 +332,10 @@ Vous pouvez également le désactiver vous-même avec [B].
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Journal des modifications:
+1.7.3.0
+- Résolution de l'erreur Lua Trigger causée par la mise à jour 1.4
+- Le déclencheur de la ceinture de tension a été retravaillé
+
 1.7.2.0
 - La liste de mémorisation des emplacements de chargement est désormais réinitialisée lors de la désactivation.
 - Les autochargeurs ne peuvent plus prendre les palettes de l'aire de chargement d'un autre autochargeur (remorques multiples).
@@ -417,6 +430,10 @@ También puedes apagarlo tú mismo con [B].
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Registro de cambios:
+1.7.3.0
+- Se ha resuelto el error del activador Lua causado por la actualización 1.4
+- Se ha revisado el activador del cinturón de tensión
+
 1.7.2.0
 - La lista de la memoria del muelle de carga ahora también se restablece cuando se apaga el sistema.
 - Los autocargadores ya no pueden tomar palés de la zona de carga de otro autocargador (remolques múltiples)
