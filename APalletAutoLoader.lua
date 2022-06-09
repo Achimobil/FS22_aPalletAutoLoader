@@ -17,7 +17,9 @@ APalletAutoLoaderLoadingState = {
     RUNNING = 2
 }
 
----
+---Checks if all prerequisite specializations are loaded
+-- @param table specializations specializations
+-- @return boolean hasPrerequisite true if all prerequisite specializations are loaded
 function APalletAutoLoader.prerequisitesPresent(specializations)
     return true
 end
@@ -25,12 +27,12 @@ end
 function APalletAutoLoader.initSpecialization()
     print("init aPalletAutoLoader");
     g_configurationManager:addConfigurationType("aPalletAutoLoader", g_i18n:getText("configuration_aPalletAutoLoader"), "aPalletAutoLoader", nil, nil, nil, ConfigurationUtil.SELECTOR_MULTIOPTION)
-    
+
     local schema = Vehicle.xmlSchema
     schema:setXMLSpecializationType("APalletAutoLoader")
-    
+
     local baseXmlPath = "vehicle.aPalletAutoLoader.APalletAutoLoaderConfigurations.APalletAutoLoaderConfiguration(?)"
-    
+
     schema:register(XMLValueType.NODE_INDEX, baseXmlPath .. ".trigger#node", "Trigger node")
     schema:register(XMLValueType.NODE_INDEX, baseXmlPath .. ".pickupTriggers.pickupTrigger(?)#node", "Pickup trigger node")
     schema:register(XMLValueType.STRING, baseXmlPath .. "#supportedObject", "Path to xml of supported object")
@@ -73,7 +75,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
     SpecializationUtil.registerFunction(vehicleType, "SetTensionBeltsValue", APalletAutoLoader.SetTensionBeltsValue)
-    
+
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
     end
@@ -88,7 +90,7 @@ end
 function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
     SpecializationUtil.registerOverwrittenFunction(vehicleType, "getDynamicMountTimeToMount", APalletAutoLoader.getDynamicMountTimeToMount)
 	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getUseTurnedOnSchema", APalletAutoLoader.getUseTurnedOnSchema)
-    
+
     if vehicleType.functions["getFillUnitCapacity"] ~= nil then
         SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
     end
@@ -105,11 +107,11 @@ function APalletAutoLoader.registerEventListeners(vehicleType)
     SpecializationUtil.registerEventListener(vehicleType, "onPostLoad", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onDelete", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onRegisterActionEvents", APalletAutoLoader)
-    
+
     SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onDraw", APalletAutoLoader)
-    
+
     SpecializationUtil.registerEventListener(vehicleType, "onAIFieldWorkerStart", APalletAutoLoader)
     SpecializationUtil.registerEventListener(vehicleType, "onAIFieldWorkerEnd", APalletAutoLoader)
 end
@@ -123,22 +125,22 @@ function APalletAutoLoader:onAIFieldWorkerEnd()
     -- Zuklappen, ausschalten oder was sonst noch fehlt.
     SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.STOPPED)
 end
-    
+
 function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelection)
     local spec = self.spec_aPalletAutoLoader
-    
+
     if spec.autoLoadTypes ~= nil then
         local maxItems = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems;
         if spec.isFullLoaded then maxItems = spec.numTriggeredObjects; end
         local loadingText = g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name) .. " (" .. spec.numTriggeredObjects .. " / " .. maxItems .. ")"
         g_currentMission:addExtraPrintText(loadingText);
     end
-    
+
     if not spec.showMarkers then return end
-    
+
     if spec.loadArea["baseNode"] ~= nil then
         -- DebugUtil.drawDebugReferenceAxisFromNode(spec.loadArea["baseNode"]);
-        
+
         -- draw line around loading area
         local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
         local node = spec.loadArea["baseNode"]
@@ -156,7 +158,7 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
         local rightFrontX, rightFrontY, rightFrontZ = localToWorld(node, maxX, yOffset, maxZ)
         local leftBackX, leftBackY, leftBackZ = localToWorld(node, minX, yOffset, minZ)
         local rightBackX, rightBackY, rightBackZ = localToWorld(node, maxX, yOffset, minZ)
-        
+
         drawDebugLine(leftFrontX, leftFrontY, leftFrontZ, r, g, b, rightFrontX, rightFrontY, rightFrontZ, r, g, b)
         drawDebugLine(rightFrontX, rightFrontY, rightFrontZ, r, g, b, rightBackX, rightBackY, rightBackZ, r, g, b)
         drawDebugLine(rightBackX, rightBackY, rightBackZ, r, g, b, leftBackX, leftBackY, leftBackZ, r, g, b)
@@ -164,32 +166,32 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
 
         -- unloading area
         local offx, offY, offZ = unpack(spec.UnloadOffset[spec.currentTipside])
-        
+
         minX = minX + offx;
         maxX = maxX + offx;
         maxZ = maxZ + offZ;
         minZ = minZ + offZ;
         yOffset = yOffset + offY;
-        
+
         leftFrontX, leftFrontY, leftFrontZ = localToWorld(node, minX, yOffset, maxZ)
         rightFrontX, rightFrontY, rightFrontZ = localToWorld(node, maxX, yOffset, maxZ)
         leftBackX, leftBackY, leftBackZ = localToWorld(node, minX, yOffset, minZ)
         rightBackX, rightBackY, rightBackZ = localToWorld(node, maxX, yOffset, minZ)
-        
+
         drawDebugLine(leftFrontX, leftFrontY, leftFrontZ, r, g, b, rightFrontX, rightFrontY, rightFrontZ, r, g, b)
         drawDebugLine(rightFrontX, rightFrontY, rightFrontZ, r, g, b, rightBackX, rightBackY, rightBackZ, r, g, b)
         drawDebugLine(rightBackX, rightBackY, rightBackZ, r, g, b, leftBackX, leftBackY, leftBackZ, r, g, b)
-        drawDebugLine(leftBackX, leftBackY, leftBackZ, r, g, b, leftFrontX, leftFrontY, leftFrontZ, r, g, b)   
+        drawDebugLine(leftBackX, leftBackY, leftBackZ, r, g, b, leftFrontX, leftFrontY, leftFrontZ, r, g, b)
 
         -- loadplaces
         local autoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
         local loadPlaces = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].places;
         for i=1, #loadPlaces do
             local loadPlace = loadPlaces[i]
-            
+
             -- center node
             -- DebugUtil.drawDebugReferenceAxisFromNode(loadPlace.node);
-            
+
             -- square
             if autoLoadType.type == "roundbale" then
                 local radius = autoLoadType.sizeX/2;
@@ -213,11 +215,11 @@ end
 
 function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForInputIgnoreSelection)
     if self.isClient then
-        local spec = self.spec_aPalletAutoLoader 
+        local spec = self.spec_aPalletAutoLoader
         if spec == nil then
             return;
         end
-        
+
         if spec.actionEvents == nil then
             spec.actionEvents = {}
         else
@@ -225,30 +227,30 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
         end
 
         if isActiveForInput then
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_LOAD_PALLET, self, APalletAutoLoader.actionEventToggleLoading, false, true, false, true, nil, nil, true, true)
+            local _, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_LOAD_PALLET, self, APalletAutoLoader.actionEventToggleLoading, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_VERY_HIGH)
             spec.toggleLoadingActionEventId = actionEventId;
-            
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_LOADINGTYPE, self, APalletAutoLoader.actionEventToggleAutoLoadTypes, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_VERY_HIGH)
-            spec.toggleAutoLoadTypesActionEventId = actionEventId;
-            
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_TIPSIDE, self, APalletAutoLoader.actionEventToggleTipside, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
-            spec.toggleTipsideActionEventId = actionEventId;
-            
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOAD, self, APalletAutoLoader.actionEventUnloadAll, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_HIGH)
-            spec.unloadAllEventId = actionEventId;
-            
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_MARKERS, self, APalletAutoLoader.actionEventToggleMarkers, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
-            spec.toggleMarkerEventId = actionEventId;
-            
-            local state, actionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_AUTOMATIC_TENSIONBELTS, self, APalletAutoLoader.actionEventToggleAutomaticTensionBelts, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId, GS_PRIO_NORMAL)
-            spec.toggleAutomaticTensionBeltsEventId = actionEventId;
-            
+
+            local _, actionEventId2 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_LOADINGTYPE, self, APalletAutoLoader.actionEventToggleAutoLoadTypes, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId2, GS_PRIO_VERY_HIGH)
+            spec.toggleAutoLoadTypesActionEventId = actionEventId2;
+
+            local _, actionEventId3 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_TIPSIDE, self, APalletAutoLoader.actionEventToggleTipside, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId3, GS_PRIO_NORMAL)
+            spec.toggleTipsideActionEventId = actionEventId3;
+
+            local _, actionEventId4 = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOAD, self, APalletAutoLoader.actionEventUnloadAll, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId4, GS_PRIO_HIGH)
+            spec.unloadAllEventId = actionEventId4;
+
+            local _, actionEventId5 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_MARKERS, self, APalletAutoLoader.actionEventToggleMarkers, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId5, GS_PRIO_NORMAL)
+            spec.toggleMarkerEventId = actionEventId5;
+
+            local _, actionEventId6 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_AUTOMATIC_TENSIONBELTS, self, APalletAutoLoader.actionEventToggleAutomaticTensionBelts, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId6, GS_PRIO_NORMAL)
+            spec.toggleAutomaticTensionBeltsEventId = actionEventId6;
+
             APalletAutoLoader.updateActionText(self);
         end
     end
@@ -257,7 +259,7 @@ end
 function APalletAutoLoader.updateActionText(self)
     if self.isClient then
         local spec = self.spec_aPalletAutoLoader
-        
+
         if not spec.available then
             g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, false)
@@ -267,21 +269,21 @@ function APalletAutoLoader.updateActionText(self)
             g_inputBinding:setActionEventActive(spec.toggleAutomaticTensionBeltsEventId, false)
             return;
         end
-        
+
         -- different texts for the toggle loading key
         local text;
         if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
             text = g_i18n:getText("aPalletAutoLoader_startLoading")
         else
             text = g_i18n:getText("aPalletAutoLoader_stopLoading")
-        end 
+        end
         if spec.objectsToLoadCount ~= 0 then text = text  .. ": " .. spec.objectsToLoadCount end
         g_inputBinding:setActionEventText(spec.toggleLoadingActionEventId, text)
         -- this line to have the loading always active
-        g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, true)   
+        g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, true)
         -- this line to have loading only active when there is something in range, in code for private versions which wants to not activate loading always
-        -- g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, spec.objectsToLoadCount ~= 0 or spec.numTriggeredObjects ~= 0)   
-                
+        -- g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, spec.objectsToLoadCount ~= 0 or spec.numTriggeredObjects ~= 0)
+
         local loadingText = ""
         if (spec.autoLoadTypes == nil or spec.autoLoadTypes[spec.currentautoLoadTypeIndex] == nil) then
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. "unknown"
@@ -289,15 +291,15 @@ function APalletAutoLoader.updateActionText(self)
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name)
         end
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
-        
+
         g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, spec.tipsideText)
-        
+
         local tensionBeltText = g_i18n:getText("aPalletAutoLoader_TensionBeltsNotActive");
         if spec.useTensionBelts then
             tensionBeltText = g_i18n:getText("aPalletAutoLoader_TensionBeltsActive");
         end
         g_inputBinding:setActionEventText(spec.toggleAutomaticTensionBeltsEventId, tensionBeltText)
-        
+
         -- deactivate when somthing is already loaded or not
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
         g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
@@ -308,7 +310,7 @@ end
 
 function APalletAutoLoader.actionEventToggleLoading(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
-    
+
     if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
         SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.RUNNING)
     else
@@ -318,57 +320,57 @@ end
 
 function APalletAutoLoader:SetLoadingState(newLoadingState)
     local spec = self.spec_aPalletAutoLoader
-    
+
     spec.loadingState = newLoadingState;
     spec.usedPositions = {};
-    
+
     if self.isClient then
         -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
         APalletAutoLoader.updateActionText(self);
     end
-    
+
     if self.isServer then
         -- Starten des Ladetimers, wenn der neue Status aktiv ist
         if spec.loadingState == APalletAutoLoaderLoadingState.RUNNING then
             self:StartLoading();
         end
-        
+
     end
 end
 
 function APalletAutoLoader:StartLoading()
     local spec = self.spec_aPalletAutoLoader
-    
+
     if (spec.timerId ~= nil) then return end;
-    
+
     spec.isFullLoaded = false;
     self:loadAllInRange();
 end
 
 function APalletAutoLoader:GetAutoloadTypes()
     local spec = self.spec_aPalletAutoLoader;
-    
+
     return spec.autoLoadTypes;
 end
 
 function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
-    
+
     local newAutoLoadTypeIndex;
     if spec.currentautoLoadTypeIndex >= #spec.autoLoadTypes then
         newAutoLoadTypeIndex = 1;
     else
         newAutoLoadTypeIndex = spec.currentautoLoadTypeIndex + 1;
     end
-    
+
     SetAutoloadTypeEvent.sendEvent(self, newAutoLoadTypeIndex)
 end
 
 function APalletAutoLoader:SetAutoloadType(newAutoLoadTypeIndex)
     local spec = self.spec_aPalletAutoLoader
-    
+
     spec.currentautoLoadTypeIndex = newAutoLoadTypeIndex;
-    
+
     if self.isClient then
         -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
         APalletAutoLoader.updateActionText(self);
@@ -377,24 +379,24 @@ end
 
 function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
-    
+
     local newTipside = APalletAutoLoaderTipsides.LEFT;
-    
+
     if spec.currentTipside == APalletAutoLoaderTipsides.LEFT then
         newTipside = APalletAutoLoaderTipsides.RIGHT;
     elseif spec.currentTipside == APalletAutoLoaderTipsides.RIGHT then
         newTipside = APalletAutoLoaderTipsides.BACK;
     end
-    
+
     SetTipsideEvent.sendEvent(self, newTipside)
 end
 
 function APalletAutoLoader:SetTipside(tipsideIndex)
     local spec = self.spec_aPalletAutoLoader
-    
+
     spec.currentTipside = tipsideIndex;
     spec.tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
-    
+
     if self.isClient then
         -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
         APalletAutoLoader.updateActionText(self);
@@ -403,13 +405,13 @@ end
 
 function APalletAutoLoader.actionEventToggleMarkers(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
-    
+
     spec.showMarkers = not spec.showMarkers;
 end
 
 function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
-    
+
     if not self.isServer then
         -- Entladebefehl in den stream schreiben mit entladeseite
         spec.callUnloadAll = true;
@@ -422,15 +424,15 @@ end
 
 function APalletAutoLoader.actionEventToggleAutomaticTensionBelts(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
-        
+
     SetAutomaticTensionBeltsEvent.sendEvent(self, not spec.useTensionBelts)
 end
 
 function APalletAutoLoader:SetTensionBeltsValue(newTensionBeltsValue)
     local spec = self.spec_aPalletAutoLoader
-    
+
     spec.useTensionBelts = newTensionBeltsValue;
-    
+
     if self.isClient then
         -- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
         APalletAutoLoader.updateActionText(self);
@@ -442,12 +444,12 @@ end
 function APalletAutoLoader:onLoad(savegame)
     local aPalletAutoLoaderConfigurationId = Utils.getNoNil(self.configurations["aPalletAutoLoader"], 1)
     local baseXmlPath = string.format("vehicle.aPalletAutoLoader.APalletAutoLoaderConfigurations.APalletAutoLoaderConfiguration(%d)", aPalletAutoLoaderConfigurationId -1)
-            
+
     -- hier für server und client
     self.spec_aPalletAutoLoader = {}
     local spec = self.spec_aPalletAutoLoader
     spec.callUnloadAll = false;
-    spec.objectsToLoadCount = 0;    
+    spec.objectsToLoadCount = 0;
     spec.dirtyFlag = self:getNextDirtyFlag()
     spec.numTriggeredObjects = 0
     spec.isFullLoaded = false;
@@ -459,11 +461,11 @@ function APalletAutoLoader:onLoad(savegame)
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
     spec.useTensionBelts = false;
     spec.tensionBeltsDelay = 200;
-    
+
     if g_dedicatedServer ~= nil then
         spec.tensionBeltsDelay = 1500;
     end
-    
+
     -- load the loading area
     spec.loadArea = {};
     spec.loadArea["baseNode"] = self.xmlFile:getValue(baseXmlPath..".loadArea#baseNode", nil, self.components, self.i3dMappings);
@@ -477,18 +479,18 @@ function APalletAutoLoader:onLoad(savegame)
     spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", (spec.loadArea["width"]+1) .. " -0.5 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.MIDDLE] = self.xmlFile:getValue(baseXmlPath .. "#UnloadMiddleOffset", "0 0 0", true)
     spec.UnloadOffset[APalletAutoLoaderTipsides.BACK] = self.xmlFile:getValue(baseXmlPath .. "#UnloadBackOffset", "0 -0.5 -" .. (spec.loadArea["lenght"]+1), true)
-    
+
     if spec.loadArea["baseNode"] == nil then
         return;
     end
-    
+
     spec.available = true;
-    
+
     spec.useBales = self.xmlFile:getValue(baseXmlPath .. "#useBales", false)
-    
+
     -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
     local types = {"euroPallet","liquidTank","bigBagPallet","bigBag","euroPalletOversize"}
-    
+
     if spec.useBales then
         table.insert(types, "cottonRoundbale238");
         table.insert(types, "roundbale125");
@@ -498,7 +500,7 @@ function APalletAutoLoader:onLoad(savegame)
         table.insert(types, "squarebale220");
         table.insert(types, "squarebale240");
     end
-    
+
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
         spec.autoLoadTypes = {};
@@ -510,13 +512,13 @@ function APalletAutoLoader:onLoad(savegame)
             APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             autoLoadObject.places = {}
             local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
-            
+
             -- paletten nebeneinander bestimmen
             -- vieviele passen ohne drehung?
             -- erst mal alle rotiert oder nicht rotiert als loading anfang
             local restFirstNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.05);
             local countNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.05) + 1
-            
+
             local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
             local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
             local backDistance = 0.05;
@@ -524,7 +526,7 @@ function APalletAutoLoader:onLoad(savegame)
                 -- rundballen ein bischen mehr platz geben wegen der runden kollision
                 backDistance = 0.07;
             end
-            
+
             local loadingPattern = {}
             if restFirstNoRotation <= restFirstRotation or autoLoadObject.type == "roundbale" then
                 -- auladen ohne rotation
@@ -532,22 +534,22 @@ function APalletAutoLoader:onLoad(savegame)
                 if autoLoadObject.type == "roundbale" and countNoRotation == 1 then
                     -- wenn rundballen und noch genug platz, versetzt laden um mehr auf die fläche zu bekommen
                     -- hierbei aber nur, wenn die restfläche mindestens so viel ist, wie der halbe durchmesser zur einfachen Verteilung, komplexer kann später
-                    
+
                     -- position der zwei reihen
                     local rowX1 = (cornerX - (autoLoadObject.sizeX / 2))
                     local rowX2 = (cornerX - spec.loadArea["width"] + (autoLoadObject.sizeX / 2))
-                    
+
                     -- abweichende distanz berechnen aus dem abstand der beiden Reihen und dem durchmesser
                     -- a² + b² = c²
                     -- a = wurzel aus c² - b²
                     local optimalDistanceZ = math.sqrt(math.pow(autoLoadObject.sizeX + backDistance, 2) - math.pow((rowX1 - rowX2), 2)) * 2;
-                    
+
                     -- minimale distanz nur aus der größe und en abstand
                     local minimalDistanceZ = (autoLoadObject.sizeZ + backDistance);
-                    
+
                     -- die höhere der beiden distanzen muss benutzt werden
-                    local distanceZ = math.max(optimalDistanceZ, minimalDistanceZ);                
-                    
+                    local distanceZ = math.max(optimalDistanceZ, minimalDistanceZ);
+
                     -- schleifen bis zur länge links und rechts ausgericht
                     -- linke seite
                     for colPos = (autoLoadObject.sizeZ / 2), (spec.loadArea["lenght"]), distanceZ do
@@ -599,14 +601,14 @@ function APalletAutoLoader:onLoad(savegame)
                     end
                 end
             end
-            
+
             table.sort(loadingPattern,compLoadingPattern)
-            
+
             for _,loadingPatternItem in ipairs(loadingPattern) do
                 local place = {}
                 place.node = createTransformGroup("Loadplace")
                 link(autoLoadObject.index, place.node);
-                
+
                 -- Round bales must be rotated with 15° so the collision edge is not pointing to the left and right border.
                 -- Had to be done here, because at moving object it is not stabel basen on the direction the trailer looks to.
                 local currentRotation = loadingPatternItem.rotation;
@@ -617,24 +619,24 @@ function APalletAutoLoader:onLoad(savegame)
                     -- turn tthe place by 90° to need no rotation on loading
                     currentRotation = currentRotation + math.rad(90);
                 end
-                
+
                 setRotation(place.node, 0, currentRotation, 0)
                 setTranslation(place.node, loadingPatternItem.posX, cornerY, loadingPatternItem.posZ)
                 table.insert(autoLoadObject.places, place)
             end
-            
+
             local amountPerLayer = #autoLoadObject.places;
             local maxLayers = math.floor(spec.loadArea["height"] / autoLoadObject.sizeY);
             if autoLoadObject.type == "bigBag" then maxLayers = 1 end
             local maxAmountForLayers = amountPerLayer * maxLayers;
-            autoLoadObject.maxItems = math.min(maxAmountForLayers, spec.maxObjects); 
-            
+            autoLoadObject.maxItems = math.min(maxAmountForLayers, spec.maxObjects);
+
             if #autoLoadObject.places ~= 0 and autoLoadObject.maxItems ~= 0 then
                 table.insert(spec.autoLoadTypes, autoLoadObject)
             end
         end
     end
-    
+
     if self.isServer then
         spec.objectsToLoad = {};
         spec.balesToLoad = {};
@@ -649,9 +651,9 @@ function APalletAutoLoader:onLoad(savegame)
         if spec.triggerId ~= nil then
             addTrigger(spec.triggerId, "autoLoaderTriggerCallback", self);
         end
-        
+
         spec.pickupTriggers = {}
-        
+
         local i = 0
         while true do
             local pickupTriggerKey = string.format(baseXmlPath .. ".pickupTriggers.pickupTrigger(%d)", i)
@@ -669,20 +671,20 @@ function APalletAutoLoader:onLoad(savegame)
 
             i = i + 1
         end
-        
+
         spec.triggeredObjects = {}
-        
+
         spec.supportedObject = self.xmlFile:getValue(baseXmlPath .. "#supportedObject")
 
         spec.fillUnitIndex = self.xmlFile:getValue(baseXmlPath .. "#fillUnitIndex")
         spec.useTensionBelts = self.xmlFile:getValue(baseXmlPath .. "#useTensionBelts", not GS_IS_MOBILE_VERSION)
-        
+
         -- fix for dedi problem with sync by deactivate tension belts on server
         -- if g_dedicatedServer ~= nil then
             -- spec.useTensionBelts = false;
         -- end
     end
-    
+
     spec.initialized = true;
 end
 
@@ -694,6 +696,8 @@ function compLoadingPattern(w1,w2)
     if w1.posZ > w2.posZ then
         return true
     end
+
+    return false;
 end
 
 ---Called after loading
@@ -717,7 +721,7 @@ end
 
 ---
 function APalletAutoLoader:saveToXMLFile(xmlFile, key, usedModNames)
-    local spec = self.spec_aPalletAutoLoader 
+    local spec = self.spec_aPalletAutoLoader
     if spec == nil then
         return;
     end
@@ -737,20 +741,20 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
             if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
             if object.configFileName ~= nil and string.find(object.configFileName, "/euroPallets/") then return true end
-        
-            if object.i3dMappings == nil then 
+
+            if object.i3dMappings == nil then
                 return false;
             end
-            
+
             for mappingName, _ in pairs(object.i3dMappings) do
                 if (mappingName == "euroPalletVis") or (mappingName == "pallet_vis") or (mappingName == "grapePallet_vis") then
                 return true;
                 end
             end
-            
+
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.2
         autoLoadObject.sizeY = 1.0
@@ -764,10 +768,10 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return true end
             if string.find(object.i3dFilename, "FS22_Pallets_And_Bags_Pack/Pallets") then return true end
             if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletsOversized/") then return true end
-                        
+
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.3
         autoLoadObject.sizeY = 1.0
@@ -778,8 +782,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if string.find(object.i3dFilename, "data/objects/pallets/liquidTank") then return true end
             if object.configFileName ~= nil and string.find(object.configFileName, "/liquidTank/") then return true end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.34
         autoLoadObject.sizeY = 1.5
@@ -788,19 +792,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     elseif (name == "bigBagPallet") then
         local function CheckType(object)
             if object.configFileName ~= nil and string.find(object.configFileName, "/bigBagPallet/") then return true end
-        
-            if object.i3dMappings == nil then 
+
+            if object.i3dMappings == nil then
                 return false;
             end
-            
+
             for mappingName, _ in pairs(object.i3dMappings) do
                 if (mappingName == "bigBagPallet_vis") then
                 return true;
                 end
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.4
         autoLoadObject.sizeY = 1.5
@@ -809,19 +813,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
     elseif (name == "bigBag") then
         local function CheckType(object)
             if object.configFileName ~= nil and string.find(object.configFileName, "/bigBag/") then return true end
-        
-            if object.i3dMappings == nil then 
+
+            if object.i3dMappings == nil then
                 return false;
             end
-            
+
             for mappingName, _ in pairs(object.i3dMappings) do
                 if (mappingName == "bigBag_vis") then
                 return true;
                 end
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1
         autoLoadObject.sizeY = 1.55
@@ -831,10 +835,10 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         local function CheckType(object)
             if string.find(object.i3dFilename, "cottonModules/cottonRoundbale238.i3d") then return true end
             if string.find(object.i3dFilename, "lavenderModules/lavenderRoundbale238.i3d") then return true end
-            
+
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.38
         autoLoadObject.sizeY = 2.38
@@ -844,10 +848,10 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         local function CheckType(object)
             if string.find(object.i3dFilename, "cottonModules/cottonSquarebale488.i3d") then return true end
             if string.find(object.i3dFilename, "lavenderModules/lavenderSquarebale488.i3d") then return true end
-            
+
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.44
         autoLoadObject.sizeY = 2.44
@@ -862,8 +866,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
                 return true;
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.25
         autoLoadObject.sizeY = 1.20
@@ -875,8 +879,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
                 return true;
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.50
         autoLoadObject.sizeY = 1.20
@@ -888,8 +892,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
                 return true;
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.80
         autoLoadObject.sizeY = 1.20
@@ -901,8 +905,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
                 return true;
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.40
         autoLoadObject.sizeY = 0.86
@@ -914,8 +918,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
                 return true;
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 2.20
         autoLoadObject.sizeY = 0.85
@@ -927,8 +931,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
                 return true;
             end
             return false;
-        end    
-    
+        end
+
         autoLoadObject.CheckTypeMethod = CheckType
         autoLoadObject.sizeX = 1.80
         autoLoadObject.sizeY = 0.87
@@ -952,14 +956,14 @@ function APalletAutoLoader:onDelete()
         if spec.pickupTriggers ~= nil then
             for _, pickupTrigger in pairs(spec.pickupTriggers) do
                 removeTrigger(pickupTrigger.node)
-            end            
+            end
         end
     end
-    
+
 	if spec.beltsTimer ~= nil then
 		spec.beltsTimer:delete()
 	end
-    
+
 	if spec.timerId ~= nil then
 		removeTimer(self.timerId)
 	end
@@ -968,11 +972,11 @@ end
 ---
 function APalletAutoLoader:getIsValidObject(object)
     local spec = self.spec_aPalletAutoLoader
-    
+
     if object.currentlyLoadedOnAPalletAutoLoaderId ~= nil then
         return false;
     end
-    
+
     local objectFilename = object.configFileName or object.i3dFilename
     if objectFilename ~= nil then
         if object.typeName == "pallet" then
@@ -991,7 +995,7 @@ function APalletAutoLoader:getIsValidObject(object)
     if object == self then
         return false
     end
-    
+
     if not object:isa(Bale) or not object:getAllowPickup() then
         return false
     end
@@ -1032,49 +1036,49 @@ function APalletAutoLoader:getFirstValidLoadPlace()
     -- Hier die loading position und das loading objekt nehmen und die erste ladeposition dafür dynamisch suchen
     -- https://gdn.giants-software.com/documentation_scripting_fs19.php?version=engine&category=15&function=138
     -- overlapBox scheint zu prüfen, ob der angegebene Bereich frei ist
-    
+
     local currentLoadHeigt = 0;
     local autoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
     local loadPlaces = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].places;
     while (currentLoadHeigt + autoLoadType.sizeY)  <= spec.loadArea["height"] do
-    
+
         for i=1, #loadPlaces do
             local positionIndex = i .. "-" .. currentLoadHeigt;
-            
+
             if spec.usedPositions[positionIndex] == nil
             then
                 local loadPlace = loadPlaces[i]
                 local x, y, z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
                 local rx, ry, rz = getWorldRotation(loadPlace.node)
                 -- collision mask : all bits except bit 13, 23, 30
-                spec.foundObject = false 
-                        
+                spec.foundObject = false
+
                 if autoLoadType.type == "roundbale" then
                     -- Kollision rund berechnen für Rundballen mit simuliertem Kreis, Kugel klappt nicht bei den großen ballen wegen der höhe
                     -- eine virtel umdrehung als konstante
                     local rotationQuarter = math.rad(90);
                     local testRuns = 3;
-                    
+
                     -- länge des quadrates im kreis berechnen für x und z
                     -- radius = seitenlänge / Wurzel 2
                     -- seitenlänge = radius * Wurzel 2
                     local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
-                    
+
                     -- für jeden teil einen test machen
-                    for i = 1, testRuns do 
+                    for i = 1, testRuns do
                         overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
                     end
                 elseif autoLoadType.type == "squarebale" then
                     -- switch sizeZ and sizeX here because it is used 90° turned
-                    
+
                     overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeZ / 2, autoLoadType.sizeY / 2, autoLoadType.sizeX / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
                 else
                     overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
                 end
-                
+
                 -- save checked position to skip on next run
                 if spec.usedPositions[positionIndex] == nil then spec.usedPositions[positionIndex] = true end;
-                
+
                 -- sollte auf true sein, wenn eine rotation was gefunden hat
                 if not spec.foundObject then
                     -- print("height: " .. currentLoadHeigt)
@@ -1082,7 +1086,7 @@ function APalletAutoLoader:getFirstValidLoadPlace()
                 end
             end
         end
-        
+
         if autoLoadType.type == "bigBag" then
             break
         elseif autoLoadType.type == "squarebale" then
@@ -1117,17 +1121,17 @@ end
 ---
 function APalletAutoLoader:loadAllInRange()
     local spec = self.spec_aPalletAutoLoader
-    
+
     local loaded = false;
-    
+
     for _, object in pairs(spec.objectsToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
-            if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then 
+            if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
                 break;
             end
             loaded = self:loadObject(object);
-            if loaded then 
+            if loaded then
                 break;
             end
         end
@@ -1135,16 +1139,16 @@ function APalletAutoLoader:loadAllInRange()
     for object,_  in pairs(spec.balesToLoad) do
         local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
         if isValidLoadType then
-            if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then 
+            if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
                 break;
             end
             loaded = self:loadObject(object);
-            if loaded then 
+            if loaded then
                 break;
             end
         end
     end
-        
+
     if spec.timerId ~= nil then
         if loaded then
             return true;
@@ -1153,15 +1157,15 @@ function APalletAutoLoader:loadAllInRange()
             if self.isClient then
                 APalletAutoLoader.updateActionText(self);
             end
-           
+
             -- release all joints
             for _,jointData  in pairs(spec.objectsToJoint) do
 				removeJoint(jointData.jointIndex)
 				delete(jointData.jointTransform)
             end
-            
+
             spec.objectsToJoint = {};
-            
+
             if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
                 spec.beltsTimer:start(false);
                 self:setAllTensionBeltsActive(false, false)
@@ -1172,6 +1176,8 @@ function APalletAutoLoader:loadAllInRange()
             spec.timerId = addTimer(100, "loadAllInRange", self);
         end
     end
+
+    return false;
 end
 
 function APalletAutoLoader:loadObject(object)
@@ -1196,7 +1202,7 @@ function APalletAutoLoader:loadObject(object)
                             object:addToPhysics()
                         else
                             removeFromPhysics(objectNodeId)
-                            
+
                             if currentAutoLoadType.type == "roundbale" then
                                 -- round bales must be raised up half size, because the zero point is in the middle of the bale and not on the bottom
                                 y = y + (currentAutoLoadType.sizeY / 2)
@@ -1222,14 +1228,14 @@ function APalletAutoLoader:loadObject(object)
                         if vx ~= nil then
                             setLinearVelocity(objectNodeId, vx, vy, vz)
                         end
-                        
+
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
                         object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
 
                         if object.addDeleteListener ~= nil then
                             object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                         end
-                        
+
                         spec.triggeredObjects[object] = true
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
 
@@ -1243,9 +1249,9 @@ function APalletAutoLoader:loadObject(object)
 
                             link(self.spec_tensionBelts.linkNode, jointTransform)
 
-                            local x, y, z = localToWorld(objectNodeId, getCenterOfMass(objectNodeId))
+                            local x1, y1, z1 = localToWorld(objectNodeId, getCenterOfMass(objectNodeId))
 
-                            setWorldTranslation(jointTransform, x, y, z)
+                            setWorldTranslation(jointTransform, x1, y1, z1)
                             constr:setJointTransforms(jointTransform, jointTransform)
                             constr:setRotationLimit(0, 0, 0)
                             constr:setRotationLimit(1, 0, 0)
@@ -1266,24 +1272,30 @@ function APalletAutoLoader:loadObject(object)
                                 object = object
                             }
                         end
-                                                
+
                         if spec.objectsToLoad[object.rootNode] ~= nil then
                             spec.objectsToLoad[object.rootNode] = nil;
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+                            if object.removeDeleteListener ~= nil then
+                                object:removeDeleteListener(self, "onDeleteObjectToLoad")
+                            end
                         end
-                        
+
                         if spec.balesToLoad[object] ~= nil then
                             spec.balesToLoad[object] = nil;
                             spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+                            if object.removeDeleteListener ~= nil then
+                                object:removeDeleteListener(self, "onDeleteObjectToLoad")
+                            end
                         end
-                        
+
                         if spec.numTriggeredObjects >= currentAutoLoadType.maxItems then
                             spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
                             spec.usedPositions = {};
                         end
-                        
+
                         self:raiseDirtyFlags(spec.dirtyFlag)
-                        
+
                         return true;
                     else
                         spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
@@ -1294,13 +1306,13 @@ function APalletAutoLoader:loadObject(object)
             end
         end
     end
-    
+
     return false;
 end
 
 function APalletAutoLoader:unloadAll()
     local spec = self.spec_aPalletAutoLoader
-    
+
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
     spec.usedPositions = {};
     spec.isFullLoaded = false;
@@ -1308,13 +1320,13 @@ function APalletAutoLoader:unloadAll()
     for object,_ in pairs(spec.triggeredObjects) do
         if object ~= nil and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) then
             local objectNodeId = object.nodeId or object.components[1].node
-            
+
             -- store current rotation to restore later
-            local rx,ry,rz = getWorldRotation(objectNodeId); 
-            
+            local rx,ry,rz = getWorldRotation(objectNodeId);
+
             -- set rotation to trailer rotation to move to a side
             setWorldRotation(objectNodeId, getWorldRotation(self.rootNode))
-            
+
             --local x,y,z = localToWorld(objectNodeId, -3, -0.5, 0);
             local x,y,z = localToWorld(objectNodeId, unpack(spec.UnloadOffset[spec.currentTipside]));
 
@@ -1330,9 +1342,9 @@ function APalletAutoLoader:unloadAll()
                 setTranslation(objectNodeId, x, y, z)
                 addToPhysics(objectNodeId)
             end
-            
+
             object.currentlyLoadedOnAPalletAutoLoaderId = nil;
-            
+
             if object.removeDeleteListener ~= nil then
                 object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
             end
@@ -1355,7 +1367,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
     if not connection:getIsServer() then
         -- print("Received from Client");
         local callUnloadAll = streamReadBool(streamId);
-        
+
         if callUnloadAll then
             self:unloadAll()
         end
@@ -1371,34 +1383,34 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         if spec.objectsToLoadCount ~= objectsToLoadCount then
             spec.objectsToLoadCount = objectsToLoadCount;
             hasChanges = true;
-        end 
+        end
         local currentautoLoadTypeIndex = streamReadInt32(streamId);
         if spec.currentautoLoadTypeIndex ~= currentautoLoadTypeIndex then
             spec.currentautoLoadTypeIndex = currentautoLoadTypeIndex;
             hasChanges = true;
-        end   
+        end
         local currentTipside = streamReadInt32(streamId);
         if spec.currentTipside ~= currentTipside then
             spec.currentTipside = currentTipside;
             spec.tipsideText = g_i18n:getText("aPalletAutoLoader_tipside") .. ": " .. g_i18n:getText("aPalletAutoLoader_" .. spec.currentTipside)
             hasChanges = true;
-        end   
+        end
         local loadingState = streamReadInt32(streamId);
         if spec.loadingState ~= loadingState then
             spec.loadingState = loadingState;
             hasChanges = true;
-        end   
+        end
         local isFullLoaded = streamReadBool(streamId);
         if spec.isFullLoaded ~= isFullLoaded then
             spec.isFullLoaded = isFullLoaded;
             hasChanges = true;
-        end   
+        end
         local useTensionBelts = streamReadBool(streamId);
         if spec.useTensionBelts ~= useTensionBelts then
             spec.useTensionBelts = useTensionBelts;
             hasChanges = true;
-        end   
-        
+        end
+
         if hasChanges then
             APalletAutoLoader.updateActionText(self);
         end
@@ -1416,13 +1428,13 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
     if connection:getIsServer() then
         -- print("Send to Server");
         streamWriteBool(streamId, spec.callUnloadAll)
-        
+
         -- zurücksetzen
         spec.callUnloadAll = false;
     else
         -- print("Send to Client");
         streamWriteInt32(streamId, spec.numTriggeredObjects);
-        streamWriteInt32(streamId, spec.objectsToLoadCount); 
+        streamWriteInt32(streamId, spec.objectsToLoadCount);
         streamWriteInt32(streamId, spec.currentautoLoadTypeIndex);
         streamWriteInt32(streamId, spec.currentTipside)
         streamWriteInt32(streamId, spec.loadingState)
@@ -1526,7 +1538,7 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                 spec.triggeredObjects[object] = nil
                 spec.numTriggeredObjects = spec.numTriggeredObjects - 1
                 object.currentlyLoadedOnAPalletAutoLoaderId = nil;
-                
+
                 if object.removeDeleteListener ~= nil then
                     object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                 end
@@ -1557,17 +1569,23 @@ end
 ---
 function APalletAutoLoader:onDeleteObjectToLoad(object)
     local spec = self.spec_aPalletAutoLoader
-    
+
     if spec.objectsToLoad[object.rootNode] ~= nil then
         spec.objectsToLoad[object.rootNode] = nil;
         spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+        if object.removeDeleteListener ~= nil then
+            object:removeDeleteListener(self, "onDeleteObjectToLoad")
+        end
     end
-                        
+
     if spec.balesToLoad[object] ~= nil then
         spec.balesToLoad[object] = nil;
         spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+        if object.removeDeleteListener ~= nil then
+            object:removeDeleteListener(self, "onDeleteObjectToLoad")
+        end
     end
-    
+
     if not self.isServer then
         self:raiseDirtyFlags(spec.dirtyFlag)
     else
@@ -1588,7 +1606,7 @@ function APalletAutoLoader:getFillUnitCapacity(superFunc, fillUnitIndex)
     end
 
     return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems;
-    
+
 end
 
 function APalletAutoLoader:getFillUnitFillLevel(superFunc, fillUnitIndex)
@@ -1599,7 +1617,7 @@ function APalletAutoLoader:getFillUnitFillLevel(superFunc, fillUnitIndex)
     end
 
     return spec.numTriggeredObjects;
-    
+
 end
 
 function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
@@ -1609,10 +1627,10 @@ function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
         return superFunc(self, fillUnitIndex);
     end
 
-    if spec.isFullLoaded then 
+    if spec.isFullLoaded then
         return 0;
     end
-    
+
     return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems - spec.numTriggeredObjects;
-    
+
 end
