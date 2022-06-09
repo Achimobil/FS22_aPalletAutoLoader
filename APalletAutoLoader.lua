@@ -955,6 +955,14 @@ function APalletAutoLoader:onDelete()
             end            
         end
     end
+    
+	if spec.beltsTimer ~= nil then
+		spec.beltsTimer:delete()
+	end
+    
+	if spec.timerId ~= nil then
+		removeTimer(self.timerId)
+	end
 end
 
 ---
