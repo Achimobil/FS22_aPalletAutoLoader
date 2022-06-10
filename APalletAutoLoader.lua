@@ -341,7 +341,7 @@ end
 function APalletAutoLoader:StartLoading()
     local spec = self.spec_aPalletAutoLoader
 
-    if (spec.timerId ~= nil) then return end;
+    if (spec.loadTimer:getIsRunning()) then return end;
 
     spec.isFullLoaded = false;
     self:loadAllInRange();
@@ -646,6 +646,11 @@ function APalletAutoLoader:onLoad(savegame)
             function()
                 self:setAllTensionBeltsActive(true, false);
             end);
+        spec.loadTimer = Timer.new(100);
+        spec.loadTimer:setFinishCallback(
+            function()
+                self:loadAllInRange();
+            end);
 
         spec.triggerId = self.xmlFile:getValue(baseXmlPath .. ".trigger#node", nil, self.components, self.i3dMappings)
         if spec.triggerId ~= nil then
@@ -678,11 +683,6 @@ function APalletAutoLoader:onLoad(savegame)
 
         spec.fillUnitIndex = self.xmlFile:getValue(baseXmlPath .. "#fillUnitIndex")
         spec.useTensionBelts = self.xmlFile:getValue(baseXmlPath .. "#useTensionBelts", not GS_IS_MOBILE_VERSION)
-
-        -- fix for dedi problem with sync by deactivate tension belts on server
-        -- if g_dedicatedServer ~= nil then
-            -- spec.useTensionBelts = false;
-        -- end
     end
 
     spec.initialized = true;
@@ -950,22 +950,26 @@ function APalletAutoLoader:onDelete()
 
     if self.isServer then
         if spec.triggerId ~= nil then
-            removeTrigger(spec.triggerId)
+            removeTrigger(spec.triggerId);
+            spec.triggerId = nil;
         end
 
         if spec.pickupTriggers ~= nil then
             for _, pickupTrigger in pairs(spec.pickupTriggers) do
                 removeTrigger(pickupTrigger.node)
+                pickupTrigger.node = nil;
             end
         end
     end
 
 	if spec.beltsTimer ~= nil then
-		spec.beltsTimer:delete()
+		spec.beltsTimer:delete();
+		spec.beltsTimer = nil;
 	end
 
-	if spec.timerId ~= nil then
-		removeTimer(self.timerId)
+	if spec.loadTimer ~= nil then
+		spec.loadTimer:delete();
+		spec.loadTimer = nil;
 	end
 end
 
@@ -1149,32 +1153,26 @@ function APalletAutoLoader:loadAllInRange()
         end
     end
 
-    if spec.timerId ~= nil then
-        if loaded then
-            return true;
-        else
-            spec.timerId = nil;
-            if self.isClient then
-                APalletAutoLoader.updateActionText(self);
-            end
-
-            -- release all joints
-            for _,jointData  in pairs(spec.objectsToJoint) do
-				removeJoint(jointData.jointIndex)
-				delete(jointData.jointTransform)
-            end
-
-            spec.objectsToJoint = {};
-
-            if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
-                spec.beltsTimer:start(false);
-                self:setAllTensionBeltsActive(false, false)
-            end
-        end
+    if loaded then 
+        spec.loadTimer:start(false);
     else
-        if loaded then
-            spec.timerId = addTimer(100, "loadAllInRange", self);
+        if self.isClient then
+            APalletAutoLoader.updateActionText(self);
         end
+
+        -- release all joints
+        for _,jointData  in pairs(spec.objectsToJoint) do
+            removeJoint(jointData.jointIndex)
+            delete(jointData.jointTransform)
+        end
+        spec.objectsToJoint = {};
+
+        -- start tension belts time if needed
+        if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
+            spec.beltsTimer:start(false);
+            self:setAllTensionBeltsActive(false, false)
+        end
+    
     end
 
     return false;
