@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Correas de tensión desactivadas" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Correas tensoras activadas" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alternar la tensión automática de las correas" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zona de descarga alta/baja" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Área de descarga superior" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Zona de descarga inferior" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Área de descarga izquierda/derecha" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Área de descarga a la izquierda" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Área de descarga a la derecha" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Área de descarga hacia delante/atrás" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descarga delante" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Descarga de la zona de atrás" />
     </texts>
 </l10n>

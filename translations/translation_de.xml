@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Spanngurte deaktiviert" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Spanngurte aktiviert" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Automatische Spanngurte ändern" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Abladebereich hoher/tiefer" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Abladebereich höher" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Abladebereich tiefer" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Abladebereich links/rechts" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Abladebereich links" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Abladebereich rechts" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Abladebereich vor/zurück" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Abladebereich vor" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Abladebereich zurück" />
     </texts>
 </l10n>

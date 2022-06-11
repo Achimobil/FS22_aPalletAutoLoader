@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Натяжные ремни деактивированы" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Натяжные ремни активированы" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Переключатель автоматического натяжения ремней" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Зона разгрузки высокая/низкая" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Зона разгрузки выше" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Зона разгрузки ниже" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Область разгрузки слева/справа" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Область разгрузки слева" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Область разгрузки справа" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Область разгрузки вперед/назад" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Зона разгрузки спереди" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Разгрузочная зона назад" />
     </texts>
 </l10n>

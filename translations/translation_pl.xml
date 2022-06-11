@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Taśmy napinające wyłączone" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Aktywacja pasów napinających" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Przełączanie automatycznego napinania pasów" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Miejsce rozładunku wysokie/niskie" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Miejsce rozładunku wyżej" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Miejsce rozładunku niżej" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Obszar rozładunku w lewo/prawo" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Obszar rozładunku w lewo" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Obszar rozładunku w prawo" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Miejsce rozładunku do przodu/do tyłu" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Miejsce rozładunku z przodu" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Miejsce rozładunku do tyłu" />
     </texts>
 </l10n>

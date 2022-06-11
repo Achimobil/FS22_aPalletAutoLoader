@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Tension belts deactivated" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Tensionin belts activated" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Toggle automatic tensionin belts" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Unloading area high/low" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Unloading area higher" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Unloading area lower" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Unloading area left/right" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Unloading area left" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Unloading area right" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Unloading area forward/back" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Unloading area forward" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Unloading area back" />
     </texts>
 </l10n>

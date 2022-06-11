@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Sangles de serrage désactivées" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Sangles de serrage activées" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Basculement automatique des courroies de tension" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zone de déchargement plus haute/plus basse" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Zone de déchargement plus haute" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="zone de déchargement plus basse" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Zone de déchargement gauche/droite" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="zone de déchargement à gauche" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Zone de déchargement à droite" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zone de déchargement avant/arrière" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zone de déchargement avant" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zone de déchargement arrière" />
     </texts>
 </l10n>

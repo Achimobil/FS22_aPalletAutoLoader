@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Deaktivované napínací popruhy" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Aktivace napínacích popruhů" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Přepínání automatického napínání řemenů" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Vykládací oblast vysoká/nízká" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Vykládací oblast vyšší" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Vykládací oblast nižší" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Oblast vykládání vlevo/vpravo" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Vykládací oblast vlevo" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Vykládací oblast vpravo" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Vykládací oblast dopředu/dozadu" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Vykládací prostor vpředu" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Vykládací oblast zpět" />
     </texts>
 </l10n>

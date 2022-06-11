@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="65">
     <author>Achimobil</author>
-    <version>1.7.3.0 beta</version>
+    <version>1.7.3.1 beta</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -138,8 +138,11 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.7.3.0 beta
+1.7.3.1 beta
 - Code optimierungen und verwendung von Giants Timer wegen abstürzen
+- Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
+- Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet
+- Markierungen werden beim Abladen automatisch ausgeblendet
 
 1.7.3.0
 - Lua-Trigger-Fehler behoben, der durch Update 1.4 verursacht wurde
@@ -532,6 +535,18 @@ Registro de cambios:
         <actionBinding action="AL_TOGGLE_AUTOMATIC_TENSIONBELTS">
             <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_j"/>
         </actionBinding>
+        <actionBinding action="AL_UNLOADAREA_MOVE_UPDOWN">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_e" axisComponent="+" neutralInput="0" index="1"/>
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_q" axisComponent="-" neutralInput="0" index="1"/>
+        </actionBinding>
+        <actionBinding action="AL_UNLOADAREA_MOVE_LEFTRIGHT">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_a" axisComponent="+" neutralInput="0" index="1"/>
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_d" axisComponent="-" neutralInput="0" index="1"/>
+        </actionBinding>
+        <actionBinding action="AL_UNLOADAREA_MOVE_FRONTBACK">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_w" axisComponent="+" neutralInput="0" index="1"/>
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_s" axisComponent="-" neutralInput="0" index="1"/>
+        </actionBinding>
     </inputBinding>
     <actions>
         <action name="AL_LOAD_PALLET"/>
@@ -540,6 +555,9 @@ Registro de cambios:
         <action name="AL_UNLOAD"/>
         <action name="AL_TOGGLE_MARKERS"/>
         <action name="AL_TOGGLE_AUTOMATIC_TENSIONBELTS"/>
+        <action name="AL_UNLOADAREA_MOVE_UPDOWN" axisType="FULL"/>
+        <action name="AL_UNLOADAREA_MOVE_LEFTRIGHT" axisType="FULL"/>
+        <action name="AL_UNLOADAREA_MOVE_FRONTBACK" axisType="FULL"/>
     </actions>
     <l10n filenamePrefix="translations/translation"/>
 </modDesc>

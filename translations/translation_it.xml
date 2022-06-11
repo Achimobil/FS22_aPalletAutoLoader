@@ -33,5 +33,14 @@
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Cinghie di tensione disattivate" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Cinghie di tensione attivate" />
         <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alzare la tensione automatica delle cinghie" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Area di scarico alta/bassa" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Area di scarico più alta" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Area di scarico inferiore" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Area di scarico a sinistra/destra" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Area di scaricamento a sinistra" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Area di scaricamento a destra" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Area di scaricamento avanti/indietro" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Area di scarico davanti" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Area di scarico indietro" />
     </texts>
 </l10n>

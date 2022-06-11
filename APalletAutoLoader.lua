@@ -236,24 +236,63 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
             spec.toggleAutoLoadTypesActionEventId = actionEventId2;
 
             local _, actionEventId3 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_TIPSIDE, self, APalletAutoLoader.actionEventToggleTipside, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId3, GS_PRIO_NORMAL)
+            g_inputBinding:setActionEventTextPriority(actionEventId3, GS_PRIO_HIGH)
             spec.toggleTipsideActionEventId = actionEventId3;
 
             local _, actionEventId4 = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOAD, self, APalletAutoLoader.actionEventUnloadAll, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId4, GS_PRIO_HIGH)
             spec.unloadAllEventId = actionEventId4;
 
-            local _, actionEventId5 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_MARKERS, self, APalletAutoLoader.actionEventToggleMarkers, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId5, GS_PRIO_NORMAL)
+            local _, actionEventId5 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_MARKERS, self, APalletAutoLoader.actionEventToggleMarkers, false, true, false, true, nil, nil, true, true),
+            g_inputBinding:setActionEventTextPriority(actionEventId5, GS_PRIO_HIGH);
             spec.toggleMarkerEventId = actionEventId5;
 
-            local _, actionEventId6 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_AUTOMATIC_TENSIONBELTS, self, APalletAutoLoader.actionEventToggleAutomaticTensionBelts, false, true, false, true, nil, nil, true, true)
-            g_inputBinding:setActionEventTextPriority(actionEventId6, GS_PRIO_NORMAL)
+            local _, actionEventId6 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_AUTOMATIC_TENSIONBELTS, self, APalletAutoLoader.actionEventToggleAutomaticTensionBelts, false, true, false, true, nil, nil, true, true);
+            g_inputBinding:setActionEventTextPriority(actionEventId6, GS_PRIO_HIGH);
             spec.toggleAutomaticTensionBeltsEventId = actionEventId6;
+            
+            local _, actionEventIdMoveUpDown = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOADAREA_MOVE_UPDOWN, self, APalletAutoLoader.actionEventUnloadAreaMoveUpDown, false, true, true, true, nil);
+            g_inputBinding:setActionEventTextPriority(actionEventIdMoveUpDown, GS_PRIO_HIGH);
+            spec.actionEventIdMoveUpDown = actionEventIdMoveUpDown;
+			g_inputBinding:setActionEventText(actionEventIdMoveUpDown, g_i18n:getText("input_AL_UNLOADAREA_MOVE_UPDOWN"));
+            
+            local _, actionEventIdMoveLeftRight = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOADAREA_MOVE_LEFTRIGHT, self, APalletAutoLoader.actionEventUnloadAreaMoveLeftRight, false, true, true, true, nil);
+            g_inputBinding:setActionEventTextPriority(actionEventIdMoveLeftRight, GS_PRIO_HIGH);
+            spec.actionEventIdMoveLeftRight = actionEventIdMoveLeftRight;
+			g_inputBinding:setActionEventText(actionEventIdMoveLeftRight, g_i18n:getText("input_AL_UNLOADAREA_MOVE_LEFTRIGHT"));
+            
+            local _, actionEventIdMoveFrontBack = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOADAREA_MOVE_FRONTBACK, self, APalletAutoLoader.actionEventUnloadAreaMoveFrontBack, false, true, true, true, nil);
+            g_inputBinding:setActionEventTextPriority(actionEventIdMoveFrontBack, GS_PRIO_HIGH);
+            spec.actionEventIdMoveFrontBack = actionEventIdMoveFrontBack;
+			g_inputBinding:setActionEventText(actionEventIdMoveFrontBack, g_i18n:getText("input_AL_UNLOADAREA_MOVE_FRONTBACK"));
 
             APalletAutoLoader.updateActionText(self);
         end
     end
+end
+
+function APalletAutoLoader.actionEventUnloadAreaMoveLeftRight(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader;
+    
+    spec.showMarkers = true;
+    
+    spec.UnloadOffset[spec.currentTipside][1] = spec.UnloadOffset[spec.currentTipside][1] + (inputValue/50);
+end
+
+function APalletAutoLoader.actionEventUnloadAreaMoveUpDown(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader;
+    
+    spec.showMarkers = true;
+    
+    spec.UnloadOffset[spec.currentTipside][2] = spec.UnloadOffset[spec.currentTipside][2] + (inputValue/50)    ;
+end
+
+function APalletAutoLoader.actionEventUnloadAreaMoveFrontBack(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader;
+    
+    spec.showMarkers = true;
+    
+    spec.UnloadOffset[spec.currentTipside][3] = spec.UnloadOffset[spec.currentTipside][3] + (inputValue/50);
 end
 
 function APalletAutoLoader.updateActionText(self)
@@ -267,6 +306,9 @@ function APalletAutoLoader.updateActionText(self)
             g_inputBinding:setActionEventActive(spec.unloadAllEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleAutomaticTensionBeltsEventId, false)
+            g_inputBinding:setActionEventActive(spec.actionEventIdMoveUpDown, false)
+            g_inputBinding:setActionEventActive(spec.actionEventIdMoveLeftRight, false)
+            g_inputBinding:setActionEventActive(spec.actionEventIdMoveFrontBack, false)
             return;
         end
 
@@ -303,6 +345,9 @@ function APalletAutoLoader.updateActionText(self)
         -- deactivate when somthing is already loaded or not
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
         g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
+        g_inputBinding:setActionEventActive(spec.actionEventIdMoveUpDown, spec.numTriggeredObjects ~= 0)
+        g_inputBinding:setActionEventActive(spec.actionEventIdMoveLeftRight, spec.numTriggeredObjects ~= 0)
+        g_inputBinding:setActionEventActive(spec.actionEventIdMoveFrontBack, spec.numTriggeredObjects ~= 0)
         g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, true)
         g_inputBinding:setActionEventActive(spec.toggleAutomaticTensionBeltsEventId, true)
     end
@@ -388,6 +433,7 @@ function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue
         newTipside = APalletAutoLoaderTipsides.BACK;
     end
 
+    spec.showMarkers = true;
     SetTipsideEvent.sendEvent(self, newTipside)
 end
 
@@ -410,14 +456,17 @@ function APalletAutoLoader.actionEventToggleMarkers(self, actionName, inputValue
 end
 
 function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, callbackState, isAnalog)
-    local spec = self.spec_aPalletAutoLoader
+    local spec = self.spec_aPalletAutoLoader;
 
+    spec.showMarkers = false;
+        
     if not self.isServer then
         -- Entladebefehl in den stream schreiben mit entladeseite
         spec.callUnloadAll = true;
-        self:raiseDirtyFlags(spec.dirtyFlag)
+        self:raiseDirtyFlags(spec.dirtyFlag);
     else
-        self:unloadAll()
+        self:unloadAll(spec.UnloadOffset[spec.currentTipside]);
+        spec.UnloadOffset[spec.currentTipside] = {unpack(spec.UnloadOffsetOriginal[spec.currentTipside])};
         APalletAutoLoader.updateActionText(self);
     end
 end
@@ -475,10 +524,15 @@ function APalletAutoLoader:onLoad(savegame)
     spec.loadArea["width"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#width") or 2
     spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
     spec.UnloadOffset = {}
+    spec.UnloadOffsetOriginal = {}
     spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-" .. (spec.loadArea["width"]+1) .. " -0.5 0", true)
+    spec.UnloadOffsetOriginal[APalletAutoLoaderTipsides.RIGHT] = {unpack(spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT])}
     spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadLeftOffset", (spec.loadArea["width"]+1) .. " -0.5 0", true)
+    spec.UnloadOffsetOriginal[APalletAutoLoaderTipsides.LEFT] = {unpack(spec.UnloadOffset[APalletAutoLoaderTipsides.LEFT])}
     spec.UnloadOffset[APalletAutoLoaderTipsides.MIDDLE] = self.xmlFile:getValue(baseXmlPath .. "#UnloadMiddleOffset", "0 0 0", true)
+    spec.UnloadOffsetOriginal[APalletAutoLoaderTipsides.MIDDLE] = {unpack(spec.UnloadOffset[APalletAutoLoaderTipsides.MIDDLE])}
     spec.UnloadOffset[APalletAutoLoaderTipsides.BACK] = self.xmlFile:getValue(baseXmlPath .. "#UnloadBackOffset", "0 -0.5 -" .. (spec.loadArea["lenght"]+1), true)
+    spec.UnloadOffsetOriginal[APalletAutoLoaderTipsides.BACK] = {unpack(spec.UnloadOffset[APalletAutoLoaderTipsides.BACK])}
 
     if spec.loadArea["baseNode"] == nil then
         return;
@@ -1308,7 +1362,7 @@ function APalletAutoLoader:loadObject(object)
     return false;
 end
 
-function APalletAutoLoader:unloadAll()
+function APalletAutoLoader:unloadAll(unloadOffset)
     local spec = self.spec_aPalletAutoLoader
 
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
@@ -1326,7 +1380,7 @@ function APalletAutoLoader:unloadAll()
             setWorldRotation(objectNodeId, getWorldRotation(self.rootNode))
 
             --local x,y,z = localToWorld(objectNodeId, -3, -0.5, 0);
-            local x,y,z = localToWorld(objectNodeId, unpack(spec.UnloadOffset[spec.currentTipside]));
+            local x,y,z = localToWorld(objectNodeId, unpack(unloadOffset));
 
             --bigBags have two components and appear as vehicle, so we treat them differently
             if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "bigBag" then
@@ -1365,9 +1419,14 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
     if not connection:getIsServer() then
         -- print("Received from Client");
         local callUnloadAll = streamReadBool(streamId);
+        
+        local x = streamReadInt32(streamId);
+        local y = streamReadInt32(streamId);
+        local z = streamReadInt32(streamId);
+        local unloadOffset = {x,y,z}
 
         if callUnloadAll then
-            self:unloadAll()
+            self:unloadAll(unloadOffset)
         end
     else
         -- print("Received from Server");
@@ -1426,6 +1485,11 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
     if connection:getIsServer() then
         -- print("Send to Server");
         streamWriteBool(streamId, spec.callUnloadAll)
+        
+        local x,y,z = localToWorld(objectNodeId, unpack(spec.UnloadOffset[spec.currentTipside]));
+        streamWriteFloat32(streamId, x)
+        streamWriteFloat32(streamId, y)
+        streamWriteFloat32(streamId, z)
 
         -- zurücksetzen
         spec.callUnloadAll = false;
