@@ -1222,11 +1222,10 @@ function APalletAutoLoader:loadAllInRange()
         spec.objectsToJoint = {};
 
         -- start tension belts time if needed
-        if spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
+        if spec.numTriggeredObjects ~= 0 and spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
             spec.beltsTimer:start(false);
             self:setAllTensionBeltsActive(false, false)
-        end
-    
+        end    
     end
 
     return false;
