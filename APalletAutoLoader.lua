@@ -1289,6 +1289,11 @@ function APalletAutoLoader:loadObject(object)
 
                         spec.triggeredObjects[object] = true
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
+                
+                        -- allowsInput abschalten damit keine seiteneffekte auftreten
+                        if object.allowsInput ~= nil then
+                            object.allowsInput = false;
+                        end
 
                         -- Create Joint to keep the object on the place even if moving
                         if spec.objectsToJoint[objectNodeId] == nil and self.spec_tensionBelts ~= nil and self.spec_tensionBelts.jointNode ~= nil then
@@ -1398,6 +1403,11 @@ function APalletAutoLoader:unloadAll(unloadOffset)
 
             if object.removeDeleteListener ~= nil then
                 object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
+            end
+                
+            -- allowsInput einschalten damit dies wieder benutzt werden kann
+            if object.allowsInput ~= nil then
+                object.allowsInput = true;
             end
         end
     end
@@ -1590,6 +1600,11 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                 end
 
                 self:raiseDirtyFlags(spec.dirtyFlag)
+                
+                -- allowsInput abschalten damit keine seiteneffekte auftreten
+                if object.allowsInput ~= nil then
+                    object.allowsInput = false;
+                end
             end
         end
     elseif onLeave then
@@ -1604,6 +1619,11 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                     object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                 end
                 self:raiseDirtyFlags(spec.dirtyFlag)
+                
+                -- allowsInput einschalten damit dies wieder benutzt werden kann
+                if object.allowsInput ~= nil then
+                    object.allowsInput = true;
+                end
 
                 if next(spec.triggeredObjects) == nil then
                     spec.currentPlace = 1
