@@ -1321,7 +1321,7 @@ function APalletAutoLoader:loadObject(object)
             local spec = self.spec_aPalletAutoLoader
             if spec.triggeredObjects[object] == nil then
                 local currentAutoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
-                if spec.numTriggeredObjects < currentAutoLoadType.maxObjects then
+                if spec.numTriggeredObjects < currentAutoLoadType.maxItems then
                     local firstValidLoadPlace, currentLoadHeigt = self:getFirstValidLoadPlace()
                     if firstValidLoadPlace ~= -1 then
                         local loadPlaces = currentAutoLoadType.places;
