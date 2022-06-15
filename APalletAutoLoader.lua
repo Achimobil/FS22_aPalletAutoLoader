@@ -49,6 +49,9 @@ function APalletAutoLoader.initSpecialization()
     schema:register(XMLValueType.FLOAT, baseXmlPath .. ".loadArea#lenght", "length of the loadArea")
     schema:register(XMLValueType.FLOAT, baseXmlPath .. ".loadArea#height", "height of the loadArea")
     schema:register(XMLValueType.FLOAT, baseXmlPath .. ".loadArea#width", "width of the loadArea")
+    schema:register(XMLValueType.STRING, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#name", "name of the loading type to configure different than base setting")
+    schema:register(XMLValueType.STRING, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#maxObjects", "max number of objects loadable for this type, otherwise base maxObjects is used")
+    schema:register(XMLValueType.STRING, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#height", "height to use for this type, otherwise loadingArea height is used")
 
     schema:setXMLSpecializationType()
 
@@ -541,6 +544,27 @@ function APalletAutoLoader:onLoad(savegame)
     if spec.loadArea["baseNode"] == nil then
         return;
     end
+    
+    local i = 0
+    local autoLoadObjectSettings = {}
+    while true do
+        local autoLoadObjectKey = string.format(baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(%d)", i)
+        if not self.xmlFile:hasProperty(autoLoadObjectKey) then
+            break
+        end
+
+        local autoLoadObjectSetting = {}
+        autoLoadObjectSetting.name = self.xmlFile:getValue(autoLoadObjectKey .. "#name", "x")
+        if autoLoadObjectSetting.name == "x" then
+            Logging.xmlWarning(self.xmlFile, "autoLoadObjectSetting has no name");
+        else
+            autoLoadObjectSetting.maxObjects = self.xmlFile:getValue(autoLoadObjectKey .. "#maxObjects", spec.maxObjects);
+            autoLoadObjectSetting.height = self.xmlFile:getValue(autoLoadObjectKey .. "#height", spec.loadArea["height"]);
+            autoLoadObjectSettings[autoLoadObjectSetting.name] = autoLoadObjectSetting;
+        end
+
+        i = i + 1
+    end
 
     spec.available = true;
 
@@ -718,10 +742,19 @@ function APalletAutoLoader:onLoad(savegame)
             end
 
             local amountPerLayer = #autoLoadObject.places;
-            local maxLayers = math.floor(spec.loadArea["height"] / autoLoadObject.sizeY);
+            local heightForObjectType = spec.loadArea["height"];
+            if autoLoadObjectSettings[name] ~= nil then
+                heightForObjectType = autoLoadObjectSettings[name].height
+            end
+            local maxLayers = math.floor(heightForObjectType / autoLoadObject.sizeY);
             if autoLoadObject.type == "bigBag" then maxLayers = 1 end
             local maxAmountForLayers = amountPerLayer * maxLayers;
-            autoLoadObject.maxItems = math.min(maxAmountForLayers, spec.maxObjects);
+            
+            local maxAmountForObjectType = spec.maxObjects;
+            if autoLoadObjectSettings[name] ~= nil then
+                maxAmountForObjectType = autoLoadObjectSettings[name].maxObjects
+            end
+            autoLoadObject.maxItems = math.min(maxAmountForLayers, maxAmountForObjectType);
 
             if #autoLoadObject.places ~= 0 and autoLoadObject.maxItems ~= 0 then
                 table.insert(spec.autoLoadTypes, autoLoadObject)
@@ -1287,10 +1320,10 @@ function APalletAutoLoader:loadObject(object)
         if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
             local spec = self.spec_aPalletAutoLoader
             if spec.triggeredObjects[object] == nil then
-                if spec.numTriggeredObjects < spec.maxObjects then
+                local currentAutoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
+                if spec.numTriggeredObjects < currentAutoLoadType.maxObjects then
                     local firstValidLoadPlace, currentLoadHeigt = self:getFirstValidLoadPlace()
                     if firstValidLoadPlace ~= -1 then
-                        local currentAutoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
                         local loadPlaces = currentAutoLoadType.places;
                         local loadPlace = loadPlaces[firstValidLoadPlace]
                         local x,y,z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
