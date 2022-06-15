@@ -573,12 +573,17 @@ function APalletAutoLoader:onLoad(savegame)
 
             -- paletten nebeneinander bestimmen
             -- vieviele passen ohne drehung?
-            -- erst mal alle rotiert oder nicht rotiert als loading anfang
             local restFirstNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.05);
             local countNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.05) + 1
 
+            -- vie viele passen mit drehung?
             local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
             local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
+            
+            -- wie viele passen wenn eine mit drehung gemacht wird?
+            local restOneRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - autoLoadObject.sizeZ - 0.05) % (autoLoadObject.sizeX + 0.05);
+            local countOneRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restOneRotation - autoLoadObject.sizeZ - 0.05) / (autoLoadObject.sizeX + 0.05) + 2  
+            
             local backDistance = 0.05;
             if autoLoadObject.type == "roundbale" then
                 -- rundballen ein bischen mehr platz geben wegen der runden kollision
@@ -587,7 +592,7 @@ function APalletAutoLoader:onLoad(savegame)
 
             local loadingPattern = {}
             if restFirstNoRotation <= restFirstRotation or autoLoadObject.type == "roundbale" then
-                -- auladen ohne rotation
+                -- auladen ohne rotation, heißt also quer zur Ladefläche
                 -- rundballen generell hier, weil sind ja rund
                 if autoLoadObject.type == "roundbale" and countNoRotation == 1 then
                     -- wenn rundballen und noch genug platz, versetzt laden um mehr auf die fläche zu bekommen
@@ -644,8 +649,36 @@ function APalletAutoLoader:onLoad(savegame)
                         end
                     end
                 end
+            elseif restOneRotation <= restFirstRotation then
+                -- aufladen wobei die ersten quer und die letzt längs geladen wird.
+                -- erst mal die quer einfügen mit verschobenem Zentrum
+                local maxPosX = 0;
+                for rowNumber = 0, (countOneRotation-2) do
+                    -- schleife bis zur länge
+                    for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
+                        if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+                            local loadingPatternItem = {}
+                            loadingPatternItem.rotation = 0;
+                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restOneRotation / 2)
+                            loadingPatternItem.posZ = cornerZ - colPos
+                            table.insert(loadingPattern, loadingPatternItem)
+                            if loadingPatternItem.posX > maxPosX then maxPosX = loadingPatternItem.posX end
+                        end
+                    end
+                end
+                -- jetzt die eine reihe längs auch als schleife bis zur länge
+                for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + backDistance) do
+                    if (colPos + (autoLoadObject.sizeX / 2)) <= spec.loadArea["lenght"] then
+                        local loadingPatternItem = {}
+                        loadingPatternItem.rotation = math.rad(90);
+                        -- loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - ((countOneRotation-1) * (autoLoadObject.sizeX + backDistance)) - (restOneRotation / 2)
+                        loadingPatternItem.posX = maxPosX - (autoLoadObject.sizeX / 2) - (autoLoadObject.sizeZ / 2) - backDistance;
+                        loadingPatternItem.posZ = cornerZ - colPos
+                        table.insert(loadingPattern, loadingPatternItem)
+                    end
+                end
             else
-                -- aufladen mit rotation
+                -- aufladen mit rotation, heißt also längs zur Ladefläche
                 for rowNumber = 0, (countRotation-1) do
                     -- schleife bis zur länge
                     for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + backDistance) do
