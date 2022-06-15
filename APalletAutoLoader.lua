@@ -486,7 +486,9 @@ function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, ca
         self:raiseDirtyFlags(spec.dirtyFlag);
     else
         self:unloadAll(spec.UnloadOffset[spec.currentTipside]);
-        spec.UnloadOffset[spec.currentTipside] = {unpack(spec.UnloadOffsetOriginal[spec.currentTipside])};
+        if (spec.UnloadOffsetOriginal ~= nil and spec.UnloadOffsetOriginal[spec.currentTipside] ~= nil then
+            spec.UnloadOffset[spec.currentTipside] = {unpack(spec.UnloadOffsetOriginal[spec.currentTipside])};
+        end
         APalletAutoLoader.updateActionText(self);
     end
 end
@@ -1592,7 +1594,7 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
         -- print("Send to Server");
         streamWriteBool(streamId, spec.callUnloadAll)
         
-        local x,y,z = localToWorld(objectNodeId, unpack(spec.UnloadOffset[spec.currentTipside]));
+        local x,y,z = unpack(spec.UnloadOffset[spec.currentTipside]);
         streamWriteFloat32(streamId, x)
         streamWriteFloat32(streamId, y)
         streamWriteFloat32(streamId, z)
