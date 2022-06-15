@@ -423,18 +423,22 @@ function APalletAutoLoader:SetAutoloadType(newAutoLoadTypeIndex)
 end
 
 function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue, callbackState, isAnalog)
-    local spec = self.spec_aPalletAutoLoader
+    local spec = self.spec_aPalletAutoLoader;
 
-    local newTipside = APalletAutoLoaderTipsides.LEFT;
+    if not spec.showMarkers then
+        spec.showMarkers = true;
+    else
+        local newTipside = APalletAutoLoaderTipsides.LEFT;
 
-    if spec.currentTipside == APalletAutoLoaderTipsides.LEFT then
-        newTipside = APalletAutoLoaderTipsides.RIGHT;
-    elseif spec.currentTipside == APalletAutoLoaderTipsides.RIGHT then
-        newTipside = APalletAutoLoaderTipsides.BACK;
+        if spec.currentTipside == APalletAutoLoaderTipsides.LEFT then
+            newTipside = APalletAutoLoaderTipsides.RIGHT;
+        elseif spec.currentTipside == APalletAutoLoaderTipsides.RIGHT then
+            newTipside = APalletAutoLoaderTipsides.BACK;
+        end
+
+        spec.showMarkers = true;
+        SetTipsideEvent.sendEvent(self, newTipside);
     end
-
-    spec.showMarkers = true;
-    SetTipsideEvent.sendEvent(self, newTipside)
 end
 
 function APalletAutoLoader:SetTipside(tipsideIndex)
