@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="65">
     <author>Achimobil</author>
-    <version>1.7.3.3 beta</version>
+    <version>1.7.3.4 beta</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -138,13 +138,14 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.7.3.3 beta
+1.7.3.4 beta
 - Code optimierungen und verwendung von Giants Timer wegen abstürzen
 - Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
 - Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet und erst dann kann die seite geändert werden
 - Markierungen werden beim Abladen automatisch ausgeblendet
 - Blockieren von Fahrzeugentladetriggern auf der Ladefläche zur verringerung von Seiteneffekten durch die defekten Giants trigger
 - Neues Lademuster, wenn mehr auf die Fläche past durch eine längs und den rest quer zu laden
+- 120er Quaderballen eingefügt. Vorsicht, die sind aufgrund ihrer größe nicht sehr stabil
 
 1.7.3.0
 - Lua-Trigger-Fehler behoben, der durch Update 1.4 verursacht wurde
