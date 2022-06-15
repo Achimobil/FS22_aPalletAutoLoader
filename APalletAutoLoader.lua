@@ -117,6 +117,9 @@ function APalletAutoLoader.registerEventListeners(vehicleType)
 
 	SpecializationUtil.registerEventListener(vehicleType, "onAIImplementStart", APalletAutoLoader)
 	SpecializationUtil.registerEventListener(vehicleType, "onAIImplementEnd", APalletAutoLoader)
+
+	SpecializationUtil.registerEventListener(vehicleType, "onAIFieldWorkerStart", APalletAutoLoader)
+	SpecializationUtil.registerEventListener(vehicleType, "onAIFieldWorkerEnd", APalletAutoLoader)
 end
 
 function APalletAutoLoader:onAIImplementStart()
@@ -125,6 +128,16 @@ function APalletAutoLoader:onAIImplementStart()
 end
 
 function APalletAutoLoader:onAIImplementEnd()
+    -- Zuklappen, ausschalten oder was sonst noch fehlt.
+    SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.STOPPED)
+end
+
+function APalletAutoLoader:onAIFieldWorkerStart()
+    -- Aufklappen, anschalten oder was sonst noch fehlt.
+    SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.RUNNING)
+end
+
+function APalletAutoLoader:onAIFieldWorkerEnd()
     -- Zuklappen, ausschalten oder was sonst noch fehlt.
     SetAutoloadStateEvent.sendEvent(self, APalletAutoLoaderLoadingState.STOPPED)
 end
