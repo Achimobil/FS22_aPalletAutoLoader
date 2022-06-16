@@ -1467,6 +1467,11 @@ end
 
 function APalletAutoLoader:unloadAll(unloadOffset)
     local spec = self.spec_aPalletAutoLoader
+    
+    unloadOffsetToUse = unloadOffset;
+    if unloadOffsetToUse == nil then
+        unloadOffsetToUse = spec.UnloadOffset[spec.currentTipside];
+    end
 
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
     spec.usedPositions = {};
@@ -1483,7 +1488,7 @@ function APalletAutoLoader:unloadAll(unloadOffset)
             setWorldRotation(objectNodeId, getWorldRotation(self.rootNode))
 
             --local x,y,z = localToWorld(objectNodeId, -3, -0.5, 0);
-            local x,y,z = localToWorld(objectNodeId, unpack(unloadOffset));
+            local x,y,z = localToWorld(objectNodeId, unpack(unloadOffsetToUse));
 
             --bigBags have two components and appear as vehicle, so we treat them differently
             if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].type == "bigBag" then
