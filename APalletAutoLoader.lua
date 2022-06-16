@@ -486,7 +486,7 @@ function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, ca
         self:raiseDirtyFlags(spec.dirtyFlag);
     else
         self:unloadAll(spec.UnloadOffset[spec.currentTipside]);
-        if (spec.UnloadOffsetOriginal ~= nil and spec.UnloadOffsetOriginal[spec.currentTipside] ~= nil then
+        if (spec.UnloadOffsetOriginal ~= nil and spec.UnloadOffsetOriginal[spec.currentTipside] ~= nil) then
             spec.UnloadOffset[spec.currentTipside] = {unpack(spec.UnloadOffsetOriginal[spec.currentTipside])};
         end
         APalletAutoLoader.updateActionText(self);
