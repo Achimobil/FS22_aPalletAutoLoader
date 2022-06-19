@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="65">
+<modDesc descVersion="66">
     <author>Achimobil</author>
-    <version>1.7.3.11 beta</version>
+    <version>1.8.0.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -20,7 +20,7 @@ Currently supported from the standard game:
 - Liquid tanks
 - Big bag pallets
 - Round bales
-- Square bales 180/220/240
+- Square bales 120/180/220/240
 - Bigbags
 Pallets from the following mods can be used:
 - Package Of Premium Pallets And Bags
@@ -39,6 +39,17 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.0.0
+- Code optimizations and use of Giants Timer because of crashes
+- unloading area can be moved (will be reset when unloading)
+- Markers are automatically shown when moving and selecting a page and only then can the page be changed.
+- Markers are automatically hidden when unloading
+- Blocking of vehicle unloading triggers on the loading area to reduce side effects caused by the faults in base game trigger
+- New loading pattern, if more can fit on the surface by loading one lengthwise and the rest crosswise
+- 120 square bales added. Be careful, they are not very stable due to their size.
+- Connection with CP optimised
+- maxObjects and height can now be defined per load by the modder, if they deviate from the default
+
 1.7.3.0
 - Lua Trigger error solved caused by update 1.4
 - Tension Belt trigger reworked
@@ -119,7 +130,7 @@ Aktuell wird aus dem Standard Spiel unterstützt:
 - Flüssigkeitstanks
 - Bigbag Paletten
 - Rundballen
-- Quaderballen 180/220/240
+- Quaderballen 120/180/220/240
 - Bigbags
 Paletten aus den folgenden Mods sind nutzbar:
 - Paket Von Premium-Paletten Und Säcken
@@ -138,7 +149,7 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.7.3.7 beta
+1.8.0.0
 - Code optimierungen und verwendung von Giants Timer wegen abstürzen
 - Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
 - Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet und erst dann kann die seite geändert werden
@@ -228,7 +239,7 @@ Attualmente supportato dal gioco standard:
 - Serbatoi per liquidi
 - Pallet di borse grandi
 - Balle rotonde
-- Balle quadrate 180/220/240
+- Balle quadrate 120/180/220/240
 - Bigbags
 Si possono usare i pallet dei seguenti mod:
 - Pacchetto di pallet e borse Premium
@@ -245,6 +256,17 @@ Il caricamento si spegne automaticamente quando non c'è più area di carico.
 Potete anche spegnerlo voi stessi con [B].
 
 Changelog:
+1.8.0.0
+- Ottimizzazioni del codice e uso del Timer dei Giganti a causa di crash
+- l'area di scarico può essere spostata (verrà ripristinata al momento dello scarico)
+- I marcatori vengono mostrati automaticamente quando si sposta e si seleziona una pagina e solo allora la pagina può essere cambiata.
+- I marcatori vengono automaticamente nascosti quando si scarica
+- Blocco dei trigger di scarico dei veicoli nell'area di carico per ridurre gli effetti collaterali causati dai difetti dei trigger del gioco base.
+- Nuovo schema di carico, se più persone possono stare sulla superficie, caricandone una in senso longitudinale e le altre in senso trasversale.
+- Aggiunta di 120 balle quadrate. Attenzione, non sono molto stabili a causa delle loro dimensioni.
+- Ottimizzata la connessione con CP
+- Gli oggetti e l'altezza massimi possono ora essere definiti dal modder per ogni carico, se si discostano da quelli predefiniti.
+
 1.7.3.0
 - Risolto l'errore Lua Trigger causato dall'aggiornamento 1.4
 - Rielaborazione dell'innesco della cinghia di tensione
@@ -324,7 +346,7 @@ Actuellement, le jeu standard est pris en charge :
 - Réservoirs de liquide
 - Palettes bigbag
 - Balles rondes
-- Balles cubiques 180/220/240
+- Balles cubiques 120/180/220/240
 - Bigbags
 Les palettes des Mods suivants sont utilisables :
 - Paquet De Palettes Premium Et De Sacs
@@ -343,6 +365,17 @@ Vous pouvez également le désactiver vous-même avec [B].
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Journal des modifications:
+1.8.0.0
+- Optimisations du code et utilisation du Giants Timer à cause des crashes
+- la zone de déchargement peut être déplacée (sera réinitialisée lors du déchargement)
+- Les marqueurs sont automatiquement affichés lors du déplacement et de la sélection d'une page et ce n'est qu'alors que la page peut être modifiée.
+- Les marqueurs sont automatiquement cachés lors du déchargement
+- Blocage des déclencheurs de déchargement des véhicules sur la zone de chargement pour réduire les effets secondaires causés par les défauts des déclencheurs du jeu de base.
+- Nouveau modèle de chargement, si plusieurs peuvent tenir sur la surface en chargeant un dans le sens de la longueur et le reste dans le sens de la largeur
+- Ajout de 120 balles carrées. Attention, elles ne sont pas très stables en raison de leur taille.
+- Connexion avec le CP optimisée
+- maxObjects et hauteur peuvent maintenant être définis par le moddeur pour chaque chargement, s'ils diffèrent des valeurs par défaut.
+
 1.7.3.0
 - Résolution de l'erreur Lua Trigger causée par la mise à jour 1.4
 - Le déclencheur de la ceinture de tension a été retravaillé
@@ -422,7 +455,7 @@ Actualmente es compatible con el juego estándar:
 - Tanques de líquido
 - Paletas Big bag
 - Pacas redondas
-- Pacas cuadradas 180/220/240
+- Pacas cuadradas 120/180/220/240
 - Bigbags
 Se pueden utilizar las paletas de los siguientes mods:
 - Paquete de paletas y bolsas de primera calidad
@@ -441,6 +474,17 @@ También puedes apagarlo tú mismo con [B].
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Registro de cambios:
+1.8.0.0
+- Optimizaciones de código y uso del temporizador de los gigantes debido a los fallos
+- La zona de descarga se puede mover (se restablecerá cuando se descargue)
+- Los marcadores se muestran automáticamente al mover y seleccionar una página y sólo entonces se puede cambiar la página.
+- Los marcadores se ocultan automáticamente al descargar
+- Bloqueo de los activadores de descarga de vehículos en la zona de carga para reducir los efectos secundarios causados por los fallos en el activador del juego base
+- Nuevo patrón de carga, si caben más en la superficie cargando uno a lo largo y el resto a lo ancho
+- Se han añadido 120 balas cuadradas. Cuidado, no son muy estables debido a su tamaño.
+- Conexión con el CP optimizada
+- maxObjetos y altura ahora pueden ser definidos por carga por el modder, si se desvían del valor por defecto
+
 1.7.3.0
 - Se ha resuelto el error del activador Lua causado por la actualización 1.4
 - Se ha revisado el activador del cinturón de tensión
