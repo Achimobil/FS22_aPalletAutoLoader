@@ -150,13 +150,13 @@ Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.o
 
 Changelog:
 1.8.0.0
-- Code optimierungen und verwendung von Giants Timer wegen abstürzen
+- Code Optimierungen und Verwendung von Giants Timer wegen abstürzen
 - Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
-- Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet und erst dann kann die seite geändert werden
+- Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet und erst dann kann die Seite geändert werden
 - Markierungen werden beim Abladen automatisch ausgeblendet
-- Blockieren von Fahrzeugentladetriggern auf der Ladefläche zur verringerung von Seiteneffekten durch die defekten Giants trigger
-- Neues Lademuster, wenn mehr auf die Fläche past durch eine längs und den rest quer zu laden
-- 120er Quaderballen eingefügt. Vorsicht, die sind aufgrund ihrer größe nicht sehr stabil
+- Blockieren von Fahrzeugentladetriggern auf der Ladefläche zur Verringerung von Seiteneffekten durch die defekten Giants trigger
+- Neues Lademuster, wenn mehr auf die Fläche passt durch eine längs und den Rest quer zu laden
+- 120er Quaderballen eingefügt. Vorsicht, die sind aufgrund ihrer Größe nicht sehr stabil
 - Verbindung mit CP überarbeitet
 - maxObjects und height können jetzt pro Ladegut vom Modder definiert werden, wenn diese vom default abweichen
 
