@@ -2,46 +2,46 @@
 <l10n>
     <translationContributors>nagor</translationContributors>
     <texts>
-        <text name="aPalletAutoLoader_stopLoading" text="Деактивировать автозагрузку" />
-        <text name="aPalletAutoLoader_startLoading" text="Активировать автозагрузку" />
-        <text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов" />
-        <text name="PalletAutoload_Trailer" text="Автопогрузка поддонов" />
+        <text name="aPalletAutoLoader_stopLoading" text="Деактивировать автопогрузку" />
+        <text name="aPalletAutoLoader_startLoading" text="Активировать автопогрузку" />
+        <text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов и тюков" />
+        <text name="PalletAutoload_Trailer" text="Автопогрузка поддонов и тюков" />
         <text name="aPalletAutoLoader_LoadingType" text="Автопогрузка" />
         <text name="aPalletAutoLoader_liquidTank" text="Поддоны для жидкости" />
         <text name="aPalletAutoLoader_euroPallet" text="Поддоны" />
         <text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
         <text name="aPalletAutoLoader_bigBag" text="Большие мешки" />
-        <text name="aPalletAutoLoader_cottonRoundbale238" text="Круглый тюк хлопка" />
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Круглые тюки хлопка" />
         <text name="aPalletAutoLoader_tipside" text="Сторона выгрузки" />
         <text name="aPalletAutoLoader_1" text="Слева" />
         <text name="aPalletAutoLoader_2" text="Справа" />
-        <text name="aPalletAutoLoader_3" text="Средний" />
-        <text name="aPalletAutoLoader_4" text="задний" />
-        <text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов" />
+        <text name="aPalletAutoLoader_3" text="Открепить в кузове" />
+        <text name="aPalletAutoLoader_4" text="Сзади" />
+        <text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов и тюков" />
         <text name="input_AL_LOAD_PALLET" text="Погрузить" />
         <text name="input_AL_TOGGLE_LOADINGTYPE" text="Переключить тип поддонов/тюков" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Переключить сторону выгрузки" />
-        <text name="input_AL_UNLOAD" text="Разгрузиться здесь" />
+        <text name="input_AL_UNLOAD" text="Выгрузить" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="Негабаритные поддоны" />
         <text name="input_AL_TOGGLE_MARKERS" text="Показать/скрыть маркеры" />
-        <text name="aPalletAutoLoader_roundbale125" text="Круглый тюк 125" />
-        <text name="aPalletAutoLoader_roundbale150" text="Круглый тюк 150" />
-        <text name="aPalletAutoLoader_roundbale180" text="Круглый тюк 180" />
-        <text name="aPalletAutoLoader_squarebale120" text="Квадратный тюк 120" />
-        <text name="aPalletAutoLoader_squarebale180" text="Квадратный тюк 180" />
-        <text name="aPalletAutoLoader_squarebale220" text="Квадратный тюк 220" />
-        <text name="aPalletAutoLoader_squarebale240" text="Квадратный тюк 240" />
+        <text name="aPalletAutoLoader_roundbale125" text="Круглые тюки 125" />
+        <text name="aPalletAutoLoader_roundbale150" text="Круглые тюки 150" />
+        <text name="aPalletAutoLoader_roundbale180" text="Круглые тюки 180" />
+        <text name="aPalletAutoLoader_squarebale120" text="Квадратные тюки 120" />
+        <text name="aPalletAutoLoader_squarebale180" text="Квадратные тюки 180" />
+        <text name="aPalletAutoLoader_squarebale220" text="Квадратные тюки 220" />
+        <text name="aPalletAutoLoader_squarebale240" text="Квадратные тюки 240" />
         <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Натяжные ремни деактивированы" />
         <text name="aPalletAutoLoader_TensionBeltsActive" text="Натяжные ремни активированы" />
-        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Переключатель автоматического натяжения ремней" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Зона разгрузки высокая/низкая" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Зона разгрузки выше" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Зона разгрузки ниже" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Область разгрузки слева/справа" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Область разгрузки слева" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Область разгрузки справа" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Область разгрузки вперед/назад" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Зона разгрузки спереди" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Разгрузочная зона назад" />
+        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Переключение автоматического натяжения ремней" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Зону выгрузки выше/ниже" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Зону выгрузки выше" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Зону выгрузки ниже" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Зону выгрузки влево/вправо" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Зону выгрузки влево" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Зону выгрузки вправо" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Зону выгрузки вперёд/назад" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Зону выгрузки вперёд" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Зону выгрузки назад" />
     </texts>
 </l10n>
