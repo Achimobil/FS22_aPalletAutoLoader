@@ -1533,9 +1533,9 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
         -- print("Received from Client");
         local callUnloadAll = streamReadBool(streamId);
         
-        local x = streamReadInt32(streamId);
-        local y = streamReadInt32(streamId);
-        local z = streamReadInt32(streamId);
+        local x = streamReadFloat32(streamId);
+        local y = streamReadFloat32(streamId);
+        local z = streamReadFloat32(streamId);
         local unloadOffset = {x,y,z}
 
         if callUnloadAll then

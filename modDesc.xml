@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="66">
     <author>Achimobil</author>
-    <version>1.8.0.0</version>
+    <version>1.8.0.1</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -39,6 +39,10 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.0.1
+- fix unloading position on dedicated server
+- RU translation fixed by Nagor
+
 1.8.0.0
 - Code optimizations and use of Giants Timer because of crashes
 - unloading area can be moved (will be reset when unloading)
@@ -149,6 +153,10 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.0.1
+- abladeposition auf dedicated server gefixed
+- RU übersetzungen von Nagor verbessert
+
 1.8.0.0
 - Code Optimierungen und Verwendung von Giants Timer wegen abstürzen
 - Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
