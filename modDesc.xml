@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="66">
     <author>Achimobil</author>
-    <version>1.8.0.1</version>
+    <version>1.8.1.0 beta 1</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -153,6 +153,9 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.1.0
+- SV Übersetzungen von piplarsson
+
 1.8.0.1
 - Abladeposition auf dedicated Server gefixed
 - RU Übersetzungen von Nagor verbessert
