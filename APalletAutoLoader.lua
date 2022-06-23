@@ -973,8 +973,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "bigBag"
     elseif (name == "cottonRoundbale238") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "cottonModules/cottonRoundbale238.i3d") then return true end
-            if string.find(object.i3dFilename, "lavenderModules/lavenderRoundbale238.i3d") then return true end
+            if string.find(object.i3dFilename, "Roundbale238.i3d") then return true end
 
             return false;
         end
@@ -986,8 +985,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.type = "roundbale"
     elseif (name == "cottonSquarebale488") then
         local function CheckType(object)
-            if string.find(object.i3dFilename, "cottonModules/cottonSquarebale488.i3d") then return true end
-            if string.find(object.i3dFilename, "lavenderModules/lavenderSquarebale488.i3d") then return true end
+            if string.find(object.i3dFilename, "Squarebale488.i3d") then return true end
 
             return false;
         end
