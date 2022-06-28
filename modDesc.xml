@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="66">
     <author>Achimobil</author>
-    <version>1.8.1.0 beta 2</version>
+    <version>1.8.1.0 beta 3</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -156,6 +156,7 @@ Changelog:
 1.8.1.0
 - SV Übersetzungen von piplarsson
 - Baumwollballen vereinfacht in der Erkennung
+- Korrektur für Quaderballen bei kleinen Ladeflächen
 
 1.8.0.1
 - Abladeposition auf dedicated Server gefixed

@@ -266,17 +266,17 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
             local _, actionEventId6 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_AUTOMATIC_TENSIONBELTS, self, APalletAutoLoader.actionEventToggleAutomaticTensionBelts, false, true, false, true, nil, nil, true, true);
             g_inputBinding:setActionEventTextPriority(actionEventId6, GS_PRIO_HIGH);
             spec.toggleAutomaticTensionBeltsEventId = actionEventId6;
-            
+
             local _, actionEventIdMoveUpDown = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOADAREA_MOVE_UPDOWN, self, APalletAutoLoader.actionEventUnloadAreaMoveUpDown, false, true, true, true, nil);
             g_inputBinding:setActionEventTextPriority(actionEventIdMoveUpDown, GS_PRIO_HIGH);
             spec.actionEventIdMoveUpDown = actionEventIdMoveUpDown;
 			g_inputBinding:setActionEventText(actionEventIdMoveUpDown, g_i18n:getText("input_AL_UNLOADAREA_MOVE_UPDOWN"));
-            
+
             local _, actionEventIdMoveLeftRight = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOADAREA_MOVE_LEFTRIGHT, self, APalletAutoLoader.actionEventUnloadAreaMoveLeftRight, false, true, true, true, nil);
             g_inputBinding:setActionEventTextPriority(actionEventIdMoveLeftRight, GS_PRIO_HIGH);
             spec.actionEventIdMoveLeftRight = actionEventIdMoveLeftRight;
 			g_inputBinding:setActionEventText(actionEventIdMoveLeftRight, g_i18n:getText("input_AL_UNLOADAREA_MOVE_LEFTRIGHT"));
-            
+
             local _, actionEventIdMoveFrontBack = self:addActionEvent(spec.actionEvents, InputAction.AL_UNLOADAREA_MOVE_FRONTBACK, self, APalletAutoLoader.actionEventUnloadAreaMoveFrontBack, false, true, true, true, nil);
             g_inputBinding:setActionEventTextPriority(actionEventIdMoveFrontBack, GS_PRIO_HIGH);
             spec.actionEventIdMoveFrontBack = actionEventIdMoveFrontBack;
@@ -289,25 +289,25 @@ end
 
 function APalletAutoLoader.actionEventUnloadAreaMoveLeftRight(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader;
-    
+
     spec.showMarkers = true;
-    
+
     spec.UnloadOffset[spec.currentTipside][1] = spec.UnloadOffset[spec.currentTipside][1] + (inputValue/50);
 end
 
 function APalletAutoLoader.actionEventUnloadAreaMoveUpDown(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader;
-    
+
     spec.showMarkers = true;
-    
+
     spec.UnloadOffset[spec.currentTipside][2] = spec.UnloadOffset[spec.currentTipside][2] + (inputValue/50)    ;
 end
 
 function APalletAutoLoader.actionEventUnloadAreaMoveFrontBack(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader;
-    
+
     spec.showMarkers = true;
-    
+
     spec.UnloadOffset[spec.currentTipside][3] = spec.UnloadOffset[spec.currentTipside][3] + (inputValue/50);
 end
 
@@ -479,7 +479,7 @@ function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, ca
     local spec = self.spec_aPalletAutoLoader;
 
     spec.showMarkers = false;
-        
+
     if not self.isServer then
         -- Entladebefehl in den stream schreiben mit entladeseite
         spec.callUnloadAll = true;
@@ -559,7 +559,7 @@ function APalletAutoLoader:onLoad(savegame)
     if spec.loadArea["baseNode"] == nil then
         return;
     end
-    
+
     local i = 0
     local autoLoadObjectSettings = {}
     while true do
@@ -619,11 +619,11 @@ function APalletAutoLoader:onLoad(savegame)
             -- vie viele passen mit drehung?
             local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
             local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
-            
+
             -- wie viele passen wenn eine mit drehung gemacht wird?
             local restOneRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - autoLoadObject.sizeZ - 0.05) % (autoLoadObject.sizeX + 0.05);
-            local countOneRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restOneRotation - autoLoadObject.sizeZ - 0.05) / (autoLoadObject.sizeX + 0.05) + 2  
-            
+            local countOneRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restOneRotation - autoLoadObject.sizeZ - 0.05) / (autoLoadObject.sizeX + 0.05) + 2
+
             local backDistance = 0.05;
             if autoLoadObject.type == "roundbale" then
                 -- rundballen ein bischen mehr platz geben wegen der runden kollision
@@ -689,7 +689,7 @@ function APalletAutoLoader:onLoad(savegame)
                         end
                     end
                 end
-            elseif restOneRotation <= restFirstRotation then
+            elseif restOneRotation <= restFirstRotation and countOneRotation > 2 then
                 -- aufladen wobei die ersten quer und die letzt längs geladen wird.
                 -- erst mal die quer einfügen mit verschobenem Zentrum
                 local maxPosX = 0;
@@ -764,7 +764,7 @@ function APalletAutoLoader:onLoad(savegame)
             local maxLayers = math.floor(heightForObjectType / autoLoadObject.sizeY);
             if autoLoadObject.type == "bigBag" then maxLayers = 1 end
             local maxAmountForLayers = amountPerLayer * maxLayers;
-            
+
             local maxAmountForObjectType = spec.maxObjects;
             if autoLoadObjectSettings[name] ~= nil then
                 maxAmountForObjectType = autoLoadObjectSettings[name].maxObjects
@@ -1304,7 +1304,7 @@ function APalletAutoLoader:loadAllInRange()
         end
     end
 
-    if loaded then 
+    if loaded then
         spec.loadTimer:start(false);
     else
         if self.isClient then
@@ -1322,7 +1322,7 @@ function APalletAutoLoader:loadAllInRange()
         if spec.numTriggeredObjects ~= 0 and spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
             spec.beltsTimer:start(false);
             self:setAllTensionBeltsActive(false, false)
-        end    
+        end
     end
 
     return false;
@@ -1386,7 +1386,7 @@ function APalletAutoLoader:loadObject(object)
 
                         spec.triggeredObjects[object] = true
                         spec.numTriggeredObjects = spec.numTriggeredObjects + 1
-                
+
                         -- allowsInput abschalten damit keine seiteneffekte auftreten
                         if object.allowsInput ~= nil then
                             object.allowsInput = false;
@@ -1465,7 +1465,7 @@ end
 
 function APalletAutoLoader:unloadAll(unloadOffset)
     local spec = self.spec_aPalletAutoLoader
-    
+
     unloadOffsetToUse = unloadOffset;
     if unloadOffsetToUse == nil then
         unloadOffsetToUse = spec.UnloadOffset[spec.currentTipside];
@@ -1506,7 +1506,7 @@ function APalletAutoLoader:unloadAll(unloadOffset)
             if object.removeDeleteListener ~= nil then
                 object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
             end
-                
+
             -- allowsInput einschalten damit dies wieder benutzt werden kann
             if object.allowsInput ~= nil then
                 object.allowsInput = true;
@@ -1530,7 +1530,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
     if not connection:getIsServer() then
         -- print("Received from Client");
         local callUnloadAll = streamReadBool(streamId);
-        
+
         local x = streamReadFloat32(streamId);
         local y = streamReadFloat32(streamId);
         local z = streamReadFloat32(streamId);
@@ -1596,7 +1596,7 @@ function APalletAutoLoader:onWriteUpdateStream(streamId, connection, dirtyMask)
     if connection:getIsServer() then
         -- print("Send to Server");
         streamWriteBool(streamId, spec.callUnloadAll)
-        
+
         local x,y,z = unpack(spec.UnloadOffset[spec.currentTipside]);
         streamWriteFloat32(streamId, x)
         streamWriteFloat32(streamId, y)
@@ -1702,7 +1702,7 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                 end
 
                 self:raiseDirtyFlags(spec.dirtyFlag)
-                
+
                 -- allowsInput abschalten damit keine seiteneffekte auftreten
                 if object.allowsInput ~= nil then
                     object.allowsInput = false;
@@ -1721,7 +1721,7 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
                     object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
                 end
                 self:raiseDirtyFlags(spec.dirtyFlag)
-                
+
                 -- allowsInput einschalten damit dies wieder benutzt werden kann
                 if object.allowsInput ~= nil then
                     object.allowsInput = true;
