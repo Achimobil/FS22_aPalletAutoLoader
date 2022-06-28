@@ -557,6 +557,18 @@ function APalletAutoLoader:onLoad(savegame)
     spec.UnloadOffsetOriginal[APalletAutoLoaderTipsides.BACK] = {unpack(spec.UnloadOffset[APalletAutoLoaderTipsides.BACK])}
 
     if spec.loadArea["baseNode"] == nil then
+        APalletAutoLoader:removeUnusedEventListener(self, "onDelete", APalletAutoLoader)
+        APalletAutoLoader:removeUnusedEventListener(self, "onRegisterActionEvents", APalletAutoLoader)
+
+        APalletAutoLoader:removeUnusedEventListener(self, "onReadUpdateStream", APalletAutoLoader)
+        APalletAutoLoader:removeUnusedEventListener(self, "onWriteUpdateStream", APalletAutoLoader)
+        APalletAutoLoader:removeUnusedEventListener(self, "onDraw", APalletAutoLoader)
+
+        APalletAutoLoader:removeUnusedEventListener(self, "onAIImplementStart", APalletAutoLoader)
+        APalletAutoLoader:removeUnusedEventListener(self, "onAIImplementEnd", APalletAutoLoader)
+
+        APalletAutoLoader:removeUnusedEventListener(self, "onAIFieldWorkerStart", APalletAutoLoader)
+        APalletAutoLoader:removeUnusedEventListener(self, "onAIFieldWorkerEnd", APalletAutoLoader)
         return;
     end
 
@@ -826,6 +838,22 @@ function APalletAutoLoader:onLoad(savegame)
     end
 
     spec.initialized = true;
+end
+
+function APalletAutoLoader:removeUnusedEventListener(vehicle, name, specClass)
+    -- Method to remove event listeners for mods correctly
+    -- provided by GTX to use it in own mods
+    -- needed because the giants method removes all event listeners of all mods when used
+    local eventListeners = vehicle.eventListeners[name]
+
+    if eventListeners ~= nil then
+        for i = #eventListeners, 1, -1 do
+            if specClass.className ~= nil and specClass.className == eventListeners[i].className then
+                table.remove(eventListeners, i)
+                print("removed " .. specClass.className)
+            end
+        end
+    end
 end
 
 function compLoadingPattern(w1,w2)
@@ -1518,7 +1546,6 @@ function APalletAutoLoader:unloadAll(unloadOffset)
     self:setAllTensionBeltsActive(false, false)
     self:raiseDirtyFlags(spec.dirtyFlag)
 end
-
 
 ---Called on on update
 -- @param integer streamId stream ID
