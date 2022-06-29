@@ -704,7 +704,7 @@ function APalletAutoLoader:onLoad(savegame)
             elseif restOneRotation <= restFirstRotation and countOneRotation > 1 then
                 -- aufladen wobei die ersten quer und die letzt längs geladen wird.
                 -- erst mal die quer einfügen mit verschobenem Zentrum
-                local maxPosX = 0;
+                local maxPosX = math.huge;
                 for rowNumber = 0, (countOneRotation-2) do
                     -- schleife bis zur länge
                     for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
@@ -714,7 +714,7 @@ function APalletAutoLoader:onLoad(savegame)
                             loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restOneRotation / 2)
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
-                            if loadingPatternItem.posX > maxPosX then maxPosX = loadingPatternItem.posX end
+                            if loadingPatternItem.posX < maxPosX then maxPosX = loadingPatternItem.posX end
                         end
                     end
                 end
