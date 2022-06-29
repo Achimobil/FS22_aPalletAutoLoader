@@ -701,7 +701,7 @@ function APalletAutoLoader:onLoad(savegame)
                         end
                     end
                 end
-            elseif restOneRotation <= restFirstRotation and countOneRotation > 1 then
+            elseif restOneRotation < restFirstRotation and countOneRotation >= 2 then
                 -- aufladen wobei die ersten quer und die letzt längs geladen wird.
                 -- erst mal die quer einfügen mit verschobenem Zentrum
                 local maxPosX = math.huge;
