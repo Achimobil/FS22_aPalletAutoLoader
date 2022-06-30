@@ -78,6 +78,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "StartLoading", APalletAutoLoader.StartLoading)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
     SpecializationUtil.registerFunction(vehicleType, "SetTensionBeltsValue", APalletAutoLoader.SetTensionBeltsValue)
+    SpecializationUtil.registerFunction(vehicleType, "ChangeShowMarkers", APalletAutoLoader.ChangeShowMarkers)
 
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -290,7 +291,7 @@ end
 function APalletAutoLoader.actionEventUnloadAreaMoveLeftRight(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader;
 
-    spec.showMarkers = true;
+    self:ChangeShowMarkers(true);
 
     spec.UnloadOffset[spec.currentTipside][1] = spec.UnloadOffset[spec.currentTipside][1] + (inputValue/50);
 end
@@ -298,7 +299,7 @@ end
 function APalletAutoLoader.actionEventUnloadAreaMoveUpDown(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader;
 
-    spec.showMarkers = true;
+    self:ChangeShowMarkers(true);
 
     spec.UnloadOffset[spec.currentTipside][2] = spec.UnloadOffset[spec.currentTipside][2] + (inputValue/50)    ;
 end
@@ -306,7 +307,7 @@ end
 function APalletAutoLoader.actionEventUnloadAreaMoveFrontBack(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader;
 
-    spec.showMarkers = true;
+    self:ChangeShowMarkers(true);
 
     spec.UnloadOffset[spec.currentTipside][3] = spec.UnloadOffset[spec.currentTipside][3] + (inputValue/50);
 end
@@ -361,11 +362,11 @@ function APalletAutoLoader.updateActionText(self)
         -- deactivate when somthing is already loaded or not
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
         g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
-        g_inputBinding:setActionEventActive(spec.actionEventIdMoveUpDown, spec.numTriggeredObjects ~= 0)
-        g_inputBinding:setActionEventActive(spec.actionEventIdMoveLeftRight, spec.numTriggeredObjects ~= 0)
-        g_inputBinding:setActionEventActive(spec.actionEventIdMoveFrontBack, spec.numTriggeredObjects ~= 0)
+        g_inputBinding:setActionEventActive(spec.actionEventIdMoveUpDown, spec.numTriggeredObjects ~= 0 and spec.showMarkers)
+        g_inputBinding:setActionEventActive(spec.actionEventIdMoveLeftRight, spec.numTriggeredObjects ~= 0 and spec.showMarkers)
+        g_inputBinding:setActionEventActive(spec.actionEventIdMoveFrontBack, spec.numTriggeredObjects ~= 0 and spec.showMarkers)
         g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, true)
-        g_inputBinding:setActionEventActive(spec.toggleAutomaticTensionBeltsEventId, true)
+        g_inputBinding:setActionEventActive(spec.toggleAutomaticTensionBeltsEventId, not spec.showMarkers)
     end
 end
 
@@ -442,7 +443,7 @@ function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue
     local spec = self.spec_aPalletAutoLoader;
 
     if not spec.showMarkers then
-        spec.showMarkers = true;
+        self:ChangeShowMarkers(true);
     else
         local newTipside = APalletAutoLoaderTipsides.LEFT;
 
@@ -452,7 +453,7 @@ function APalletAutoLoader.actionEventToggleTipside(self, actionName, inputValue
             newTipside = APalletAutoLoaderTipsides.BACK;
         end
 
-        spec.showMarkers = true;
+        self:ChangeShowMarkers(true);
         SetTipsideEvent.sendEvent(self, newTipside);
     end
 end
@@ -472,13 +473,24 @@ end
 function APalletAutoLoader.actionEventToggleMarkers(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader
 
-    spec.showMarkers = not spec.showMarkers;
+    self:ChangeShowMarkers(not spec.showMarkers);
+end
+
+function APalletAutoLoader:ChangeShowMarkers(newShowMarkers)
+    local spec = self.spec_aPalletAutoLoader
+
+    spec.showMarkers = newShowMarkers;
+
+    if self.isClient then
+        -- nur beim Client aufrufen, wird auf Server ja nicht gezeigt
+        APalletAutoLoader.updateActionText(self);
+    end
 end
 
 function APalletAutoLoader.actionEventUnloadAll(self, actionName, inputValue, callbackState, isAnalog)
     local spec = self.spec_aPalletAutoLoader;
 
-    spec.showMarkers = false;
+    self:ChangeShowMarkers(false);
 
     if not self.isServer then
         -- Entladebefehl in den stream schreiben mit entladeseite

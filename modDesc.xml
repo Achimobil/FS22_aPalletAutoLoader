@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="66">
     <author>Achimobil</author>
-    <version>1.8.1.0_beta_6</version>
+    <version>1.8.1.0_beta_7</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -158,6 +158,7 @@ Changelog:
 - Baumwollballen vereinfacht in der Erkennung
 - Korrektur für Quaderballen bei kleinen Ladeflächen
 - Eventlistener bei nicht AL Konfiguration deregistriert zur verbesserung der Performance
+- Verschieben der Abladefläche im F1 Menü nur anzeigen, wenn Markierungen sichtbar sind.
 
 1.8.0.1
 - Abladeposition auf dedicated Server gefixed
