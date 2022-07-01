@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="66">
+<modDesc descVersion="67">
     <author>Achimobil</author>
-    <version>1.8.1.0_beta_7</version>
+    <version>1.8.1.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -39,6 +39,13 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.1.0
+- SV translations by piplarsson
+- Cotton bales simplified in recognition
+- Correction for square bales with small loading areas
+- Eventlistener deregistered for non AL configuration to improve performance
+- Move unloading area in F1 menu only show if markers are visible.
+
 1.8.0.1
 - fix unloading position on dedicated server
 - RU translation fixed by Nagor
@@ -271,6 +278,13 @@ Il caricamento si spegne automaticamente quando non c'è più area di carico.
 Potete anche spegnerlo voi stessi con [B].
 
 Changelog:
+1.8.1.0
+- Traduzioni SV di piplarsson
+- Balle di cotone semplificate in riconoscimento
+- Correzione per balle quadrate con piccole aree di carico
+- Eventlistener deregistrato per la configurazione non AL per migliorare le prestazioni
+- L'area di scarico del menu F1 viene visualizzata solo se i marcatori sono visibili.
+
 1.8.0.0
 - Ottimizzazioni del codice e uso del Timer dei Giganti a causa di crash
 - l'area di scarico può essere spostata (verrà ripristinata al momento dello scarico)
@@ -380,6 +394,13 @@ Vous pouvez également le désactiver vous-même avec [B].
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Journal des modifications:
+1.8.1.0
+- SV Traductions de piplarsson
+- Balle de coton simplifiée dans la reconnaissance
+- Correction des balles cubiques pour les petites surfaces de chargement
+- Désinscription de l'Eventlistener en cas de configuration non AL pour améliorer les performances
+- Déplacement de la surface de déchargement dans le menu F1 ne s'affiche que si des repères sont visibles.
+
 1.8.0.0
 - Optimisations du code et utilisation du Giants Timer à cause des crashes
 - la zone de déchargement peut être déplacée (sera réinitialisée lors du déchargement)
@@ -489,6 +510,13 @@ También puedes apagarlo tú mismo con [B].
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Registro de cambios:
+1.8.1.0
+- Traducciones de SV por piplarsson
+- Simplificación de las balas de algodón en el reconocimiento
+- Corrección para pacas cuadradas con zonas de carga pequeñas
+- Eventlistener desregistrado para la configuración no AL para mejorar el rendimiento
+- Mover el área de descarga en el menú F1 sólo se muestra si los marcadores son visibles.
+
 1.8.0.0
 - Optimizaciones de código y uso del temporizador de los gigantes debido a los fallos
 - La zona de descarga se puede mover (se restablecerá cuando se descargue)
