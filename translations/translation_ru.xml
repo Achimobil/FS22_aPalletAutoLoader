@@ -6,7 +6,7 @@
         <text name="aPalletAutoLoader_startLoading" text="Активировать автопогрузку" />
         <text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов и тюков" />
         <text name="PalletAutoload_Trailer" text="Автопогрузка поддонов и тюков" />
-        <text name="aPalletAutoLoader_LoadingType" text="Автопогрузка" />
+        <text name="aPalletAutoLoader_LoadingType" text="Погрузить" />
         <text name="aPalletAutoLoader_liquidTank" text="Поддоны для жидкости" />
         <text name="aPalletAutoLoader_euroPallet" text="Поддоны" />
         <text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
@@ -17,7 +17,7 @@
         <text name="aPalletAutoLoader_2" text="Справа" />
         <text name="aPalletAutoLoader_3" text="Открепить в кузове" />
         <text name="aPalletAutoLoader_4" text="Сзади" />
-        <text name="configuration_aPalletAutoLoader" text="Автопогрузка поддонов и тюков" />
+        <text name="configuration_aPalletAutoLoader" text="Автопогрузка" />
         <text name="input_AL_LOAD_PALLET" text="Погрузить" />
         <text name="input_AL_TOGGLE_LOADINGTYPE" text="Переключить тип поддонов/тюков" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Переключить сторону выгрузки" />
