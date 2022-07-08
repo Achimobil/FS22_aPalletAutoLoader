@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-    <translationContributors>piplarsson</translationContributors>
+    <translationContributors> </translationContributors>
     <texts>
         <text name="aPalletAutoLoader_stopLoading" text="Inaktivera Autoload" />
         <text name="aPalletAutoLoader_startLoading" text="Aktivera Autoload" />

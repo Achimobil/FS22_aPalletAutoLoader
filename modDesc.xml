@@ -40,7 +40,7 @@ Instructions for build in and help you will find on the <a href="https://bitbuck
 
 Changelog:
 1.8.1.0
-- SV translations by piplarsson
+- SV translations added
 - Cotton bales simplified in recognition
 - Correction for square bales with small loading areas
 - Eventlistener deregistered for non AL configuration to improve performance
@@ -161,7 +161,7 @@ Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.o
 
 Changelog:
 1.8.1.0
-- SV Übersetzungen von piplarsson
+- SV Übersetzungen hinzugefügt
 - Baumwollballen vereinfacht in der Erkennung
 - Korrektur für Quaderballen bei kleinen Ladeflächen
 - Eventlistener bei nicht AL Konfiguration deregistriert zur verbesserung der Performance
@@ -279,7 +279,7 @@ Potete anche spegnerlo voi stessi con [B].
 
 Changelog:
 1.8.1.0
-- Traduzioni SV di piplarsson
+- Traduzioni SV 
 - Balle di cotone semplificate in riconoscimento
 - Correzione per balle quadrate con piccole aree di carico
 - Eventlistener deregistrato per la configurazione non AL per migliorare le prestazioni
@@ -395,7 +395,7 @@ Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="htt
 
 Journal des modifications:
 1.8.1.0
-- SV Traductions de piplarsson
+- SV Traductions 
 - Balle de coton simplifiée dans la reconnaissance
 - Correction des balles cubiques pour les petites surfaces de chargement
 - Désinscription de l'Eventlistener en cas de configuration non AL pour améliorer les performances
@@ -511,7 +511,7 @@ Las instrucciones para la compilación y la ayuda que encontrará en <a href="ht
 
 Registro de cambios:
 1.8.1.0
-- Traducciones de SV por piplarsson
+- Traducciones de SV
 - Simplificación de las balas de algodón en el reconocimiento
 - Corrección para pacas cuadradas con zonas de carga pequeñas
 - Eventlistener desregistrado para la configuración no AL para mejorar el rendimiento
