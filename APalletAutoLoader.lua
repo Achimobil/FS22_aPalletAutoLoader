@@ -79,6 +79,9 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
     SpecializationUtil.registerFunction(vehicleType, "SetTensionBeltsValue", APalletAutoLoader.SetTensionBeltsValue)
     SpecializationUtil.registerFunction(vehicleType, "ChangeShowMarkers", APalletAutoLoader.ChangeShowMarkers)
+    SpecializationUtil.registerFunction(vehicleType, "CpHasBales", APalletAutoLoader.CpHasBales)
+    SpecializationUtil.registerFunction(vehicleType, "CpIsFull", APalletAutoLoader.CpIsFull)
+    SpecializationUtil.registerFunction(vehicleType, "CpGetBalesToIgnore", APalletAutoLoader.CpGetBalesToIgnore)
 
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -1855,4 +1858,44 @@ function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
 
     return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems - spec.numTriggeredObjects;
 
+end
+
+-- explicit CP implements
+function APalletAutoLoader:CpHasBales()
+print("CpHasBales");
+    local spec = self.spec_aPalletAutoLoader;
+
+    if spec == nil or spec.loadArea["baseNode"] == nil then
+print("false");
+        return false;
+    end
+
+    return spec.numTriggeredObjects >= 0.01;
+end
+
+function APalletAutoLoader:CpIsFull()
+print("CpIsFull")
+    local spec = self.spec_aPalletAutoLoader
+
+    if spec == nil or spec.loadArea["baseNode"] == nil then
+print("false")
+        return false;
+    end
+
+    if spec.isFullLoaded then
+print("true")
+        return true
+    end
+
+    return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems >= spec.numTriggeredObjects;
+end
+
+function APalletAutoLoader:CpGetBalesToIgnore()
+print("CpGetBalesToIgnore")
+    local spec = self.spec_aPalletAutoLoader
+    local objectsToIgnore = {};
+    for object, _ in pairs(spec.triggeredObjects) do
+        table.insert(objectsToIgnore, object);
+    end
+    return objectsToIgnore;
 end
