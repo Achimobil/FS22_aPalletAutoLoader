@@ -1862,11 +1862,9 @@ end
 
 -- explicit CP implements
 function APalletAutoLoader:CpHasBales()
-print("CpHasBales");
     local spec = self.spec_aPalletAutoLoader;
 
     if spec == nil or spec.loadArea["baseNode"] == nil then
-print("false");
         return false;
     end
 
@@ -1874,24 +1872,20 @@ print("false");
 end
 
 function APalletAutoLoader:CpIsFull()
-print("CpIsFull")
     local spec = self.spec_aPalletAutoLoader
 
     if spec == nil or spec.loadArea["baseNode"] == nil then
-print("false")
         return false;
     end
 
     if spec.isFullLoaded then
-print("true")
         return true
     end
 
-    return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems >= spec.numTriggeredObjects;
+    return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems <= spec.numTriggeredObjects;
 end
 
 function APalletAutoLoader:CpGetBalesToIgnore()
-print("CpGetBalesToIgnore")
     local spec = self.spec_aPalletAutoLoader
     local objectsToIgnore = {};
     for object, _ in pairs(spec.triggeredObjects) do
