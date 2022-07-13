@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="67">
     <author>Achimobil</author>
-    <version>1.8.1.0</version>
+    <version>1.8.2.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -39,6 +39,10 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.2.0
+- new functions for reading the bale status added
+- Bales are no longer pulled out of the bale chamber or wrapper.
+
 1.8.1.0
 - SV translations added
 - Cotton bales simplified in recognition
@@ -160,6 +164,10 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.2.0
+- neue Funktionen zum auslesen des Ballen status eingefügt
+- Ballen werden jetzt nicht mehr aus der Presskammer oder dem Wickler gezogen
+
 1.8.1.0
 - SV Übersetzungen hinzugefügt
 - Baumwollballen vereinfacht in der Erkennung
@@ -278,6 +286,10 @@ Il caricamento si spegne automaticamente quando non c'è più area di carico.
 Potete anche spegnerlo voi stessi con [B].
 
 Changelog:
+1.8.2.0
+- aggiunta di nuove funzioni per la lettura dello stato delle balle
+- Le balle non vengono più estratte dalla camera delle balle o dalla fasciatura.
+
 1.8.1.0
 - Traduzioni SV 
 - Balle di cotone semplificate in riconoscimento
@@ -394,6 +406,10 @@ Vous pouvez également le désactiver vous-même avec [B].
 Le istruzioni per l'integrazione e l'assistenza sono disponibili su <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Journal des modifications:
+1.8.2.0
+- ajout de nouvelles fonctions pour lire l'état des balles
+- Les balles ne sont plus retirées de la chambre de pressage ou de l'enrubanneuse.
+
 1.8.1.0
 - SV Traductions 
 - Balle de coton simplifiée dans la reconnaissance
@@ -510,6 +526,10 @@ También puedes apagarlo tú mismo con [B].
 Las instrucciones para la compilación y la ayuda que encontrará en <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Registro de cambios:
+1.8.2.0
+- se han añadido nuevas funciones para leer el estado de las balas
+- Las pacas ya no se sacan de la cámara de empacado o de la encintadora.
+
 1.8.1.0
 - Traducciones de SV
 - Simplificación de las balas de algodón en el reconocimiento
