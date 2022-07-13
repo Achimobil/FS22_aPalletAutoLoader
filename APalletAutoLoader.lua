@@ -865,7 +865,6 @@ function APalletAutoLoader:removeUnusedEventListener(vehicle, name, specClass)
         for i = #eventListeners, 1, -1 do
             if specClass.className ~= nil and specClass.className == eventListeners[i].className then
                 table.remove(eventListeners, i)
-                print("removed " .. specClass.className)
             end
         end
     end
