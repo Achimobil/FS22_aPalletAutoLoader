@@ -1885,7 +1885,7 @@ function APalletAutoLoader:PalIsFull()
     return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems <= spec.numTriggeredObjects;
 end
 
-function APalletAutoLoader:PalAlGetBalesToIgnore()
+function APalletAutoLoader:PalGetBalesToIgnore()
     local spec = self.spec_aPalletAutoLoader
     local objectsToIgnore = {};
     for object, _ in pairs(spec.triggeredObjects) do
