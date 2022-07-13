@@ -1193,6 +1193,10 @@ function APalletAutoLoader:getIsValidObject(object)
     if object == self then
         return false
     end
+    
+    if object.mountObject ~= nil then
+        return false;
+    end
 
     if not object:isa(Bale) or not object:getAllowPickup() then
         return false
