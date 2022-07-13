@@ -79,9 +79,9 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "GetAutoloadTypes", APalletAutoLoader.GetAutoloadTypes)
     SpecializationUtil.registerFunction(vehicleType, "SetTensionBeltsValue", APalletAutoLoader.SetTensionBeltsValue)
     SpecializationUtil.registerFunction(vehicleType, "ChangeShowMarkers", APalletAutoLoader.ChangeShowMarkers)
-    SpecializationUtil.registerFunction(vehicleType, "CpHasBales", APalletAutoLoader.CpHasBales)
-    SpecializationUtil.registerFunction(vehicleType, "CpIsFull", APalletAutoLoader.CpIsFull)
-    SpecializationUtil.registerFunction(vehicleType, "CpGetBalesToIgnore", APalletAutoLoader.CpGetBalesToIgnore)
+    SpecializationUtil.registerFunction(vehicleType, "PalHasBales", APalletAutoLoader.PalHasBales)
+    SpecializationUtil.registerFunction(vehicleType, "PalIsFull", APalletAutoLoader.PalIsFull)
+    SpecializationUtil.registerFunction(vehicleType, "PalGetBalesToIgnore", APalletAutoLoader.PalGetBalesToIgnore)
 
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -1861,7 +1861,7 @@ function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
 end
 
 -- explicit CP implements
-function APalletAutoLoader:CpHasBales()
+function APalletAutoLoader:PalHasBales()
     local spec = self.spec_aPalletAutoLoader;
 
     if spec == nil or spec.loadArea["baseNode"] == nil then
@@ -1871,7 +1871,7 @@ function APalletAutoLoader:CpHasBales()
     return spec.numTriggeredObjects >= 0.01;
 end
 
-function APalletAutoLoader:CpIsFull()
+function APalletAutoLoader:PalIsFull()
     local spec = self.spec_aPalletAutoLoader
 
     if spec == nil or spec.loadArea["baseNode"] == nil then
@@ -1885,7 +1885,7 @@ function APalletAutoLoader:CpIsFull()
     return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems <= spec.numTriggeredObjects;
 end
 
-function APalletAutoLoader:CpGetBalesToIgnore()
+function APalletAutoLoader:PalAlGetBalesToIgnore()
     local spec = self.spec_aPalletAutoLoader
     local objectsToIgnore = {};
     for object, _ in pairs(spec.triggeredObjects) do
