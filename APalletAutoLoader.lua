@@ -82,6 +82,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "PalHasBales", APalletAutoLoader.PalHasBales)
     SpecializationUtil.registerFunction(vehicleType, "PalIsFull", APalletAutoLoader.PalIsFull)
     SpecializationUtil.registerFunction(vehicleType, "PalGetBalesToIgnore", APalletAutoLoader.PalGetBalesToIgnore)
+    SpecializationUtil.registerFunction(vehicleType, "PalIsGrabbingBale", APalletAutoLoader.PalIsGrabbingBale)
 
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -1895,4 +1896,12 @@ function APalletAutoLoader:PalGetBalesToIgnore()
         table.insert(objectsToIgnore, object);
     end
     return objectsToIgnore;
+end
+
+function APalletAutoLoader:PalIsGrabbingBale()
+    local spec = self.spec_aPalletAutoLoader
+
+    local result = spec.loadTimer:getIsRunning();
+    -- print("PalIsGrabbingBale:" .. tostring(result));
+    return result;
 end
