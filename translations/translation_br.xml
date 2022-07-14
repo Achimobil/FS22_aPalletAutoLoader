@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <translationContributors>Myiamoto86</translationContributors>
+    <texts>
+        <text name="aPalletAutoLoader_stopLoading" text="Parar Autoload" />
+        <text name="aPalletAutoLoader_startLoading" text="Iniciar Autoload" />
+        <text name="function_PalletAutoload_Trailer" text="Reboque com Autoload para paletes" />
+        <text name="PalletAutoload_Trailer" text="Autoload de Paletes" />
+        <text name="aPalletAutoLoader_LoadingType" text="Tipo de carregamento" />
+        <text name="aPalletAutoLoader_liquidTank" text="Tank Líquido" />
+        <text name="aPalletAutoLoader_euroPallet" text="Euro Paletes" />
+        <text name="aPalletAutoLoader_bigBagPallet" text="Paletes BigBag" />
+        <text name="aPalletAutoLoader_bigBag" text="Bigbags" />
+        <text name="aPalletAutoLoader_cottonRoundbale238" text="Fardo redondo de algodão" />
+		<text name="aPalletAutoLoader_cottonsquarebale488" text="Fardo quadrado de algodão" />
+        <text name="aPalletAutoLoader_tipside" text="Lado" />
+        <text name="aPalletAutoLoader_1" text="Esquerda" />
+        <text name="aPalletAutoLoader_2" text="Direita" />
+        <text name="aPalletAutoLoader_3" text="Meio" />
+        <text name="aPalletAutoLoader_4" text="Atrás" />
+        <text name="configuration_aPalletAutoLoader" text="Autoload de paletes" />
+        <text name="input_AL_LOAD_PALLET" text="Carregar paletes" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Alternar tipo de carregamento" />
+        <text name="input_AL_TOGGLE_TIPSIDE" text="Alternar Lado" />
+        <text name="input_AL_UNLOAD" text="Descarregar aqui" />
+        <text name="aPalletAutoLoader_euroPalletOversize" text="EuroPaletes Oversize" />
+        <text name="input_AL_TOGGLE_MARKERS" text="Mostrar/ocultar marcadores" />
+        <text name="aPalletAutoLoader_roundbale125" text="Fardo redondo 125" />
+        <text name="aPalletAutoLoader_roundbale150" text="Fardo redondo 150" />
+        <text name="aPalletAutoLoader_roundbale180" text="Fardo redondo 180" />
+        <text name="aPalletAutoLoader_squarebale120" text="Fardo quadrado 120" />
+        <text name="aPalletAutoLoader_squarebale180" text="Fardo quadrado 180" />
+        <text name="aPalletAutoLoader_squarebale220" text="Fardo quadrado 220" />
+        <text name="aPalletAutoLoader_squarebale240" text="Fardo quadrado 240" />
+        <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Correias de tensão desativadas" />
+        <text name="aPalletAutoLoader_TensionBeltsActive" text="Correias de tensão ativados" />
+        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alternar correias de tensão automáticas" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Área de descarga alta/baixa" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Área de descarga mais alta" />
+        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Área de descarga mais baixa" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Área de descarga esquerda/direita" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Área de descarga à esquerda" />
+        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Área de descarga à direita" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Área de descarga frente/atrás" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Área de descarga frente" />
+        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Área de descarga atrás" />
+    </texts>
+</l10n>
