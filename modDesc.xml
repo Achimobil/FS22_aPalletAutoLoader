@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="67">
     <author>Achimobil</author>
-    <version>1.8.2.0</version>
+    <version>1.8.3.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -40,6 +40,10 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.2.0
+- better possibilities of loading state for CP
+- BR translation added
+
 1.8.2.0
 - new functions for reading the bale status added
 - Bales are no longer pulled out of the bale chamber or wrapper.
@@ -165,6 +169,10 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.2.0
+- bessere Möglichkeit für AD zum erkennen vom Ballenladestatus
+- BR Übersetzung hinzugefügt
+
 1.8.2.0
 - neue Funktionen zum auslesen des Ballen status eingefügt
 - Ballen werden jetzt nicht mehr aus der Presskammer oder dem Wickler gezogen
