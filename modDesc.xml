@@ -40,7 +40,7 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.8.2.0
+1.8.3.0
 - better possibilities of loading state for CP
 - BR translation added
 
@@ -169,8 +169,8 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.8.2.0
-- bessere Möglichkeit für AD zum erkennen vom Ballenladestatus
+1.8.3.0
+- bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
 - BR Übersetzung hinzugefügt
 
 1.8.2.0
