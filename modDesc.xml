@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="67">
     <author>Achimobil</author>
-    <version>1.8.3.0</version>
+    <version>1.8.3.1</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -9,7 +9,7 @@
         <it>Specializzazione Caricamento Automatico Pallet</it>
         <fr>Spécialisation De Chargement Automatique De Palettes</fr>
         <es>Especialización Carga Automática Palés</es>
-        <br>Especialização em Carregamento Automático de Paletes</br>
+        <br>Especialização Em Carregamento Automático De Paletes</br>
     </title>
     <description>
         <en>
@@ -40,7 +40,7 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.8.3.0
+1.8.3.1
 - better possibilities of loading state for CP
 - BR translation added
 
@@ -169,7 +169,7 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.8.3.0
+1.8.3.1
 - bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
 - BR Übersetzung hinzugefügt
 
