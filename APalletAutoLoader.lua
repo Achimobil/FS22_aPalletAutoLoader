@@ -1426,6 +1426,14 @@ function APalletAutoLoader:loadObject(object)
 
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
                         object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
+                        
+                        if object.spec_fillUnit ~= nil then
+                            if object.spec_fillUnit.fillUnits ~= nil then
+                                if object.spec_fillUnit.fillUnits[1] ~= nil then
+                                    object.spec_fillUnit.fillUnits[1].updateMass = false;
+                                end
+                            end
+                        end
 
                         if object.addDeleteListener ~= nil then
                             object:addDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
@@ -1549,6 +1557,14 @@ function APalletAutoLoader:unloadAll(unloadOffset)
             end
 
             object.currentlyLoadedOnAPalletAutoLoaderId = nil;
+                        
+            if object.spec_fillUnit ~= nil then
+                if object.spec_fillUnit.fillUnits ~= nil then
+                    if object.spec_fillUnit.fillUnits[1] ~= nil then
+                        object.spec_fillUnit.fillUnits[1].updateMass = true;
+                    end
+                end
+            end
 
             if object.removeDeleteListener ~= nil then
                 object:removeDeleteListener(self, "onDeleteAPalletAutoLoaderObject")
