@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="67">
     <author>Achimobil</author>
-    <version>1.8.4.0 beta</version>
+    <version>1.8.4.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -40,6 +40,9 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.4.0
+- Add usePalletWeightReduction config setting to reduce pallet weight on loading. Default is true
+
 1.8.3.1
 - better possibilities of loading state for CP
 - BR translation added
@@ -169,6 +172,9 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.4.0
+- usePalletWeightReduction configuration eingefügt zur reduzierung des GEwichts von geladenen Paletten. Default true
+
 1.8.3.1
 - bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
 - BR Übersetzung hinzugefügt

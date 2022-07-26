@@ -40,6 +40,7 @@ function APalletAutoLoader.initSpecialization()
     schema:register(XMLValueType.INT, baseXmlPath .. "#maxObjects", "Max. number of objects to load", "Number of load places")
     schema:register(XMLValueType.BOOL, baseXmlPath .. "#useBales", "Use for bales", false)
     schema:register(XMLValueType.BOOL, baseXmlPath .. "#useTensionBelts", "Automatically mount tension belts", "False for mobile, otherwise true")
+    schema:register(XMLValueType.BOOL, baseXmlPath .. "#usePalletWeightReduction", "REduce the weight of pallets on loading", true)
     schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadRightOffset", "Offset for Unload right")
     schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadLeftOffset", "Offset for Unload left")
     schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadMiddleOffset", "Offset for Unload middle")
@@ -561,6 +562,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.loadArea["height"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#height") or 2
     spec.loadArea["width"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#width") or 2
     spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
+    spec.usePalletWeightReduction = self.xmlFile:getValue(baseXmlPath .. "#usePalletWeightReduction") or true;
     spec.UnloadOffset = {}
     spec.UnloadOffsetOriginal = {}
     spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-" .. (spec.loadArea["width"]+1) .. " -0.5 0", true)
@@ -1427,7 +1429,7 @@ function APalletAutoLoader:loadObject(object)
                         -- objekt als geladen markieren, damit nur hier auch entladen wird
                         object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
                         
-                        if object.spec_fillUnit ~= nil then
+                        if spec.usePalletWeightReduction and object.spec_fillUnit ~= nil then
                             if object.spec_fillUnit.fillUnits ~= nil then
                                 if object.spec_fillUnit.fillUnits[1] ~= nil then
                                     object.spec_fillUnit.fillUnits[1].updateMass = false;
@@ -1558,7 +1560,7 @@ function APalletAutoLoader:unloadAll(unloadOffset)
 
             object.currentlyLoadedOnAPalletAutoLoaderId = nil;
                         
-            if object.spec_fillUnit ~= nil then
+            if spec.usePalletWeightReduction and object.spec_fillUnit ~= nil then
                 if object.spec_fillUnit.fillUnits ~= nil then
                     if object.spec_fillUnit.fillUnits[1] ~= nil then
                         object.spec_fillUnit.fillUnits[1].updateMass = true;
