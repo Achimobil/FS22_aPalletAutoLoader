@@ -173,10 +173,10 @@ Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.o
 
 Changelog:
 1.8.4.0
-- usePalletWeightReduction configuration eingefügt zur reduzierung des GEwichts von geladenen Paletten. Default true
+- usePalletWeightReduction konfiguration eingefügt zur reduzierung des Gewichts von geladenen Paletten. Default true
 
 1.8.3.1
-- bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
+- Bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
 - BR Übersetzung hinzugefügt
 
 1.8.2.0
