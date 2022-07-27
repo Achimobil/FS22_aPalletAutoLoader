@@ -145,7 +145,7 @@ Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.o
 
 Changelog:
 1.8.4.1
-- usePalletWeightReduction konfiguration eingefügt zur reduzierung des Gewichts von geladenen Paletten. Default true
+- usePalletWeightReduction Konfiguration eingefügt zur Reduzierung des Gewichts von geladenen Paletten. Default true
 - Changelog aufgeräumt
 
 1.8.3.1
