@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="67">
     <author>Achimobil</author>
-    <version>1.8.4.0</version>
+    <version>1.8.4.1</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -40,8 +40,9 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.8.4.0
+1.8.4.1
 - Add usePalletWeightReduction config setting to reduce pallet weight on loading. Default is true
+- Cleaned up changelog
 
 1.8.3.1
 - better possibilities of loading state for CP
@@ -76,52 +77,30 @@ Changelog:
 1.7.3.0
 - Lua Trigger error solved caused by update 1.4
 - Tension Belt trigger reworked
-
-1.7.2.0
-- The loading bay memory list is now also reset when the system is switched off.
 - Autoloaders can no longer take pallets from the loading area of another autoloader (multiple trailers)
 - onAIFieldWorker events implemented
-- Tension belts now have a delay between loosening and tightening to improve server sync with patch 1.4. On the server 1.5 seconds in single player 0.2 seconds. Feedback on this is welcome.
+- Tension belts now have a delay between loosening and tightening to improve server sync. On the server 1.5 seconds in single player 0.2 seconds. Feedback on this is welcome.
 - Dropped pallets or pallets taken down by hand are now not moved again during unloading
-
-1.7.1.1
-- Fix stream error
-- Add missing translation
-
-1.7.1.0
-- Automatic tension belts on dedi server activated again regarding the settings the modder of the vehicle has defined.
 - Automatic tension belts can now be activated/deactivated per vehicle by [lctrl]+[J]. This is stored per vehicle.
 - Optimized searching valid load place by remembering invalid load places as long as the loader is active.
 - add unloading side backwards for all vehicles by default. Position can configured by the modder.
 - Changed priorities of the key binding to have important entries better visible in the F1 Help.
-
-1.7.0.0
 - Changed activation to LS standard for loading wagon [B] and always activatable. 
 - Text of unloading page in F1 on Dedi fixed.
 - Support of Multifruit Pack bales incl. lavender round bales (loadable as cotton round bales)
 - Load only selectable when load mode is deactivated
-- Automatic tightening straps on dedicated server disabled due to engine sync errors
 
 1.6.2.0
-- External access optimised
 - Square bale loading behaviour optimised
-
-1.6.1.2
 - Fix for Wool pallet
-
-1.6.1.0
 - Possibility for external mods to access the functions created
 - Selected cargo is now displayed as extra text in the help menu
 - Palette sizes adapted to average values of new mods
-- Automatic ratchet straps re-enabled on Dedi Server. Until Giants has patched this <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">this mod</a> is necessary.
 - Modders can now also make their own palettes loadable through the folder structure. Details on the wiki.
-
-1.6.0.0
 - Modification of the communication with the Dedi Server to improve the performance.
 - Loading mode now remains active until the trailer is full or it is switched off. Tension belts are tightened in between if the trailer supports it.
 - Vehicle scheme shows when loading is activated.
 - Maximum capacity displayed when load selection is made.
-- Automatic tensioning straps deactivated on Dedi Server because of the bug from patch 1.3.
 
 1.5.0.0
 - Add default round bales 125/150/180. Must be enabled by the modder of the trailer (useBales="true")
@@ -135,13 +114,6 @@ Changelog:
 - Support of mod "Package of Premium Pallets and Sacks".
 - Support of mod "HoT Pommes Factory"
 - Added square bales 180/220/240
-
-1.3.1.0
-- Changes to Mod Image and Description for the ModHub publish
-- Added ES
-- Loading and Unloading Areas can be shown now. Default [LCTRL] + [U]
-- Loading is only shown in F1 when there is something to load, to not block Truck refill diesel
-- Controls are only visible when the Trailer is active to solve problems with mutiple autloaders attached
 ]]>
         </en>
         <de>
@@ -172,8 +144,9 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.8.4.0
+1.8.4.1
 - usePalletWeightReduction konfiguration eingefügt zur reduzierung des Gewichts von geladenen Paletten. Default true
+- Changelog aufgeräumt
 
 1.8.3.1
 - Bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
@@ -208,52 +181,30 @@ Changelog:
 1.7.3.0
 - Lua-Trigger-Fehler behoben, der durch Update 1.4 verursacht wurde
 - Tension Belt Trigger überarbeitet
-
-1.7.2.0
-- Merkliste der Ladeplätze wird beim abschalten jetzt auch zurückgesetzt
 - Autoloader können sich die Paletten nicht mehr von der Ladefläche eines anderen Autoloaders weg nehmen (mehrfache Anhänger)
 - onAIFieldWorker events implementiert
-- Spanngurte haben nun eine Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync mit Patch 1.4. Auf dem Server 1,5 Sekunden im Single Player 0,2 Sekunden. Rückmeldungen hierzu sind erwünscht.
+- Spanngurte haben nun eine Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync. Auf dem Server 1,5 Sekunden im Single Player 0,2 Sekunden. Rückmeldungen hierzu sind erwünscht.
 - Runtergefallene oder von Hand runtergenommene Paletten werden jetzt beim abladen nicht noch mal versetzt
-
-1.7.1.1
-- Stream-Fehler behoben
-- Fehlende Übersetzung hinzufügen
-
-1.7.1.0
-- Automatische Spanngurte auf dem dedi-Server sind wieder aktiviert und berücksichtigen die Einstellungen, die der Modder des Fahrzeugs festgelegt hat.
 - Automatische Spanngurte können nun pro Fahrzeug mit [lctrl]+[J] aktiviert/deaktiviert werden. Dies wird pro Fahrzeug gespeichert.
 - Die Suche nach gültigen Ladeplätzen wurde optimiert, indem ungültige Ladeplätze gespeichert werden, solange der Lader aktiv ist.
 - Entladeseite rückwärts für alle Fahrzeuge als Standard hinzufügen. Position kann vom Modder konfiguriert werden.
 - Prioritäten der Tastenbelegung geändert, um wichtige Einträge in der F1-Hilfe besser sichtbar zu machen.
-
-1.7.0.0
 - Änderung der Aktivierung auf LS Standard für Ladewagen [B] und immer aktivierbar. 
 - Text der Entladeseite im F1 auf Dedi gefixed
 - Support von Multifruit Pack Ballen inkl. Lavendel Rundballen (ladebar als Baumwoll Rundballen)
 - Ladegut nur noch wählbar, wenn der Lademodus deaktiviert ist
-- Automatische Spanngurte auf Dedicated Server deaktiviert wegen der Sync Fehler der Engine
 
 1.6.2.0
-- Externe Zugriffsmöglichkeiten optimiert
 - Quaderballen Ladeverhalten optimiert
-
-1.6.1.2
 - Fix für Wollpalette
-
-1.6.1.0
 - Möglichkeit für externe Mods zum zugriff auf die Funktionen geschaffen
 - Gewähltes Ladegut wird jetzt als Extra Text im Hilfe Menü angezeigt
 - Paletten Größen angepasst an durchnittliche Werte neuer Mods
-- Automatische Spanngurte wieder aktiviert auf Dedi Server. Bis Giants das gepatched hat ist <a href="https://forbidden-mods.de/filebase/file/31066-tensionbelts-fix-for-1-3-patch/">dieser Mod</a> notwendig.
 - Modder können ihre eigenen Paletten nun zusätzlich durch die Ordnerstruktur ladbar machen. Details im Wiki.
-
-1.6.0.0
 - Umbau der Kommunikation mit dem Dedi Server zur Verbesserung der Performance.
 - Lademodus bleibt nun aktiv bis der Trailer voll ist oder er abgeschaltet wird. Spangurte werden zwischendurch angezogen, wenn der Trailer das unterstützt.
 - Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
 - Anzeige der Maximal Kapazität bei der Ladegutauswahl.
-- Automatische Spanngurte deaktiviert auf Dedi Server wegen dem Fehler aus Patch 1.3
 
 1.5.0.0
 - Standard-Rundballen 125/150/180 können jetzt geladen werden. Muss vom Modder des Trailers aktiviert werden (useBales="true")
@@ -266,13 +217,6 @@ Changelog:
 - Support von Mod "Paket Von Premium-Paletten Und Säcken"
 - Support von Mod "HoT Pommes Factory"
 - Quaderballen 180/220/240 hinzugefügt
-
-1.3.1.0
-- Änderungen am Mod Icon und der Beschreibung für die ModHub-Veröffentlichung
-- ES hinzugefügt
-- Be- und Entladebereiche können jetzt angezeigt werden. Standard [LCTRL] + [U]
-- Das Laden wird nur in F1 angezeigt, wenn es etwas zu laden gibt, um das tanken eines LKW nicht zu blockieren
-- Steuerelemente sind nur sichtbar, wenn der Autoloader aktiv ist, um Probleme mit mehreren angeschlossenen Autoloadern zu beheben
 ]]>
         </de>
     </description>
