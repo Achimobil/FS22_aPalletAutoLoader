@@ -550,7 +550,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.showMarkers = false;
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
     spec.useTensionBelts = false;
-    spec.tensionBeltsDelay = 200;
+    spec.tensionBeltsDelay = 250;
 
     if g_dedicatedServer ~= nil then
         spec.tensionBeltsDelay = 1500;
@@ -811,6 +811,7 @@ function APalletAutoLoader:onLoad(savegame)
         spec.beltsTimer:setFinishCallback(
             function()
                 self:setAllTensionBeltsActive(true, false);
+                spec.hasLoadedSinceBeltsUsing = false;
             end);
         spec.loadTimer = Timer.new(100);
         spec.loadTimer:setFinishCallback(
@@ -1371,22 +1372,26 @@ function APalletAutoLoader:loadAllInRange()
 
     if loaded then
         spec.loadTimer:start(false);
+        spec.hasLoadedSinceBeltsUsing = true;
+        spec.beltsTimer:reset();
     else
         if self.isClient then
             APalletAutoLoader.updateActionText(self);
         end
 
-        -- release all joints
-        for _,jointData  in pairs(spec.objectsToJoint) do
-            removeJoint(jointData.jointIndex)
-            delete(jointData.jointTransform)
-        end
-        spec.objectsToJoint = {};
+        if spec.hasLoadedSinceBeltsUsing == true then
+            -- release all joints
+            for _,jointData  in pairs(spec.objectsToJoint) do
+                removeJoint(jointData.jointIndex)
+                delete(jointData.jointTransform)
+            end
+            spec.objectsToJoint = {};
 
-        -- start tension belts time if needed
-        if spec.numTriggeredObjects ~= 0 and spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
-            spec.beltsTimer:start(false);
-            self:setAllTensionBeltsActive(false, false)
+            -- start tension belts time if needed
+            if spec.numTriggeredObjects ~= 0 and spec.useTensionBelts and self.setAllTensionBeltsActive ~= nil then
+                spec.beltsTimer:start(false);
+                self:setAllTensionBeltsActive(false, false)
+            end
         end
     end
 
