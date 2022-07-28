@@ -84,6 +84,8 @@ function APalletAutoLoader.registerFunctions(vehicleType)
     SpecializationUtil.registerFunction(vehicleType, "PalIsFull", APalletAutoLoader.PalIsFull)
     SpecializationUtil.registerFunction(vehicleType, "PalGetBalesToIgnore", APalletAutoLoader.PalGetBalesToIgnore)
     SpecializationUtil.registerFunction(vehicleType, "PalIsGrabbingBale", APalletAutoLoader.PalIsGrabbingBale)
+    SpecializationUtil.registerFunction(vehicleType, "AddSupportedObjects", APalletAutoLoader.AddSupportedObjects)
+    SpecializationUtil.registerFunction(vehicleType, "CreateAvailableTypeList", APalletAutoLoader.CreateAvailableTypeList)
 
     if vehicleType.functions["getFillUnitCapacity"] == nil then
         SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -615,19 +617,7 @@ function APalletAutoLoader:onLoad(savegame)
 
     spec.useBales = self.xmlFile:getValue(baseXmlPath .. "#useBales", false)
 
-    -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-    local types = {"euroPallet","liquidTank","bigBagPallet","bigBag","euroPalletOversize"}
-
-    if spec.useBales then
-        table.insert(types, "cottonRoundbale238");
-        table.insert(types, "roundbale125");
-        table.insert(types, "roundbale150");
-        table.insert(types, "roundbale180");
-        table.insert(types, "squarebale120");
-        table.insert(types, "squarebale180");
-        table.insert(types, "squarebale220");
-        table.insert(types, "squarebale240");
-    end
+    local types = self:CreateAvailableTypeList();
 
     -- create loadplaces automatically from load Area size
     if spec.loadArea["baseNode"] ~= nil then
@@ -638,6 +628,12 @@ function APalletAutoLoader:onLoad(savegame)
             autoLoadObject.name = name
             autoLoadObject.nameTranslated = g_i18n:getText("aPalletAutoLoader_" .. name)
             APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
+            
+            if autoLoadObject.sizeX == nil then
+                Logging.error("'%s' missing in 'APalletAutoLoader:AddSupportedObjects()' result", name)
+                return;
+            end
+            
             autoLoadObject.places = {}
             local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
 
@@ -856,6 +852,26 @@ function APalletAutoLoader:onLoad(savegame)
     end
 
     spec.initialized = true;
+end
+
+function APalletAutoLoader:CreateAvailableTypeList()
+    local spec = self.spec_aPalletAutoLoader
+    
+    -- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
+    local types = {"euroPallet","liquidTank","bigBagPallet","bigBag","euroPalletOversize"}
+
+    if spec.useBales then
+        table.insert(types, "cottonRoundbale238");
+        table.insert(types, "roundbale125");
+        table.insert(types, "roundbale150");
+        table.insert(types, "roundbale180");
+        table.insert(types, "squarebale120");
+        table.insert(types, "squarebale180");
+        table.insert(types, "squarebale220");
+        table.insert(types, "squarebale240");
+    end
+    
+    return types;
 end
 
 function APalletAutoLoader:removeUnusedEventListener(vehicle, name, specClass)
