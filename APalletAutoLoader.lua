@@ -1208,6 +1208,10 @@ function APalletAutoLoader:getIsValidObject(object)
     else
         return false
     end
+    
+    if object.specializations ~= nil and SpecializationUtil.hasSpecialization(Pallet, object.specializations) then
+        return true
+    end
 
     if object == self then
         return false
