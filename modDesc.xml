@@ -150,8 +150,8 @@ Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.o
 
 Changelog:
 1.8.5.0
-- Erweiterung des auswähbaren Ladeguts kann jetzt mit mods per skript gemacht werden.
-- Mod icon verbessert
+- Erweiterung des auswählbaren Ladeguts kann jetzt mit mods per skript gemacht werden.
+- Mod Icon verbessert
 - Paletten werden jetzt auch erkannt, wenn diese nicht direkt vom typ "pallet" sind.
 
 1.8.4.1
