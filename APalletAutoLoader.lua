@@ -550,7 +550,7 @@ function APalletAutoLoader:onLoad(savegame)
     spec.showMarkers = false;
     spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
     spec.useTensionBelts = false;
-    spec.tensionBeltsDelay = 250;
+    spec.tensionBeltsDelay = 210;
 
     if g_dedicatedServer ~= nil then
         spec.tensionBeltsDelay = 1500;

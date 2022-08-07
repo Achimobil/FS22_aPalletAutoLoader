@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="67">
     <author>Achimobil</author>
-    <version>1.8.5.0 beta 1</version>
+    <version>1.8.5.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -40,6 +40,11 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.5.0
+- Extension of the selectable load can now be done with mods via script.
+- Mod icon improved
+- Pallets are now also recognised if they are not directly of the type "pallet"
+
 1.8.4.1
 - Add usePalletWeightReduction config setting to reduce pallet weight on loading. Default is true
 - Cleaned up changelog
@@ -144,6 +149,11 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.5.0
+- Erweiterung des auswähbaren Ladeguts kann jetzt mit mods per skript gemacht werden.
+- Mod icon verbessert
+- Paletten werden jetzt auch erkannt, wenn diese nicht direkt vom typ "pallet" sind.
+
 1.8.4.1
 - usePalletWeightReduction Konfiguration eingefügt zur Reduzierung des Gewichts von geladenen Paletten. Default true
 - Changelog aufgeräumt
