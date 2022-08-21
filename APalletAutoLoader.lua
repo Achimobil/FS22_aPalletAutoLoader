@@ -1558,9 +1558,9 @@ function APalletAutoLoader:unloadAll(unloadOffset)
     spec.isFullLoaded = false;
 
     for object,_ in pairs(spec.triggeredObjects) do
-        if object ~= nil and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) then
+        if object ~= nil and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) and (object.isDeleted ~= nil and object.isDeleted == false) then
             local objectNodeId = object.nodeId or object.components[1].node
-
+            
             -- store current rotation to restore later
             local rx,ry,rz = getWorldRotation(objectNodeId);
 
