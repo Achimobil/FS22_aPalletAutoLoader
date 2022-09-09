@@ -745,6 +745,7 @@ function APalletAutoLoader:onLoad(savegame)
                 end
             else
                 -- aufladen mit rotation, heißt also längs zur Ladefläche
+                local countCol = 0;
                 for rowNumber = 0, (countRotation-1) do
                     -- schleife bis zur länge
                     for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + backDistance) do
@@ -754,9 +755,27 @@ function APalletAutoLoader:onLoad(savegame)
                             loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + backDistance)) - (restFirstRotation / 2)
                             loadingPatternItem.posZ = cornerZ - colPos
                             table.insert(loadingPattern, loadingPatternItem)
+                            if rowNumber == 0 then 
+                                countCol = countCol + 1 
+                            end
                         end
                     end
                 end
+                
+                -- jetzt könnte aber noch quer was dahinter passen, gleiche logik wie bei quer laden, nur später anfangen
+                for rowNumber = 0, (countNoRotation-1) do
+                    -- schleife bis zur länge
+                    for colPos = (autoLoadObject.sizeZ / 2) + (countCol * (autoLoadObject.sizeX + backDistance)), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
+                        if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+                            local loadingPatternItem = {}
+                            loadingPatternItem.rotation = 0;
+                            loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restFirstNoRotation / 2)
+                            loadingPatternItem.posZ = cornerZ - colPos
+                            table.insert(loadingPattern, loadingPatternItem)
+                        end
+                    end
+                end
+                
             end
 
             table.sort(loadingPattern,compLoadingPattern)
