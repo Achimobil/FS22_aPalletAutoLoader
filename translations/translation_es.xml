@@ -19,7 +19,8 @@
         <text name="aPalletAutoLoader_4" text="trasero" />
         <text name="configuration_aPalletAutoLoader" text="Carga Automática de palés" />
         <text name="input_AL_LOAD_PALLET" text="Cargar palés" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambiar tipo de carga" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Siguiente Tipo de carga" />
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tipo de carga anterior" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga" />
         <text name="input_AL_UNLOAD" text="Descargar aquí" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado" />

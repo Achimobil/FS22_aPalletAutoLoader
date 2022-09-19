@@ -244,6 +244,9 @@ Changelog:
             <binding device="KB_MOUSE_DEFAULT" input="KEY_z"/>
             <binding device="0_XINPUT_GAMEPAD" input="BUTTON_10" axisComponent="+" neutralInput="0" index="1"/>
         </actionBinding>
+        <actionBinding action="AL_TOGGLE_LOADINGTYPEBACK">
+            <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_z"/>
+        </actionBinding>
         <actionBinding action="AL_TOGGLE_TIPSIDE">
             <binding device="KB_MOUSE_DEFAULT" input="KEY_u"/>
             <binding device="0_XINPUT_GAMEPAD" input="BUTTON_13" axisComponent="+" neutralInput="0" index="1"/>
@@ -274,6 +277,7 @@ Changelog:
     <actions>
         <action name="AL_LOAD_PALLET"/>
         <action name="AL_TOGGLE_LOADINGTYPE"/>
+        <action name="AL_TOGGLE_LOADINGTYPEBACK"/>
         <action name="AL_TOGGLE_TIPSIDE"/>
         <action name="AL_UNLOAD"/>
         <action name="AL_TOGGLE_MARKERS"/>

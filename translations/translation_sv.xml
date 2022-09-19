@@ -19,7 +19,8 @@
         <text name="aPalletAutoLoader_4" text="Bakåt" />
         <text name="configuration_aPalletAutoLoader" text="Pall Autoload" />
         <text name="input_AL_LOAD_PALLET" text="Lasta Pallar" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Växla lastningstyp" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Next LoadingType" />
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Föregående lastningstyp" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Växla tipp sida" />
         <text name="input_AL_UNLOAD" text="Lasta av här" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="Överdimensionerad Europallar" />

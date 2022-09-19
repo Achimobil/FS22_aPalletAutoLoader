@@ -20,7 +20,8 @@
         <text name="aPalletAutoLoader_4" text="Atrás" />
         <text name="configuration_aPalletAutoLoader" text="Autoload de paletes" />
         <text name="input_AL_LOAD_PALLET" text="Carregar paletes" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Alternar tipo de carregamento" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Próximo CarregamentoType" />
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tipo de Carregamento Anterior" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Alternar Lado" />
         <text name="input_AL_UNLOAD" text="Descarregar aqui" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="EuroPaletes Oversize" />

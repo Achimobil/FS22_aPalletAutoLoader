@@ -19,7 +19,8 @@
         <text name="aPalletAutoLoader_4" text="Hinten" />
         <text name="configuration_aPalletAutoLoader" text="Paletten Autoloader" />
         <text name="input_AL_LOAD_PALLET" text="Paletten aufladen" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Ladegut ändern" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Nächstes Ladegut" />
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Vorheriges Ladegut" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Abladeseite ändern" />
         <text name="input_AL_UNLOAD" text="Hier abladen" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="Euro Paletten Übergröße" />

@@ -259,6 +259,10 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
             g_inputBinding:setActionEventTextPriority(actionEventId2, GS_PRIO_VERY_HIGH)
             spec.toggleAutoLoadTypesActionEventId = actionEventId2;
 
+            local _, actionEventId2Back = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_LOADINGTYPEBACK, self, APalletAutoLoader.actionEventToggleAutoLoadTypesBack, false, true, false, true, nil, nil, true, true)
+            g_inputBinding:setActionEventTextPriority(actionEventId2Back, GS_PRIO_NORMAL)
+            spec.toggleAutoLoadTypesBackActionEventId = actionEventId2Back;
+
             local _, actionEventId3 = self:addActionEvent(spec.actionEvents, InputAction.AL_TOGGLE_TIPSIDE, self, APalletAutoLoader.actionEventToggleTipside, false, true, false, true, nil, nil, true, true)
             g_inputBinding:setActionEventTextPriority(actionEventId3, GS_PRIO_HIGH)
             spec.toggleTipsideActionEventId = actionEventId3;
@@ -326,6 +330,7 @@ function APalletAutoLoader.updateActionText(self)
         if not spec.available then
             g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, false)
+            g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesBackActionEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleTipsideActionEventId, false)
             g_inputBinding:setActionEventActive(spec.unloadAllEventId, false)
             g_inputBinding:setActionEventActive(spec.toggleMarkerEventId, false)
@@ -357,6 +362,7 @@ function APalletAutoLoader.updateActionText(self)
             loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].nameTranslated
         end
         g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
+        -- g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesBackActionEventId, "balBlub")
 
         g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, spec.tipsideText)
 
@@ -368,6 +374,7 @@ function APalletAutoLoader.updateActionText(self)
 
         -- deactivate when somthing is already loaded or not
         g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
+        g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesBackActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
         g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
         g_inputBinding:setActionEventActive(spec.actionEventIdMoveUpDown, spec.numTriggeredObjects ~= 0 and spec.showMarkers)
         g_inputBinding:setActionEventActive(spec.actionEventIdMoveLeftRight, spec.numTriggeredObjects ~= 0 and spec.showMarkers)
@@ -430,6 +437,19 @@ function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inpu
         newAutoLoadTypeIndex = 1;
     else
         newAutoLoadTypeIndex = spec.currentautoLoadTypeIndex + 1;
+    end
+
+    SetAutoloadTypeEvent.sendEvent(self, newAutoLoadTypeIndex)
+end
+
+function APalletAutoLoader.actionEventToggleAutoLoadTypesBack(self, actionName, inputValue, callbackState, isAnalog)
+    local spec = self.spec_aPalletAutoLoader
+
+    local newAutoLoadTypeIndex;
+    if spec.currentautoLoadTypeIndex == 1 then
+        newAutoLoadTypeIndex = #spec.autoLoadTypes;
+    else
+        newAutoLoadTypeIndex = spec.currentautoLoadTypeIndex - 1;
     end
 
     SetAutoloadTypeEvent.sendEvent(self, newAutoLoadTypeIndex)

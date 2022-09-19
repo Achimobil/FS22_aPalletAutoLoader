@@ -19,7 +19,8 @@
         <text name="aPalletAutoLoader_4" text="arrière" />
         <text name="configuration_aPalletAutoLoader" text="Pallet AutoLoader"/>
         <text name="input_AL_LOAD_PALLET" text="Charger les palettes"/>
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Toggle LoadingType"/>
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="LoadingType suivant"/>
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Type de chargement précédent"/>
         <text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside"/>
         <text name="input_AL_UNLOAD" text="Décharger ici"/>
         <text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded"/>

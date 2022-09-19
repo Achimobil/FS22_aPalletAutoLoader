@@ -19,7 +19,8 @@
         <text name="aPalletAutoLoader_4" text="zadní" />
         <text name="configuration_aPalletAutoLoader" text="Autoload na palety" />
         <text name="input_AL_LOAD_PALLET" text="Naložit Palety" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Přepnout typ nákladu" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Další Typ načítání" />
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Předchozí Typ nakládání" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Přepnout stranu vyložení" />
         <text name="input_AL_UNLOAD" text="Vyložit zde" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="Europalety nadměrné" />

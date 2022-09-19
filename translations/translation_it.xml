@@ -19,7 +19,8 @@
         <text name="aPalletAutoLoader_4" text="Posteriore" />
         <text name="configuration_aPalletAutoLoader" text="Caricatore automatico di pallet" />
         <text name="input_AL_LOAD_PALLET" text="Carica i pallet" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Cambia il tipo di carico" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Successivo Tipo di caricamento" />
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tipo di caricamento precedente" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Cambia il lato di scarico" />
         <text name="input_AL_UNLOAD" text="Scarica qui" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura" />

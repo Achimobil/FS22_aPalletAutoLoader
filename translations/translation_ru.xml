@@ -19,7 +19,8 @@
         <text name="aPalletAutoLoader_4" text="Сзади" />
         <text name="configuration_aPalletAutoLoader" text="Автопогрузка" />
         <text name="input_AL_LOAD_PALLET" text="Погрузить" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Переключить тип поддонов/тюков" />
+        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Следующий тип загрузки" />
+        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Предыдущий тип загрузки" />
         <text name="input_AL_TOGGLE_TIPSIDE" text="Переключить сторону выгрузки" />
         <text name="input_AL_UNLOAD" text="Выгрузить" />
         <text name="aPalletAutoLoader_euroPalletOversize" text="Негабаритные поддоны" />
