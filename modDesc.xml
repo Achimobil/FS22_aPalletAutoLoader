@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="67">
+<modDesc descVersion="69">
     <author>Achimobil</author>
-    <version>1.8.5.1</version>
+    <version>1.8.6.0</version>
     <title>
         <en>Pallet Autoload Specialization</en>
         <de>Paletten Autoloader Spezialisierung</de>
@@ -40,6 +40,12 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.6.0
+- Fix Lua error when triggers are not correct reporting the delete of a loading object
+- Extend lengthwise loading pattern to load additional object transverse behind when there is enough space
+- simplify bale identifying for better mod compatibility
+- Add second binding to step backwards through the loading type list (default shift + Y)
+
 1.8.5.1
 - Extension of the selectable load can now be done with mods via script.
 - Mod icon improved
@@ -106,19 +112,6 @@ Changelog:
 - Loading mode now remains active until the trailer is full or it is switched off. Tension belts are tightened in between if the trailer supports it.
 - Vehicle scheme shows when loading is activated.
 - Maximum capacity displayed when load selection is made.
-
-1.5.0.0
-- Add default round bales 125/150/180. Must be enabled by the modder of the trailer (useBales="true")
-- Size of liquid tank corrected for better loading
-- Icons for modder added in mod
-- Translation in CZ
-- Bigbags added
-- Translations improved
-- Tension belts automatically tightened. Must be activated by the trailer modder (useTensionBelts="true")
-- Bale loading in motion improved
-- Support of mod "Package of Premium Pallets and Sacks".
-- Support of mod "HoT Pommes Factory"
-- Added square bales 180/220/240
 ]]>
         </en>
         <de>
@@ -149,6 +142,12 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.6.0
+- Lua-Fehler behoben, wenn Trigger das Löschen eines Ladeobjekts nicht korrekt melden
+- Erweitern des Längsmusters, um zusätzliche Objekte quer dahinter zu laden, wenn genug Platz vorhanden ist
+- Vereinfachung der Ballenidentifizierung für bessere Mod-Kompatibilität
+- Zweite Tastenbelegung hinzugefügt, um rückwärts durch die Ladetyp-Liste zu schalten (Standard: Shift + Y)
+
 1.8.5.1
 - Erweiterung des auswählbaren Ladeguts kann jetzt mit mods per skript gemacht werden.
 - Mod Icon verbessert
@@ -215,18 +214,6 @@ Changelog:
 - Lademodus bleibt nun aktiv bis der Trailer voll ist oder er abgeschaltet wird. Spangurte werden zwischendurch angezogen, wenn der Trailer das unterstützt.
 - Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
 - Anzeige der Maximal Kapazität bei der Ladegutauswahl.
-
-1.5.0.0
-- Standard-Rundballen 125/150/180 können jetzt geladen werden. Muss vom Modder des Trailers aktiviert werden (useBales="true")
-- Größe vom Flüssigkeitentank korrigiert für besseres Laden
-- Icons für Modder in Mod eingefügt
-- Übersetzung in CZ
-- Bigbags hinzugefügt
-- Übersetzungen verbessert
-- Spanngurte automatisch anziehen. Muss vom Modder des Trailers aktiviert werden (useTensionBelts="true")
-- Support von Mod "Paket Von Premium-Paletten Und Säcken"
-- Support von Mod "HoT Pommes Factory"
-- Quaderballen 180/220/240 hinzugefügt
 ]]>
         </de>
     </description>
