@@ -12,6 +12,7 @@
 		<text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes" />
 		<text name="aPalletAutoLoader_bigBag" text="Sacos grandes" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Paca rectangular de algodón" />
 		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
 		<text name="aPalletAutoLoader_1" text="izquierda" />
 		<text name="aPalletAutoLoader_2" text="derecha" />

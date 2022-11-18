@@ -12,6 +12,7 @@
 		<text name="aPalletAutoLoader_bigBagPallet" text="Bigbag pallar" />
 		<text name="aPalletAutoLoader_bigBag" text="Storsäckar" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Rundbal bomull" />
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Fyrkantsbal bomull" />
 		<text name="aPalletAutoLoader_tipside" text="Tipp Sida" />
 		<text name="aPalletAutoLoader_1" text="Vänster" />
 		<text name="aPalletAutoLoader_2" text="Höger" />

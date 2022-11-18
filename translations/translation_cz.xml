@@ -12,6 +12,7 @@
 		<text name="aPalletAutoLoader_bigBagPallet" text="Palety BigBagů" />
 		<text name="aPalletAutoLoader_bigBag" text="BigBag" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Kulatý balík bavlny" />
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Hranatý balík bavlny" />
 		<text name="aPalletAutoLoader_tipside" text="Strana vyložení" />
 		<text name="aPalletAutoLoader_1" text="vlevo" />
 		<text name="aPalletAutoLoader_2" text="vpravo" />

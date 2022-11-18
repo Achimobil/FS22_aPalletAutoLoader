@@ -12,6 +12,7 @@
 		<text name="aPalletAutoLoader_bigBagPallet" text="Поддоны с МКР" />
 		<text name="aPalletAutoLoader_bigBag" text="Большие мешки" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Круглые тюки хлопка" />
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Квадратные тюки хлопка" />
 		<text name="aPalletAutoLoader_tipside" text="Сторона выгрузки" />
 		<text name="aPalletAutoLoader_1" text="Слева" />
 		<text name="aPalletAutoLoader_2" text="Справа" />

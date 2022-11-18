@@ -12,6 +12,7 @@
 		<text name="aPalletAutoLoader_bigBagPallet" text="bigBag Pallet"/>
 		<text name="aPalletAutoLoader_bigBag" text="Big bag" />
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Balle ronde coton"/>
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Balle carrée coton"/>
 		<text name="aPalletAutoLoader_tipside" text="Tipside"/>
 		<text name="aPalletAutoLoader_1" text="gauche"/>
 		<text name="aPalletAutoLoader_2" text="droite"/>

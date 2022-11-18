@@ -905,6 +905,7 @@ function APalletAutoLoader:CreateAvailableTypeList()
 		table.insert(types, "roundbale125");
 		table.insert(types, "roundbale150");
 		table.insert(types, "roundbale180");
+		table.insert(types, "cottonSquarebale488");
 		table.insert(types, "squarebale120");
 		table.insert(types, "squarebale180");
 		table.insert(types, "squarebale220");
