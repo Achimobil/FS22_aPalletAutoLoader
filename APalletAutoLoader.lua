@@ -827,7 +827,7 @@ function APalletAutoLoader:onLoad(savegame)
                 heightForObjectType = autoLoadObjectSettings[name].height
             end
             local maxLayers = math.floor(heightForObjectType / autoLoadObject.sizeY);
-            if autoLoadObject.type == "bigBag" then maxLayers = 1 end
+			if autoLoadObject.stackable ~= nil and autoLoadObject.stackable == false then maxLayers = 1 end
             local maxAmountForLayers = amountPerLayer * maxLayers;
 
             local maxAmountForObjectType = spec.maxObjects;
@@ -913,6 +913,15 @@ function APalletAutoLoader:CreateAvailableTypeList()
 	
 	-- wenn PnH verfügbar ist
 	table.insert(types, "hosePallet");
+	
+	-- wenn platinum verfügbar
+	table.insert(types, "euroPalletDoubleLength");
+	table.insert(types, "barrelPallet");
+	table.insert(types, "euroPalletQuadro");
+	table.insert(types, "prefabWallPallet");
+	table.insert(types, "smallBundledStack");
+	table.insert(types, "dogHousePallet");
+	table.insert(types, "metalPallet");
     
     return types;
 end
@@ -1091,6 +1100,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeY = 1.55
         autoLoadObject.sizeZ = 0.85
         autoLoadObject.type = "bigBag"
+        autoLoadObject.stackable = false
     elseif (name == "cottonRoundbale238") then
         local function CheckType(object)
             if string.find(object.i3dFilename, "Roundbale238.i3d") then return true end
@@ -1222,6 +1232,103 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeY = 1.9
         autoLoadObject.sizeZ = 1.8
         autoLoadObject.type = "pallet"
+    elseif (name == "euroPalletDoubleLength") then
+        local function CheckType(object)
+			-- platinum pack, 2 europlatten längs aneinander
+            if string.find(object.configFileName, "objects/pallets/bathtubPallet/bathtubPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/tablePallet/tablePallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.4
+        autoLoadObject.sizeY = 1.0
+        autoLoadObject.sizeZ = 0.8
+        autoLoadObject.type = "pallet"
+    elseif (name == "barrelPallet") then
+        local function CheckType(object)
+			-- platinum pack, 2 europlatten quer aneinander
+            if string.find(object.configFileName, "objects/pallets/barrelPallet/barrelPallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.6
+        autoLoadObject.sizeY = 1.0
+        autoLoadObject.sizeZ = 1.2
+        autoLoadObject.type = "pallet"
+    elseif (name == "euroPalletQuadro") then
+        local function CheckType(object)
+			-- platinum pack, 2 europlatten quer aneinander
+            if string.find(object.configFileName, "objects/pallets/cartonRollPallet/cartonRollPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/paperRollPallet/paperRollPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/armoirePallet/armoirePallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.4
+        autoLoadObject.sizeY = 2.2
+        autoLoadObject.sizeZ = 1.6
+        autoLoadObject.type = "pallet"
+    elseif (name == "prefabWallPallet") then
+        local function CheckType(object)
+			-- platinum pack, 2 europlatten quer aneinander
+            if string.find(object.configFileName, "objects/pallets/prefabWallPallet/prefabWallPallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.46
+        autoLoadObject.sizeY = 2.2
+        autoLoadObject.sizeZ = 1.75
+        autoLoadObject.type = "pallet"
+    elseif (name == "smallBundledStack") then
+        local function CheckType(object)
+			-- platinum pack, 2 europlatten quer aneinander
+            if string.find(object.configFileName, "objects/pallets/planksPallet/planksPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/woodBeamPallet/woodBeamPallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 2.65
+        autoLoadObject.sizeY = 1.0
+        autoLoadObject.sizeZ = 0.88
+        autoLoadObject.type = "pallet"
+    elseif (name == "dogHousePallet") then
+        local function CheckType(object)
+			-- platinum pack, 2 europlatten quer aneinander
+            if string.find(object.configFileName, "objects/pallets/dogHousePallet/dogHousePallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.2
+        autoLoadObject.sizeY = 1.0
+        autoLoadObject.sizeZ = 0.9
+        autoLoadObject.type = "pallet"
+        autoLoadObject.stackable = false
+    elseif (name == "metalPallet") then
+        local function CheckType(object)
+			-- platinum pack, 2 europlatten quer aneinander
+            if string.find(object.configFileName, "objects/pallets/metalPallet/metalPallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 1.2
+        autoLoadObject.sizeY = 1.0
+        autoLoadObject.sizeZ = 0.8
+        autoLoadObject.type = "pallet"
+        autoLoadObject.stackable = false
     end
 end
 
@@ -1383,7 +1490,7 @@ function APalletAutoLoader:getFirstValidLoadPlace()
             end
         end
 
-        if autoLoadType.type == "bigBag" then
+        if autoLoadType.stackable ~= nil and autoLoadType.stackable == false then
             break
         elseif autoLoadType.type == "squarebale" then
             if currentLoadHeigt == 0 then
