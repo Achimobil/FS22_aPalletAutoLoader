@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Зону выгрузки вперёд/назад" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Зону выгрузки вперёд" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Зону выгрузки назад" />
+        <text name="aPalletAutoLoader_hosePallet" text="Напорный шланг" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Европоддоны двойной длины" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="4-кратные европоддоны" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Поддон с бочками" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Поддон с блочной стеной" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Большие деревянные поддоны" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Поддон с собачьими будками" />
+        <text name="aPalletAutoLoader_metalPallet" text="Поддон с металлом" />
     </texts>
 </l10n>

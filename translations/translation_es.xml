@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Área de descarga hacia delante/atrás" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descarga delante" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Descarga de la zona de atrás" />
+        <text name="aPalletAutoLoader_hosePallet" text="Manguera umbilical" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europalets con doble longitud" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="Europalets de 4 pliegues" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Palé de barriles" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Palé de paredes prefabricadas" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Palés de madera grandes" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Palé de casetas para perro" />
+        <text name="aPalletAutoLoader_metalPallet" text="Palé de metales" />
     </texts>
 </l10n>

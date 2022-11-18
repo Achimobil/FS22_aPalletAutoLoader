@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Lossningsområde Framåt/Bakåt" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Lossningsområde Framåt" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Lossningsområde Bakåt" />
+        <text name="aPalletAutoLoader_hosePallet" text="Slang för slamslangar" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europaletter med dubbel längd" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="4-faldiga europallar" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Pall med tunnor" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Pall med väggmoduler" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Stora träpallar" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Pall med hundkojor" />
+        <text name="aPalletAutoLoader_metalPallet" text="Pall med metall" />
     </texts>
 </l10n>

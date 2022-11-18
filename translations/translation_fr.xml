@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zone de déchargement avant/arrière" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zone de déchargement avant" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zone de déchargement arrière" />
+        <text name="aPalletAutoLoader_hosePallet" text="Tuyau ombilical" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Palettes Euro double longueur" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="palettes Euro 4x" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Palette de tonneaux" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Palette de murs préfabriqués" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Grandes palettes de bois" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Palette de niches" />
+        <text name="aPalletAutoLoader_metalPallet" text="Palette de métal" />
     </texts>
 </l10n>

@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Unloading area forward/back" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Unloading area forward" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Unloading area back" />
+        <text name="aPalletAutoLoader_hosePallet" text="Umbilical Hose" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro pallets with double length" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="4-fold Euro pallets" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Barrel Pallet" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Prefab Wall Pallet" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Large wood pallets" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Dog House Pallet" />
+        <text name="aPalletAutoLoader_metalPallet" text="Metal Pallet" />
     </texts>
 </l10n>

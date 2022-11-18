@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Vykládací oblast dopředu/dozadu" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Vykládací prostor vpředu" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Vykládací oblast zpět" />
+        <text name="aPalletAutoLoader_hosePallet" text="Přívodní hadice" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro palety s dvojitou délkou" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="4násobné europalety" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Paleta se sudy" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Paleta prefabrikovaných stěn" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Velké dřevěné palety" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Paleta s psími boudami" />
+        <text name="aPalletAutoLoader_metalPallet" text="Paleta kovů" />
     </texts>
 </l10n>

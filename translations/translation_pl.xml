@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Miejsce rozładunku do przodu/do tyłu" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Miejsce rozładunku z przodu" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Miejsce rozładunku do tyłu" />
+        <text name="aPalletAutoLoader_hosePallet" text="Wąż pępowinowy" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europalety o podwójnej długości" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="4-krotne europalety" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Paleta beczek" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Paleta gotowej ściany" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Duże palety drewniane" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Paleta psiej budy" />
+        <text name="aPalletAutoLoader_metalPallet" text="Paleta metalu" />
     </texts>
 </l10n>

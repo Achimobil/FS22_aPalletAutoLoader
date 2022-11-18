@@ -44,5 +44,13 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Area di scaricamento avanti/indietro" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Area di scarico davanti" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Area di scarico indietro" />
+        <text name="aPalletAutoLoader_hosePallet" text="Tubo ombelicale" />
+        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europallet a doppia lunghezza" />
+        <text name="aPalletAutoLoader_euroPalletQuadro" text="Europallet a 4 pieghe" />
+        <text name="aPalletAutoLoader_barrelPallet" text="Pallet di barili" />
+        <text name="aPalletAutoLoader_prefabWallPallet" text="Pallet di muri prefabbricati" />
+        <text name="aPalletAutoLoader_smallBundledStack" text="Pallet di legno di grandi dimensioni" />
+        <text name="aPalletAutoLoader_dogHousePallet" text="Pallet di cucce del cane" />
+        <text name="aPalletAutoLoader_metalPallet" text="Pallet di metallo" />
     </texts>
 </l10n>
