@@ -227,6 +227,9 @@ Changelog:
 	<extraSourceFiles>
 		<sourceFile filename="main.lua"/>
 	</extraSourceFiles>
+	<dependencies>
+		<dependency>FS22_aPalletAutoLoader</dependency>
+	</dependencies>
 	<inputBinding>
 		<actionBinding action="AL_LOAD_PALLET">
 			<binding device="KB_MOUSE_DEFAULT" input="KEY_b"/>
