@@ -912,16 +912,20 @@ function APalletAutoLoader:CreateAvailableTypeList()
     end
 	
 	-- wenn PnH verfügbar ist
-	table.insert(types, "hosePallet");
+	if g_modIsLoaded["pdlc_pumpsAndHosesPack"] ~= nil and g_modIsLoaded["pdlc_pumpsAndHosesPack"] then
+		table.insert(types, "hosePallet");
+	end
 	
 	-- wenn platinum verfügbar
-	table.insert(types, "euroPalletDoubleLength");
-	table.insert(types, "barrelPallet");
-	table.insert(types, "euroPalletQuadro");
-	table.insert(types, "prefabWallPallet");
-	table.insert(types, "smallBundledStack");
-	table.insert(types, "dogHousePallet");
-	table.insert(types, "metalPallet");
+	if g_modIsLoaded["pdlc_forestryPack"] ~= nil and g_modIsLoaded["pdlc_forestryPack"] then
+		table.insert(types, "euroPalletDoubleLength");
+		table.insert(types, "barrelPallet");
+		table.insert(types, "euroPalletQuadro");
+		table.insert(types, "prefabWallPallet");
+		table.insert(types, "smallBundledStack");
+		table.insert(types, "dogHousePallet");
+		table.insert(types, "metalPallet");
+	end
     
     return types;
 end
