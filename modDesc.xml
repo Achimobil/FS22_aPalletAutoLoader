@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="69">
+<modDesc descVersion="72">
 	<author>Achimobil</author>
-	<version>1.8.6.0</version>
+	<version>1.8.7.0 beta</version>
 	<title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
@@ -142,6 +142,11 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.7.0 beta
+- Palette vom Pump&Hoses als eigenes Ladegut eingefügt
+- Paletten des Platinum DCL mit LS22 Standard Euro Paletten größe können jetzt als solch auch geladen werden
+- Sondergrößen der Paletten des Platinum DCL als eigenes Ladegut eingefügt
+
 1.8.6.0
 - Lua-Fehler behoben, wenn Trigger das Löschen eines Ladeobjekts nicht korrekt melden
 - Erweitern des Längsmusters, um zusätzliche Objekte quer dahinter zu laden, wenn genug Platz vorhanden ist
