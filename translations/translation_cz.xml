@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-    <translationContributors>the.geremy, Mara</translationContributors>
-    <texts>
-        <text name="aPalletAutoLoader_stopLoading" text="Deaktivace automatického načítání" />
-        <text name="aPalletAutoLoader_startLoading" text="Aktivace automatického načítání" />
-        <text name="function_PalletAutoload_Trailer" text="Přívěs s autoloadem na palety" />
-        <text name="PalletAutoload_Trailer" text="Autoload na palety" />
-        <text name="aPalletAutoLoader_LoadingType" text="Typ nákladu" />
-        <text name="aPalletAutoLoader_liquidTank" text="Nádoba na kapaliny" />
-        <text name="aPalletAutoLoader_euroPallet" text="Europaleta" />
-        <text name="aPalletAutoLoader_bigBagPallet" text="Palety BigBagů" />
-        <text name="aPalletAutoLoader_bigBag" text="BigBag" />
-        <text name="aPalletAutoLoader_cottonRoundbale238" text="Kulatý balík bavlny" />
-        <text name="aPalletAutoLoader_tipside" text="Strana vyložení" />
-        <text name="aPalletAutoLoader_1" text="vlevo" />
-        <text name="aPalletAutoLoader_2" text="vpravo" />
-        <text name="aPalletAutoLoader_3" text="Střední" />
-        <text name="aPalletAutoLoader_4" text="zadní" />
-        <text name="configuration_aPalletAutoLoader" text="Autoload na palety" />
-        <text name="input_AL_LOAD_PALLET" text="Naložit Palety" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Další Typ načítání" />
-        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Předchozí Typ nakládání" />
-        <text name="input_AL_TOGGLE_TIPSIDE" text="Přepnout stranu vyložení" />
-        <text name="input_AL_UNLOAD" text="Vyložit zde" />
-        <text name="aPalletAutoLoader_euroPalletOversize" text="Europalety nadměrné" />
-        <text name="input_AL_TOGGLE_MARKERS" text="Ukázat/Skrýt značky" />
-        <text name="aPalletAutoLoader_roundbale125" text="Kulatý balík 125" />
-        <text name="aPalletAutoLoader_roundbale150" text="Kulatý balík 150" />
-        <text name="aPalletAutoLoader_roundbale180" text="Kulatý balík 180" />
-        <text name="aPalletAutoLoader_squarebale120" text="Hranatý balík 120" />
-        <text name="aPalletAutoLoader_squarebale180" text="Hranatý balík 180" />
-        <text name="aPalletAutoLoader_squarebale220" text="Hranatý balík 220" />
-        <text name="aPalletAutoLoader_squarebale240" text="Hranatý balík 240" />
-        <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Deaktivované napínací popruhy" />
-        <text name="aPalletAutoLoader_TensionBeltsActive" text="Aktivace napínacích popruhů" />
-        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Přepínání automatického napínání řemenů" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Vykládací oblast vysoká/nízká" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Vykládací oblast vyšší" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Vykládací oblast nižší" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Oblast vykládání vlevo/vpravo" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Vykládací oblast vlevo" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Vykládací oblast vpravo" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Vykládací oblast dopředu/dozadu" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Vykládací prostor vpředu" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Vykládací oblast zpět" />
-        <text name="aPalletAutoLoader_hosePallet" text="Přívodní hadice" />
-        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro palety s dvojitou délkou" />
-        <text name="aPalletAutoLoader_euroPalletQuadro" text="4násobné europalety" />
-        <text name="aPalletAutoLoader_barrelPallet" text="Paleta se sudy" />
-        <text name="aPalletAutoLoader_prefabWallPallet" text="Paleta prefabrikovaných stěn" />
-        <text name="aPalletAutoLoader_smallBundledStack" text="Velké dřevěné palety" />
-        <text name="aPalletAutoLoader_dogHousePallet" text="Paleta s psími boudami" />
-        <text name="aPalletAutoLoader_metalPallet" text="Paleta kovů" />
-    </texts>
+	<translationContributors>the.geremy, Mara</translationContributors>
+	<texts>
+		<text name="aPalletAutoLoader_stopLoading" text="Deaktivace automatického načítání" />
+		<text name="aPalletAutoLoader_startLoading" text="Aktivace automatického načítání" />
+		<text name="function_PalletAutoload_Trailer" text="Přívěs s autoloadem na palety" />
+		<text name="PalletAutoload_Trailer" text="Autoload na palety" />
+		<text name="aPalletAutoLoader_LoadingType" text="Typ nákladu" />
+		<text name="aPalletAutoLoader_liquidTank" text="Nádoba na kapaliny" />
+		<text name="aPalletAutoLoader_euroPallet" text="Europaleta" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="Palety BigBagů" />
+		<text name="aPalletAutoLoader_bigBag" text="BigBag" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Kulatý balík bavlny" />
+		<text name="aPalletAutoLoader_tipside" text="Strana vyložení" />
+		<text name="aPalletAutoLoader_1" text="vlevo" />
+		<text name="aPalletAutoLoader_2" text="vpravo" />
+		<text name="aPalletAutoLoader_3" text="Střední" />
+		<text name="aPalletAutoLoader_4" text="zadní" />
+		<text name="configuration_aPalletAutoLoader" text="Autoload na palety" />
+		<text name="input_AL_LOAD_PALLET" text="Naložit Palety" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Další Typ načítání" />
+		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Předchozí Typ nakládání" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Přepnout stranu vyložení" />
+		<text name="input_AL_UNLOAD" text="Vyložit zde" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalety nadměrné" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Ukázat/Skrýt značky" />
+		<text name="aPalletAutoLoader_roundbale125" text="Kulatý balík 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Kulatý balík 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Kulatý balík 180" />
+		<text name="aPalletAutoLoader_squarebale120" text="Hranatý balík 120" />
+		<text name="aPalletAutoLoader_squarebale180" text="Hranatý balík 180" />
+		<text name="aPalletAutoLoader_squarebale220" text="Hranatý balík 220" />
+		<text name="aPalletAutoLoader_squarebale240" text="Hranatý balík 240" />
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Deaktivované napínací popruhy" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Aktivace napínacích popruhů" />
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Přepínání automatického napínání řemenů" />
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Vykládací oblast vysoká/nízká" />
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Vykládací oblast vyšší" />
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Vykládací oblast nižší" />
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Oblast vykládání vlevo/vpravo" />
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Vykládací oblast vlevo" />
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Vykládací oblast vpravo" />
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Vykládací oblast dopředu/dozadu" />
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Vykládací prostor vpředu" />
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Vykládací oblast zpět" />
+		<text name="aPalletAutoLoader_hosePallet" text="Přívodní hadice" />
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro palety s dvojitou délkou" />
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4násobné europalety" />
+		<text name="aPalletAutoLoader_barrelPallet" text="Paleta se sudy" />
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Paleta prefabrikovaných stěn" />
+		<text name="aPalletAutoLoader_smallBundledStack" text="Velké dřevěné palety" />
+		<text name="aPalletAutoLoader_dogHousePallet" text="Paleta s psími boudami" />
+		<text name="aPalletAutoLoader_metalPallet" text="Paleta kovů" />
+	</texts>
 </l10n>

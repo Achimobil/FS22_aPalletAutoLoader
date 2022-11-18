@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="69">
-    <author>Achimobil</author>
-    <version>1.8.6.0</version>
-    <title>
-        <en>Pallet Autoload Specialization</en>
-        <de>Paletten Autoloader Spezialisierung</de>
-        <ru>Автопогрузка</ru>
-        <it>Specializzazione Caricamento Automatico Pallet</it>
-        <fr>Spécialisation De Chargement Automatique De Palettes</fr>
-        <es>Especialización Carga Automática Palés</es>
-        <br>Especialização Em Carregamento Automático De Paletes</br>
-    </title>
-    <description>
-        <en>
-            <![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
+	<author>Achimobil</author>
+	<version>1.8.6.0</version>
+	<title>
+		<en>Pallet Autoload Specialization</en>
+		<de>Paletten Autoloader Spezialisierung</de>
+		<ru>Автопогрузка</ru>
+		<it>Specializzazione Caricamento Automatico Pallet</it>
+		<fr>Spécialisation De Chargement Automatique De Palettes</fr>
+		<es>Especialización Carga Automática Palés</es>
+		<br>Especialização Em Carregamento Automático De Paletes</br>
+	</title>
+	<description>
+		<en>
+			<![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
 
 An example of how to use in your own mod you will find in the Strautmann SEK 802 Pallet Autoload.
 Currently supported from the standard game:
@@ -113,8 +113,8 @@ Changelog:
 - Vehicle scheme shows when loading is activated.
 - Maximum capacity displayed when load selection is made.
 ]]>
-        </en>
-        <de>
+		</en>
+		<de>
 <![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
 
 Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
@@ -215,63 +215,63 @@ Changelog:
 - Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
 - Anzeige der Maximal Kapazität bei der Ladegutauswahl.
 ]]>
-        </de>
-    </description>
-    <iconFilename>modIcon.dds</iconFilename>
-    <multiplayer supported="true"/>
-    <extraSourceFiles>
-        <sourceFile filename="main.lua"/>
-    </extraSourceFiles>
-    <inputBinding>
-        <actionBinding action="AL_LOAD_PALLET">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_b"/>
-            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_4" axisComponent="+" neutralInput="0" index="1"/>
-        </actionBinding>
-        <actionBinding action="AL_TOGGLE_LOADINGTYPE">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_z"/>
-            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_10" axisComponent="+" neutralInput="0" index="1"/>
-        </actionBinding>
-        <actionBinding action="AL_TOGGLE_LOADINGTYPEBACK">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_z"/>
-        </actionBinding>
-        <actionBinding action="AL_TOGGLE_TIPSIDE">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_u"/>
-            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_13" axisComponent="+" neutralInput="0" index="1"/>
-        </actionBinding>
-        <actionBinding action="AL_UNLOAD">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_i"/>
-            <binding device="0_XINPUT_GAMEPAD" input="BUTTON_15" axisComponent="+" neutralInput="0" index="1"/>
-        </actionBinding>
-        <actionBinding action="AL_TOGGLE_MARKERS">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_u"/>
-        </actionBinding>
-        <actionBinding action="AL_TOGGLE_AUTOMATIC_TENSIONBELTS">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_j"/>
-        </actionBinding>
-        <actionBinding action="AL_UNLOADAREA_MOVE_UPDOWN">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_e" axisComponent="+" neutralInput="0" index="1"/>
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_q" axisComponent="-" neutralInput="0" index="1"/>
-        </actionBinding>
-        <actionBinding action="AL_UNLOADAREA_MOVE_LEFTRIGHT">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_a" axisComponent="+" neutralInput="0" index="1"/>
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_d" axisComponent="-" neutralInput="0" index="1"/>
-        </actionBinding>
-        <actionBinding action="AL_UNLOADAREA_MOVE_FRONTBACK">
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_w" axisComponent="+" neutralInput="0" index="1"/>
-            <binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_s" axisComponent="-" neutralInput="0" index="1"/>
-        </actionBinding>
-    </inputBinding>
-    <actions>
-        <action name="AL_LOAD_PALLET"/>
-        <action name="AL_TOGGLE_LOADINGTYPE"/>
-        <action name="AL_TOGGLE_LOADINGTYPEBACK"/>
-        <action name="AL_TOGGLE_TIPSIDE"/>
-        <action name="AL_UNLOAD"/>
-        <action name="AL_TOGGLE_MARKERS"/>
-        <action name="AL_TOGGLE_AUTOMATIC_TENSIONBELTS"/>
-        <action name="AL_UNLOADAREA_MOVE_UPDOWN" axisType="FULL"/>
-        <action name="AL_UNLOADAREA_MOVE_LEFTRIGHT" axisType="FULL"/>
-        <action name="AL_UNLOADAREA_MOVE_FRONTBACK" axisType="FULL"/>
-    </actions>
-    <l10n filenamePrefix="translations/translation"/>
+		</de>
+	</description>
+	<iconFilename>modIcon.dds</iconFilename>
+	<multiplayer supported="true"/>
+	<extraSourceFiles>
+		<sourceFile filename="main.lua"/>
+	</extraSourceFiles>
+	<inputBinding>
+		<actionBinding action="AL_LOAD_PALLET">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_b"/>
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_4" axisComponent="+" neutralInput="0" index="1"/>
+		</actionBinding>
+		<actionBinding action="AL_TOGGLE_LOADINGTYPE">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_z"/>
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_10" axisComponent="+" neutralInput="0" index="1"/>
+		</actionBinding>
+		<actionBinding action="AL_TOGGLE_LOADINGTYPEBACK">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_z"/>
+		</actionBinding>
+		<actionBinding action="AL_TOGGLE_TIPSIDE">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_u"/>
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_13" axisComponent="+" neutralInput="0" index="1"/>
+		</actionBinding>
+		<actionBinding action="AL_UNLOAD">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_i"/>
+			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_15" axisComponent="+" neutralInput="0" index="1"/>
+		</actionBinding>
+		<actionBinding action="AL_TOGGLE_MARKERS">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_u"/>
+		</actionBinding>
+		<actionBinding action="AL_TOGGLE_AUTOMATIC_TENSIONBELTS">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_j"/>
+		</actionBinding>
+		<actionBinding action="AL_UNLOADAREA_MOVE_UPDOWN">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_e" axisComponent="+" neutralInput="0" index="1"/>
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_q" axisComponent="-" neutralInput="0" index="1"/>
+		</actionBinding>
+		<actionBinding action="AL_UNLOADAREA_MOVE_LEFTRIGHT">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_a" axisComponent="+" neutralInput="0" index="1"/>
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_d" axisComponent="-" neutralInput="0" index="1"/>
+		</actionBinding>
+		<actionBinding action="AL_UNLOADAREA_MOVE_FRONTBACK">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_w" axisComponent="+" neutralInput="0" index="1"/>
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_rctrl KEY_s" axisComponent="-" neutralInput="0" index="1"/>
+		</actionBinding>
+	</inputBinding>
+	<actions>
+		<action name="AL_LOAD_PALLET"/>
+		<action name="AL_TOGGLE_LOADINGTYPE"/>
+		<action name="AL_TOGGLE_LOADINGTYPEBACK"/>
+		<action name="AL_TOGGLE_TIPSIDE"/>
+		<action name="AL_UNLOAD"/>
+		<action name="AL_TOGGLE_MARKERS"/>
+		<action name="AL_TOGGLE_AUTOMATIC_TENSIONBELTS"/>
+		<action name="AL_UNLOADAREA_MOVE_UPDOWN" axisType="FULL"/>
+		<action name="AL_UNLOADAREA_MOVE_LEFTRIGHT" axisType="FULL"/>
+		<action name="AL_UNLOADAREA_MOVE_FRONTBACK" axisType="FULL"/>
+	</actions>
+	<l10n filenamePrefix="translations/translation"/>
 </modDesc>

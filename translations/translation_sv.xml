@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <l10n>
-    <translationContributors> </translationContributors>
-    <texts>
-        <text name="aPalletAutoLoader_stopLoading" text="Inaktivera Autoload" />
-        <text name="aPalletAutoLoader_startLoading" text="Aktivera Autoload" />
-        <text name="function_PalletAutoload_Trailer" text="Vagn med autoload för pallar" />
-        <text name="PalletAutoload_Trailer" text="Pallar Autoload" />
-        <text name="aPalletAutoLoader_LoadingType" text="Lasttyp" />
-        <text name="aPalletAutoLoader_liquidTank" text="Vätsketank (IBC-Tank)" />
-        <text name="aPalletAutoLoader_euroPallet" text="Europall" />
-        <text name="aPalletAutoLoader_bigBagPallet" text="Bigbag pallar" />
-        <text name="aPalletAutoLoader_bigBag" text="Storsäckar" />
-        <text name="aPalletAutoLoader_cottonRoundbale238" text="Rundbal bomull" />
-        <text name="aPalletAutoLoader_tipside" text="Tipp Sida" />
-        <text name="aPalletAutoLoader_1" text="Vänster" />
-        <text name="aPalletAutoLoader_2" text="Höger" />
-        <text name="aPalletAutoLoader_3" text="Mitten" />
-        <text name="aPalletAutoLoader_4" text="Bakåt" />
-        <text name="configuration_aPalletAutoLoader" text="Pall Autoload" />
-        <text name="input_AL_LOAD_PALLET" text="Lasta Pallar" />
-        <text name="input_AL_TOGGLE_LOADINGTYPE" text="Next LoadingType" />
-        <text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Föregående lastningstyp" />
-        <text name="input_AL_TOGGLE_TIPSIDE" text="Växla tipp sida" />
-        <text name="input_AL_UNLOAD" text="Lasta av här" />
-        <text name="aPalletAutoLoader_euroPalletOversize" text="Överdimensionerad Europallar" />
-        <text name="input_AL_TOGGLE_MARKERS" text="Visa/Dölj Markörer" />
-        <text name="aPalletAutoLoader_roundbale125" text="Rundbal 125" />
-        <text name="aPalletAutoLoader_roundbale150" text="Rundbal 150" />
-        <text name="aPalletAutoLoader_roundbale180" text="Rundbal 180" />
-        <text name="aPalletAutoLoader_squarebale120" text="Fyrkantsbal 120" />
-        <text name="aPalletAutoLoader_squarebale180" text="Fyrkantsbal 180" />
-        <text name="aPalletAutoLoader_squarebale220" text="Fyrkantsbal 220" />
-        <text name="aPalletAutoLoader_squarebale240" text="Fyrkantsbal 240" />
-        <text name="aPalletAutoLoader_TensionBeltsNotActive" text="Spännband inaktiverade" />
-        <text name="aPalletAutoLoader_TensionBeltsActive" text="Spännband aktiverade" />
-        <text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Växla till automatiska pännband" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Lossningsområde Upp/Ner" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Lossningsområde Upp" />
-        <text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Lossningsområde Ner" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Lossningsområde Vänster/Höger" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Lossningsområde Vänster" />
-        <text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Lossningsområde Höger" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Lossningsområde Framåt/Bakåt" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Lossningsområde Framåt" />
-        <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Lossningsområde Bakåt" />
-        <text name="aPalletAutoLoader_hosePallet" text="Slang för slamslangar" />
-        <text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europaletter med dubbel längd" />
-        <text name="aPalletAutoLoader_euroPalletQuadro" text="4-faldiga europallar" />
-        <text name="aPalletAutoLoader_barrelPallet" text="Pall med tunnor" />
-        <text name="aPalletAutoLoader_prefabWallPallet" text="Pall med väggmoduler" />
-        <text name="aPalletAutoLoader_smallBundledStack" text="Stora träpallar" />
-        <text name="aPalletAutoLoader_dogHousePallet" text="Pall med hundkojor" />
-        <text name="aPalletAutoLoader_metalPallet" text="Pall med metall" />
-    </texts>
+	<translationContributors> </translationContributors>
+	<texts>
+		<text name="aPalletAutoLoader_stopLoading" text="Inaktivera Autoload" />
+		<text name="aPalletAutoLoader_startLoading" text="Aktivera Autoload" />
+		<text name="function_PalletAutoload_Trailer" text="Vagn med autoload för pallar" />
+		<text name="PalletAutoload_Trailer" text="Pallar Autoload" />
+		<text name="aPalletAutoLoader_LoadingType" text="Lasttyp" />
+		<text name="aPalletAutoLoader_liquidTank" text="Vätsketank (IBC-Tank)" />
+		<text name="aPalletAutoLoader_euroPallet" text="Europall" />
+		<text name="aPalletAutoLoader_bigBagPallet" text="Bigbag pallar" />
+		<text name="aPalletAutoLoader_bigBag" text="Storsäckar" />
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Rundbal bomull" />
+		<text name="aPalletAutoLoader_tipside" text="Tipp Sida" />
+		<text name="aPalletAutoLoader_1" text="Vänster" />
+		<text name="aPalletAutoLoader_2" text="Höger" />
+		<text name="aPalletAutoLoader_3" text="Mitten" />
+		<text name="aPalletAutoLoader_4" text="Bakåt" />
+		<text name="configuration_aPalletAutoLoader" text="Pall Autoload" />
+		<text name="input_AL_LOAD_PALLET" text="Lasta Pallar" />
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Next LoadingType" />
+		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Föregående lastningstyp" />
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Växla tipp sida" />
+		<text name="input_AL_UNLOAD" text="Lasta av här" />
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Överdimensionerad Europallar" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Visa/Dölj Markörer" />
+		<text name="aPalletAutoLoader_roundbale125" text="Rundbal 125" />
+		<text name="aPalletAutoLoader_roundbale150" text="Rundbal 150" />
+		<text name="aPalletAutoLoader_roundbale180" text="Rundbal 180" />
+		<text name="aPalletAutoLoader_squarebale120" text="Fyrkantsbal 120" />
+		<text name="aPalletAutoLoader_squarebale180" text="Fyrkantsbal 180" />
+		<text name="aPalletAutoLoader_squarebale220" text="Fyrkantsbal 220" />
+		<text name="aPalletAutoLoader_squarebale240" text="Fyrkantsbal 240" />
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Spännband inaktiverade" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Spännband aktiverade" />
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Växla till automatiska pännband" />
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Lossningsområde Upp/Ner" />
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Lossningsområde Upp" />
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Lossningsområde Ner" />
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Lossningsområde Vänster/Höger" />
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Lossningsområde Vänster" />
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Lossningsområde Höger" />
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Lossningsområde Framåt/Bakåt" />
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Lossningsområde Framåt" />
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Lossningsområde Bakåt" />
+		<text name="aPalletAutoLoader_hosePallet" text="Slang för slamslangar" />
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europaletter med dubbel längd" />
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-faldiga europallar" />
+		<text name="aPalletAutoLoader_barrelPallet" text="Pall med tunnor" />
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Pall med väggmoduler" />
+		<text name="aPalletAutoLoader_smallBundledStack" text="Stora träpallar" />
+		<text name="aPalletAutoLoader_dogHousePallet" text="Pall med hundkojor" />
+		<text name="aPalletAutoLoader_metalPallet" text="Pall med metall" />
+	</texts>
 </l10n>
