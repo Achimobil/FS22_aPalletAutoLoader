@@ -146,6 +146,7 @@ Changelog:
 - Palette vom Pump&Hoses als eigenes Ladegut eingefügt
 - Paletten des Platinum DCL mit LS22 Standard Euro Paletten größe können jetzt als solch auch geladen werden
 - Sondergrößen der Paletten des Platinum DCL als eigenes Ladegut eingefügt
+- 120er Ballen Stacks können jetzt als 240er Ballen geladen werden
 
 1.8.6.0
 - Lua-Fehler behoben, wenn Trigger das Löschen eines Ladeobjekts nicht korrekt melden
