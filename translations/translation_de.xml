@@ -44,5 +44,6 @@
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Abladebereich vor/zurück" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Abladebereich vor" />
         <text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Abladebereich zurück" />
+        <text name="aPalletAutoLoader_hosePallet" text="Schlauch für die Gülleverschlauchung" />
     </texts>
 </l10n>

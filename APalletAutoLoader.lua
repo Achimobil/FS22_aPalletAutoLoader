@@ -910,6 +910,9 @@ function APalletAutoLoader:CreateAvailableTypeList()
         table.insert(types, "squarebale220");
         table.insert(types, "squarebale240");
     end
+	
+	-- wenn PnH verfügbar ist
+	table.insert(types, "hosePallet");
     
     return types;
 end
@@ -992,6 +995,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if string.find(object.configFileName, "objects/pallets/pictureFramePallet/pictureFramePallet.xml") then return true end
             if string.find(object.configFileName, "objects/pallets/shingleGenericPallet/shingleGenericPallet.xml") then return true end
             if string.find(object.configFileName, "objects/pallets/staircaseRailingPallet/staircaseRailingPallet.xml") then return true end
+			-- ignore pump&hoses pallet
+            if string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return false end
 			
             if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
             if object.configFileName ~= nil and string.find(object.configFileName, "/euroPallets/") then return true end
@@ -1204,6 +1209,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
         autoLoadObject.sizeY = 0.35
         autoLoadObject.sizeZ = 0.45
         autoLoadObject.type = "squarebale"
+    elseif (name == "hosePallet") then
+        local function CheckType(object)
+			-- pump&hoses pallet
+            if string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return true end
+
+            return false;
+        end
+
+        autoLoadObject.CheckTypeMethod = CheckType
+        autoLoadObject.sizeX = 0.8
+        autoLoadObject.sizeY = 1.9
+        autoLoadObject.sizeZ = 1.8
+        autoLoadObject.type = "pallet"
     end
 end
 
