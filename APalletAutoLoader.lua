@@ -980,6 +980,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
             if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return false end
             if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
             if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
+			-- platinum pallets
+            if string.find(object.configFileName, "objects/pallets/birdHousePallet/birdHousePallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/bowlsPallet/bowlsPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/bucketPallet/bucketPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/catTreePallet/catTreePallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/chairPallet/chairPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/easelPallet/easelPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/floorTilesPallet/floorTilesPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/pepperGrinderPallet/pepperGrinderPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/pictureFramePallet/pictureFramePallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/shingleGenericPallet/shingleGenericPallet.xml") then return true end
+            if string.find(object.configFileName, "objects/pallets/staircaseRailingPallet/staircaseRailingPallet.xml") then return true end
+			
             if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
             if object.configFileName ~= nil and string.find(object.configFileName, "/euroPallets/") then return true end
             if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletsOversized/") then return false end
