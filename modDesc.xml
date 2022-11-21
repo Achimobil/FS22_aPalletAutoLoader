@@ -149,6 +149,7 @@ Changelog:
 - 120er Ballen Stacks können jetzt als 240er Ballen geladen werden
 - Baumwollquaderballen können jetzt geladen werden (Base game Ballen verursachen Log warnings mit Spanngurten, diese einfach nicht mit Spanngurten befestigen)
 - Das Paletten Gewicht wird beim abladen jetzt korrekt wiederhergestellt
+- Bei Rundballen wird nur noch quadratisch geprüft ob Platz da ist, weil die Engine das nicht rund kann und den Prüfbereich selbst drehen je nach Himmelsrichtung nicht funktioniert
 
 1.8.6.0
 - Lua-Fehler behoben, wenn Trigger das Löschen eines Ladeobjekts nicht korrekt melden

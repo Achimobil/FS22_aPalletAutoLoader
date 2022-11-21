@@ -4,6 +4,7 @@
 -- https://discord.gg/Va7JNnEkcW
 
 APalletAutoLoader = {}
+APalletAutoLoader.debug = false;
 
 APalletAutoLoaderTipsides = {
 	LEFT = 1,
@@ -160,7 +161,7 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
 		g_currentMission:addExtraPrintText(loadingText);
 	end
 
-	if not spec.showMarkers then return end
+	if not spec.showMarkers and not APalletAutoLoader.debug then return end
 
 	if spec.loadArea["baseNode"] ~= nil then
 		-- DebugUtil.drawDebugReferenceAxisFromNode(spec.loadArea["baseNode"]);
@@ -213,9 +214,6 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
 		for i=1, #loadPlaces do
 			local loadPlace = loadPlaces[i]
 
-			-- center node
-			-- DebugUtil.drawDebugReferenceAxisFromNode(loadPlace.node);
-
 			-- square
 			if autoLoadType.type == "roundbale" then
 				local radius = autoLoadType.sizeX/2;
@@ -232,6 +230,27 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
 				local sizeX = autoLoadType.sizeX/2;
 				local sizeZ = autoLoadType.sizeZ/2;
 				DebugUtil.drawDebugRectangle(loadPlace.node, -sizeX, sizeX, -sizeZ, sizeZ, 0, r, g, b)
+			end
+			
+			-- overlapBox malen
+			if APalletAutoLoader.debug then
+
+				-- center node
+				DebugUtil.drawDebugReferenceAxisFromNode(loadPlace.node);
+			
+				local currentLoadHeigt = 0;
+				local x, y, z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
+				local rx, ry, rz = getWorldRotation(loadPlace.node)
+				
+				if autoLoadType.type == "roundbale" then
+					local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
+					DebugUtil.drawOverlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, r, g, b)
+				elseif autoLoadType.type == "squarebale" then
+					-- switch sizeZ and sizeX here because it is used 90° turned
+					DebugUtil.drawOverlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeZ / 2, autoLoadType.sizeY / 2, autoLoadType.sizeX / 2, r, g, b)
+				else
+					DebugUtil.drawOverlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, autoLoadType.sizeX / 2, autoLoadType.sizeY / 2, autoLoadType.sizeZ / 2, r, g, b)
+				end
 			end
 		end
 	end
@@ -1466,19 +1485,9 @@ function APalletAutoLoader:getFirstValidLoadPlace()
 
 				if autoLoadType.type == "roundbale" then
 					-- Kollision rund berechnen für Rundballen mit simuliertem Kreis, Kugel klappt nicht bei den großen ballen wegen der höhe
-					-- eine virtel umdrehung als konstante
-					local rotationQuarter = math.rad(90);
-					local testRuns = 3;
-
-					-- länge des quadrates im kreis berechnen für x und z
-					-- radius = seitenlänge / Wurzel 2
-					-- seitenlänge = radius * Wurzel 2
+					-- drehung entfernt, da diese in bestimmten Achsen nicht klappt, es muss also mit den viereck vorlieb genommen werden
 					local squareLength = (autoLoadType.sizeX / 2) * math.sqrt(2);
-
-					-- für jeden teil einen test machen
-					for i = 1, testRuns do
-						overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, (ry + (rotationQuarter / testRuns * i)), rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
-					end
+					overlapBox(x, y + (autoLoadType.sizeY / 2), z, rx, ry, rz, squareLength / 2, autoLoadType.sizeY / 2, squareLength / 2, "autoLoaderOverlapCallback", self, 3212828671, true, false, true)
 				elseif autoLoadType.type == "squarebale" then
 					-- switch sizeZ and sizeX here because it is used 90° turned
 
