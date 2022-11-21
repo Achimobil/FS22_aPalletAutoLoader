@@ -35,7 +35,7 @@
 		<text name="aPalletAutoLoader_squarebale240" text="Квадратные тюки 240" />
 		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Натяжные ремни деактивированы" />
 		<text name="aPalletAutoLoader_TensionBeltsActive" text="Натяжные ремни активированы" />
-		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Переключение автоматического натяжения ремней" />
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Переключение автозакрепления натяжных ремней" />
 		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Зону выгрузки выше/ниже" />
 		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Зону выгрузки выше" />
 		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Зону выгрузки ниже" />
@@ -45,13 +45,13 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Зону выгрузки вперёд/назад" />
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Зону выгрузки вперёд" />
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Зону выгрузки назад" />
-		<text name="aPalletAutoLoader_hosePallet" text="Напорный шланг" />
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Европоддоны двойной длины" />
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-кратные европоддоны" />
-		<text name="aPalletAutoLoader_barrelPallet" text="Поддон с бочками" />
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Поддон с блочной стеной" />
-		<text name="aPalletAutoLoader_smallBundledStack" text="Большие деревянные поддоны" />
-		<text name="aPalletAutoLoader_dogHousePallet" text="Поддон с собачьими будками" />
-		<text name="aPalletAutoLoader_metalPallet" text="Поддон с металлом" />
+		<text name="aPalletAutoLoader_hosePallet" text="Шланг для жидкого навоза" />
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="2-кратные поддоны" />
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-кратные поддоны" />
+		<text name="aPalletAutoLoader_barrelPallet" text="Поддоны с бочками" />
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Поддоны с блочными стенами" />
+		<text name="aPalletAutoLoader_smallBundledStack" text="Поддоны с длинными досками" />
+		<text name="aPalletAutoLoader_dogHousePallet" text="Поддоны с собачьими будками" />
+		<text name="aPalletAutoLoader_metalPallet" text="Поддоны с металлом" />
 	</texts>
 </l10n>
