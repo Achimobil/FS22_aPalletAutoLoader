@@ -1644,6 +1644,7 @@ function APalletAutoLoader:loadObject(object)
 							if object.spec_fillUnit.fillUnits ~= nil then
 								if object.spec_fillUnit.fillUnits[1] ~= nil then
 									object.spec_fillUnit.fillUnits[1].updateMass = false;
+									object:setMassDirty()
 								end
 							end
 						end
@@ -1775,6 +1776,7 @@ function APalletAutoLoader:unloadAll(unloadOffset)
 				if object.spec_fillUnit.fillUnits ~= nil then
 					if object.spec_fillUnit.fillUnits[1] ~= nil then
 						object.spec_fillUnit.fillUnits[1].updateMass = true;
+						object:setMassDirty()
 					end
 				end
 			end
@@ -2000,6 +2002,18 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
 				-- allowsInput einschalten damit dies wieder benutzt werden kann
 				if object.allowsInput ~= nil then
 					object.allowsInput = true;
+				end
+				
+				-- updateMass wieder einschalten, wenn abgeschaltet. Für das von Hand abladen
+				if spec.usePalletWeightReduction and object.spec_fillUnit ~= nil then
+					if object.spec_fillUnit.fillUnits ~= nil then
+						if object.spec_fillUnit.fillUnits[1] ~= nil then
+							if object.spec_fillUnit.fillUnits[1].updateMass == false then
+								object.spec_fillUnit.fillUnits[1].updateMass = true;
+								object:setMassDirty()
+							end
+						end
+					end
 				end
 
 				if next(spec.triggeredObjects) == nil then
