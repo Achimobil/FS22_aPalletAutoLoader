@@ -1017,19 +1017,19 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 			if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
 			if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
 			-- platinum pallets
-			if string.find(object.configFileName, "objects/pallets/birdHousePallet/birdHousePallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/bowlsPallet/bowlsPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/bucketPallet/bucketPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/catTreePallet/catTreePallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/chairPallet/chairPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/easelPallet/easelPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/floorTilesPallet/floorTilesPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/pepperGrinderPallet/pepperGrinderPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/pictureFramePallet/pictureFramePallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/shingleGenericPallet/shingleGenericPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/staircaseRailingPallet/staircaseRailingPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/birdHousePallet/birdHousePallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/bowlsPallet/bowlsPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/bucketPallet/bucketPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/catTreePallet/catTreePallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/chairPallet/chairPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/easelPallet/easelPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/floorTilesPallet/floorTilesPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/pepperGrinderPallet/pepperGrinderPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/pictureFramePallet/pictureFramePallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/shingleGenericPallet/shingleGenericPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/staircaseRailingPallet/staircaseRailingPallet.xml") then return true end
 			-- ignore pump&hoses pallet
-			if string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return false end
+			if object.configFileName ~= nil and string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return false end
 			
 			if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
 			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPallets/") then return true end
@@ -1249,7 +1249,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "hosePallet") then
 		local function CheckType(object)
 			-- pump&hoses pallet
-			if string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return true end
 
 			return false;
 		end
@@ -1262,8 +1262,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "euroPalletDoubleLength") then
 		local function CheckType(object)
 			-- platinum pack, 2 europlatten längs aneinander
-			if string.find(object.configFileName, "objects/pallets/bathtubPallet/bathtubPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/tablePallet/tablePallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/bathtubPallet/bathtubPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/tablePallet/tablePallet.xml") then return true end
 
 			return false;
 		end
@@ -1276,7 +1276,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "barrelPallet") then
 		local function CheckType(object)
 			-- platinum pack, 2 europlatten quer aneinander
-			if string.find(object.configFileName, "objects/pallets/barrelPallet/barrelPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/barrelPallet/barrelPallet.xml") then return true end
 
 			return false;
 		end
@@ -1289,9 +1289,9 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "euroPalletQuadro") then
 		local function CheckType(object)
 			-- platinum pack, 2 europlatten quer aneinander
-			if string.find(object.configFileName, "objects/pallets/cartonRollPallet/cartonRollPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/paperRollPallet/paperRollPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/armoirePallet/armoirePallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/cartonRollPallet/cartonRollPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/paperRollPallet/paperRollPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/armoirePallet/armoirePallet.xml") then return true end
 
 			return false;
 		end
@@ -1304,7 +1304,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "prefabWallPallet") then
 		local function CheckType(object)
 			-- platinum pack, 2 europlatten quer aneinander
-			if string.find(object.configFileName, "objects/pallets/prefabWallPallet/prefabWallPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/prefabWallPallet/prefabWallPallet.xml") then return true end
 
 			return false;
 		end
@@ -1317,8 +1317,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "smallBundledStack") then
 		local function CheckType(object)
 			-- platinum pack, 2 europlatten quer aneinander
-			if string.find(object.configFileName, "objects/pallets/planksPallet/planksPallet.xml") then return true end
-			if string.find(object.configFileName, "objects/pallets/woodBeamPallet/woodBeamPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/planksPallet/planksPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/woodBeamPallet/woodBeamPallet.xml") then return true end
 
 			return false;
 		end
@@ -1331,7 +1331,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "dogHousePallet") then
 		local function CheckType(object)
 			-- platinum pack, 2 europlatten quer aneinander
-			if string.find(object.configFileName, "objects/pallets/dogHousePallet/dogHousePallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/dogHousePallet/dogHousePallet.xml") then return true end
 
 			return false;
 		end
@@ -1345,7 +1345,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 	elseif (name == "metalPallet") then
 		local function CheckType(object)
 			-- platinum pack, 2 europlatten quer aneinander
-			if string.find(object.configFileName, "objects/pallets/metalPallet/metalPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/metalPallet/metalPallet.xml") then return true end
 
 			return false;
 		end
