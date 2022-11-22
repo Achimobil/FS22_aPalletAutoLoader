@@ -50,7 +50,7 @@
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-кратные поддоны" />
 		<text name="aPalletAutoLoader_barrelPallet" text="Поддоны с бочками" />
 		<text name="aPalletAutoLoader_prefabWallPallet" text="Поддоны с блочными стенами" />
-		<text name="aPalletAutoLoader_smallBundledStack" text="Поддоны с длинными досками" />
+		<text name="aPalletAutoLoader_smallBundledStack" text="Поддоны с длинными пиломатериалами" />
 		<text name="aPalletAutoLoader_dogHousePallet" text="Поддоны с собачьими будками" />
 		<text name="aPalletAutoLoader_metalPallet" text="Поддоны с металлом" />
 	</texts>
