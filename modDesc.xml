@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="72">
 	<author>Achimobil</author>
-	<version>1.8.7.0 beta</version>
+	<version>1.8.7.0</version>
 	<title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
@@ -40,6 +40,15 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.7.0
+- Pallet of Pump&Hoses added as own load
+- Pallets of the Platinum DCL with LS22 standard Euro pallet size can now be loaded as such as well
+- Special sizes of the Platinum DCL pallets added as own load
+- 120 bale stacks can now be loaded as 240 bales
+- Cotton square bales can now be loaded (Base game bales cause log warnings with tension belts, just do not tie them down with tension belts)
+- Pallet weight is now correctly restored on unloading
+- Round bales are now only checked square for space, because the engine can not do this round and rotate the check area itself depending on the compass direction does not work
+
 1.8.6.0
 - Fix Lua error when triggers are not correct reporting the delete of a loading object
 - Extend lengthwise loading pattern to load additional object transverse behind when there is enough space
@@ -142,12 +151,12 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
-1.8.7.0 beta
+1.8.7.0
 - Palette vom Pump&Hoses als eigenes Ladegut eingefügt
-- Paletten des Platinum DCL mit LS22 Standard Euro Paletten größe können jetzt als solch auch geladen werden
+- Paletten des Platinum DCL mit LS22 Standard Euro Paletten Größe können jetzt als solch auch geladen werden
 - Sondergrößen der Paletten des Platinum DCL als eigenes Ladegut eingefügt
 - 120er Ballen Stacks können jetzt als 240er Ballen geladen werden
-- Baumwollquaderballen können jetzt geladen werden (Base game Ballen verursachen Log warnings mit Spanngurten, diese einfach nicht mit Spanngurten befestigen)
+- Baumwollquaderballen können jetzt geladen werden (Base game Ballen verursachen Log Warnungen mit Spanngurten, diese einfach nicht mit Spanngurten befestigen)
 - Das Paletten Gewicht wird beim abladen jetzt korrekt wiederhergestellt
 - Bei Rundballen wird nur noch quadratisch geprüft ob Platz da ist, weil die Engine das nicht rund kann und den Prüfbereich selbst drehen je nach Himmelsrichtung nicht funktioniert
 
