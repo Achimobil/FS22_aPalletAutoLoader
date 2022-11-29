@@ -44,9 +44,9 @@ Changelog:
 - Renamed modIcon.dds to icon_mod.dds because of change of Giants Guidelines
 
 1.8.7.0
-- Pallet of Pump&Hoses added as own load
-- Pallets of the Platinum DCL with LS22 standard Euro pallet size can now be loaded as such as well
-- Special sizes of the Platinum DCL pallets added as own load
+- Pallet of Pumps&Hoses DLC added as own load
+- Pallets of the Platinum DLC with FS22 standard Euro pallet size can now be loaded as such as well
+- Special sizes of the Platinum DLC pallets added as own load
 - 120 bale stacks can now be loaded as 240 bales
 - Cotton square bales can now be loaded (Base game bales cause log warnings with tension belts, just do not tie them down with tension belts)
 - Pallet weight is now correctly restored on unloading
