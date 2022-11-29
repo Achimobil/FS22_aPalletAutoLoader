@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="72">
 	<author>Achimobil</author>
-	<version>1.8.7.0</version>
+	<version>1.8.7.1</version>
 	<title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
@@ -40,6 +40,9 @@ You can also switch it off yourself with [B].
 Instructions for build in and help you will find on the <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.7.1
+- Renamed modIcon.dds to icon_mod.dds because of change of Giants Guidelines
+
 1.8.7.0
 - Pallet of Pump&Hoses added as own load
 - Pallets of the Platinum DCL with LS22 standard Euro pallet size can now be loaded as such as well
@@ -151,6 +154,9 @@ Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
 
 Changelog:
+1.8.7.1
+- Datei modIcon.dds umbenannt in icon_mod.dds wegen Änderung der Giants Guidelines
+
 1.8.7.0
 - Palette vom Pump&Hoses als eigenes Ladegut eingefügt
 - Paletten des Platinum DCL mit LS22 Standard Euro Paletten Größe können jetzt als solch auch geladen werden
@@ -235,7 +241,7 @@ Changelog:
 ]]>
 		</de>
 	</description>
-	<iconFilename>modIcon.dds</iconFilename>
+	<iconFilename>icon_mod.dds</iconFilename>
 	<multiplayer supported="true"/>
 	<extraSourceFiles>
 		<sourceFile filename="main.lua"/>
