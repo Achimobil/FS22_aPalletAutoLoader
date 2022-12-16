@@ -1682,11 +1682,12 @@ function APalletAutoLoader:loadObject(object)
 
 							local x1, y1, z1 = localToWorld(objectNodeId, getCenterOfMass(objectNodeId))
 
-							setWorldTranslation(jointTransform, x1, y1, z1)
-							constr:setJointTransforms(jointTransform, jointTransform)
-							constr:setRotationLimit(0, 0, 0)
-							constr:setRotationLimit(1, 0, 0)
-							constr:setRotationLimit(2, 0, 0)
+							setWorldTranslation(jointTransform, x1, y1, z1);
+							constr:setJointTransforms(jointTransform, jointTransform);
+							constr:setEnableCollision(true);
+							constr:setRotationLimit(0, 0, 0);
+							constr:setRotationLimit(1, 0, 0);
+							constr:setRotationLimit(2, 0, 0);
 
 							local springForce = 1000
 							local springDamping = 10

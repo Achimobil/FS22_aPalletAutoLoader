@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="72">
 	<author>Achimobil</author>
-	<version>1.8.7.1</version>
+	<version>1.8.7.2 beta 1</version>
 	<title>
 		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
@@ -160,6 +160,9 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
+1.8.7.2 beta
+- collision für joint beim laden aktiviert nach Vorbild der Spanngurte aus dem Patch 1.8
+
 1.8.7.1
 - Datei modIcon.dds umbenannt in icon_mod.dds wegen Änderung der Giants Guidelines
 
