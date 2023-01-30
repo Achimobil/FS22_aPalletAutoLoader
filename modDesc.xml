@@ -45,7 +45,7 @@ Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestatt
 Changelog:
 1.8.7.2
 - Kollision für joint beim laden aktiviert nach Vorbild der Spanngurte aus dem Patch 1.8
-- Unload lua fehler umgangen und Log Einträge eingefügt. Beim Auftreten der Warnung soll die ganze Log in den Discord Kanal des Autoloaders geposted werden.
+- Unload lua Fehler umgangen und Log Einträge eingefügt. Beim Auftreten der Warnung soll die ganze Log in den Discord Kanal des Autoloaders geposted werden.
 - Platinum DLC Palettengrößen jetzt auch für andere Paletten nutzbar, wenn das Platinum DLC aktiv ist
 
 1.8.7.1
