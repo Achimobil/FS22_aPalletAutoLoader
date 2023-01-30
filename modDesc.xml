@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="72">
 	<author>Achimobil</author>
-	<version>1.8.7.2 beta 1</version>
+	<version>1.8.7.2</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,9 +43,10 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
-1.8.7.2 beta
+1.8.7.2
 - Kollision für joint beim laden aktiviert nach Vorbild der Spanngurte aus dem Patch 1.8
 - Unload lua fehler umgangen und Log Einträge eingefügt. Beim Auftreten der Warnung soll die ganze Log in den Discord Kanal des Autoloaders geposted werden.
+- Platinum DLC Palettengrößen jetzt auch für andere Paletten nutzbar, wenn das Platinum DLC aktiv ist
 
 1.8.7.1
 - Datei modIcon.dds umbenannt in icon_mod.dds wegen Änderung der Giants Guidelines
@@ -164,6 +165,11 @@ Upload on other sites only by myself, linking only with original download link. 
 Modifying and re-uploading in whole or in part is not allowed!
 
 Changelog:
+1.8.7.2
+- Activated collision for joint during loading following the example of the tension belts from patch 1.8.
+- Unload lua error bypassed and log entries inserted. When the warning occurs, the whole log should be posted in the Discord channel of the autoloader.
+- Platinum DLC palette sizes can now also be used for other palettes if the Platinum DLC is active.
+
 1.8.7.1
 - Renamed modIcon.dds to icon_mod.dds because of change of Giants Guidelines
 
