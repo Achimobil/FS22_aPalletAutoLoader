@@ -1,7 +1,7 @@
 ---Specialization for automatically load objects onto a vehicle by Achimobil
 -- It is not allowed to copy my code complete or in Parts into other mods
 -- If you have any issues please report them in my Discord on the channel for the mod.
--- https://discord.gg/Va7JNnEkcW
+-- https://www.achimobil.de/ls-19-22-modding/
 
 APalletAutoLoader = {}
 APalletAutoLoader.debug = false;
@@ -1601,15 +1601,24 @@ function APalletAutoLoader:loadObject(object)
 	if object ~= nil then
 		if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
 			local spec = self.spec_aPalletAutoLoader
+		
 			if spec.triggeredObjects[object] == nil then
 				local currentAutoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
 				if spec.numTriggeredObjects < currentAutoLoadType.maxItems then
 					local firstValidLoadPlace, currentLoadHeigt = self:getFirstValidLoadPlace()
-					if firstValidLoadPlace ~= -1 then
+			
+					local objectNodeId = object.nodeId or object.components[1].node;
+					if objectNodeId == 0 then
+						Logging.warning("A Pallet Autoloader Problem with object without valid id on loading. Please report the complete log to the discord channel for finding the source of this problem, thanks");
+						print("DEBUG start object Info");
+						DebugUtil.printTableRecursively(object,"_",0,2);
+						print("DEBUG end object Info");
+					end
+					
+					if firstValidLoadPlace ~= -1 and objectNodeId ~= 0 then
 						local loadPlaces = currentAutoLoadType.places;
 						local loadPlace = loadPlaces[firstValidLoadPlace]
 						local x,y,z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
-						local objectNodeId = object.nodeId or object.components[1].node
 						local rx,ry,rz = getWorldRotation(loadPlace.node);
 
 						-- bigBags and pallets have two components and appear as vehicle, so we treat them differently
@@ -1755,8 +1764,14 @@ function APalletAutoLoader:unloadAll(unloadOffset)
 	spec.isFullLoaded = false;
 
 	for object,_ in pairs(spec.triggeredObjects) do
-		if object ~= nil and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) and (object.isDeleted == nil or object.isDeleted == false) then
-			local objectNodeId = object.nodeId or object.components[1].node
+		local objectNodeId = object.nodeId or object.components[1].node;
+		if objectNodeId == 0 then
+			Logging.warning("A Pallet Autoloader Problem with object without valid id. Please report the complete log to the discord channel for finding the source of this problem, thanks");
+			print("DEBUG start object Info");
+			DebugUtil.printTableRecursively(object,"_",0,2);
+			print("DEBUG end object Info");
+		end
+		if object ~= nil and objectNodeId ~= 0 and (object.currentlyLoadedOnAPalletAutoLoaderId == nil or object.currentlyLoadedOnAPalletAutoLoaderId == self.id) and (object.isDeleted == nil or object.isDeleted == false) then
 			
 			-- store current rotation to restore later
 			local rx,ry,rz = getWorldRotation(objectNodeId);

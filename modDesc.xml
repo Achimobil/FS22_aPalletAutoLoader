@@ -3,8 +3,8 @@
 	<author>Achimobil</author>
 	<version>1.8.7.2 beta 1</version>
 	<title>
-		<en>Pallet Autoload Specialization</en>
 		<de>Paletten Autoloader Spezialisierung</de>
+		<en>Pallet Autoload Specialization</en>
 		<ru>Автопогрузка</ru>
 		<it>Specializzazione Caricamento Automatico Pallet</it>
 		<fr>Spécialisation De Chargement Automatique De Palettes</fr>
@@ -12,6 +12,127 @@
 		<br>Especialização Em Carregamento Automático De Paletes</br>
 	</title>
 	<description>
+		<de>
+<![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
+
+Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
+Aktuell wird aus dem Standard Spiel unterstützt:
+- Standard Europaletten
+- Flüssigkeitstanks
+- Bigbag Paletten
+- Rundballen
+- Quaderballen 120/180/220/240
+- Bigbags
+Paletten aus den folgenden Mods sind nutzbar:
+- Paket Von Premium-Paletten Und Säcken
+- HoT Pommes Factory
+Außerdem alle Euro Paletten, die nach dem Prinzip der Basis Spiel Paletten aufgebaut sind.
+
+Bedienung:
+Aktiviert das Laden mit [B] und fahrt dann neben eine Palette oder einen Ballen um ihn auf zu laden.
+Achtet darauf, dass ihr auch das richtige Ladegut ausgewählt habt.
+Die Paletten oder Ballen liegen dann, wie von Hand geladen, auf der Ladefläche. 
+Nicht vergessen das Ihr Spanngurte anlegt, sonst rutschen sie.
+Ihr könnt die Entladeseite mit [U] wählen und mit [I] entladen.
+Das Laden schaltet sich automatisch ab, wenn kein Ladeplatz mehr gefunden wird.
+Ihr könnt es aber auch mit [B] wieder selbst abschalten.
+
+Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
+
+Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Downloadlink. KEIN Ersatzlink!
+Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
+
+Changelog:
+1.8.7.2 beta
+- Kollision für joint beim laden aktiviert nach Vorbild der Spanngurte aus dem Patch 1.8
+- Unload lua fehler umgangen und Log Einträge eingefügt. Beim Auftreten der Warnung soll die ganze Log in den Discord Kanal des Autoloaders geposted werden.
+
+1.8.7.1
+- Datei modIcon.dds umbenannt in icon_mod.dds wegen Änderung der Giants Guidelines
+
+1.8.7.0
+- Palette vom Pump&Hoses als eigenes Ladegut eingefügt
+- Paletten des Platinum DCL mit LS22 Standard Euro Paletten Größe können jetzt als solch auch geladen werden
+- Sondergrößen der Paletten des Platinum DCL als eigenes Ladegut eingefügt
+- 120er Ballen Stacks können jetzt als 240er Ballen geladen werden
+- Baumwollquaderballen können jetzt geladen werden (Base game Ballen verursachen Log Warnungen mit Spanngurten, diese einfach nicht mit Spanngurten befestigen)
+- Das Paletten Gewicht wird beim abladen jetzt korrekt wiederhergestellt
+- Bei Rundballen wird nur noch quadratisch geprüft ob Platz da ist, weil die Engine das nicht rund kann und den Prüfbereich selbst drehen je nach Himmelsrichtung nicht funktioniert
+
+1.8.6.0
+- Lua-Fehler behoben, wenn Trigger das Löschen eines Ladeobjekts nicht korrekt melden
+- Erweitern des Längsmusters, um zusätzliche Objekte quer dahinter zu laden, wenn genug Platz vorhanden ist
+- Vereinfachung der Ballenidentifizierung für bessere Mod-Kompatibilität
+- Zweite Tastenbelegung hinzugefügt, um rückwärts durch die Ladetyp-Liste zu schalten (Standard: Shift + Y)
+
+1.8.5.1
+- Erweiterung des auswählbaren Ladeguts kann jetzt mit mods per skript gemacht werden.
+- Mod Icon verbessert
+- Paletten werden jetzt auch erkannt, wenn diese nicht direkt vom typ "pallet" sind.
+
+1.8.4.1
+- usePalletWeightReduction Konfiguration eingefügt zur Reduzierung des Gewichts von geladenen Paletten. Default true
+- Changelog aufgeräumt
+
+1.8.3.1
+- Bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
+- BR Übersetzung hinzugefügt
+
+1.8.2.0
+- neue Funktionen zum auslesen des Ballen status eingefügt
+- Ballen werden jetzt nicht mehr aus der Presskammer oder dem Wickler gezogen
+
+1.8.1.0
+- SV Übersetzungen hinzugefügt
+- Baumwollballen vereinfacht in der Erkennung
+- Korrektur für Quaderballen bei kleinen Ladeflächen
+- Eventlistener bei nicht AL Konfiguration deregistriert zur verbesserung der Performance
+- Verschieben der Abladefläche im F1 Menü nur anzeigen, wenn Markierungen sichtbar sind.
+
+1.8.0.1
+- Abladeposition auf dedicated Server gefixed
+- RU Übersetzungen von Nagor verbessert
+
+1.8.0.0
+- Code Optimierungen und Verwendung von Giants Timer wegen abstürzen
+- Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
+- Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet und erst dann kann die Seite geändert werden
+- Markierungen werden beim Abladen automatisch ausgeblendet
+- Blockieren von Fahrzeugentladetriggern auf der Ladefläche zur Verringerung von Seiteneffekten durch die defekten Giants trigger
+- Neues Lademuster, wenn mehr auf die Fläche passt durch eine längs und den Rest quer zu laden
+- 120er Quaderballen eingefügt. Vorsicht, die sind aufgrund ihrer Größe nicht sehr stabil
+- Verbindung mit CP überarbeitet
+- maxObjects und height können jetzt pro Ladegut vom Modder definiert werden, wenn diese vom default abweichen
+
+1.7.3.0
+- Lua-Trigger-Fehler behoben, der durch Update 1.4 verursacht wurde
+- Tension Belt Trigger überarbeitet
+- Autoloader können sich die Paletten nicht mehr von der Ladefläche eines anderen Autoloaders weg nehmen (mehrfache Anhänger)
+- onAIFieldWorker events implementiert
+- Spanngurte haben nun eine Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync. Auf dem Server 1,5 Sekunden im Single Player 0,2 Sekunden. Rückmeldungen hierzu sind erwünscht.
+- Runtergefallene oder von Hand runtergenommene Paletten werden jetzt beim abladen nicht noch mal versetzt
+- Automatische Spanngurte können nun pro Fahrzeug mit [lctrl]+[J] aktiviert/deaktiviert werden. Dies wird pro Fahrzeug gespeichert.
+- Die Suche nach gültigen Ladeplätzen wurde optimiert, indem ungültige Ladeplätze gespeichert werden, solange der Lader aktiv ist.
+- Entladeseite rückwärts für alle Fahrzeuge als Standard hinzufügen. Position kann vom Modder konfiguriert werden.
+- Prioritäten der Tastenbelegung geändert, um wichtige Einträge in der F1-Hilfe besser sichtbar zu machen.
+- Änderung der Aktivierung auf LS Standard für Ladewagen [B] und immer aktivierbar. 
+- Text der Entladeseite im F1 auf Dedi gefixed
+- Support von Multifruit Pack Ballen inkl. Lavendel Rundballen (ladebar als Baumwoll Rundballen)
+- Ladegut nur noch wählbar, wenn der Lademodus deaktiviert ist
+
+1.6.2.0
+- Quaderballen Ladeverhalten optimiert
+- Fix für Wollpalette
+- Möglichkeit für externe Mods zum zugriff auf die Funktionen geschaffen
+- Gewähltes Ladegut wird jetzt als Extra Text im Hilfe Menü angezeigt
+- Paletten Größen angepasst an durchnittliche Werte neuer Mods
+- Modder können ihre eigenen Paletten nun zusätzlich durch die Ordnerstruktur ladbar machen. Details im Wiki.
+- Umbau der Kommunikation mit dem Dedi Server zur Verbesserung der Performance.
+- Lademodus bleibt nun aktiv bis der Trailer voll ist oder er abgeschaltet wird. Spangurte werden zwischendurch angezogen, wenn der Trailer das unterstützt.
+- Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
+- Anzeige der Maximal Kapazität bei der Ladegutauswahl.
+]]>
+		</de>
 		<en>
 			<![CDATA[Base Mod for using Mods with Pallet Autoload Specialization
 
@@ -129,126 +250,6 @@ Changelog:
 - Maximum capacity displayed when load selection is made.
 ]]>
 		</en>
-		<de>
-<![CDATA[Basis Mod für die Verwendung von Mods mit Paletten Autoloader Spezialisierung.
-
-Ein Vorbild wie die Spezialisierung einzubauen ist findest du im Strautmann SEK 802 Paletten Autoloader.
-Aktuell wird aus dem Standard Spiel unterstützt:
-- Standard Europaletten
-- Flüssigkeitstanks
-- Bigbag Paletten
-- Rundballen
-- Quaderballen 120/180/220/240
-- Bigbags
-Paletten aus den folgenden Mods sind nutzbar:
-- Paket Von Premium-Paletten Und Säcken
-- HoT Pommes Factory
-Außerdem alle Euro Paletten, die nach dem Prinzip der Basis Spiel Paletten aufgebaut sind.
-
-Bedienung:
-Aktiviert das Laden mit [B] und fahrt dann neben eine Palette oder einen Ballen um ihn auf zu laden.
-Achtet darauf, dass ihr auch das richtige Ladegut ausgewählt habt.
-Die Paletten oder Ballen liegen dann, wie von Hand geladen, auf der Ladefläche. 
-Nicht vergessen das Ihr Spanngurte anlegt, sonst rutschen sie.
-Ihr könnt die Entladeseite mit [U] wählen und mit [I] entladen.
-Das Laden schaltet sich automatisch ab, wenn kein Ladeplatz mehr gefunden wird.
-Ihr könnt es aber auch mit [B] wieder selbst abschalten.
-
-Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://bitbucket.org/Achimobil79/ls22_palletautoloader/wiki/Home">Bitbucket Wiki</a>
-
-Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Downloadlink. KEIN Ersatzlink!
-Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
-
-Changelog:
-1.8.7.2 beta
-- collision für joint beim laden aktiviert nach Vorbild der Spanngurte aus dem Patch 1.8
-
-1.8.7.1
-- Datei modIcon.dds umbenannt in icon_mod.dds wegen Änderung der Giants Guidelines
-
-1.8.7.0
-- Palette vom Pump&Hoses als eigenes Ladegut eingefügt
-- Paletten des Platinum DCL mit LS22 Standard Euro Paletten Größe können jetzt als solch auch geladen werden
-- Sondergrößen der Paletten des Platinum DCL als eigenes Ladegut eingefügt
-- 120er Ballen Stacks können jetzt als 240er Ballen geladen werden
-- Baumwollquaderballen können jetzt geladen werden (Base game Ballen verursachen Log Warnungen mit Spanngurten, diese einfach nicht mit Spanngurten befestigen)
-- Das Paletten Gewicht wird beim abladen jetzt korrekt wiederhergestellt
-- Bei Rundballen wird nur noch quadratisch geprüft ob Platz da ist, weil die Engine das nicht rund kann und den Prüfbereich selbst drehen je nach Himmelsrichtung nicht funktioniert
-
-1.8.6.0
-- Lua-Fehler behoben, wenn Trigger das Löschen eines Ladeobjekts nicht korrekt melden
-- Erweitern des Längsmusters, um zusätzliche Objekte quer dahinter zu laden, wenn genug Platz vorhanden ist
-- Vereinfachung der Ballenidentifizierung für bessere Mod-Kompatibilität
-- Zweite Tastenbelegung hinzugefügt, um rückwärts durch die Ladetyp-Liste zu schalten (Standard: Shift + Y)
-
-1.8.5.1
-- Erweiterung des auswählbaren Ladeguts kann jetzt mit mods per skript gemacht werden.
-- Mod Icon verbessert
-- Paletten werden jetzt auch erkannt, wenn diese nicht direkt vom typ "pallet" sind.
-
-1.8.4.1
-- usePalletWeightReduction Konfiguration eingefügt zur Reduzierung des Gewichts von geladenen Paletten. Default true
-- Changelog aufgeräumt
-
-1.8.3.1
-- Bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
-- BR Übersetzung hinzugefügt
-
-1.8.2.0
-- neue Funktionen zum auslesen des Ballen status eingefügt
-- Ballen werden jetzt nicht mehr aus der Presskammer oder dem Wickler gezogen
-
-1.8.1.0
-- SV Übersetzungen hinzugefügt
-- Baumwollballen vereinfacht in der Erkennung
-- Korrektur für Quaderballen bei kleinen Ladeflächen
-- Eventlistener bei nicht AL Konfiguration deregistriert zur verbesserung der Performance
-- Verschieben der Abladefläche im F1 Menü nur anzeigen, wenn Markierungen sichtbar sind.
-
-1.8.0.1
-- Abladeposition auf dedicated Server gefixed
-- RU Übersetzungen von Nagor verbessert
-
-1.8.0.0
-- Code Optimierungen und Verwendung von Giants Timer wegen abstürzen
-- Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
-- Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet und erst dann kann die Seite geändert werden
-- Markierungen werden beim Abladen automatisch ausgeblendet
-- Blockieren von Fahrzeugentladetriggern auf der Ladefläche zur Verringerung von Seiteneffekten durch die defekten Giants trigger
-- Neues Lademuster, wenn mehr auf die Fläche passt durch eine längs und den Rest quer zu laden
-- 120er Quaderballen eingefügt. Vorsicht, die sind aufgrund ihrer Größe nicht sehr stabil
-- Verbindung mit CP überarbeitet
-- maxObjects und height können jetzt pro Ladegut vom Modder definiert werden, wenn diese vom default abweichen
-
-1.7.3.0
-- Lua-Trigger-Fehler behoben, der durch Update 1.4 verursacht wurde
-- Tension Belt Trigger überarbeitet
-- Autoloader können sich die Paletten nicht mehr von der Ladefläche eines anderen Autoloaders weg nehmen (mehrfache Anhänger)
-- onAIFieldWorker events implementiert
-- Spanngurte haben nun eine Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync. Auf dem Server 1,5 Sekunden im Single Player 0,2 Sekunden. Rückmeldungen hierzu sind erwünscht.
-- Runtergefallene oder von Hand runtergenommene Paletten werden jetzt beim abladen nicht noch mal versetzt
-- Automatische Spanngurte können nun pro Fahrzeug mit [lctrl]+[J] aktiviert/deaktiviert werden. Dies wird pro Fahrzeug gespeichert.
-- Die Suche nach gültigen Ladeplätzen wurde optimiert, indem ungültige Ladeplätze gespeichert werden, solange der Lader aktiv ist.
-- Entladeseite rückwärts für alle Fahrzeuge als Standard hinzufügen. Position kann vom Modder konfiguriert werden.
-- Prioritäten der Tastenbelegung geändert, um wichtige Einträge in der F1-Hilfe besser sichtbar zu machen.
-- Änderung der Aktivierung auf LS Standard für Ladewagen [B] und immer aktivierbar. 
-- Text der Entladeseite im F1 auf Dedi gefixed
-- Support von Multifruit Pack Ballen inkl. Lavendel Rundballen (ladebar als Baumwoll Rundballen)
-- Ladegut nur noch wählbar, wenn der Lademodus deaktiviert ist
-
-1.6.2.0
-- Quaderballen Ladeverhalten optimiert
-- Fix für Wollpalette
-- Möglichkeit für externe Mods zum zugriff auf die Funktionen geschaffen
-- Gewähltes Ladegut wird jetzt als Extra Text im Hilfe Menü angezeigt
-- Paletten Größen angepasst an durchnittliche Werte neuer Mods
-- Modder können ihre eigenen Paletten nun zusätzlich durch die Ordnerstruktur ladbar machen. Details im Wiki.
-- Umbau der Kommunikation mit dem Dedi Server zur Verbesserung der Performance.
-- Lademodus bleibt nun aktiv bis der Trailer voll ist oder er abgeschaltet wird. Spangurte werden zwischendurch angezogen, wenn der Trailer das unterstützt.
-- Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
-- Anzeige der Maximal Kapazität bei der Ladegutauswahl.
-]]>
-		</de>
 	</description>
 	<iconFilename>icon_mod.dds</iconFilename>
 	<multiplayer supported="true"/>
