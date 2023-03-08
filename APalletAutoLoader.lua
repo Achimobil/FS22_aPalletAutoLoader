@@ -4,7 +4,7 @@
 -- https://www.achimobil.de/ls-19-22-modding/
 
 APalletAutoLoader = {}
-APalletAutoLoader.debug = false;
+APalletAutoLoader.debug = true;
 
 APalletAutoLoaderTipsides = {
 	LEFT = 1,
@@ -59,7 +59,10 @@ function APalletAutoLoader.initSpecialization()
 	schema:register(XMLValueType.FLOAT, baseXmlPath .. ".loadArea#width", "width of the loadArea")
 	schema:register(XMLValueType.STRING, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#name", "name of the loading type to configure different than base setting")
 	schema:register(XMLValueType.STRING, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#maxObjects", "max number of objects loadable for this type, otherwise base maxObjects is used")
-	schema:register(XMLValueType.STRING, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#height", "height to use for this type, otherwise loadingArea height is used")
+	schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#leftRightCornerOffset", "Offset for the left corner, otherwise loadingArea value is used")
+	schema:register(XMLValueType.FLOAT, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#lenght", "length to use for this type, otherwise loadingArea value is used")
+	schema:register(XMLValueType.FLOAT, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#height", "height to use for this type, otherwise loadingArea value is used")
+	schema:register(XMLValueType.FLOAT, baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(?)#width", "width to use for this type, otherwise loadingArea value is used")
 
 	schema:setXMLSpecializationType()
 
@@ -171,14 +174,26 @@ function APalletAutoLoader:onDraw(isActiveForInput, isActiveForInputIgnoreSelect
 
 	if spec.loadArea["baseNode"] ~= nil then
 		-- DebugUtil.drawDebugReferenceAxisFromNode(spec.loadArea["baseNode"]);
+		
+		local leftRightCornerOffsetForObjectType = spec.loadArea["leftRightCornerOffset"];
+		local heightForObjectType = spec.loadArea["height"];
+		local lenghtForObjectType = spec.loadArea["lenght"];
+		local widthForObjectType = spec.loadArea["width"];
+		local name = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].name;
+		if spec.autoLoadObjectSettings[name] ~= nil then
+			leftRightCornerOffsetForObjectType = spec.autoLoadObjectSettings[name].leftRightCornerOffset;
+			lenghtForObjectType = spec.autoLoadObjectSettings[name].lenght
+			heightForObjectType = spec.autoLoadObjectSettings[name].height
+			widthForObjectType = spec.autoLoadObjectSettings[name].width
+		end
 
 		-- draw line around loading area
-		local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
+		local cornerX,cornerY,cornerZ = unpack(leftRightCornerOffsetForObjectType);
 		local node = spec.loadArea["baseNode"]
-		local minX = (-spec.loadArea["width"]*0.5)+(cornerX-(spec.loadArea["width"]*0.5));
-		local maxX = (spec.loadArea["width"]*0.5)+(cornerX-(spec.loadArea["width"]*0.5));
-		local maxZ = (spec.loadArea["lenght"]*0.5)+(cornerZ-(spec.loadArea["lenght"]*0.5));
-		local minZ = (-spec.loadArea["lenght"]*0.5)+(cornerZ-(spec.loadArea["lenght"]*0.5));
+		local minX = (-widthForObjectType*0.5)+(cornerX-(widthForObjectType*0.5));
+		local maxX = (widthForObjectType*0.5)+(cornerX-(widthForObjectType*0.5));
+		local maxZ = (lenghtForObjectType*0.5)+(cornerZ-(lenghtForObjectType*0.5));
+		local minZ = (-lenghtForObjectType*0.5)+(cornerZ-(lenghtForObjectType*0.5));
 		local yOffset = cornerY;
 		local r = 0;
 		local g = 0.8;
@@ -597,6 +612,7 @@ function APalletAutoLoader:onLoad(savegame)
 	spec.useTensionBelts = false;
 	spec.tensionBeltsDelay = 210;
 	spec.usePalletWeightReduction = true
+	spec.autoLoadObjectSettings = {}
 
 	if g_dedicatedServer ~= nil then
 		spec.tensionBeltsDelay = 1500;
@@ -639,7 +655,6 @@ function APalletAutoLoader:onLoad(savegame)
 	end
 
 	local i = 0
-	local autoLoadObjectSettings = {}
 	while true do
 		local autoLoadObjectKey = string.format(baseXmlPath .. ".autoLoadObjectSettings.autoLoadObjectSetting(%d)", i)
 		if not self.xmlFile:hasProperty(autoLoadObjectKey) then
@@ -652,8 +667,11 @@ function APalletAutoLoader:onLoad(savegame)
 			Logging.xmlWarning(self.xmlFile, "autoLoadObjectSetting has no name");
 		else
 			autoLoadObjectSetting.maxObjects = self.xmlFile:getValue(autoLoadObjectKey .. "#maxObjects", spec.maxObjects);
+			autoLoadObjectSetting.leftRightCornerOffset = self.xmlFile:getValue(autoLoadObjectKey .. "#leftRightCornerOffset", nil, true) or spec.loadArea["leftRightCornerOffset"];
+			autoLoadObjectSetting.lenght = self.xmlFile:getValue(autoLoadObjectKey .. "#lenght", spec.loadArea["lenght"]);
 			autoLoadObjectSetting.height = self.xmlFile:getValue(autoLoadObjectKey .. "#height", spec.loadArea["height"]);
-			autoLoadObjectSettings[autoLoadObjectSetting.name] = autoLoadObjectSetting;
+			autoLoadObjectSetting.width = self.xmlFile:getValue(autoLoadObjectKey .. "#width", spec.loadArea["width"]);
+			spec.autoLoadObjectSettings[autoLoadObjectSetting.name] = autoLoadObjectSetting;
 		end
 
 		i = i + 1
@@ -680,21 +698,33 @@ function APalletAutoLoader:onLoad(savegame)
 				return;
 			end
 			
+			-- load from settings if available, otherwise base data
+			local leftRightCornerOffsetForObjectType = spec.loadArea["leftRightCornerOffset"];
+			local heightForObjectType = spec.loadArea["height"];
+			local lenghtForObjectType = spec.loadArea["lenght"];
+			local widthForObjectType = spec.loadArea["width"];
+			if spec.autoLoadObjectSettings[name] ~= nil then
+				leftRightCornerOffsetForObjectType = spec.autoLoadObjectSettings[name].leftRightCornerOffset;
+				lenghtForObjectType = spec.autoLoadObjectSettings[name].lenght
+				heightForObjectType = spec.autoLoadObjectSettings[name].height
+				widthForObjectType = spec.autoLoadObjectSettings[name].width
+			end
+			
 			autoLoadObject.places = {}
-			local cornerX,cornerY,cornerZ = unpack(spec.loadArea["leftRightCornerOffset"]);
+			local cornerX,cornerY,cornerZ = unpack(leftRightCornerOffsetForObjectType);
 
 			-- paletten nebeneinander bestimmen
 			-- vieviele passen ohne drehung?
-			local restFirstNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.05);
-			local countNoRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.05) + 1
+			local restFirstNoRotation = (widthForObjectType - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.05);
+			local countNoRotation = (widthForObjectType - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.05) + 1
 
 			-- vie viele passen mit drehung?
-			local restFirstRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
-			local countRotation = (spec.loadArea["width"] - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
+			local restFirstRotation = (widthForObjectType - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
+			local countRotation = (widthForObjectType - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
 
 			-- wie viele passen wenn eine mit drehung gemacht wird?
-			local restOneRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - autoLoadObject.sizeZ - 0.05) % (autoLoadObject.sizeX + 0.05);
-			local countOneRotation = (spec.loadArea["width"] - autoLoadObject.sizeX - restOneRotation - autoLoadObject.sizeZ - 0.05) / (autoLoadObject.sizeX + 0.05) + 2
+			local restOneRotation = (widthForObjectType - autoLoadObject.sizeX - autoLoadObject.sizeZ - 0.05) % (autoLoadObject.sizeX + 0.05);
+			local countOneRotation = (widthForObjectType - autoLoadObject.sizeX - restOneRotation - autoLoadObject.sizeZ - 0.05) / (autoLoadObject.sizeX + 0.05) + 2
 
 			local backDistance = 0.05;
 			if autoLoadObject.type == "roundbale" then
@@ -712,7 +742,7 @@ function APalletAutoLoader:onLoad(savegame)
 
 					-- position der zwei reihen
 					local rowX1 = (cornerX - (autoLoadObject.sizeX / 2))
-					local rowX2 = (cornerX - spec.loadArea["width"] + (autoLoadObject.sizeX / 2))
+					local rowX2 = (cornerX - widthForObjectType + (autoLoadObject.sizeX / 2))
 
 					-- abweichende distanz berechnen aus dem abstand der beiden Reihen und dem durchmesser
 					-- a² + b² = c²
@@ -727,8 +757,8 @@ function APalletAutoLoader:onLoad(savegame)
 
 					-- schleifen bis zur länge links und rechts ausgericht
 					-- linke seite
-					for colPos = (autoLoadObject.sizeZ / 2), (spec.loadArea["lenght"]), distanceZ do
-						if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+					for colPos = (autoLoadObject.sizeZ / 2), lenghtForObjectType, distanceZ do
+						if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = 0;
 							loadingPatternItem.posX = rowX1
@@ -738,8 +768,8 @@ function APalletAutoLoader:onLoad(savegame)
 					end
 					-- rechte seite
 					-- 2. reihe um die hälfte des abstandes nach hinten schieben
-					for colPos = (autoLoadObject.sizeZ / 2) + (distanceZ / 2), (spec.loadArea["lenght"]), distanceZ do
-						if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+					for colPos = (autoLoadObject.sizeZ / 2) + (distanceZ / 2), lenghtForObjectType, distanceZ do
+						if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = 0;
 							loadingPatternItem.posX = rowX2
@@ -750,8 +780,8 @@ function APalletAutoLoader:onLoad(savegame)
 				else
 					for rowNumber = 0, (countNoRotation-1) do
 						-- schleife bis zur länge
-						for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
-							if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+						for colPos = (autoLoadObject.sizeZ / 2), lenghtForObjectType, (autoLoadObject.sizeZ + backDistance) do
+							if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 								local loadingPatternItem = {}
 								loadingPatternItem.rotation = 0;
 								loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restFirstNoRotation / 2)
@@ -767,8 +797,8 @@ function APalletAutoLoader:onLoad(savegame)
 				local maxPosX = math.huge;
 				for rowNumber = 0, (countOneRotation-2) do
 					-- schleife bis zur länge
-					for colPos = (autoLoadObject.sizeZ / 2), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
-						if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+					for colPos = (autoLoadObject.sizeZ / 2), lenghtForObjectType, (autoLoadObject.sizeZ + backDistance) do
+						if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = 0;
 							loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restOneRotation / 2)
@@ -779,8 +809,8 @@ function APalletAutoLoader:onLoad(savegame)
 					end
 				end
 				-- jetzt die eine reihe längs auch als schleife bis zur länge
-				for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + backDistance) do
-					if (colPos + (autoLoadObject.sizeX / 2)) <= spec.loadArea["lenght"] then
+				for colPos = (autoLoadObject.sizeX / 2), lenghtForObjectType, (autoLoadObject.sizeX + backDistance) do
+					if (colPos + (autoLoadObject.sizeX / 2)) <= lenghtForObjectType then
 						local loadingPatternItem = {}
 						loadingPatternItem.rotation = math.rad(90);
 						-- loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - ((countOneRotation-1) * (autoLoadObject.sizeX + backDistance)) - (restOneRotation / 2)
@@ -794,8 +824,8 @@ function APalletAutoLoader:onLoad(savegame)
 				local countCol = 0;
 				for rowNumber = 0, (countRotation-1) do
 					-- schleife bis zur länge
-					for colPos = (autoLoadObject.sizeX / 2), spec.loadArea["lenght"], (autoLoadObject.sizeX + backDistance) do
-						if (colPos + (autoLoadObject.sizeX / 2)) <= spec.loadArea["lenght"] then
+					for colPos = (autoLoadObject.sizeX / 2), lenghtForObjectType, (autoLoadObject.sizeX + backDistance) do
+						if (colPos + (autoLoadObject.sizeX / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = math.rad(90);
 							loadingPatternItem.posX = cornerX - (autoLoadObject.sizeZ / 2) - (rowNumber * (autoLoadObject.sizeZ + backDistance)) - (restFirstRotation / 2)
@@ -811,8 +841,8 @@ function APalletAutoLoader:onLoad(savegame)
 				-- jetzt könnte aber noch quer was dahinter passen, gleiche logik wie bei quer laden, nur später anfangen
 				for rowNumber = 0, (countNoRotation-1) do
 					-- schleife bis zur länge
-					for colPos = (autoLoadObject.sizeZ / 2) + (countCol * (autoLoadObject.sizeX + backDistance)), spec.loadArea["lenght"], (autoLoadObject.sizeZ + backDistance) do
-						if (colPos + (autoLoadObject.sizeZ / 2)) <= spec.loadArea["lenght"] then
+					for colPos = (autoLoadObject.sizeZ / 2) + (countCol * (autoLoadObject.sizeX + backDistance)), lenghtForObjectType, (autoLoadObject.sizeZ + backDistance) do
+						if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = 0;
 							loadingPatternItem.posX = cornerX - (autoLoadObject.sizeX / 2) - (rowNumber * (autoLoadObject.sizeX + backDistance)) - (restFirstNoRotation / 2)
@@ -848,17 +878,13 @@ function APalletAutoLoader:onLoad(savegame)
 			end
 
 			local amountPerLayer = #autoLoadObject.places;
-			local heightForObjectType = spec.loadArea["height"];
-			if autoLoadObjectSettings[name] ~= nil then
-				heightForObjectType = autoLoadObjectSettings[name].height
-			end
 			local maxLayers = math.floor(heightForObjectType / autoLoadObject.sizeY);
 			if autoLoadObject.stackable ~= nil and autoLoadObject.stackable == false then maxLayers = 1 end
 			local maxAmountForLayers = amountPerLayer * maxLayers;
 
 			local maxAmountForObjectType = spec.maxObjects;
-			if autoLoadObjectSettings[name] ~= nil then
-				maxAmountForObjectType = autoLoadObjectSettings[name].maxObjects
+			if spec.autoLoadObjectSettings[name] ~= nil then
+				maxAmountForObjectType = spec.autoLoadObjectSettings[name].maxObjects
 			end
 			autoLoadObject.maxItems = math.min(maxAmountForLayers, maxAmountForObjectType);
 
