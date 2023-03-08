@@ -4,7 +4,7 @@
 -- https://www.achimobil.de/ls-19-22-modding/
 
 APalletAutoLoader = {}
-APalletAutoLoader.debug = true;
+APalletAutoLoader.debug = false;
 
 APalletAutoLoaderTipsides = {
 	LEFT = 1,
