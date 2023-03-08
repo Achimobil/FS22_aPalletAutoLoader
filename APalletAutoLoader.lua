@@ -18,6 +18,12 @@ APalletAutoLoaderLoadingState = {
 	RUNNING = 2
 }
 
+function APalletAutoLoader.print(text, ...)
+	if APalletAutoLoader.debug then
+		print("APalletAutoLoader Debug: " .. string.format(text, ...));
+	end
+end
+
 ---Checks if all prerequisite specializations are loaded
 -- @param table specializations specializations
 -- @return boolean hasPrerequisite true if all prerequisite specializations are loaded
@@ -41,7 +47,7 @@ function APalletAutoLoader.initSpecialization()
 	schema:register(XMLValueType.INT, baseXmlPath .. "#maxObjects", "Max. number of objects to load", "Number of load places")
 	schema:register(XMLValueType.BOOL, baseXmlPath .. "#useBales", "Use for bales", false)
 	schema:register(XMLValueType.BOOL, baseXmlPath .. "#useTensionBelts", "Automatically mount tension belts", "False for mobile, otherwise true")
-	schema:register(XMLValueType.BOOL, baseXmlPath .. "#usePalletWeightReduction", "REduce the weight of pallets on loading", true)
+	schema:register(XMLValueType.BOOL, baseXmlPath .. "#usePalletWeightReduction", "Reduce the weight of pallets on loading", true)
 	schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadRightOffset", "Offset for Unload right")
 	schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadLeftOffset", "Offset for Unload left")
 	schema:register(XMLValueType.VECTOR_TRANS, baseXmlPath .. "#UnloadMiddleOffset", "Offset for Unload middle")
@@ -590,6 +596,7 @@ function APalletAutoLoader:onLoad(savegame)
 	spec.loadingState = APalletAutoLoaderLoadingState.STOPPED;
 	spec.useTensionBelts = false;
 	spec.tensionBeltsDelay = 210;
+	spec.usePalletWeightReduction = true
 
 	if g_dedicatedServer ~= nil then
 		spec.tensionBeltsDelay = 1500;
@@ -603,7 +610,7 @@ function APalletAutoLoader:onLoad(savegame)
 	spec.loadArea["height"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#height") or 2
 	spec.loadArea["width"] = self.xmlFile:getValue(baseXmlPath .. ".loadArea#width") or 2
 	spec.maxObjects = self.xmlFile:getValue(baseXmlPath .. "#maxObjects") or 50
-	spec.usePalletWeightReduction = self.xmlFile:getValue(baseXmlPath .. "#usePalletWeightReduction") or true;
+	spec.usePalletWeightReduction = self.xmlFile:getBool(baseXmlPath .. "#usePalletWeightReduction", spec.usePalletWeightReduction);
 	spec.UnloadOffset = {}
 	spec.UnloadOffsetOriginal = {}
 	spec.UnloadOffset[APalletAutoLoaderTipsides.RIGHT] = self.xmlFile:getValue(baseXmlPath .. "#UnloadRightOffset", "-" .. (spec.loadArea["width"]+1) .. " -0.5 0", true)

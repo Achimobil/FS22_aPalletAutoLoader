@@ -45,6 +45,7 @@ Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestatt
 Changelog:
 1.8.7.3 beta
 - Rümänische Übersetzung hinzugefügt
+- usePalletWeightReduction gefixed
 
 1.8.7.2
 - Kollision für joint beim laden aktiviert nach Vorbild der Spanngurte aus dem Patch 1.8
