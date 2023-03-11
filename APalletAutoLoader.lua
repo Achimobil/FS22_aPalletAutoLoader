@@ -1510,7 +1510,13 @@ function APalletAutoLoader:getFirstValidLoadPlace()
 	local currentLoadHeigt = 0;
 	local autoLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex];
 	local loadPlaces = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].places;
-	while (currentLoadHeigt + autoLoadType.sizeY)  <= spec.loadArea["height"] do
+	
+	local heightForObjectType = spec.loadArea["height"];
+	if spec.autoLoadObjectSettings[autoLoadType.name] ~= nil then
+		heightForObjectType = spec.autoLoadObjectSettings[autoLoadType.name].height
+	end
+		
+	while (currentLoadHeigt + autoLoadType.sizeY)  <= heightForObjectType do
 
 		for i=1, #loadPlaces do
 			local positionIndex = i .. "-" .. currentLoadHeigt;
