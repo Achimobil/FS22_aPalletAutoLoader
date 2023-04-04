@@ -449,6 +449,22 @@ function APalletAutoLoader:SetLoadingState(newLoadingState)
 		-- Starten des Ladetimers, wenn der neue Status aktiv ist
 		if spec.loadingState == APalletAutoLoaderLoadingState.RUNNING then
 			self:StartLoading();
+		else
+			-- release all joints
+			local releasedOneJoint = false;
+			for _,jointData  in pairs(spec.objectsToJoint) do
+				removeJoint(jointData.jointIndex)
+				delete(jointData.jointTransform)
+				releasedOneJoint = true;
+				jointData.object.mountObject = nil;
+			end
+			spec.objectsToJoint = {};
+
+			-- start tension belts time if needed
+			if releasedOneJoint == true then
+				spec.beltsTimer:start(false);
+				self:setAllTensionBeltsActive(false, false)
+			end
 		end
 
 	end
@@ -902,7 +918,7 @@ function APalletAutoLoader:onLoad(savegame)
 		spec.beltsTimer:setFinishCallback(
 			function()
 				self:setAllTensionBeltsActive(true, false);
-				spec.hasLoadedSinceBeltsUsing = false;
+				-- spec.hasLoadedSinceBeltsUsing = false;
 			end);
 		spec.loadTimer = Timer.new(100);
 		spec.loadTimer:setFinishCallback(
@@ -1617,18 +1633,19 @@ function APalletAutoLoader:loadAllInRange()
 
 	if loaded then
 		spec.loadTimer:start(false);
-		spec.hasLoadedSinceBeltsUsing = true;
-		spec.beltsTimer:reset();
+		-- spec.hasLoadedSinceBeltsUsing = true;
+		-- spec.beltsTimer:reset();
 	else
 		if self.isClient then
 			APalletAutoLoader.updateActionText(self);
 		end
 
-		if spec.hasLoadedSinceBeltsUsing == true then
+		if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
 			-- release all joints
 			for _,jointData  in pairs(spec.objectsToJoint) do
 				removeJoint(jointData.jointIndex)
 				delete(jointData.jointTransform)
+				jointData.object.mountObject = nil;
 			end
 			spec.objectsToJoint = {};
 
@@ -1751,6 +1768,8 @@ function APalletAutoLoader:loadObject(object)
 							constr:setTranslationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
 
 							local jointIndex = constr:finalize()
+							
+							object.mountObject = self;
 
 							-- save info for release items
 							spec.objectsToJoint[objectNodeId] = {
@@ -1800,6 +1819,14 @@ end
 function APalletAutoLoader:unloadAll(unloadOffset)
 	local spec = self.spec_aPalletAutoLoader
 
+	-- release all joints
+	for _,jointData  in pairs(spec.objectsToJoint) do
+		removeJoint(jointData.jointIndex)
+		delete(jointData.jointTransform)
+		jointData.object.mountObject = nil;
+	end
+	spec.objectsToJoint = {};
+			
 	unloadOffsetToUse = unloadOffset;
 	if unloadOffsetToUse == nil then
 		unloadOffsetToUse = spec.UnloadOffset[spec.currentTipside];
