@@ -1765,7 +1765,9 @@ function APalletAutoLoader:loadObject(object)
 							local springDamping = 10
 
 							constr:setRotationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+							constr:setRotationLimitForceLimit(springForce, springForce, springForce)
 							constr:setTranslationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+							constr:setTranslationLimitForceLimit(springForce, springForce, springForce)
 
 							local jointIndex = constr:finalize()
 							
