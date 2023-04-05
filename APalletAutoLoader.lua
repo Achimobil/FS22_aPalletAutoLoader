@@ -456,7 +456,7 @@ function APalletAutoLoader:SetLoadingState(newLoadingState)
 				removeJoint(jointData.jointIndex)
 				delete(jointData.jointTransform)
 				releasedOneJoint = true;
-				jointData.object.mountObject = nil;
+				jointData.object.tensionMountObject = nil;
 			end
 			spec.objectsToJoint = {};
 
@@ -1478,7 +1478,7 @@ function APalletAutoLoader:getIsValidObject(object)
 		return false
 	end
 	
-	if object.mountObject ~= nil then
+	if object.mountObject ~= nil or object.dynamicMountObject ~= nil or object.tensionMountObject ~= nil then
 		return false;
 	end
 
@@ -1645,7 +1645,7 @@ function APalletAutoLoader:loadAllInRange()
 			for _,jointData  in pairs(spec.objectsToJoint) do
 				removeJoint(jointData.jointIndex)
 				delete(jointData.jointTransform)
-				jointData.object.mountObject = nil;
+				jointData.object.tensionMountObject = nil;
 			end
 			spec.objectsToJoint = {};
 
@@ -1771,7 +1771,7 @@ function APalletAutoLoader:loadObject(object)
 
 							local jointIndex = constr:finalize()
 							
-							object.mountObject = self;
+							object.tensionMountObject = self;
 
 							-- save info for release items
 							spec.objectsToJoint[objectNodeId] = {
@@ -1825,7 +1825,7 @@ function APalletAutoLoader:unloadAll(unloadOffset)
 	for _,jointData  in pairs(spec.objectsToJoint) do
 		removeJoint(jointData.jointIndex)
 		delete(jointData.jointTransform)
-		jointData.object.mountObject = nil;
+		jointData.object.tensionMountObject = nil;
 	end
 	spec.objectsToJoint = {};
 			
