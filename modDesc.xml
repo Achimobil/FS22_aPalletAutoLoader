@@ -46,6 +46,7 @@ Changelog:
 1.10.0.0
 - Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
 - Mit dem Autoloader ausgestattete Fahrzeuge haben jetzt stärkere Spanngurte
+- Ballen nur noch laden, wenn sie registriert und nicht attached sind um Fehler zu vermeiden.
 
 1.9.0.0
 - Rümänische Übersetzung hinzugefügt

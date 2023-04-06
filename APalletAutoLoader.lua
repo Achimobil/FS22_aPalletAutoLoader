@@ -1487,6 +1487,11 @@ function APalletAutoLoader:getIsValidObject(object)
 		return false
 	end
 
+	-- kann jetzt nur noch ein ballen sein und der muss registriert sein
+	if object.isRegistered ~= nil and object.isRegistered == false then
+		return false
+	end
+
 	if not g_currentMission.accessHandler:canFarmAccess(self:getActiveFarm(), object) then
 		return false
 	end
@@ -1814,6 +1819,7 @@ function APalletAutoLoader:loadObject(object)
 						spec.usedPositions = {};
 						spec.isFullLoaded = true;
 					end
+				
 				end
 			end
 		end
