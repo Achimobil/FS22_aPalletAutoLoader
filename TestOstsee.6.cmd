@@ -1,2 +1,2 @@
 "C:\Program Files\7-Zip\7z.exe" a -tzip "E:\LS22Profile\Ostseekueste\mods\FS22_aPalletAutoLoader.zip" @FileDefinition.txt
-"E:\Program Files (x86)\Farming Simulator 2022\FarmingSimulator2022.exe" -autoStartSavegameId 6 -cheats -profile E:\LS22Profile\Ostseekueste
+"E:\Program Files (x86)\Farming Simulator 2022\FarmingSimulator2022.exe" -autoStartSavegameId 6 -cheats -profile E:\LS22Profile\Ostseekueste -devWarnings

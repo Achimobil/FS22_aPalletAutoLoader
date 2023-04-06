@@ -111,6 +111,7 @@ end
 function APalletAutoLoader.registerOverwrittenFunctions(vehicleType)
 	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getDynamicMountTimeToMount", APalletAutoLoader.getDynamicMountTimeToMount)
 	SpecializationUtil.registerOverwrittenFunction(vehicleType, "getUseTurnedOnSchema", APalletAutoLoader.getUseTurnedOnSchema)
+	SpecializationUtil.registerOverwrittenFunction(vehicleType, "lockTensionBeltObject", APalletAutoLoader.lockTensionBeltObject)
 
 	if vehicleType.functions["getFillUnitCapacity"] ~= nil then
 		SpecializationUtil.registerOverwrittenFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -449,6 +450,22 @@ function APalletAutoLoader:SetLoadingState(newLoadingState)
 		-- Starten des Ladetimers, wenn der neue Status aktiv ist
 		if spec.loadingState == APalletAutoLoaderLoadingState.RUNNING then
 			self:StartLoading();
+		else
+			-- release all joints
+			local releasedOneJoint = false;
+			for _,jointData  in pairs(spec.objectsToJoint) do
+				removeJoint(jointData.jointIndex)
+				delete(jointData.jointTransform)
+				releasedOneJoint = true;
+				jointData.object.tensionMountObject = nil;
+			end
+			spec.objectsToJoint = {};
+
+			-- start tension belts time if needed
+			if releasedOneJoint == true then
+				spec.beltsTimer:start(false);
+				self:setAllTensionBeltsActive(false, false)
+			end
 		end
 
 	end
@@ -902,7 +919,7 @@ function APalletAutoLoader:onLoad(savegame)
 		spec.beltsTimer:setFinishCallback(
 			function()
 				self:setAllTensionBeltsActive(true, false);
-				spec.hasLoadedSinceBeltsUsing = false;
+				-- spec.hasLoadedSinceBeltsUsing = false;
 			end);
 		spec.loadTimer = Timer.new(100);
 		spec.loadTimer:setFinishCallback(
@@ -1462,7 +1479,7 @@ function APalletAutoLoader:getIsValidObject(object)
 		return false
 	end
 	
-	if object.mountObject ~= nil then
+	if object.mountObject ~= nil or object.dynamicMountObject ~= nil or object.tensionMountObject ~= nil then
 		return false;
 	end
 
@@ -1617,18 +1634,19 @@ function APalletAutoLoader:loadAllInRange()
 
 	if loaded then
 		spec.loadTimer:start(false);
-		spec.hasLoadedSinceBeltsUsing = true;
-		spec.beltsTimer:reset();
+		-- spec.hasLoadedSinceBeltsUsing = true;
+		-- spec.beltsTimer:reset();
 	else
 		if self.isClient then
 			APalletAutoLoader.updateActionText(self);
 		end
 
-		if spec.hasLoadedSinceBeltsUsing == true then
+		if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
 			-- release all joints
 			for _,jointData  in pairs(spec.objectsToJoint) do
 				removeJoint(jointData.jointIndex)
 				delete(jointData.jointTransform)
+				jointData.object.tensionMountObject = nil;
 			end
 			spec.objectsToJoint = {};
 
@@ -1743,14 +1761,21 @@ function APalletAutoLoader:loadObject(object)
 							constr:setRotationLimit(0, 0, 0);
 							constr:setRotationLimit(1, 0, 0);
 							constr:setRotationLimit(2, 0, 0);
+							constr:setTranslationLimit(0, true, 0, 0)
+							constr:setTranslationLimit(1, true, 0, 0)
+							constr:setTranslationLimit(2, true, 0, 0)
 
-							local springForce = 1000
-							local springDamping = 10
+							local springForce = 10000
+							local springDamping = 100
 
 							constr:setRotationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+							constr:setRotationLimitForceLimit(springForce, springForce, springForce)
 							constr:setTranslationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+							constr:setTranslationLimitForceLimit(springForce, springForce, springForce)
 
 							local jointIndex = constr:finalize()
+							
+							object.tensionMountObject = self;
 
 							-- save info for release items
 							spec.objectsToJoint[objectNodeId] = {
@@ -1800,6 +1825,14 @@ end
 function APalletAutoLoader:unloadAll(unloadOffset)
 	local spec = self.spec_aPalletAutoLoader
 
+	-- release all joints
+	for _,jointData  in pairs(spec.objectsToJoint) do
+		removeJoint(jointData.jointIndex)
+		delete(jointData.jointTransform)
+		jointData.object.tensionMountObject = nil;
+	end
+	spec.objectsToJoint = {};
+			
 	unloadOffsetToUse = unloadOffset;
 	if unloadOffsetToUse == nil then
 		unloadOffsetToUse = spec.UnloadOffset[spec.currentTipside];
@@ -2176,6 +2209,124 @@ function APalletAutoLoader:getFillUnitFreeCapacity(superFunc, fillUnitIndex)
 
 	return spec.autoLoadTypes[spec.currentautoLoadTypeIndex].maxItems - spec.numTriggeredObjects;
 
+end
+
+function APalletAutoLoader:lockTensionBeltObject(superFunc, objectId, objectsToJointTable, isDynamic, jointNode, object)
+-- print("tester");
+-- APalletAutoLoader.print("APalletAutoLoader:lockTensionBeltObject(%s, %s, %s, %s, %s, %s)", superFunc, objectId, objectsToJointTable, isDynamic, jointNode, object);
+	if objectsToJointTable[objectId] == nil then
+		local useDynamicMount = false
+		local useKinematicMount = false
+		local useSplitShapeMount = false
+
+		if isDynamic then
+			if self.isServer then
+				useDynamicMount = true
+			end
+		elseif object ~= nil and object.mountKinematic ~= nil then
+			local allowKinematicMounting = true
+
+			if object.getSupportsMountKinematic ~= nil and not object:getSupportsMountKinematic() then
+				allowKinematicMounting = false
+			end
+
+			if object.rootVehicle ~= nil then
+				local vehicles = object.rootVehicle.childVehicles
+
+				if #vehicles > 1 then
+					allowKinematicMounting = false
+				end
+			end
+
+			if allowKinematicMounting then
+				useKinematicMount = true
+			else
+				useDynamicMount = true
+			end
+		elseif self.isServer then
+			useSplitShapeMount = true
+		end
+
+		if useDynamicMount then
+			local constr = JointConstructor.new()
+
+			constr:setActors(jointNode, objectId)
+
+			local jointTransform = createTransformGroup("tensionBeltJoint")
+
+			link(jointNode, jointTransform)
+
+			local x, y, z = localToWorld(objectId, getCenterOfMass(objectId))
+
+			setWorldTranslation(jointTransform, x, y, z)
+			constr:setJointTransforms(jointTransform, jointTransform)
+			constr:setEnableCollision(true)
+			constr:setRotationLimit(0, 0, 0)
+			constr:setRotationLimit(1, 0, 0)
+			constr:setRotationLimit(2, 0, 0)
+			constr:setTranslationLimit(0, true, 0, 0)
+			constr:setTranslationLimit(1, true, 0, 0)
+			constr:setTranslationLimit(2, true, 0, 0)
+
+			local springForce = 10000
+			local springDamping = 100
+
+			-- hier ForceLimit eingefügt, damit alles auch fest hält
+			constr:setRotationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+			constr:setRotationLimitForceLimit(springForce, springForce, springForce)
+			constr:setTranslationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
+			constr:setTranslationLimitForceLimit(springForce, springForce, springForce)
+
+			local jointIndex = constr:finalize()
+
+			if object ~= nil then
+				if object.setReducedComponentMass ~= nil then
+					object:setReducedComponentMass(true)
+					self:setMassDirty()
+				end
+
+				if object.setCanBeSold ~= nil then
+					object:setCanBeSold(false)
+				end
+			end
+
+			objectsToJointTable[objectId] = {
+				jointIndex = jointIndex,
+				jointTransform = jointTransform,
+				object = object
+			}
+		elseif useKinematicMount then
+			local parentNode = getParent(objectId)
+			local x, y, z = localToLocal(objectId, jointNode, 0, 0, 0)
+			local rx, ry, rz = localRotationToLocal(objectId, jointNode, 0, 0, 0)
+
+			object:mountKinematic(self, jointNode, x, y, z, rx, ry, rz)
+
+			objectsToJointTable[objectId] = {
+				parent = parentNode,
+				object = object
+			}
+		elseif useSplitShapeMount then
+			local parentNode = getParent(objectId)
+			local x, y, z = localToLocal(objectId, jointNode, 0, 0, 0)
+			local rx, ry, rz = localRotationToLocal(objectId, jointNode, 0, 0, 0)
+
+			setRigidBodyType(objectId, RigidBodyType.KINEMATIC)
+			link(jointNode, objectId)
+			setTranslation(objectId, x, y, z)
+			setRotation(objectId, rx, ry, rz)
+
+			objectsToJointTable[objectId] = {
+				parent = parentNode,
+				object = object
+			}
+		end
+
+		if getSplitType(objectId) ~= 0 then
+			setUserAttribute(objectId, "isTensionBeltMounted", "Boolean", true)
+			g_messageCenter:publish(MessageType.TREE_SHAPE_MOUNTED, objectId, self)
+		end
+	end
 end
 
 -- explicit CP implements
