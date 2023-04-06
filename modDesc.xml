@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="73">
 	<author>Achimobil</author>
-	<version>1.9.0.0</version>
+	<version>1.10.0.0_beta_1</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,6 +43,10 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
+1.10.0.0
+- Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
+- Mit dem Autoloader ausgestattete Fahrzeuge haben jetzt stärkere Spanngurte
+
 1.9.0.0
 - Rümänische Übersetzung hinzugefügt
 - usePalletWeightReduction gefixed
