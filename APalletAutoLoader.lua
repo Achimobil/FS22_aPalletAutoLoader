@@ -1770,7 +1770,7 @@ function APalletAutoLoader:loadObject(object)
 							constr:setTranslationLimit(1, true, 0, 0)
 							constr:setTranslationLimit(2, true, 0, 0)
 
-							local springForce = 10000
+							local springForce = 1000
 							local springDamping = 100
 
 							constr:setRotationLimitSpring(springForce, springDamping, springForce, springDamping, springForce, springDamping)
