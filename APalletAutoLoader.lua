@@ -2390,7 +2390,7 @@ function APalletAutoLoader:SetPickupTriggerCollisionMask()
 
 	local pickupTriggerCollisionMask = APalletAutoLoader.defaultPickupTriggerCollisionMask
 	
-	if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].pickupTriggerCollisionMask ~= nil then
+	if autoLoadTypes ~= nil and spec.autoLoadTypes[spec.currentautoLoadTypeIndex].pickupTriggerCollisionMask ~= nil then
 		pickupTriggerCollisionMask = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].pickupTriggerCollisionMask;
 	end
 	
