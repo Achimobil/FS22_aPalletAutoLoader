@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="73">
 	<author>Achimobil</author>
-	<version>1.10.0.0_beta_1</version>
+	<version>1.10.0.0_beta_3</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -47,6 +47,7 @@ Changelog:
 - Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
 - Mit dem Autoloader ausgestattete Fahrzeuge haben jetzt stärkere Spanngurte
 - Ballen nur noch laden, wenn sie registriert und nicht attached sind um Fehler zu vermeiden.
+- Überarbeitung der Pickup Kollisionen für AI Verkehr. (Wenn Bigbags aktiviert waren muss Ladegut neu angefahren werden)
 
 1.9.0.0
 - Rümänische Übersetzung hinzugefügt

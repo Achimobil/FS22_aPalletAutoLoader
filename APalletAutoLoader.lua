@@ -5,6 +5,7 @@
 
 APalletAutoLoader = {}
 APalletAutoLoader.debug = false;
+APalletAutoLoader.defaultPickupTriggerCollisionMask = CollisionFlag.TRIGGER_DYNAMIC_OBJECT;
 
 APalletAutoLoaderTipsides = {
 	LEFT = 1,
@@ -96,6 +97,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
 	SpecializationUtil.registerFunction(vehicleType, "PalIsGrabbingBale", APalletAutoLoader.PalIsGrabbingBale)
 	SpecializationUtil.registerFunction(vehicleType, "AddSupportedObjects", APalletAutoLoader.AddSupportedObjects)
 	SpecializationUtil.registerFunction(vehicleType, "CreateAvailableTypeList", APalletAutoLoader.CreateAvailableTypeList)
+	SpecializationUtil.registerFunction(vehicleType, "SetPickupTriggerCollisionMask", APalletAutoLoader.SetPickupTriggerCollisionMask)
 
 	if vehicleType.functions["getFillUnitCapacity"] == nil then
 		SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -516,6 +518,8 @@ function APalletAutoLoader:SetAutoloadType(newAutoLoadTypeIndex)
 	local spec = self.spec_aPalletAutoLoader
 
 	spec.currentautoLoadTypeIndex = newAutoLoadTypeIndex;
+	
+	self:SetPickupTriggerCollisionMask()
 
 	if self.isClient then
 		-- nur beim Client aufrufen, Wenn ein Server im Spiel ist kommt das über die Sync
@@ -1044,6 +1048,7 @@ function APalletAutoLoader:onPostLoad(savegame)
 			end
 		end
 	end
+	self:SetPickupTriggerCollisionMask()
 end
 
 ---
@@ -1175,6 +1180,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 		autoLoadObject.sizeZ = 0.85
 		autoLoadObject.type = "bigBag"
 		autoLoadObject.stackable = false
+		autoLoadObject.pickupTriggerCollisionMask = CollisionFlag.TRIGGER_VEHICLE;
 	elseif (name == "cottonRoundbale238") then
 		local function CheckType(object)
 			if string.find(object.i3dFilename, "Roundbale238.i3d") then return true end
@@ -1942,6 +1948,7 @@ function APalletAutoLoader:onReadUpdateStream(streamId, timestamp, connection)
 		local currentautoLoadTypeIndex = streamReadInt32(streamId);
 		if spec.currentautoLoadTypeIndex ~= currentautoLoadTypeIndex then
 			spec.currentautoLoadTypeIndex = currentautoLoadTypeIndex;
+			self:SetPickupTriggerCollisionMask()
 			hasChanges = true;
 		end
 		local currentTipside = streamReadInt32(streamId);
@@ -2005,6 +2012,7 @@ end
 
 ---
 function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
+	-- print(string.format("APalletAutoLoader:autoLoaderPickupTriggerCallback(%s, (%s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
 	if otherActorId ~= 0 then
 		local object = g_currentMission:getNodeObject(otherActorId)
 		if object ~= nil then
@@ -2375,4 +2383,22 @@ function APalletAutoLoader:PalIsGrabbingBale()
 	local result = spec.loadTimer:getIsRunning();
 	-- print("PalIsGrabbingBale:" .. tostring(result));
 	return result;
+end
+
+function APalletAutoLoader:SetPickupTriggerCollisionMask()
+	local spec = self.spec_aPalletAutoLoader
+
+	local pickupTriggerCollisionMask = APalletAutoLoader.defaultPickupTriggerCollisionMask
+	
+	if spec.autoLoadTypes[spec.currentautoLoadTypeIndex].pickupTriggerCollisionMask ~= nil then
+		pickupTriggerCollisionMask = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].pickupTriggerCollisionMask;
+	end
+	
+	if spec.pickupTriggers ~= nil then
+		for _, pickupTrigger in pairs(spec.pickupTriggers) do
+			if getCollisionMask(pickupTrigger.node) ~= pickupTriggerCollisionMask then
+				setCollisionMask(pickupTrigger.node, pickupTriggerCollisionMask);
+			end
+		end
+	end
 end
