@@ -479,7 +479,7 @@ function APalletAutoLoader:StartLoading()
 	if (spec.loadTimer:getIsRunning()) then return end;
 
 	spec.isFullLoaded = false;
-	self:loadAllInRange();
+	spec.loadTimer:start(false);
 end
 
 function APalletAutoLoader:GetAutoloadTypes()
