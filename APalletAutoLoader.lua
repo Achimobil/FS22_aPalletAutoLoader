@@ -74,6 +74,7 @@ end
 
 function APalletAutoLoader.registerFunctions(vehicleType)
 	SpecializationUtil.registerFunction(vehicleType, "getIsValidObject", APalletAutoLoader.getIsValidObject)
+	SpecializationUtil.registerFunction(vehicleType, "getIsMountedObject", APalletAutoLoader.getIsMountedObject)
 	SpecializationUtil.registerFunction(vehicleType, "getIsAutoLoadingAllowed", APalletAutoLoader.getIsAutoLoadingAllowed)
 	SpecializationUtil.registerFunction(vehicleType, "getFirstValidLoadPlace", APalletAutoLoader.getFirstValidLoadPlace)
 	SpecializationUtil.registerFunction(vehicleType, "autoLoaderOverlapCallback", APalletAutoLoader.autoLoaderOverlapCallback)
@@ -1462,6 +1463,10 @@ function APalletAutoLoader:getIsValidObject(object)
 		return false;
 	end
 
+	if object == self then
+		return false
+	end
+
 	local objectFilename = object.configFileName or object.i3dFilename
 	if objectFilename ~= nil then
 		if object.typeName == "pallet" then
@@ -1479,14 +1484,6 @@ function APalletAutoLoader:getIsValidObject(object)
 	
 	if object.specializations ~= nil and SpecializationUtil.hasSpecialization(Pallet, object.specializations) then
 		return true
-	end
-
-	if object == self then
-		return false
-	end
-	
-	if object.mountObject ~= nil or object.dynamicMountObject ~= nil or object.tensionMountObject ~= nil then
-		return false;
 	end
 
 	if not object:isa(Bale) or not object:getAllowPickup() then
@@ -1617,8 +1614,10 @@ function APalletAutoLoader:loadAllInRange()
 	local spec = self.spec_aPalletAutoLoader
 
 	local loaded = false;
+	local unloadedInList = false;
 
 	for _, object in pairs(spec.objectsToLoad) do
+		unloadedInList = true
 		local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
 		if isValidLoadType then
 			if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
@@ -1631,6 +1630,7 @@ function APalletAutoLoader:loadAllInRange()
 		end
 	end
 	for object,_  in pairs(spec.balesToLoad) do
+		unloadedInList = true
 		local isValidLoadType = spec.autoLoadTypes[spec.currentautoLoadTypeIndex].CheckTypeMethod(object);
 		if isValidLoadType then
 			if spec.loadingState == APalletAutoLoaderLoadingState.STOPPED then
@@ -1666,15 +1666,27 @@ function APalletAutoLoader:loadAllInRange()
 				spec.beltsTimer:start(false);
 				self:setAllTensionBeltsActive(false, false)
 			end
+		elseif unloadedInList then
+			-- wenn noch nicht geladene Objekte in der liste sind, dann timer wieder starten
+			spec.loadTimer:start(false);
 		end
 	end
 
 	return false;
 end
 
+
+function APalletAutoLoader:getIsMountedObject(object)	
+	if object.mountObject ~= nil or object.dynamicMountObject ~= nil or object.tensionMountObject ~= nil then
+		return true;
+	end
+	
+	return false;
+end
+
 function APalletAutoLoader:loadObject(object)
 	if object ~= nil then
-		if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) then
+		if self:getIsAutoLoadingAllowed() and self:getIsValidObject(object) and not self:getIsMountedObject(object) then
 			local spec = self.spec_aPalletAutoLoader
 		
 			if spec.triggeredObjects[object] == nil then
@@ -2012,7 +2024,7 @@ end
 
 ---
 function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
-	-- print(string.format("APalletAutoLoader:autoLoaderPickupTriggerCallback(%s, (%s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
+	-- print(string.format("APalletAutoLoader:autoLoaderPickupTriggerCallback(%s, %s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
 	if otherActorId ~= 0 then
 		local object = g_currentMission:getNodeObject(otherActorId)
 		if object ~= nil then
@@ -2080,6 +2092,7 @@ end
 -- DebugUtil.printTableRecursively(loadingPattern,"_",0,2)
 
 function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
+	-- print(string.format("APalletAutoLoader:autoLoaderTriggerCallback(%s, %s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
 	local spec = self.spec_aPalletAutoLoader
 
 	if onEnter then
