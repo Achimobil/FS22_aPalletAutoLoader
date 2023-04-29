@@ -1745,13 +1745,20 @@ function APalletAutoLoader:loadObject(object)
 						-- objekt als geladen markieren, damit nur hier auch entladen wird
 						object.currentlyLoadedOnAPalletAutoLoaderId = self.id;
 						
-						if spec.usePalletWeightReduction and object.spec_fillUnit ~= nil then
-							if object.spec_fillUnit.fillUnits ~= nil then
+						if spec.usePalletWeightReduction then
+							if object.spec_fillUnit ~= nil and object.spec_fillUnit.fillUnits ~= nil then
 								if object.spec_fillUnit.fillUnits[1] ~= nil then
+									object.autoloaderOldupdateMass = object.spec_fillUnit.fillUnits[1].updateMass;
 									object.spec_fillUnit.fillUnits[1].updateMass = false;
 									object:setMassDirty()
 								end
+							elseif object.setReducedComponentMass ~= nil then
+								object:setReducedComponentMass(true)
+								self:setMassDirty()
 							end
+						elseif object.setReducedComponentMass ~= nil then
+							object:setReducedComponentMass(true)
+							self:setMassDirty()
 						end
 
 						if object.addDeleteListener ~= nil then
@@ -2136,15 +2143,21 @@ function APalletAutoLoader:autoLoaderTriggerCallback(triggerId, otherActorId, on
 				end
 				
 				-- updateMass wieder einschalten, wenn abgeschaltet. Für das von Hand abladen
-				if spec.usePalletWeightReduction and object.spec_fillUnit ~= nil then
-					if object.spec_fillUnit.fillUnits ~= nil then
+				if spec.usePalletWeightReduction then
+					if object.spec_fillUnit ~= nil and object.spec_fillUnit.fillUnits ~= nil then
 						if object.spec_fillUnit.fillUnits[1] ~= nil then
-							if object.spec_fillUnit.fillUnits[1].updateMass == false then
-								object.spec_fillUnit.fillUnits[1].updateMass = true;
+							if object.autoloaderOldupdateMass ~= nil then
+								object.spec_fillUnit.fillUnits[1].updateMass = object.autoloaderOldupdateMass;
 								object:setMassDirty()
 							end
 						end
+					elseif object.setReducedComponentMass ~= nil then
+						object:setReducedComponentMass(false)
+						self:setMassDirty()
 					end
+				elseif object.setReducedComponentMass ~= nil then
+					object:setReducedComponentMass(false)
+					self:setMassDirty()
 				end
 
 				if next(spec.triggeredObjects) == nil then
