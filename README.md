@@ -11,7 +11,6 @@ Dies ist internationales Recht und durch den Urheberschutz abgedeckt. Wer trotzd
 Das Einstellen meiner Mods in andere Downloadportale ist nur mit Link auf das GitHub des Projektes erlaubt.
 Jegliche Form des Selbsthostings ist untersagt.
 
-# General
 ## EN
 Anything in my mods may not be copied in whole or in part into your own mods and republished in any form unless expressly permitted.
 This is international law and covered by copyright protection. Who use parts of my mods in his mods without permission and publishes automatically gives his mods for me for unrestricted use and re-publish free. I reserve the right to make use of this right.
