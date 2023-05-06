@@ -34,7 +34,7 @@
 		<text name="aPalletAutoLoader_squarebale220" text="Square bale 220" />
 		<text name="aPalletAutoLoader_squarebale240" text="Square bale 240" />
 		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Tension belts deactivated" />
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Tensionin belts activated" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Tension belts activated" />
 		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Toggle automatic tensionin belts" />
 		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Unloading area high/low" />
 		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Unloading area higher" />
