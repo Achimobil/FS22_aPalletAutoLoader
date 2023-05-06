@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="73">
+<modDesc descVersion="74">
 	<author>Achimobil</author>
-	<version>1.10.0.0_beta_6</version>
+	<version>1.10.0.0</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -46,7 +46,7 @@ Changelog:
 1.10.0.0
 - Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
 - Mit dem Autoloader ausgestattete Fahrzeuge haben jetzt stärkere Spanngurte
-- Ballen werden nur noch erkannt, wenn sie registriert 
+- Ballen werden nur noch erkannt, wenn sie registriert sind
 - Überarbeitung der Pickup Kollisionen für AI Verkehr. (Wenn Bigbags aktiviert waren muss Ladegut neu angefahren werden)
 - Problem mit zu schnellem Laden an den neuen Objekt Lagern durch Verzögerung behoben
 - Ballen und Paletten werden erst geladen, wenn sie an keinem anderen Attacher mehr hängen
@@ -72,79 +72,6 @@ Changelog:
 - Baumwollquaderballen können jetzt geladen werden (Base game Ballen verursachen Log Warnungen mit Spanngurten, diese einfach nicht mit Spanngurten befestigen)
 - Das Paletten Gewicht wird beim abladen jetzt korrekt wiederhergestellt
 - Bei Rundballen wird nur noch quadratisch geprüft ob Platz da ist, weil die Engine das nicht rund kann und den Prüfbereich selbst drehen je nach Himmelsrichtung nicht funktioniert
-
-1.8.6.0
-- Lua-Fehler behoben, wenn Trigger das Löschen eines Ladeobjekts nicht korrekt melden
-- Erweitern des Längsmusters, um zusätzliche Objekte quer dahinter zu laden, wenn genug Platz vorhanden ist
-- Vereinfachung der Ballenidentifizierung für bessere Mod-Kompatibilität
-- Zweite Tastenbelegung hinzugefügt, um rückwärts durch die Ladetyp-Liste zu schalten (Standard: Shift + Y)
-
-1.8.5.1
-- Erweiterung des auswählbaren Ladeguts kann jetzt mit mods per skript gemacht werden.
-- Mod Icon verbessert
-- Paletten werden jetzt auch erkannt, wenn diese nicht direkt vom typ "pallet" sind.
-
-1.8.4.1
-- usePalletWeightReduction Konfiguration eingefügt zur Reduzierung des Gewichts von geladenen Paletten. Default true
-- Changelog aufgeräumt
-
-1.8.3.1
-- Bessere Möglichkeit für CP zum erkennen vom Ballenladestatus
-- BR Übersetzung hinzugefügt
-
-1.8.2.0
-- neue Funktionen zum auslesen des Ballen status eingefügt
-- Ballen werden jetzt nicht mehr aus der Presskammer oder dem Wickler gezogen
-
-1.8.1.0
-- SV Übersetzungen hinzugefügt
-- Baumwollballen vereinfacht in der Erkennung
-- Korrektur für Quaderballen bei kleinen Ladeflächen
-- Eventlistener bei nicht AL Konfiguration deregistriert zur verbesserung der Performance
-- Verschieben der Abladefläche im F1 Menü nur anzeigen, wenn Markierungen sichtbar sind.
-
-1.8.0.1
-- Abladeposition auf dedicated Server gefixed
-- RU Übersetzungen von Nagor verbessert
-
-1.8.0.0
-- Code Optimierungen und Verwendung von Giants Timer wegen abstürzen
-- Abladebereich verschiebbar (wird beim abladen wieder zurückgesetzt)
-- Markierungen werden beim Verschieben und Seite wählen automatisch eingeblendet und erst dann kann die Seite geändert werden
-- Markierungen werden beim Abladen automatisch ausgeblendet
-- Blockieren von Fahrzeugentladetriggern auf der Ladefläche zur Verringerung von Seiteneffekten durch die defekten Giants trigger
-- Neues Lademuster, wenn mehr auf die Fläche passt durch eine längs und den Rest quer zu laden
-- 120er Quaderballen eingefügt. Vorsicht, die sind aufgrund ihrer Größe nicht sehr stabil
-- Verbindung mit CP überarbeitet
-- maxObjects und height können jetzt pro Ladegut vom Modder definiert werden, wenn diese vom default abweichen
-
-1.7.3.0
-- Lua-Trigger-Fehler behoben, der durch Update 1.4 verursacht wurde
-- Tension Belt Trigger überarbeitet
-- Autoloader können sich die Paletten nicht mehr von der Ladefläche eines anderen Autoloaders weg nehmen (mehrfache Anhänger)
-- onAIFieldWorker events implementiert
-- Spanngurte haben nun eine Verzögerung zwischen lösen und anziehen zu Verbesserung der Server sync. Auf dem Server 1,5 Sekunden im Single Player 0,2 Sekunden. Rückmeldungen hierzu sind erwünscht.
-- Runtergefallene oder von Hand runtergenommene Paletten werden jetzt beim abladen nicht noch mal versetzt
-- Automatische Spanngurte können nun pro Fahrzeug mit [lctrl]+[J] aktiviert/deaktiviert werden. Dies wird pro Fahrzeug gespeichert.
-- Die Suche nach gültigen Ladeplätzen wurde optimiert, indem ungültige Ladeplätze gespeichert werden, solange der Lader aktiv ist.
-- Entladeseite rückwärts für alle Fahrzeuge als Standard hinzufügen. Position kann vom Modder konfiguriert werden.
-- Prioritäten der Tastenbelegung geändert, um wichtige Einträge in der F1-Hilfe besser sichtbar zu machen.
-- Änderung der Aktivierung auf LS Standard für Ladewagen [B] und immer aktivierbar. 
-- Text der Entladeseite im F1 auf Dedi gefixed
-- Support von Multifruit Pack Ballen inkl. Lavendel Rundballen (ladebar als Baumwoll Rundballen)
-- Ladegut nur noch wählbar, wenn der Lademodus deaktiviert ist
-
-1.6.2.0
-- Quaderballen Ladeverhalten optimiert
-- Fix für Wollpalette
-- Möglichkeit für externe Mods zum zugriff auf die Funktionen geschaffen
-- Gewähltes Ladegut wird jetzt als Extra Text im Hilfe Menü angezeigt
-- Paletten Größen angepasst an durchnittliche Werte neuer Mods
-- Modder können ihre eigenen Paletten nun zusätzlich durch die Ordnerstruktur ladbar machen. Details im Wiki.
-- Umbau der Kommunikation mit dem Dedi Server zur Verbesserung der Performance.
-- Lademodus bleibt nun aktiv bis der Trailer voll ist oder er abgeschaltet wird. Spangurte werden zwischendurch angezogen, wenn der Trailer das unterstützt.
-- Fahrzeug Schema zeigt an, wenn das Laden aktiviert ist.
-- Anzeige der Maximal Kapazität bei der Ladegutauswahl.
 ]]>
 		</de>
 		<en>
@@ -178,6 +105,14 @@ Upload on other sites only by myself, linking only with original download link. 
 Modifying and re-uploading in whole or in part is not allowed!
 
 Changelog:
+1.10.0.0
+- Improved loading behaviour. Everything is held virtually as long as the loading process is active, which should improve loading in the field.
+- Vehicles equipped with the autoloader now have stronger straps.
+- Bales are now only recognised if they are registered
+- Revision of pickup collisions for AI traffic. (If bigbags were activated, load has to be approached again)
+- Problem with too fast loading at the new object storages fixed with adding adelay on load
+- Bales and pallets are only loaded when they are no longer attached to another Attacher
+
 1.9.0.0
 - Romanian translation added
 - usePalletWeightReduction fixed
@@ -199,79 +134,6 @@ Changelog:
 - Cotton square bales can now be loaded (Base game bales cause log warnings with tension belts, just do not tie them down with tension belts)
 - Pallet weight is now correctly restored on unloading
 - Round bales are now only checked square for space, because the engine can not do this round and rotate the check area itself depending on the compass direction does not work
-
-1.8.6.0
-- Fix Lua error when triggers are not correct reporting the delete of a loading object
-- Extend lengthwise loading pattern to load additional object transverse behind when there is enough space
-- simplify bale identifying for better mod compatibility
-- Add second binding to step backwards through the loading type list (default shift + Y)
-
-1.8.5.1
-- Extension of the selectable load can now be done with mods via script.
-- Mod icon improved
-- Pallets are now also recognised if they are not directly of the type "pallet"
-
-1.8.4.1
-- Add usePalletWeightReduction config setting to reduce pallet weight on loading. Default is true
-- Cleaned up changelog
-
-1.8.3.1
-- better possibilities of loading state for CP
-- BR translation added
-
-1.8.2.0
-- new functions for reading the bale status added
-- Bales are no longer pulled out of the bale chamber or wrapper.
-
-1.8.1.0
-- SV translations added
-- Cotton bales simplified in recognition
-- Correction for square bales with small loading areas
-- Eventlistener deregistered for non AL configuration to improve performance
-- Move unloading area in F1 menu only show if markers are visible.
-
-1.8.0.1
-- fix unloading position on dedicated server
-- RU translation fixed by Nagor
-
-1.8.0.0
-- Code optimizations and use of Giants Timer because of crashes
-- unloading area can be moved (will be reset when unloading)
-- Markers are automatically shown when moving and selecting a page and only then can the page be changed.
-- Markers are automatically hidden when unloading
-- Blocking of vehicle unloading triggers on the loading area to reduce side effects caused by the faults in base game trigger
-- New loading pattern, if more can fit on the surface by loading one lengthwise and the rest crosswise
-- 120 square bales added. Be careful, they are not very stable due to their size.
-- Connection with CP optimised
-- maxObjects and height can now be defined per load by the modder, if they deviate from the default
-
-1.7.3.0
-- Lua Trigger error solved caused by update 1.4
-- Tension Belt trigger reworked
-- Autoloaders can no longer take pallets from the loading area of another autoloader (multiple trailers)
-- onAIFieldWorker events implemented
-- Tension belts now have a delay between loosening and tightening to improve server sync. On the server 1.5 seconds in single player 0.2 seconds. Feedback on this is welcome.
-- Dropped pallets or pallets taken down by hand are now not moved again during unloading
-- Automatic tension belts can now be activated/deactivated per vehicle by [lctrl]+[J]. This is stored per vehicle.
-- Optimized searching valid load place by remembering invalid load places as long as the loader is active.
-- add unloading side backwards for all vehicles by default. Position can configured by the modder.
-- Changed priorities of the key binding to have important entries better visible in the F1 Help.
-- Changed activation to LS standard for loading wagon [B] and always activatable. 
-- Text of unloading page in F1 on Dedi fixed.
-- Support of Multifruit Pack bales incl. lavender round bales (loadable as cotton round bales)
-- Load only selectable when load mode is deactivated
-
-1.6.2.0
-- Square bale loading behaviour optimised
-- Fix for Wool pallet
-- Possibility for external mods to access the functions created
-- Selected cargo is now displayed as extra text in the help menu
-- Palette sizes adapted to average values of new mods
-- Modders can now also make their own palettes loadable through the folder structure. Details on the wiki.
-- Modification of the communication with the Dedi Server to improve the performance.
-- Loading mode now remains active until the trailer is full or it is switched off. Tension belts are tightened in between if the trailer supports it.
-- Vehicle scheme shows when loading is activated.
-- Maximum capacity displayed when load selection is made.
 ]]>
 		</en>
 	</description>
