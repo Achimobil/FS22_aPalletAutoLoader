@@ -2,8 +2,8 @@
 <l10n>
 	<translationContributors>nagor</translationContributors>
 	<texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Деактивировать автопогрузку" />
-		<text name="aPalletAutoLoader_startLoading" text="Активировать автопогрузку" />
+		<text name="aPalletAutoLoader_stopLoading" text="Отключить автопогрузку" />
+		<text name="aPalletAutoLoader_startLoading" text="Включить автопогрузку" />
 		<text name="function_PalletAutoload_Trailer" text="Прицеп с автопогрузкой поддонов и тюков" />
 		<text name="PalletAutoload_Trailer" text="Автопогрузка поддонов и тюков" />
 		<text name="aPalletAutoLoader_LoadingType" text="Погрузить" />
@@ -33,8 +33,8 @@
 		<text name="aPalletAutoLoader_squarebale180" text="Квадратные тюки 180" />
 		<text name="aPalletAutoLoader_squarebale220" text="Квадратные тюки 220" />
 		<text name="aPalletAutoLoader_squarebale240" text="Квадратные тюки 240" />
-		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Натяжные ремни деактивированы" />
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Натяжные ремни активированы" />
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Не закреплять натяжные ремни" />
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Автозакреплять натяжные ремни" />
 		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Переключение автозакрепления натяжных ремней" />
 		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Зону выгрузки выше/ниже" />
 		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Зону выгрузки выше" />
