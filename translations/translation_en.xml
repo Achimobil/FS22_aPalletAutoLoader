@@ -1,57 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
 	<translationContributors>Achimobil</translationContributors>
 	<texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Disable Autoload" />
-		<text name="aPalletAutoLoader_startLoading" text="Enable Autoload" />
-		<text name="function_PalletAutoload_Trailer" text="Trailer with Autoload for pallets" />
-		<text name="PalletAutoload_Trailer" text="Pallet Autoload" />
-		<text name="aPalletAutoLoader_LoadingType" text="LoadingType" />
-		<text name="aPalletAutoLoader_liquidTank" text="liquidTank" />
-		<text name="aPalletAutoLoader_euroPallet" text="euroPallet" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="BigBag Pallets" />
-		<text name="aPalletAutoLoader_bigBag" text="Bigbags" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Round bale cotton" />
-		<text name="aPalletAutoLoader_cottonSquarebale488" text="Square bale cotton" />
-		<text name="aPalletAutoLoader_tipside" text="Tipside" />
-		<text name="aPalletAutoLoader_1" text="left" />
-		<text name="aPalletAutoLoader_2" text="right" />
-		<text name="aPalletAutoLoader_3" text="Middle" />
-		<text name="aPalletAutoLoader_4" text="Back" />
-		<text name="configuration_aPalletAutoLoader" text="Pallet Autoload" />
-		<text name="input_AL_LOAD_PALLET" text="Load Pallets" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Next LoadingType" />
-		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Previous LoadingType" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside" />
-		<text name="input_AL_UNLOAD" text="Unload here" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Show/Hide Markers" />
-		<text name="aPalletAutoLoader_roundbale125" text="Round bale 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Round bale 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Round bale 180" />
-		<text name="aPalletAutoLoader_squarebale120" text="Square bale 120" />
-		<text name="aPalletAutoLoader_squarebale180" text="Square bale 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Square bale 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Square bale 240" />
-		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Tension belts deactivated" />
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Tension belts activated" />
-		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Toggle automatic tensionin belts" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Unloading area high/low" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Unloading area higher" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Unloading area lower" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Unloading area left/right" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Unloading area left" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Unloading area right" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Unloading area forward/back" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Unloading area forward" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Unloading area back" />
-		<text name="aPalletAutoLoader_hosePallet" text="Umbilical Hose" />
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro pallets with double length" />
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-fold Euro pallets" />
-		<text name="aPalletAutoLoader_barrelPallet" text="Barrel Pallet" />
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Prefab Wall Pallet" />
-		<text name="aPalletAutoLoader_smallBundledStack" text="Large wood pallets" />
-		<text name="aPalletAutoLoader_dogHousePallet" text="Dog House Pallet" />
-		<text name="aPalletAutoLoader_metalPallet" text="Metal Pallet" />
+		<text name="aPalletAutoLoader_stopLoading" text="Disable Autoload"/>
+		<text name="aPalletAutoLoader_startLoading" text="Enable Autoload"/>
+		<text name="function_PalletAutoload_Trailer" text="Trailer with Autoload for pallets"/>
+		<text name="PalletAutoload_Trailer" text="Pallet Autoload"/>
+		<text name="aPalletAutoLoader_LoadingType" text="LoadingType"/>
+		<text name="aPalletAutoLoader_liquidTank" text="liquidTank"/>
+		<text name="aPalletAutoLoader_euroPallet" text="euroPallet"/>
+		<text name="aPalletAutoLoader_bigBagPallet" text="BigBag Pallets"/>
+		<text name="aPalletAutoLoader_bigBag" text="Bigbags"/>
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Round bale cotton"/>
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Square bale cotton"/>
+		<text name="aPalletAutoLoader_tipside" text="Tipside"/>
+		<text name="aPalletAutoLoader_1" text="left"/>
+		<text name="aPalletAutoLoader_2" text="right"/>
+		<text name="aPalletAutoLoader_3" text="Middle"/>
+		<text name="aPalletAutoLoader_4" text="Back"/>
+		<text name="configuration_aPalletAutoLoader" text="Pallet Autoload"/>
+		<text name="input_AL_LOAD_PALLET" text="Load Pallets"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Next LoadingType"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Previous LoadingType"/>
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside"/>
+		<text name="input_AL_UNLOAD" text="Unload here"/>
+		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded"/>
+		<text name="input_AL_TOGGLE_MARKERS" text="Show/Hide Markers"/>
+		<text name="aPalletAutoLoader_roundbale125" text="Round bale 125"/>
+		<text name="aPalletAutoLoader_roundbale150" text="Round bale 150"/>
+		<text name="aPalletAutoLoader_roundbale180" text="Round bale 180"/>
+		<text name="aPalletAutoLoader_squarebale120" text="Square bale 120"/>
+		<text name="aPalletAutoLoader_squarebale180" text="Square bale 180"/>
+		<text name="aPalletAutoLoader_squarebale220" text="Square bale 220"/>
+		<text name="aPalletAutoLoader_squarebale240" text="Square bale 240"/>
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Tension belts deactivated"/>
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Tension belts activated"/>
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Toggle automatic tensionin belts"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Unloading area high/low"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Unloading area higher"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Unloading area lower"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Unloading area left/right"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Unloading area left"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Unloading area right"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Unloading area forward/back"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Unloading area forward"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Unloading area back"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Umbilical Hose"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro pallets with double length"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-fold Euro pallets"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Barrel Pallet"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Prefab Wall Pallet"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Large wood pallets"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Dog House Pallet"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Metal Pallet"/>
 	</texts>
 </l10n>
