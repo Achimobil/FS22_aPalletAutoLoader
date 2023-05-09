@@ -1,57 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
 	<translationContributors>Keltibero</translationContributors>
 	<texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Desactivar la carga automática" />
-		<text name="aPalletAutoLoader_startLoading" text="Activar la carga automática" />
-		<text name="function_PalletAutoload_Trailer" text="Remolque con Carga Automática para palés" />
-		<text name="PalletAutoload_Trailer" text="Remolque de plataforma" />
-		<text name="aPalletAutoLoader_LoadingType" text="Tipo de carga" />
-		<text name="aPalletAutoLoader_liquidTank" text="Contenedor para líquidos (GRG)" />
-		<text name="aPalletAutoLoader_euroPallet" text="Europalé" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes" />
-		<text name="aPalletAutoLoader_bigBag" text="Sacos grandes" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón" />
-		<text name="aPalletAutoLoader_cottonSquarebale488" text="Paca rectangular de algodón" />
-		<text name="aPalletAutoLoader_tipside" text="Lado de descarga" />
-		<text name="aPalletAutoLoader_1" text="izquierda" />
-		<text name="aPalletAutoLoader_2" text="derecha" />
-		<text name="aPalletAutoLoader_3" text="Medio" />
-		<text name="aPalletAutoLoader_4" text="trasero" />
-		<text name="configuration_aPalletAutoLoader" text="Carga Automática de palés" />
-		<text name="input_AL_LOAD_PALLET" text="Cargar palés" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Siguiente Tipo de carga" />
-		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tipo de carga anterior" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga" />
-		<text name="input_AL_UNLOAD" text="Descargar aquí" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Mostrar/ocultar marcadores" />
-		<text name="aPalletAutoLoader_roundbale125" text="Paca redonda 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Paca redonda 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Paca redonda 180" />
-		<text name="aPalletAutoLoader_squarebale120" text="Paca rectangular 120" />
-		<text name="aPalletAutoLoader_squarebale180" text="Paca rectangular 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Paca rectangular 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Paca rectangular 240" />
-		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Correas de tensión desactivadas" />
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Correas tensoras activadas" />
-		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alternar la tensión automática de las correas" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zona de descarga alta/baja" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Área de descarga superior" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Zona de descarga inferior" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Área de descarga izquierda/derecha" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Área de descarga a la izquierda" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Área de descarga a la derecha" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Área de descarga hacia delante/atrás" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descarga delante" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Descarga de la zona de atrás" />
-		<text name="aPalletAutoLoader_hosePallet" text="Manguera umbilical" />
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europalets con doble longitud" />
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="Europalets de 4 pliegues" />
-		<text name="aPalletAutoLoader_barrelPallet" text="Palé de barriles" />
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Palé de paredes prefabricadas" />
-		<text name="aPalletAutoLoader_smallBundledStack" text="Palés de madera grandes" />
-		<text name="aPalletAutoLoader_dogHousePallet" text="Palé de casetas para perro" />
-		<text name="aPalletAutoLoader_metalPallet" text="Palé de metales" />
+		<text name="aPalletAutoLoader_stopLoading" text="Desactivar la carga automática"/>
+		<text name="aPalletAutoLoader_startLoading" text="Activar la carga automática"/>
+		<text name="function_PalletAutoload_Trailer" text="Remolque con Carga Automática para palés"/>
+		<text name="PalletAutoload_Trailer" text="Remolque de plataforma"/>
+		<text name="aPalletAutoLoader_LoadingType" text="Tipo de carga"/>
+		<text name="aPalletAutoLoader_liquidTank" text="Contenedor para líquidos (GRG)"/>
+		<text name="aPalletAutoLoader_euroPallet" text="Europalé"/>
+		<text name="aPalletAutoLoader_bigBagPallet" text="Palé de sacos grandes"/>
+		<text name="aPalletAutoLoader_bigBag" text="Sacos grandes"/>
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Paca redonda de algodón"/>
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Paca rectangular de algodón"/>
+		<text name="aPalletAutoLoader_tipside" text="Lado de descarga"/>
+		<text name="aPalletAutoLoader_1" text="izquierda"/>
+		<text name="aPalletAutoLoader_2" text="derecha"/>
+		<text name="aPalletAutoLoader_3" text="Medio"/>
+		<text name="aPalletAutoLoader_4" text="trasero"/>
+		<text name="configuration_aPalletAutoLoader" text="Carga Automática de palés"/>
+		<text name="input_AL_LOAD_PALLET" text="Cargar palés"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Siguiente Tipo de carga"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tipo de carga anterior"/>
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambiar lado de descarga"/>
+		<text name="input_AL_UNLOAD" text="Descargar aquí"/>
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Europalé sobredimensionado"/>
+		<text name="input_AL_TOGGLE_MARKERS" text="Mostrar/ocultar marcadores"/>
+		<text name="aPalletAutoLoader_roundbale125" text="Paca redonda 125"/>
+		<text name="aPalletAutoLoader_roundbale150" text="Paca redonda 150"/>
+		<text name="aPalletAutoLoader_roundbale180" text="Paca redonda 180"/>
+		<text name="aPalletAutoLoader_squarebale120" text="Paca rectangular 120"/>
+		<text name="aPalletAutoLoader_squarebale180" text="Paca rectangular 180"/>
+		<text name="aPalletAutoLoader_squarebale220" text="Paca rectangular 220"/>
+		<text name="aPalletAutoLoader_squarebale240" text="Paca rectangular 240"/>
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Correas de tensión desactivadas"/>
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Correas tensoras activadas"/>
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alternar la tensión automática de las correas"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zona de descarga alta/baja"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Área de descarga superior"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Zona de descarga inferior"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Área de descarga izquierda/derecha"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Área de descarga a la izquierda"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Área de descarga a la derecha"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Área de descarga hacia delante/atrás"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descarga delante"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Descarga de la zona de atrás"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Manguera umbilical"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europalets con doble longitud"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="Europalets de 4 pliegues"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Palé de barriles"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Palé de paredes prefabricadas"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Palés de madera grandes"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Palé de casetas para perro"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Palé de metales"/>
 	</texts>
 </l10n>
