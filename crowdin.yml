@@ -1,5 +1,6 @@
 files:
   - source: translations/translation_de.xml
     translation: /**/%original_path%/translation_%two_letters_code%.xml
-    translate_content: 0
     content_segmentation: 0
+    translatable_elements:
+      - '/l10n/texts/text[@text]'
