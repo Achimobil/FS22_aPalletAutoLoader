@@ -1,57 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
 	<translationContributors>k4talin</translationContributors>
 	<texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Dezactivare Autoîncărcare" />
-		<text name="aPalletAutoLoader_startLoading" text="Activare Autoîncărcare" />
-		<text name="function_PalletAutoload_Trailer" text="Trailer cu Autoîncărcare paleți" />
-		<text name="PalletAutoload_Trailer" text="Autoîncărcare paleți" />
-		<text name="aPalletAutoLoader_LoadingType" text="Tip Încarcare" />
-		<text name="aPalletAutoLoader_liquidTank" text="Rezervor lichid" />
-		<text name="aPalletAutoLoader_euroPallet" text="euroPalet" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="paleți saci mari" />
-		<text name="aPalletAutoLoader_bigBag" text="Saci mari" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Balot cilindric bumbac" />
-		<text name="aPalletAutoLoader_cottonSquarebale488" text="Balot cubic bumbac" />
-		<text name="aPalletAutoLoader_tipside" text="Virf" />
-		<text name="aPalletAutoLoader_1" text="Stânga" />
-		<text name="aPalletAutoLoader_2" text="Dreapta" />
-		<text name="aPalletAutoLoader_3" text="Mijloc" />
-		<text name="aPalletAutoLoader_4" text="Spate" />
-		<text name="configuration_aPalletAutoLoader" text="Autoîncărcare paleți" />
-		<text name="input_AL_LOAD_PALLET" text="Încarcă paleți" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Tip incarcare urmator" />
-		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tip incarcare precedent" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Comutare vârf" />
-		<text name="input_AL_UNLOAD" text="Descarcă aici" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPalet Supraincărcat" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Arată/Ascunde Marcaje" />
-		<text name="aPalletAutoLoader_roundbale125" text="Balot cilindric 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Balot cilindric 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Balot cilindric 180" />
-		<text name="aPalletAutoLoader_squarebale120" text="Balot cubic 120" />
-		<text name="aPalletAutoLoader_squarebale180" text="Balot cubic 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Balot cubic 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Balot cubic 240" />
-		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Curele pretensionate dezactivate" />
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Curele pretensionate activate" />
-		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Comutare curele pretensionate Automatic" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zona de descărcare superior/inferior" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Zona de descărcare superioara" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Zona de descărcare inferioara" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Zona de descărcare stanga/dreapta" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Zona de descărcare stanga" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Zona de descărcare dreapta" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zona de descărcare fata/spate" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descărcare fata" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zona de descărcare spate" />
-		<text name="aPalletAutoLoader_hosePallet" text="Furtun Ombilical" />
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro paleți cu lungime dublă" />
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="Euro paleți 4-pliuri" />
-		<text name="aPalletAutoLoader_barrelPallet" text="Paleți butoaie" />
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Paleți pereti prefabricati" />
-		<text name="aPalletAutoLoader_smallBundledStack" text="Paleți lemn mare" />
-		<text name="aPalletAutoLoader_dogHousePallet" text="Paleți cusca caini" />
-		<text name="aPalletAutoLoader_metalPallet" text="Paleți metal" />
+		<text name="aPalletAutoLoader_stopLoading" text="Dezactivare Autoîncărcare"/>
+		<text name="aPalletAutoLoader_startLoading" text="Activare Autoîncărcare"/>
+		<text name="function_PalletAutoload_Trailer" text="Trailer cu Autoîncărcare paleți"/>
+		<text name="PalletAutoload_Trailer" text="Autoîncărcare paleți"/>
+		<text name="aPalletAutoLoader_LoadingType" text="Tip Încarcare"/>
+		<text name="aPalletAutoLoader_liquidTank" text="Rezervor lichid"/>
+		<text name="aPalletAutoLoader_euroPallet" text="euroPalet"/>
+		<text name="aPalletAutoLoader_bigBagPallet" text="paleți saci mari"/>
+		<text name="aPalletAutoLoader_bigBag" text="Saci mari"/>
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Balot cilindric bumbac"/>
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Balot cubic bumbac"/>
+		<text name="aPalletAutoLoader_tipside" text="Virf"/>
+		<text name="aPalletAutoLoader_1" text="Stânga"/>
+		<text name="aPalletAutoLoader_2" text="Dreapta"/>
+		<text name="aPalletAutoLoader_3" text="Mijloc"/>
+		<text name="aPalletAutoLoader_4" text="Spate"/>
+		<text name="configuration_aPalletAutoLoader" text="Autoîncărcare paleți"/>
+		<text name="input_AL_LOAD_PALLET" text="Încarcă paleți"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Tip incarcare urmator"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tip incarcare precedent"/>
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Comutare vârf"/>
+		<text name="input_AL_UNLOAD" text="Descarcă aici"/>
+		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPalet Supraincărcat"/>
+		<text name="input_AL_TOGGLE_MARKERS" text="Arată/Ascunde Marcaje"/>
+		<text name="aPalletAutoLoader_roundbale125" text="Balot cilindric 125"/>
+		<text name="aPalletAutoLoader_roundbale150" text="Balot cilindric 150"/>
+		<text name="aPalletAutoLoader_roundbale180" text="Balot cilindric 180"/>
+		<text name="aPalletAutoLoader_squarebale120" text="Balot cubic 120"/>
+		<text name="aPalletAutoLoader_squarebale180" text="Balot cubic 180"/>
+		<text name="aPalletAutoLoader_squarebale220" text="Balot cubic 220"/>
+		<text name="aPalletAutoLoader_squarebale240" text="Balot cubic 240"/>
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Curele pretensionate dezactivate"/>
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Curele pretensionate activate"/>
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Comutare curele pretensionate Automatic"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zona de descărcare superior/inferior"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Zona de descărcare superioara"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Zona de descărcare inferioara"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Zona de descărcare stanga/dreapta"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Zona de descărcare stanga"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Zona de descărcare dreapta"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zona de descărcare fata/spate"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descărcare fata"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zona de descărcare spate"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Furtun Ombilical"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro paleți cu lungime dublă"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="Euro paleți 4-pliuri"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Paleți butoaie"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Paleți pereti prefabricati"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Paleți lemn mare"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Paleți cusca caini"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Paleți metal"/>
 	</texts>
 </l10n>
