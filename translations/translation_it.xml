@@ -1,57 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
-	<translationContributors>Markus33 [ITA]</translationContributors>
+	<translationContributors>Achimobil</translationContributors>
 	<texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Disattivare il carico automatico" />
-		<text name="aPalletAutoLoader_startLoading" text="Attivare il caricamento automatico" />
-		<text name="function_PalletAutoload_Trailer" text="Rimorchio con caricamento automatico per pallet" />
-		<text name="PalletAutoload_Trailer" text="Caricatore automatico di pallet" />
-		<text name="aPalletAutoLoader_LoadingType" text="Tipo di caricamento" />
-		<text name="aPalletAutoLoader_liquidTank" text="Pallet contenitore liquidi" />
-		<text name="aPalletAutoLoader_euroPallet" text="Euro Pallet" />
-		<text name="aPalletAutoLoader_bigBagPallet" text="Pallet BigBag" />
-		<text name="aPalletAutoLoader_bigBag" text="Grandi sacchi" />
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Rotoballa di cotone" />
-		<text name="aPalletAutoLoader_cottonSquarebale488" text="Balla quadrata di cotone" />
-		<text name="aPalletAutoLoader_tipside" text="Lato di scarico" />
-		<text name="aPalletAutoLoader_1" text="Sinistra" />
-		<text name="aPalletAutoLoader_2" text="Destra" />
-		<text name="aPalletAutoLoader_3" text="Medio" />
-		<text name="aPalletAutoLoader_4" text="Posteriore" />
-		<text name="configuration_aPalletAutoLoader" text="Caricatore automatico di pallet" />
-		<text name="input_AL_LOAD_PALLET" text="Carica i pallet" />
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Successivo Tipo di caricamento" />
-		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tipo di caricamento precedente" />
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambia il lato di scarico" />
-		<text name="input_AL_UNLOAD" text="Scarica qui" />
-		<text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura" />
-		<text name="input_AL_TOGGLE_MARKERS" text="Mostra/Nascondi indicatori" />
-		<text name="aPalletAutoLoader_roundbale125" text="Rotoballa 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Rotoballa 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Rotoballa 180" />
-		<text name="aPalletAutoLoader_squarebale120" text="Balla quadrata 120" />
-		<text name="aPalletAutoLoader_squarebale180" text="Balla quadrata 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Balla quadrata 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Balla quadrata 240" />
-		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Cinghie di tensione disattivate" />
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Cinghie di tensione attivate" />
-		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alzare la tensione automatica delle cinghie" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Area di scarico alta/bassa" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Area di scarico più alta" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Area di scarico inferiore" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Area di scarico a sinistra/destra" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Area di scaricamento a sinistra" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Area di scaricamento a destra" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Area di scaricamento avanti/indietro" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Area di scarico davanti" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Area di scarico indietro" />
-		<text name="aPalletAutoLoader_hosePallet" text="Tubo ombelicale" />
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europallet a doppia lunghezza" />
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="Europallet a 4 pieghe" />
-		<text name="aPalletAutoLoader_barrelPallet" text="Pallet di barili" />
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Pallet di muri prefabbricati" />
-		<text name="aPalletAutoLoader_smallBundledStack" text="Pallet di legno di grandi dimensioni" />
-		<text name="aPalletAutoLoader_dogHousePallet" text="Pallet di cucce del cane" />
-		<text name="aPalletAutoLoader_metalPallet" text="Pallet di metallo" />
+		<text name="aPalletAutoLoader_stopLoading" text="Disattivare il carico automatico"/>
+		<text name="aPalletAutoLoader_startLoading" text="Attivare il caricamento automatico"/>
+		<text name="function_PalletAutoload_Trailer" text="Rimorchio con caricamento automatico per pallet"/>
+		<text name="PalletAutoload_Trailer" text="Caricatore automatico di pallet"/>
+		<text name="aPalletAutoLoader_LoadingType" text="Tipo di caricamento"/>
+		<text name="aPalletAutoLoader_liquidTank" text="Pallet contenitore liquidi"/>
+		<text name="aPalletAutoLoader_euroPallet" text="Euro Pallet"/>
+		<text name="aPalletAutoLoader_bigBagPallet" text="Pallet BigBag"/>
+		<text name="aPalletAutoLoader_bigBag" text="Grandi sacchi"/>
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Rotoballa di cotone"/>
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Balla quadrata di cotone"/>
+		<text name="aPalletAutoLoader_tipside" text="Lato di scarico"/>
+		<text name="aPalletAutoLoader_1" text="Sinistra"/>
+		<text name="aPalletAutoLoader_2" text="Destra"/>
+		<text name="aPalletAutoLoader_3" text="Medio"/>
+		<text name="aPalletAutoLoader_4" text="Posteriore"/>
+		<text name="configuration_aPalletAutoLoader" text="Caricatore automatico di pallet"/>
+		<text name="input_AL_LOAD_PALLET" text="Carica i pallet"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Successivo Tipo di caricamento"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Tipo di caricamento precedente"/>
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Cambia il lato di scarico"/>
+		<text name="input_AL_UNLOAD" text="Scarica qui"/>
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Europallet fuori misura"/>
+		<text name="input_AL_TOGGLE_MARKERS" text="Mostra/Nascondi indicatori"/>
+		<text name="aPalletAutoLoader_roundbale125" text="Rotoballa 125"/>
+		<text name="aPalletAutoLoader_roundbale150" text="Rotoballa 150"/>
+		<text name="aPalletAutoLoader_roundbale180" text="Rotoballa 180"/>
+		<text name="aPalletAutoLoader_squarebale120" text="Balla quadrata 120"/>
+		<text name="aPalletAutoLoader_squarebale180" text="Balla quadrata 180"/>
+		<text name="aPalletAutoLoader_squarebale220" text="Balla quadrata 220"/>
+		<text name="aPalletAutoLoader_squarebale240" text="Balla quadrata 240"/>
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Cinghie di tensione disattivate"/>
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Cinghie di tensione attivate"/>
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Alzare la tensione automatica delle cinghie"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Area di scarico alta/bassa"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Area di scarico più alta"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Area di scarico inferiore"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Area di scarico a sinistra/destra"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Area di scaricamento a sinistra"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Area di scaricamento a destra"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Area di scaricamento avanti/indietro"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Area di scarico davanti"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Area di scarico indietro"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Tubo ombelicale"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europallet a doppia lunghezza"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="Europallet a 4 pieghe"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Pallet di barili"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Pallet di muri prefabbricati"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Pallet di legno di grandi dimensioni"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Pallet di cucce del cane"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Pallet di metallo"/>
 	</texts>
 </l10n>
