@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
-	<translationContributors>BOB51160</translationContributors>
+	<translationContributors>Achimobil</translationContributors>
 	<texts>
 		<text name="aPalletAutoLoader_stopLoading" text="Désactiver l'autoload"/>
 		<text name="aPalletAutoLoader_startLoading" text="Activer l'autoload"/>
@@ -10,14 +10,14 @@
 		<text name="aPalletAutoLoader_liquidTank" text="liquidTank"/>
 		<text name="aPalletAutoLoader_euroPallet" text="euroPallet"/>
 		<text name="aPalletAutoLoader_bigBagPallet" text="bigBag Pallet"/>
-		<text name="aPalletAutoLoader_bigBag" text="Big bag" />
+		<text name="aPalletAutoLoader_bigBag" text="Big bag"/>
 		<text name="aPalletAutoLoader_cottonRoundbale238" text="Balle ronde coton"/>
 		<text name="aPalletAutoLoader_cottonSquarebale488" text="Balle carrée coton"/>
 		<text name="aPalletAutoLoader_tipside" text="Tipside"/>
 		<text name="aPalletAutoLoader_1" text="gauche"/>
 		<text name="aPalletAutoLoader_2" text="droite"/>
-		<text name="aPalletAutoLoader_3" text="Centre" />
-		<text name="aPalletAutoLoader_4" text="arrière" />
+		<text name="aPalletAutoLoader_3" text="Centre"/>
+		<text name="aPalletAutoLoader_4" text="arrière"/>
 		<text name="configuration_aPalletAutoLoader" text="Pallet AutoLoader"/>
 		<text name="input_AL_LOAD_PALLET" text="Charger les palettes"/>
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="LoadingType suivant"/>
@@ -25,33 +25,33 @@
 		<text name="input_AL_TOGGLE_TIPSIDE" text="Toggle Tipside"/>
 		<text name="input_AL_UNLOAD" text="Décharger ici"/>
 		<text name="aPalletAutoLoader_euroPalletOversize" text="euroPallet Overloaded"/>
-		<text name="input_AL_TOGGLE_MARKERS" text="Afficher/masquer les marqueurs" />
-		<text name="aPalletAutoLoader_roundbale125" text="Balle ronde 125" />
-		<text name="aPalletAutoLoader_roundbale150" text="Balle ronde 150" />
-		<text name="aPalletAutoLoader_roundbale180" text="Balle ronde 180" />
-		<text name="aPalletAutoLoader_squarebale120" text="Balle carrée 120" />
-		<text name="aPalletAutoLoader_squarebale180" text="Balle carrée 180" />
-		<text name="aPalletAutoLoader_squarebale220" text="Balle carrée 220" />
-		<text name="aPalletAutoLoader_squarebale240" text="Balle carrée 240" />
-		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Sangles de serrage désactivées" />
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Sangles de serrage activées" />
-		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Basculement automatique des courroies de tension" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zone de déchargement plus haute/plus basse" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Zone de déchargement plus haute" />
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="zone de déchargement plus basse" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Zone de déchargement gauche/droite" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="zone de déchargement à gauche" />
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Zone de déchargement à droite" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zone de déchargement avant/arrière" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zone de déchargement avant" />
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zone de déchargement arrière" />
-		<text name="aPalletAutoLoader_hosePallet" text="Tuyau ombilical" />
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Palettes Euro double longueur" />
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="palettes Euro 4x" />
-		<text name="aPalletAutoLoader_barrelPallet" text="Palette de tonneaux" />
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette de murs préfabriqués" />
-		<text name="aPalletAutoLoader_smallBundledStack" text="Grandes palettes de bois" />
-		<text name="aPalletAutoLoader_dogHousePallet" text="Palette de niches" />
-		<text name="aPalletAutoLoader_metalPallet" text="Palette de métal" />
+		<text name="input_AL_TOGGLE_MARKERS" text="Afficher/masquer les marqueurs"/>
+		<text name="aPalletAutoLoader_roundbale125" text="Balle ronde 125"/>
+		<text name="aPalletAutoLoader_roundbale150" text="Balle ronde 150"/>
+		<text name="aPalletAutoLoader_roundbale180" text="Balle ronde 180"/>
+		<text name="aPalletAutoLoader_squarebale120" text="Balle carrée 120"/>
+		<text name="aPalletAutoLoader_squarebale180" text="Balle carrée 180"/>
+		<text name="aPalletAutoLoader_squarebale220" text="Balle carrée 220"/>
+		<text name="aPalletAutoLoader_squarebale240" text="Balle carrée 240"/>
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Sangles de serrage désactivées"/>
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Sangles de serrage activées"/>
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Basculement automatique des courroies de tension"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Zone de déchargement plus haute/plus basse"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Zone de déchargement plus haute"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="zone de déchargement plus basse"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Zone de déchargement gauche/droite"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="zone de déchargement à gauche"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Zone de déchargement à droite"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zone de déchargement avant/arrière"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zone de déchargement avant"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zone de déchargement arrière"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Tuyau ombilical"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Palettes Euro double longueur"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="palettes Euro 4x"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Palette de tonneaux"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette de murs préfabriqués"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Grandes palettes de bois"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Palette de niches"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Palette de métal"/>
 	</texts>
 </l10n>
