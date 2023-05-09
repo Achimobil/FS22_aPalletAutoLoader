@@ -4,3 +4,4 @@ files:
     content_segmentation: 0
     translatable_elements:
       - '/l10n/texts/text[@text]'
+      - /l10n/translationContributors
