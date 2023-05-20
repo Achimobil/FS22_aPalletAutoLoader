@@ -2,8 +2,8 @@
 <l10n>
 	<translationContributors>Achimobil</translationContributors>
 	<texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Dezaktywuj funkcję autoload"/>
-		<text name="aPalletAutoLoader_startLoading" text="Aktywuj funkcję autoload"/>
+		<text name="aPalletAutoLoader_stopLoading" text="Wyłącz automatyczne ładowanie"/>
+		<text name="aPalletAutoLoader_startLoading" text="Włącz automatyczne ładowanie"/>
 		<text name="function_PalletAutoload_Trailer" text="Przyczepa z automatycznym załadunkiem palet"/>
 		<text name="PalletAutoload_Trailer" text="Autozaładunek Palet"/>
 		<text name="aPalletAutoLoader_LoadingType" text="Wybrany typ"/>
