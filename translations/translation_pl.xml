@@ -2,56 +2,56 @@
 <l10n>
 	<translationContributors>Achimobil</translationContributors>
 	<texts>
-		<text name="aPalletAutoLoader_stopLoading" text="Dezaktywuj funkcję autoload"/>
-		<text name="aPalletAutoLoader_startLoading" text="Aktywuj funkcję autoload"/>
-		<text name="function_PalletAutoload_Trailer" text="Przyczepa z automatycznym załadunkiem palet"/>
-		<text name="PalletAutoload_Trailer" text="Autozaładunek Palet"/>
-		<text name="aPalletAutoLoader_LoadingType" text="Wybrany typ"/>
-		<text name="aPalletAutoLoader_liquidTank" text="LiquidTank"/>
-		<text name="aPalletAutoLoader_euroPallet" text="Euro Palety"/>
-		<text name="aPalletAutoLoader_bigBagPallet" text="BigBag Palety"/>
-		<text name="aPalletAutoLoader_bigBag" text="Worki typu Bigbag"/>
-		<text name="aPalletAutoLoader_cottonRoundbale238" text="Bela bawełny"/>
-		<text name="aPalletAutoLoader_cottonSquarebale488" text="Kostka bawełny"/>
-		<text name="aPalletAutoLoader_tipside" text="Strona wyłądunku"/>
-		<text name="aPalletAutoLoader_1" text="lewa"/>
-		<text name="aPalletAutoLoader_2" text="prawa"/>
-		<text name="aPalletAutoLoader_3" text="środek"/>
-		<text name="aPalletAutoLoader_4" text="tył"/>
-		<text name="configuration_aPalletAutoLoader" text="Autozaładunek Palet"/>
-		<text name="input_AL_LOAD_PALLET" text="Załaduj Palety"/>
-		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Następny LoadingType"/>
-		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Poprzedni LoadingType"/>
-		<text name="input_AL_TOGGLE_TIPSIDE" text="Przełacz stronę wyładunku"/>
-		<text name="input_AL_UNLOAD" text="Wyładuj tutaj"/>
-		<text name="aPalletAutoLoader_euroPalletOversize" text="Nadwymiarowe europalety"/>
-		<text name="input_AL_TOGGLE_MARKERS" text="Pokaż/ukryj znaczniki"/>
-		<text name="aPalletAutoLoader_roundbale125" text="Bela 125"/>
-		<text name="aPalletAutoLoader_roundbale150" text="Bela 150"/>
-		<text name="aPalletAutoLoader_roundbale180" text="Bela 180"/>
-		<text name="aPalletAutoLoader_squarebale120" text="Kostka 120"/>
-		<text name="aPalletAutoLoader_squarebale180" text="Kostka 180"/>
-		<text name="aPalletAutoLoader_squarebale220" text="Kostka 220"/>
-		<text name="aPalletAutoLoader_squarebale240" text="Kostka 240"/>
-		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Taśmy napinające wyłączone"/>
-		<text name="aPalletAutoLoader_TensionBeltsActive" text="Aktywacja pasów napinających"/>
-		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Przełączanie automatycznego napinania pasów"/>
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Miejsce rozładunku wysokie/niskie"/>
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Miejsce rozładunku wyżej"/>
-		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Miejsce rozładunku niżej"/>
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Obszar rozładunku w lewo/prawo"/>
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Obszar rozładunku w lewo"/>
-		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Obszar rozładunku w prawo"/>
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Miejsce rozładunku do przodu/do tyłu"/>
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Miejsce rozładunku z przodu"/>
-		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Miejsce rozładunku do tyłu"/>
-		<text name="aPalletAutoLoader_hosePallet" text="Wąż pępowinowy"/>
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europalety o podwójnej długości"/>
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-krotne europalety"/>
-		<text name="aPalletAutoLoader_barrelPallet" text="Paleta beczek"/>
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Paleta gotowej ściany"/>
-		<text name="aPalletAutoLoader_smallBundledStack" text="Duże palety drewniane"/>
-		<text name="aPalletAutoLoader_dogHousePallet" text="Paleta psiej budy"/>
-		<text name="aPalletAutoLoader_metalPallet" text="Paleta metalu"/>
+		<text name="aPalletAutoLoader_stopLoading" text="Wyłącz automatyczne ładowanie"/>
+		<text name="aPalletAutoLoader_startLoading" text="Włącz automatyczne ładowanie"/>
+		<text name="function_PalletAutoload_Trailer" text="Przyczepa z funkcją automatycznego ładowania palet"/>
+		<text name="PalletAutoload_Trailer" text="Automatyczne ładowanie palet"/>
+		<text name="aPalletAutoLoader_LoadingType" text="Typ ładunku"/>
+		<text name="aPalletAutoLoader_liquidTank" text="Zbiorniki na ciecze"/>
+		<text name="aPalletAutoLoader_euroPallet" text="Palety Euro"/>
+		<text name="aPalletAutoLoader_bigBagPallet" text="Palety BigBag"/>
+		<text name="aPalletAutoLoader_bigBag" text="Worki typu BigBag"/>
+		<text name="aPalletAutoLoader_cottonRoundbale238" text="Okrągłe bele bawełny"/>
+		<text name="aPalletAutoLoader_cottonSquarebale488" text="Kwadratowe bele bawełny"/>
+		<text name="aPalletAutoLoader_tipside" text="Strona rozładunku"/>
+		<text name="aPalletAutoLoader_1" text="Lewa strona"/>
+		<text name="aPalletAutoLoader_2" text="Prawa strona"/>
+		<text name="aPalletAutoLoader_3" text="Środek"/>
+		<text name="aPalletAutoLoader_4" text="Tył"/>
+		<text name="configuration_aPalletAutoLoader" text="Automatyczne ładowanie palet"/>
+		<text name="input_AL_LOAD_PALLET" text="Załaduj palety"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Następny typ ładunku"/>
+		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Poprzedni typ ładunku"/>
+		<text name="input_AL_TOGGLE_TIPSIDE" text="Zmień stronę rozładunku"/>
+		<text name="input_AL_UNLOAD" text="Rozładuj tutaj"/>
+		<text name="aPalletAutoLoader_euroPalletOversize" text="Ponadwymiarowe palety Euro"/>
+		<text name="input_AL_TOGGLE_MARKERS" text="Wyświetl/ukryj oznaczenia"/>
+		<text name="aPalletAutoLoader_roundbale125" text="Bele okrągłe 125"/>
+		<text name="aPalletAutoLoader_roundbale150" text="Bele okrągłe 150"/>
+		<text name="aPalletAutoLoader_roundbale180" text="Bele okrągłe 180"/>
+		<text name="aPalletAutoLoader_squarebale120" text="Bele kwadratowe 120"/>
+		<text name="aPalletAutoLoader_squarebale180" text="Bele kwadratowe 180"/>
+		<text name="aPalletAutoLoader_squarebale220" text="Bele kwadratowe 220"/>
+		<text name="aPalletAutoLoader_squarebale240" text="Bele kwadratowe 240"/>
+		<text name="aPalletAutoLoader_TensionBeltsNotActive" text="Pasy mocujące wyłączone"/>
+		<text name="aPalletAutoLoader_TensionBeltsActive" text="Pasy mocujące włączone"/>
+		<text name="input_AL_TOGGLE_AUTOMATIC_TENSIONBELTS" text="Zmień automatyczne pasy mocujące"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN" text="Obszar rozładunku wysoki/niski"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_1" text="Obszar rozładunku wyżej"/>
+		<text name="input_AL_UNLOADAREA_MOVE_UPDOWN_2" text="Obszar rozładunku niżej"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT" text="Obszar rozładunku z lewej/z prawej strony"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_1" text="Obszar rozładunku z lewej strony"/>
+		<text name="input_AL_UNLOADAREA_MOVE_LEFTRIGHT_2" text="Obszar rozładunku z prawej strony"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Obszar rozładunku od przodu/od tyłu"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Obszar rozładunku od przodu"/>
+		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Obszar rozładunku od tyłu"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Wąż do gnojowicy"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Palety Euro o podwójnej długości"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-krotne Palety Euro"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Paleta z beczkami"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Paleta z prefabrykowanymi ściankami"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Duże palety do stosów drewna"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Paleta z budami dla psów"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Paleta z metalem"/>
 	</texts>
 </l10n>
