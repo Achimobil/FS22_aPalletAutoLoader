@@ -1588,7 +1588,7 @@ function APalletAutoLoader:getFirstValidLoadPlace()
 				currentLoadHeigt = currentLoadHeigt + 0.01
 			end
 		else
-			currentLoadHeigt = currentLoadHeigt + 0.05
+			currentLoadHeigt = currentLoadHeigt + 0.01
 		end
 	end
 
