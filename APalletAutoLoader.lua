@@ -1705,7 +1705,11 @@ function APalletAutoLoader:loadObject(object)
 					if firstValidLoadPlace ~= -1 and objectNodeId ~= 0 then
 						local loadPlaces = currentAutoLoadType.places;
 						local loadPlace = loadPlaces[firstValidLoadPlace]
-						local x,y,z = localToWorld(loadPlace.node, 0, currentLoadHeigt, 0);
+						local useLoadHeight = currentLoadHeigt;
+						if currentAutoLoadType.LoadHeightOffset ~= nil then
+							useLoadHeight = useLoadHeight + currentAutoLoadType.LoadHeightOffset;
+						end
+						local x,y,z = localToWorld(loadPlace.node, 0, useLoadHeight, 0);
 						local rx,ry,rz = getWorldRotation(loadPlace.node);
 
 						-- bigBags and pallets have two components and appear as vehicle, so we treat them differently
