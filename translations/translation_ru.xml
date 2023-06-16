@@ -46,13 +46,13 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Зону выгрузки вперёд"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Зону выгрузки назад"/>
 		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
-		<text name="aPalletAutoLoader_hosePallet" text="Schlauch für die Gülleverschlauchung"/>
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro Paletten mit doppelter länge"/>
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-fach Euro Paletten"/>
-		<text name="aPalletAutoLoader_barrelPallet" text="Palette mit Fässern"/>
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette mit Fertigwänden"/>
-		<text name="aPalletAutoLoader_smallBundledStack" text="Große Holzstapel Paletten"/>
-		<text name="aPalletAutoLoader_dogHousePallet" text="Palette mit Hundehütten"/>
-		<text name="aPalletAutoLoader_metalPallet" text="Palette mit Metall"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Шланг для жидкого навоза"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="2-кратные поддоны"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-кратные поддоны"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Поддоны с бочками"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Поддоны с блочными стенами"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Поддоны с длинными пиломатериалами"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Поддоны с собачьими будками"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Поддоны с металлом"/>
 	</texts>
 </l10n>
