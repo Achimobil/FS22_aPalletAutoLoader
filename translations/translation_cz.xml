@@ -45,6 +45,7 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Vykládací oblast dopředu/dozadu"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Vykládací prostor vpředu"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Vykládací oblast zpět"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
 		<text name="aPalletAutoLoader_hosePallet" text="Přívodní hadice"/>
 		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro palety s dvojitou délkou"/>
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="4násobné europalety"/>

@@ -45,6 +45,7 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zone de déchargement avant/arrière"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zone de déchargement avant"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zone de déchargement arrière"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
 		<text name="aPalletAutoLoader_hosePallet" text="Tuyau ombilical"/>
 		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Palettes Euro double longueur"/>
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="palettes Euro 4x"/>

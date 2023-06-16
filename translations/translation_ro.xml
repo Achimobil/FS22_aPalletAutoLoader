@@ -45,6 +45,7 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zona de descărcare fata/spate"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descărcare fata"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zona de descărcare spate"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
 		<text name="aPalletAutoLoader_hosePallet" text="Furtun Ombilical"/>
 		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro paleți cu lungime dublă"/>
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="Euro paleți 4-pliuri"/>

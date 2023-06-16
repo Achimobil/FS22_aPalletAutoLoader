@@ -45,6 +45,7 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Área de descarga hacia delante/atrás"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descarga delante"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Descarga de la zona de atrás"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
 		<text name="aPalletAutoLoader_hosePallet" text="Manguera umbilical"/>
 		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europalets con doble longitud"/>
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="Europalets de 4 pliegues"/>

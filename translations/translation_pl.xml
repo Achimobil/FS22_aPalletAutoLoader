@@ -45,6 +45,7 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Obszar rozładunku od przodu/od tyłu"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Obszar rozładunku od przodu"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Obszar rozładunku od tyłu"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
 		<text name="aPalletAutoLoader_hosePallet" text="Wąż do gnojowicy"/>
 		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Palety Euro o podwójnej długości"/>
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-krotne Palety Euro"/>

@@ -45,6 +45,7 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Area di scaricamento avanti/indietro"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Area di scarico davanti"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Area di scarico indietro"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
 		<text name="aPalletAutoLoader_hosePallet" text="Tubo ombelicale"/>
 		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Europallet a doppia lunghezza"/>
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="Europallet a 4 pieghe"/>
