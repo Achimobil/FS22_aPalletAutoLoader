@@ -45,13 +45,14 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zone de déchargement avant/arrière"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zone de déchargement avant"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zone de déchargement arrière"/>
-		<text name="aPalletAutoLoader_hosePallet" text="Tuyau ombilical"/>
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Palettes Euro double longueur"/>
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="palettes Euro 4x"/>
-		<text name="aPalletAutoLoader_barrelPallet" text="Palette de tonneaux"/>
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette de murs préfabriqués"/>
-		<text name="aPalletAutoLoader_smallBundledStack" text="Grandes palettes de bois"/>
-		<text name="aPalletAutoLoader_dogHousePallet" text="Palette de niches"/>
-		<text name="aPalletAutoLoader_metalPallet" text="Palette de métal"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Schlauch für die Gülleverschlauchung"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro Paletten mit doppelter länge"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-fach Euro Paletten"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Palette mit Fässern"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette mit Fertigwänden"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Große Holzstapel Paletten"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Palette mit Hundehütten"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Palette mit Metall"/>
 	</texts>
 </l10n>
