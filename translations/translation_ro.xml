@@ -45,13 +45,14 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Zona de descărcare fata/spate"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Zona de descărcare fata"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Zona de descărcare spate"/>
-		<text name="aPalletAutoLoader_hosePallet" text="Furtun Ombilical"/>
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro paleți cu lungime dublă"/>
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="Euro paleți 4-pliuri"/>
-		<text name="aPalletAutoLoader_barrelPallet" text="Paleți butoaie"/>
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Paleți pereti prefabricati"/>
-		<text name="aPalletAutoLoader_smallBundledStack" text="Paleți lemn mare"/>
-		<text name="aPalletAutoLoader_dogHousePallet" text="Paleți cusca caini"/>
-		<text name="aPalletAutoLoader_metalPallet" text="Paleți metal"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Schlauch für die Gülleverschlauchung"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro Paletten mit doppelter länge"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-fach Euro Paletten"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Palette mit Fässern"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette mit Fertigwänden"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Große Holzstapel Paletten"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Palette mit Hundehütten"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Palette mit Metall"/>
 	</texts>
 </l10n>
