@@ -46,13 +46,13 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Vykládací prostor vpředu"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Vykládací oblast zpět"/>
 		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
-		<text name="aPalletAutoLoader_hosePallet" text="Schlauch für die Gülleverschlauchung"/>
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro Paletten mit doppelter länge"/>
-		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-fach Euro Paletten"/>
-		<text name="aPalletAutoLoader_barrelPallet" text="Palette mit Fässern"/>
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette mit Fertigwänden"/>
-		<text name="aPalletAutoLoader_smallBundledStack" text="Große Holzstapel Paletten"/>
-		<text name="aPalletAutoLoader_dogHousePallet" text="Palette mit Hundehütten"/>
-		<text name="aPalletAutoLoader_metalPallet" text="Palette mit Metall"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Přívodní hadice"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro palety s dvojitou délkou"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4násobné europalety"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Paleta se sudy"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Paleta prefabrikovaných stěn"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Velké dřevěné palety"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Paleta s psími boudami"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Paleta kovů"/>
 	</texts>
 </l10n>
