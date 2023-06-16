@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="75">
 	<author>Achimobil</author>
-	<version>1.10.1.0_beta_1</version>
+	<version>1.11.0.0_beta_1</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,10 +43,11 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
-1.10.1.0_beta_1
+1.11.0.0_beta_1
 - Verbesserte Übersetzungen in verschiedenen Sprachen
 - LoadHeightOffset beim ladegut eingefügt für Paletten deren Ursprung nicht unter der Palette ist
 - Erfordert LS Patch 1.10.1.0
+- Per konfigurierbarer Taste (Standard STRG+ALT+Y) kann das Ladegut automatisch ausgewählt werden anhand dessen was in Ladereichweite ist
 
 1.10.0.0
 - Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
@@ -155,6 +156,9 @@ Changelog:
 			<binding device="KB_MOUSE_DEFAULT" input="KEY_b"/>
 			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_4" axisComponent="+" neutralInput="0" index="1"/>
 		</actionBinding>
+		<actionBinding action="AL_AUTOMATIC_LOADINGTYPE">
+			<binding device="KB_MOUSE_DEFAULT" input="KEY_lctrl KEY_lalt KEY_z"/>
+		</actionBinding>
 		<actionBinding action="AL_TOGGLE_LOADINGTYPE">
 			<binding device="KB_MOUSE_DEFAULT" input="KEY_z"/>
 			<binding device="0_XINPUT_GAMEPAD" input="BUTTON_10" axisComponent="+" neutralInput="0" index="1"/>
@@ -191,6 +195,7 @@ Changelog:
 	</inputBinding>
 	<actions>
 		<action name="AL_LOAD_PALLET"/>
+		<action name="AL_AUTOMATIC_LOADINGTYPE"/>
 		<action name="AL_TOGGLE_LOADINGTYPE"/>
 		<action name="AL_TOGGLE_LOADINGTYPEBACK"/>
 		<action name="AL_TOGGLE_TIPSIDE"/>

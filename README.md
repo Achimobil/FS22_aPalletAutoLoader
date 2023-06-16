@@ -4,6 +4,8 @@ Hier findet ihr die quellen zu meinem Autoloader.
 Es ist weiterhin nicht erlaubt die Skripte in eigene Mods zu kopieren.
 Der Mod ist als Dependency ausgelegt um auf neue Anforderungen, Patches usw. zu reagieren und dies Zentral zu steuern.
 
+Übersetzungen können hier gemacht werden: https://crowdin.com/project/fs22apalletautoloader
+
 # General
 ## DE
 Alles in meinen Mods darf weder komplett noch in Teilen in eigene Mods kopiert oder in irgendeiner anderen Form weiterveröffentlicht werden, es sei denn es wird ausdrücklich erlaubt.

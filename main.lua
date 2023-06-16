@@ -16,6 +16,8 @@ local function init()
     source(path)
     local path = modDirectory .. "Events/SetAutomaticTensionBeltsEvent.lua";
     source(path)
+    local path = modDirectory .. "Events/SetAutoloadTypeAutomaticEvent.lua";
+    source(path)
 end
 
 init()

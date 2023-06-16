@@ -99,6 +99,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
 	SpecializationUtil.registerFunction(vehicleType, "AddSupportedObjects", APalletAutoLoader.AddSupportedObjects)
 	SpecializationUtil.registerFunction(vehicleType, "CreateAvailableTypeList", APalletAutoLoader.CreateAvailableTypeList)
 	SpecializationUtil.registerFunction(vehicleType, "SetPickupTriggerCollisionMask", APalletAutoLoader.SetPickupTriggerCollisionMask)
+	SpecializationUtil.registerFunction(vehicleType, "SetAutoloadTypeAutomatic", APalletAutoLoader.SetAutoloadTypeAutomatic)
 
 	if vehicleType.functions["getFillUnitCapacity"] == nil then
 		SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -338,6 +339,11 @@ function APalletAutoLoader:onRegisterActionEvents(isActiveForInput, isActiveForI
 			spec.actionEventIdMoveFrontBack = actionEventIdMoveFrontBack;
 			g_inputBinding:setActionEventText(actionEventIdMoveFrontBack, g_i18n:getText("input_AL_UNLOADAREA_MOVE_FRONTBACK"));
 
+			local _, automaticAutoLoadTypeActionEventId = self:addActionEvent(spec.actionEvents, InputAction.AL_AUTOMATIC_LOADINGTYPE, self, APalletAutoLoader.actionEventAutomaticLoadTypes, false, true, false, true, nil, nil, true, true)
+			g_inputBinding:setActionEventTextPriority(automaticAutoLoadTypeActionEventId, GS_PRIO_VERY_HIGH)
+			spec.automaticAutoLoadTypeActionEventId = automaticAutoLoadTypeActionEventId;
+			g_inputBinding:setActionEventText(automaticAutoLoadTypeActionEventId, g_i18n:getText("input_AL_AUTOMATIC_LOADINGTYPE"));
+
 			APalletAutoLoader.updateActionText(self);
 		end
 	end
@@ -373,6 +379,7 @@ function APalletAutoLoader.updateActionText(self)
 
 		if not spec.available then
 			g_inputBinding:setActionEventActive(spec.toggleLoadingActionEventId, false)
+			g_inputBinding:setActionEventActive(spec.automaticAutoLoadTypeActionEventId, false)
 			g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, false)
 			g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesBackActionEventId, false)
 			g_inputBinding:setActionEventActive(spec.toggleTipsideActionEventId, false)
@@ -406,7 +413,6 @@ function APalletAutoLoader.updateActionText(self)
 			loadingText = g_i18n:getText("aPalletAutoLoader_LoadingType") .. ": " .. spec.autoLoadTypes[spec.currentautoLoadTypeIndex].nameTranslated
 		end
 		g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesActionEventId, loadingText)
-		-- g_inputBinding:setActionEventText(spec.toggleAutoLoadTypesBackActionEventId, "balBlub")
 
 		g_inputBinding:setActionEventText(spec.toggleTipsideActionEventId, spec.tipsideText)
 
@@ -419,6 +425,7 @@ function APalletAutoLoader.updateActionText(self)
 		-- deactivate when somthing is already loaded or not
 		g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
 		g_inputBinding:setActionEventActive(spec.toggleAutoLoadTypesBackActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED)
+		g_inputBinding:setActionEventActive(spec.automaticAutoLoadTypeActionEventId, spec.numTriggeredObjects == 0 and spec.loadingState == APalletAutoLoaderLoadingState.STOPPED and spec.objectsToLoadCount ~= 0)
 		g_inputBinding:setActionEventActive(spec.unloadAllEventId, spec.numTriggeredObjects ~= 0)
 		g_inputBinding:setActionEventActive(spec.actionEventIdMoveUpDown, spec.numTriggeredObjects ~= 0 and spec.showMarkers)
 		g_inputBinding:setActionEventActive(spec.actionEventIdMoveLeftRight, spec.numTriggeredObjects ~= 0 and spec.showMarkers)
@@ -489,6 +496,43 @@ function APalletAutoLoader:GetAutoloadTypes()
 	return spec.autoLoadTypes;
 end
 
+function APalletAutoLoader.actionEventAutomaticLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
+	local spec = self.spec_aPalletAutoLoader
+
+	SetAutoloadTypeAutomaticEvent.sendEvent(self)
+end
+
+--- Select automatic a fitting loading type for a object in range.
+function APalletAutoLoader:SetAutoloadTypeAutomatic()
+	local spec = self.spec_aPalletAutoLoader
+
+	local newAutoLoadTypeIndex = nil;
+	for _, object in pairs(spec.objectsToLoad) do
+		for autoLoadTypeIndex, autoLoadType in pairs(spec.autoLoadTypes) do
+			local isValidLoadType = autoLoadType.CheckTypeMethod(object);
+			if isValidLoadType then
+				newAutoLoadTypeIndex = autoLoadTypeIndex;
+				goto newAutoLoadTypeIndexSet
+			end
+		end
+	end
+	
+	for object,_  in pairs(spec.balesToLoad) do
+		for autoLoadTypeIndex, autoLoadType in pairs(spec.autoLoadTypes) do
+			local isValidLoadType = autoLoadType.CheckTypeMethod(object);
+			if isValidLoadType then
+				newAutoLoadTypeIndex = autoLoadTypeIndex;
+				goto newAutoLoadTypeIndexSet
+			end
+		end
+	end
+
+	:: newAutoLoadTypeIndexSet ::
+	 if newAutoLoadTypeIndex ~= nil then
+		SetAutoloadTypeEvent.sendEvent(self, newAutoLoadTypeIndex)
+	end
+end
+
 function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inputValue, callbackState, isAnalog)
 	local spec = self.spec_aPalletAutoLoader
 
@@ -498,7 +542,7 @@ function APalletAutoLoader.actionEventToggleAutoLoadTypes(self, actionName, inpu
 	else
 		newAutoLoadTypeIndex = spec.currentautoLoadTypeIndex + 1;
 	end
-
+	
 	SetAutoloadTypeEvent.sendEvent(self, newAutoLoadTypeIndex)
 end
 
