@@ -45,13 +45,14 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Lossningszon markör- Framåt/Bakåt"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Lossningszon markör- Framåt"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Lossningszon markör- Bakåt"/>
-		<text name="aPalletAutoLoader_hosePallet" text="Pall med slang"/>
-		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="2 ihopsatta Europallar"/>
-		<text name="aPalletAutoLoader_euroPalletQuadro" text=" 4 ihopsatta Europallar"/>
-		<text name="aPalletAutoLoader_barrelPallet" text="Pall med tunnor"/>
-		<text name="aPalletAutoLoader_prefabWallPallet" text="Pall med väggmoduler"/>
-		<text name="aPalletAutoLoader_smallBundledStack" text="Buntade långa plankor/träbjälkar"/>
-		<text name="aPalletAutoLoader_dogHousePallet" text="Pall med hundkojor"/>
-		<text name="aPalletAutoLoader_metalPallet" text="Pall med metall"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
+		<text name="aPalletAutoLoader_hosePallet" text="Schlauch für die Gülleverschlauchung"/>
+		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="Euro Paletten mit doppelter länge"/>
+		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-fach Euro Paletten"/>
+		<text name="aPalletAutoLoader_barrelPallet" text="Palette mit Fässern"/>
+		<text name="aPalletAutoLoader_prefabWallPallet" text="Palette mit Fertigwänden"/>
+		<text name="aPalletAutoLoader_smallBundledStack" text="Große Holzstapel Paletten"/>
+		<text name="aPalletAutoLoader_dogHousePallet" text="Palette mit Hundehütten"/>
+		<text name="aPalletAutoLoader_metalPallet" text="Palette mit Metall"/>
 	</texts>
 </l10n>
