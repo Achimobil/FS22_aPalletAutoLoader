@@ -752,6 +752,9 @@ function APalletAutoLoader:onLoad(savegame)
 	-- create loadplaces automatically from load Area size
 	if spec.loadArea["baseNode"] ~= nil then
 		spec.autoLoadTypes = {};
+		spec.palletShopText = {};
+		spec.roundBaleShopText = {};
+		spec.squareBaleShopText = {};
 		for i,name in ipairs(types) do
 			local autoLoadObject = {}
 			autoLoadObject.index = spec.loadArea["baseNode"]
@@ -958,6 +961,21 @@ function APalletAutoLoader:onLoad(savegame)
 
 			if #autoLoadObject.places ~= 0 and autoLoadObject.maxItems ~= 0 then
 				table.insert(spec.autoLoadTypes, autoLoadObject)
+				
+				-- einfügen der Shoptext in liste
+				if autoLoadObject.type == "roundbale" then
+					local unit = g_i18n:getText("unit_cmShort")
+					local size = string.format("%d%s", autoLoadObject.sizeX * 100, unit)
+					table.insert(spec.roundBaleShopText, string.format("%s (%s)",size, autoLoadObject.maxItems));
+				elseif autoLoadObject.type == "squarebale" or autoLoadObject.type == "cottonSquarebale" then
+					local unit = g_i18n:getText("unit_cmShort")
+					local size = string.format("%d%s", autoLoadObject.sizeX * 100, unit)
+					table.insert(spec.squareBaleShopText, string.format("%s (%s)",size, autoLoadObject.maxItems));
+				else
+					table.insert(spec.palletShopText, string.format("%s (%s)",autoLoadObject.nameTranslated, autoLoadObject.maxItems));
+				end
+				
+				
 			end
 		end
 	end

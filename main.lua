@@ -18,6 +18,8 @@ local function init()
     source(path)
     local path = modDirectory .. "Events/SetAutoloadTypeAutomaticEvent.lua";
     source(path)
+    local path = modDirectory .. "APalletAutoLoaderShopConfigScreenExtension.lua";
+    source(path)
 end
 
 init()

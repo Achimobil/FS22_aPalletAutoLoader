@@ -48,6 +48,7 @@ Changelog:
 - LoadHeightOffset beim ladegut eingefügt für Paletten deren Ursprung nicht unter der Palette ist
 - Erfordert LS Patch 1.10.1.0
 - Per konfigurierbarer Taste (Standard STRG+ALT+Y) kann das Ladegut automatisch ausgewählt werden anhand dessen was in Ladereichweite ist
+- Im Kaufmenü wird eine Auswahl der Ladbaren Objekte angezeigt.
 
 1.10.0.0
 - Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
