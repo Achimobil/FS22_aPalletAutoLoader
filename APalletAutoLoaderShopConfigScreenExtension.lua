@@ -71,6 +71,7 @@ function APalletAutoLoaderShopConfigScreenExtension:registerCustomSpecValues(sup
 	local usedItems = 0;
 	local currentLineLength = 4;
 	local currentLines = 1;
+	local profileToUse = ShopConfigScreen.GUI_PROFILE.CAPACITY;
 	for index, shopText in ipairs(spec.palletShopText) do
 		if currentLineLength >= 60 then
 			if currentLines == 2 then
@@ -79,19 +80,20 @@ function APalletAutoLoaderShopConfigScreenExtension:registerCustomSpecValues(sup
 				end
 				-- neues Element einfügen
 				table.insert(values, {
-					profile = ShopConfigScreen.GUI_PROFILE.CAPACITY,
+					profile = profileToUse,
 					value = text
 				})
-				text = "AL: ";
+				text = "";
 				currentLineLength = 4;
 				currentLines = 1;
+				profileToUse = "";
 			else
 				text = text .. "\n";
 				currentLineLength = 0
 				currentLines = currentLines + 1
 			end
 		end
-		if text ~= "AL: " and currentLineLength ~= 0 then
+		if text ~= "AL: " and text ~= "" and currentLineLength ~= 0 then
 			text = text .. " - "
 		end
 		
@@ -106,9 +108,9 @@ function APalletAutoLoaderShopConfigScreenExtension:registerCustomSpecValues(sup
 		text = text .. " - ...";
 	end
 	-- ausgeben
-	if text ~= "AL: " then
+	if text ~= "AL: " and text ~= "" then
 		table.insert(values, {
-			profile = ShopConfigScreen.GUI_PROFILE.CAPACITY,
+			profile = profileToUse,
 			value = text
 		})
 		text = "AL: ";
