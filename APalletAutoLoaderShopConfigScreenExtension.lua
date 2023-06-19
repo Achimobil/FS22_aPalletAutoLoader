@@ -72,9 +72,10 @@ function APalletAutoLoaderShopConfigScreenExtension:registerCustomSpecValues(sup
 	local currentLineLength = 4;
 	local currentLines = 1;
 	local profileToUse = ShopConfigScreen.GUI_PROFILE.CAPACITY;
+	local maxInnerLines = 2;
 	for index, shopText in ipairs(spec.palletShopText) do
 		if currentLineLength >= 60 then
-			if currentLines == 2 then
+			if currentLines == maxInnerLines then
 				if #values == 8 then
 					break;
 				end
@@ -87,6 +88,11 @@ function APalletAutoLoaderShopConfigScreenExtension:registerCustomSpecValues(sup
 				currentLineLength = 4;
 				currentLines = 1;
 				profileToUse = "";
+				if maxInnerLines == 2 then 
+					maxInnerLines = 3;
+				else
+					maxInnerLines = 2;
+				end
 			else
 				text = text .. "\n";
 				currentLineLength = 0
