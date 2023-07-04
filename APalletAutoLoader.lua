@@ -759,10 +759,11 @@ function APalletAutoLoader:onLoad(savegame)
 			local autoLoadObject = {}
 			autoLoadObject.index = spec.loadArea["baseNode"]
 			autoLoadObject.name = name
+			APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
+			
 			if autoLoadObject.nameTranslated == nil then
 				autoLoadObject.nameTranslated = g_i18n:getText("aPalletAutoLoader_" .. name)
 			end
-			APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 			
 			if autoLoadObject.sizeX == nil then
 				Logging.error("'%s' missing in 'APalletAutoLoader:AddSupportedObjects()' result", name)
