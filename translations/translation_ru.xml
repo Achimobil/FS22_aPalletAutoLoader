@@ -45,7 +45,7 @@
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK" text="Зону выгрузки вперёд/назад"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_1" text="Зону выгрузки вперёд"/>
 		<text name="input_AL_UNLOADAREA_MOVE_FRONTBACK_2" text="Зону выгрузки назад"/>
-		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Automatisch Ladegut selektieren"/>
+		<text name="input_AL_AUTOMATIC_LOADINGTYPE" text="Автовыбор груза"/>
 		<text name="aPalletAutoLoader_hosePallet" text="Шланг для жидкого навоза"/>
 		<text name="aPalletAutoLoader_euroPalletDoubleLength" text="2-кратные поддоны"/>
 		<text name="aPalletAutoLoader_euroPalletQuadro" text="4-кратные поддоны"/>
