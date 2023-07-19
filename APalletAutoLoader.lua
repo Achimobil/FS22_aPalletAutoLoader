@@ -3,6 +3,9 @@
 -- If you have any issues please report them in my Discord on the channel for the mod.
 -- https://github.com/Achimobil/FS22_aPalletAutoLoader
 
+APalletAutoLoaderCoordinator = {}
+APalletAutoLoaderCoordinator.availableAutoloader = {}
+
 APalletAutoLoader = {}
 APalletAutoLoader.debug = false;
 APalletAutoLoader.defaultPickupTriggerCollisionMask = CollisionFlag.TRIGGER_DYNAMIC_OBJECT;
@@ -100,6 +103,7 @@ function APalletAutoLoader.registerFunctions(vehicleType)
 	SpecializationUtil.registerFunction(vehicleType, "CreateAvailableTypeList", APalletAutoLoader.CreateAvailableTypeList)
 	SpecializationUtil.registerFunction(vehicleType, "SetPickupTriggerCollisionMask", APalletAutoLoader.SetPickupTriggerCollisionMask)
 	SpecializationUtil.registerFunction(vehicleType, "SetAutoloadTypeAutomatic", APalletAutoLoader.SetAutoloadTypeAutomatic)
+	SpecializationUtil.registerFunction(vehicleType, "RemoveObjectFromToLoadLists", APalletAutoLoader.RemoveObjectFromToLoadLists)
 
 	if vehicleType.functions["getFillUnitCapacity"] == nil then
 		SpecializationUtil.registerFunction(vehicleType, "getFillUnitCapacity", APalletAutoLoader.getFillUnitCapacity)
@@ -1031,6 +1035,8 @@ function APalletAutoLoader:onLoad(savegame)
 	end
 
 	spec.initialized = true;
+	
+	table.insert(APalletAutoLoaderCoordinator.availableAutoloader, self)	
 end
 
 function APalletAutoLoader:CreateAvailableTypeList()
@@ -1775,13 +1781,15 @@ function APalletAutoLoader:loadObject(object)
 							useLoadHeight = useLoadHeight + currentAutoLoadType.LoadHeightOffset;
 						end
 						local x,y,z = localToWorld(loadPlace.node, 0, useLoadHeight, 0);
+						local x2,y2,z2 = localToWorld(loadPlace.node, 0, useLoadHeight+0.5, 0);
 						local rx,ry,rz = getWorldRotation(loadPlace.node);
 
 						-- bigBags and pallets have two components and appear as vehicle, so we treat them differently
 						if currentAutoLoadType.type == "bigBag" or currentAutoLoadType.type == "pallet" then
 							object:removeFromPhysics()
-							object:setAbsolutePosition(x, y, z, rx, ry, rz)
+							object:setAbsolutePosition(x2,y2,z2, rx, ry, rz)
 							object:addToPhysics()
+							object:setAbsolutePosition(x, y, z, rx, ry, rz)
 						else
 							removeFromPhysics(objectNodeId)
 
@@ -1906,6 +1914,11 @@ function APalletAutoLoader:loadObject(object)
 						end
 
 						self:raiseDirtyFlags(spec.dirtyFlag)
+				
+					-- remoove this object from other autloader lists
+					for _,otherAutoloader  in pairs(APalletAutoLoaderCoordinator.availableAutoloader) do
+						otherAutoloader:RemoveObjectFromToLoadLists(object);					
+					end
 
 						return true;
 					else
@@ -1913,7 +1926,6 @@ function APalletAutoLoader:loadObject(object)
 						spec.usedPositions = {};
 						spec.isFullLoaded = true;
 					end
-				
 				end
 			end
 		end
@@ -2100,7 +2112,7 @@ end
 
 ---
 function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
-	-- print(string.format("APalletAutoLoader:autoLoaderPickupTriggerCallback(%s, %s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
+	print(string.format("APalletAutoLoader:autoLoaderPickupTriggerCallback(%s, %s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
 	if otherActorId ~= 0 then
 		local object = g_currentMission:getNodeObject(otherActorId)
 		if object ~= nil then
@@ -2134,28 +2146,33 @@ function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActor
 						self:StartLoading();
 					end
 				elseif onLeave then
-					if not object:isa(Bale) then
-						if spec.objectsToLoad[object.rootNode] ~= nil then
-							spec.objectsToLoad[object.rootNode] = nil;
-							spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
-							self:raiseDirtyFlags(spec.dirtyFlag)
-							APalletAutoLoader.updateActionText(self);
-							if object.removeDeleteListener ~= nil then
-								object:removeDeleteListener(self, "onDeleteObjectToLoad")
-							end
-						end
-					else
-						if spec.balesToLoad[object] ~= nil then
-							spec.balesToLoad[object] = nil;
-							spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
-							self:raiseDirtyFlags(spec.dirtyFlag)
-							APalletAutoLoader.updateActionText(self);
-							if object.removeDeleteListener ~= nil then
-								object:removeDeleteListener(self, "onDeleteObjectToLoad")
-							end
-						end
-					end
+					self:RemoveObjectFromToLoadLists(object);
 				end
+			end
+		end
+	end
+end
+
+function APalletAutoLoader:RemoveObjectFromToLoadLists(object)
+	local spec = self.spec_aPalletAutoLoader
+	if not object:isa(Bale) then
+		if spec.objectsToLoad[object.rootNode] ~= nil then
+			spec.objectsToLoad[object.rootNode] = nil;
+			spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+			self:raiseDirtyFlags(spec.dirtyFlag)
+			APalletAutoLoader.updateActionText(self);
+			if object.removeDeleteListener ~= nil then
+				object:removeDeleteListener(self, "onDeleteObjectToLoad")
+			end
+		end
+	else
+		if spec.balesToLoad[object] ~= nil then
+			spec.balesToLoad[object] = nil;
+			spec.objectsToLoadCount = spec.objectsToLoadCount - 1;
+			self:raiseDirtyFlags(spec.dirtyFlag)
+			APalletAutoLoader.updateActionText(self);
+			if object.removeDeleteListener ~= nil then
+				object:removeDeleteListener(self, "onDeleteObjectToLoad")
 			end
 		end
 	end

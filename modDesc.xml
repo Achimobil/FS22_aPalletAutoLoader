@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="75">
 	<author>Achimobil</author>
-	<version>1.11.0.0_beta_1</version>
+	<version>1.11.0.0_beta_2</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,12 +43,14 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
-1.11.0.0_beta_1
+1.11.0.0_beta_2
 - Verbesserte Übersetzungen in verschiedenen Sprachen
 - LoadHeightOffset beim ladegut eingefügt für Paletten deren Ursprung nicht unter der Palette ist
 - Erfordert LS Patch 1.10.1.0
 - Per konfigurierbarer Taste (Standard STRG+ALT+Y) kann das Ladegut automatisch ausgewählt werden anhand dessen was in Ladereichweite ist
 - Im Kaufmenü wird eine Auswahl der Ladbaren Objekte angezeigt.
+- Beim Laden auf einen AL werden die geladenen Objekte bei den anderen AL aus der Ladeliste genommen (Fix für Giants Trigger Fehler)
+- Verschiedene Übersetzungsanpassungen
 
 1.10.0.0
 - Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
