@@ -2112,7 +2112,7 @@ end
 
 ---
 function APalletAutoLoader:autoLoaderPickupTriggerCallback(triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
-	print(string.format("APalletAutoLoader:autoLoaderPickupTriggerCallback(%s, %s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
+	--print(string.format("APalletAutoLoader:autoLoaderPickupTriggerCallback(%s, %s, %s, %s, %s, %s)", triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId));
 	if otherActorId ~= 0 then
 		local object = g_currentMission:getNodeObject(otherActorId)
 		if object ~= nil then
