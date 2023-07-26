@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="75">
+<modDesc descVersion="76">
 	<author>Achimobil</author>
-	<version>1.11.0.0_beta_2</version>
+	<version>1.11.0.0</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,10 +43,9 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
-1.11.0.0_beta_2
+1.11.0.0
 - Verbesserte Übersetzungen in verschiedenen Sprachen
 - LoadHeightOffset beim ladegut eingefügt für Paletten deren Ursprung nicht unter der Palette ist
-- Erfordert LS Patch 1.10.1.0
 - Per konfigurierbarer Taste (Standard STRG+ALT+Y) kann das Ladegut automatisch ausgewählt werden anhand dessen was in Ladereichweite ist
 - Im Kaufmenü wird eine Auswahl der Ladbaren Objekte angezeigt.
 - Beim Laden auf einen AL werden die geladenen Objekte bei den anderen AL aus der Ladeliste genommen (Fix für Giants Trigger Fehler)
@@ -113,6 +112,13 @@ Upload on other sites only by myself, linking only with original download link. 
 Modifying and re-uploading in whole or in part is not allowed!
 
 Changelog:
+1.11.0.0
+- Improved translations in different languages
+- Added LoadHeightOffset for pallets whose origin is not under the pallet
+- By configurable key (default CTRL+ALT+Y) the load can be selected automatically based on what is in load range
+- A selection of loadable objects is displayed in the purchase menu.
+- When loading on an AL, the loaded objects are taken out of the loading list for the other ALs (fix for Giants Trigger error).
+
 1.10.0.0
 - Improved loading behaviour. Everything is held virtually as long as the loading process is active, which should improve loading in the field.
 - Vehicles equipped with the autoloader now have stronger straps.
