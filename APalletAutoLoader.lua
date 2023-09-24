@@ -1157,6 +1157,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/staircaseRailingPallet/staircaseRailingPallet.xml") then return true end
 			-- ignore pump&hoses pallet
 			if object.configFileName ~= nil and string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return false end
+			-- M+ deuka pallets are oversized
+			if object.configFileName ~= nil and string.find(object.configFileName, "FS22_MaizePlus/data/deuka/bagPallet") and object.configFileName ~= nil and string.find(object.configFileName, "_pallet.xml") then return false end
 			
 			if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
 			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPallets/") then return true end
@@ -1188,6 +1190,8 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 			if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return true end
 			if string.find(object.i3dFilename, "FS22_Pallets_And_Bags_Pack/Pallets") then return true end
 			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletsOversized/") then return true end
+			-- M+ deuka pallets are oversized
+			if object.configFileName ~= nil and string.find(object.configFileName, "FS22_MaizePlus/data/deuka/bagPallet") and object.configFileName ~= nil and string.find(object.configFileName, "_pallet.xml") then return true end
 
 			return false;
 		end
