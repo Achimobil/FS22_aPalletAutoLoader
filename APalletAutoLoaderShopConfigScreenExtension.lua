@@ -4,6 +4,8 @@ APalletAutoLoaderShopConfigScreenExtension = {}
 function APalletAutoLoaderShopConfigScreenExtension:registerCustomSpecValues(superFunc, values, storeItems, vehicle, saleItem)
 	-- print("APalletAutoLoaderShopConfigScreenExtension:registerCustomSpecValues")
 	
+	superFunc(self, values, storeItems, vehicle, saleItem)
+	
 	local spec = vehicle.spec_aPalletAutoLoader
 	
 	if spec == nil or spec.loadArea["baseNode"] == nil then
