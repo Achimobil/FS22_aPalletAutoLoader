@@ -7,7 +7,7 @@ APalletAutoLoaderCoordinator = {}
 APalletAutoLoaderCoordinator.availableAutoloader = {}
 
 APalletAutoLoader = {}
-APalletAutoLoader.debug = false;
+APalletAutoLoader.debug = true;
 APalletAutoLoader.defaultPickupTriggerCollisionMask = CollisionFlag.TRIGGER_DYNAMIC_OBJECT;
 
 APalletAutoLoaderTipsides = {
@@ -662,6 +662,8 @@ end
 ---Called on loading
 -- @param table savegame savegame
 function APalletAutoLoader:onLoad(savegame)
+	APalletAutoLoader.print("onLoad(%s)", savegame);
+	print("init aPalletAutoLoader");
 	local aPalletAutoLoaderConfigurationId = Utils.getNoNil(self.configurations["aPalletAutoLoader"], 1)
 	local baseXmlPath = string.format("vehicle.aPalletAutoLoader.APalletAutoLoaderConfigurations.APalletAutoLoaderConfiguration(%d)", aPalletAutoLoaderConfigurationId -1)
 
@@ -760,6 +762,7 @@ function APalletAutoLoader:onLoad(savegame)
 		spec.roundBaleShopText = {};
 		spec.squareBaleShopText = {};
 		for i,name in ipairs(types) do
+			APalletAutoLoader.print("process %s", name);
 			local autoLoadObject = {}
 			autoLoadObject.index = spec.loadArea["baseNode"]
 			autoLoadObject.name = name
@@ -776,31 +779,35 @@ function APalletAutoLoader:onLoad(savegame)
 			
 			-- load from settings if available, otherwise base data
 			local leftRightCornerOffsetForObjectType = spec.loadArea["leftRightCornerOffset"];
-			local heightForObjectType = spec.loadArea["height"];
-			local lenghtForObjectType = spec.loadArea["lenght"];
-			local widthForObjectType = spec.loadArea["width"];
+			local heightForObjectType = MathUtil.round(spec.loadArea["height"], 2);
+			local lenghtForObjectType = MathUtil.round(spec.loadArea["lenght"], 2);
+			local widthForObjectType = MathUtil.round(spec.loadArea["width"], 2);
 			if spec.autoLoadObjectSettings[name] ~= nil then
 				leftRightCornerOffsetForObjectType = spec.autoLoadObjectSettings[name].leftRightCornerOffset;
-				lenghtForObjectType = spec.autoLoadObjectSettings[name].lenght
-				heightForObjectType = spec.autoLoadObjectSettings[name].height
-				widthForObjectType = spec.autoLoadObjectSettings[name].width
+				lenghtForObjectType = MathUtil.round(spec.autoLoadObjectSettings[name].lenght, 2);
+				heightForObjectType = MathUtil.round(spec.autoLoadObjectSettings[name].height, 2);
+				widthForObjectType = MathUtil.round(spec.autoLoadObjectSettings[name].width, 2);
 			end
+			APalletAutoLoader.print("lenghtForObjectType: %s", lenghtForObjectType);
 			
 			autoLoadObject.places = {}
 			local cornerX,cornerY,cornerZ = unpack(leftRightCornerOffsetForObjectType);
 
 			-- paletten nebeneinander bestimmen
 			-- vieviele passen ohne drehung?
-			local restFirstNoRotation = (widthForObjectType - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.05);
-			local countNoRotation = (widthForObjectType - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.05) + 1
+			local restFirstNoRotation = MathUtil.round((widthForObjectType - autoLoadObject.sizeX) % (autoLoadObject.sizeX + 0.05), 2);
+			local countNoRotation = MathUtil.round((widthForObjectType - autoLoadObject.sizeX - restFirstNoRotation) / (autoLoadObject.sizeX + 0.05) + 1, 2);
+			APalletAutoLoader.print("restFirstNoRotation: %s - countNoRotation: %s", restFirstNoRotation, countNoRotation);
 
 			-- vie viele passen mit drehung?
-			local restFirstRotation = (widthForObjectType - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05);
-			local countRotation = (widthForObjectType - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1
+			local restFirstRotation = MathUtil.round((widthForObjectType - autoLoadObject.sizeZ) % (autoLoadObject.sizeZ + 0.05), 2);
+			local countRotation = MathUtil.round((widthForObjectType - autoLoadObject.sizeZ - restFirstRotation) / (autoLoadObject.sizeZ + 0.05) + 1, 2);
+			APalletAutoLoader.print("restFirstRotation: %s - countRotation: %s", restFirstRotation, countRotation);
 
 			-- wie viele passen wenn eine mit drehung gemacht wird?
-			local restOneRotation = (widthForObjectType - autoLoadObject.sizeX - autoLoadObject.sizeZ - 0.05) % (autoLoadObject.sizeX + 0.05);
-			local countOneRotation = (widthForObjectType - autoLoadObject.sizeX - restOneRotation - autoLoadObject.sizeZ - 0.05) / (autoLoadObject.sizeX + 0.05) + 2
+			local restOneRotation = MathUtil.round((widthForObjectType - autoLoadObject.sizeX - autoLoadObject.sizeZ - 0.05) % (autoLoadObject.sizeX + 0.05), 2);
+			local countOneRotation = MathUtil.round((widthForObjectType - autoLoadObject.sizeX - restOneRotation - autoLoadObject.sizeZ - 0.05) / (autoLoadObject.sizeX + 0.05) + 2, 2);
+			APalletAutoLoader.print("restOneRotation: %s - countOneRotation: %s", restOneRotation, countOneRotation);
 
 			local backDistance = 0.05;
 			if autoLoadObject.type == "roundbale" then
@@ -810,9 +817,11 @@ function APalletAutoLoader:onLoad(savegame)
 
 			local loadingPattern = {}
 			if restFirstNoRotation <= restFirstRotation or autoLoadObject.type == "roundbale" then
+				APalletAutoLoader.print("load without rotation");
 				-- auladen ohne rotation, heißt also quer zur Ladefläche
 				-- rundballen generell hier, weil sind ja rund
 				if autoLoadObject.type == "roundbale" and countNoRotation == 1 then
+					APalletAutoLoader.print("roundbale with countNoRotation = 1 ");
 					-- wenn rundballen und noch genug platz, versetzt laden um mehr auf die fläche zu bekommen
 					-- hierbei aber nur, wenn die restfläche mindestens so viel ist, wie der halbe durchmesser zur einfachen Verteilung, komplexer kann später
 
@@ -854,9 +863,12 @@ function APalletAutoLoader:onLoad(savegame)
 						end
 					end
 				else
+					APalletAutoLoader.print("not roundbale with countNoRotation = %s", countNoRotation);
 					for rowNumber = 0, (countNoRotation-1) do
+						APalletAutoLoader.print("rowNumber = %s", rowNumber);
 						-- schleife bis zur länge
-						for colPos = (autoLoadObject.sizeZ / 2), lenghtForObjectType, (autoLoadObject.sizeZ + backDistance) do
+						for colPos = (autoLoadObject.sizeZ / 2), (lenghtForObjectType + backDistance), (autoLoadObject.sizeZ + backDistance) do
+							APalletAutoLoader.print("colPos = %s", colPos);
 							if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 								local loadingPatternItem = {}
 								loadingPatternItem.rotation = 0;
@@ -873,7 +885,7 @@ function APalletAutoLoader:onLoad(savegame)
 				local maxPosX = math.huge;
 				for rowNumber = 0, (countOneRotation-2) do
 					-- schleife bis zur länge
-					for colPos = (autoLoadObject.sizeZ / 2), lenghtForObjectType, (autoLoadObject.sizeZ + backDistance) do
+					for colPos = (autoLoadObject.sizeZ / 2), (lenghtForObjectType + backDistance), (autoLoadObject.sizeZ + backDistance) do
 						if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = 0;
@@ -885,7 +897,7 @@ function APalletAutoLoader:onLoad(savegame)
 					end
 				end
 				-- jetzt die eine reihe längs auch als schleife bis zur länge
-				for colPos = (autoLoadObject.sizeX / 2), lenghtForObjectType, (autoLoadObject.sizeX + backDistance) do
+				for colPos = (autoLoadObject.sizeX / 2), (lenghtForObjectType + backDistance), (autoLoadObject.sizeX + backDistance) do
 					if (colPos + (autoLoadObject.sizeX / 2)) <= lenghtForObjectType then
 						local loadingPatternItem = {}
 						loadingPatternItem.rotation = math.rad(90);
@@ -900,7 +912,7 @@ function APalletAutoLoader:onLoad(savegame)
 				local countCol = 0;
 				for rowNumber = 0, (countRotation-1) do
 					-- schleife bis zur länge
-					for colPos = (autoLoadObject.sizeX / 2), lenghtForObjectType, (autoLoadObject.sizeX + backDistance) do
+					for colPos = (autoLoadObject.sizeX / 2), (lenghtForObjectType + backDistance), (autoLoadObject.sizeX + backDistance) do
 						if (colPos + (autoLoadObject.sizeX / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = math.rad(90);
@@ -917,7 +929,7 @@ function APalletAutoLoader:onLoad(savegame)
 				-- jetzt könnte aber noch quer was dahinter passen, gleiche logik wie bei quer laden, nur später anfangen
 				for rowNumber = 0, (countNoRotation-1) do
 					-- schleife bis zur länge
-					for colPos = (autoLoadObject.sizeZ / 2) + (countCol * (autoLoadObject.sizeX + backDistance)), lenghtForObjectType, (autoLoadObject.sizeZ + backDistance) do
+					for colPos = (autoLoadObject.sizeZ / 2) + (countCol * (autoLoadObject.sizeX + backDistance)), (lenghtForObjectType + backDistance), (autoLoadObject.sizeZ + backDistance) do
 						if (colPos + (autoLoadObject.sizeZ / 2)) <= lenghtForObjectType then
 							local loadingPatternItem = {}
 							loadingPatternItem.rotation = 0;
