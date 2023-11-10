@@ -1227,9 +1227,10 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 
 		autoLoadObject.CheckTypeMethod = CheckType
 		autoLoadObject.sizeX = 1.34
-		autoLoadObject.sizeY = 1.5
+		autoLoadObject.sizeY = 1.56
 		autoLoadObject.sizeZ = 1.34
 		autoLoadObject.type = "pallet"
+		autoLoadObject.stackable = false
 	elseif (name == "bigBagPallet") then
 		local function CheckType(object)
 			if object.configFileName ~= nil and string.find(object.configFileName, "/bigBagPallet/") then return true end
