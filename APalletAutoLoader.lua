@@ -1073,6 +1073,11 @@ function APalletAutoLoader:CreateAvailableTypeList()
 		table.insert(types, "metalPallet");
 	end
 	
+	-- wenn platinum verfügbar
+	if g_modIsLoaded["pdlc_premiumExpansion"] ~= nil and g_modIsLoaded["pdlc_premiumExpansion"] then
+		table.insert(types, "vegetablesPallet");
+	end
+	
 	return types;
 end
 
@@ -1495,7 +1500,32 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 		autoLoadObject.sizeZ = 0.8
 		autoLoadObject.type = "pallet"
 		autoLoadObject.stackable = false
+	elseif (name == "vegetablesPallet") then
+		local function CheckType(object)
+			-- premium pack new pallet
+			if object.configFileName ~= nil and string.find(object.configFileName, "vegetablesPallet.xml") then return true end
+			if object.configFileName ~= nil and string.find(object.configFileName, "/vegetablesPallet/") then return true end
+
+			return false;
+		end
+		autoLoadObject.CheckTypeMethod = CheckType		
+		APalletAutoLoader:fillAutoLoadObject(autoLoadObject, 1.6, 1.16, 1.12, "pallet", g_i18n:getText("storeItem_vegetablesPallet", "pdlc_premiumExpansion"), false, true)
 	end
+end
+
+-- help funktion for easier fill the list with the needed data
+function APalletAutoLoader:fillAutoLoadObject(autoLoadObject, sizeX, sizeY, sizeZ, type, translatedName, withVehicleTrigger, stackable)
+		autoLoadObject.sizeX = sizeX
+		autoLoadObject.sizeY = sizeY
+		autoLoadObject.sizeZ = sizeZ
+		autoLoadObject.type = type
+		if translatedName ~= nil then
+			autoLoadObject.nameTranslated = translatedName
+		end
+		if withVehicleTrigger then
+			autoLoadObject.pickupTriggerCollisionMask = CollisionFlag.TRIGGER_VEHICLE;
+		end
+		autoLoadObject.stackable = stackable;
 end
 
 ---

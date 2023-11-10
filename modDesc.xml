@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="77">
+<modDesc descVersion="79">
 	<author>Achimobil</author>
-	<version>1.11.0.1</version>
+	<version>1.11.0.2</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,6 +43,7 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
+1.11.0.2 - Gemüse Palette eingefügt, wenn Premium DLC vorhanden ist
 1.11.0.1 - M+ Futterpaletten als Übergroß definiert
 
 1.11.0.0
