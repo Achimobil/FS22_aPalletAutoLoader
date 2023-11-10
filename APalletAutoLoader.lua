@@ -7,7 +7,7 @@ APalletAutoLoaderCoordinator = {}
 APalletAutoLoaderCoordinator.availableAutoloader = {}
 
 APalletAutoLoader = {}
-APalletAutoLoader.debug = true;
+APalletAutoLoader.debug = false;
 APalletAutoLoader.defaultPickupTriggerCollisionMask = CollisionFlag.TRIGGER_DYNAMIC_OBJECT;
 
 APalletAutoLoaderTipsides = {
