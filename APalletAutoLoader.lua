@@ -476,7 +476,7 @@ function APalletAutoLoader:SetLoadingState(newLoadingState)
 			spec.objectsToJoint = {};
 
 			-- start tension belts time if needed
-			if releasedOneJoint == true then
+			if releasedOneJoint == true and spec.useTensionBelts then
 				spec.beltsTimer:start(false);
 				self:setAllTensionBeltsActive(false, false)
 			end

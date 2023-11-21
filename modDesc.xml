@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="79">
 	<author>Achimobil</author>
-	<version>1.11.0.6</version>
+	<version>1.11.0.7</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,6 +43,7 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
+1.11.0.7 - Spanngurteinstellung wird jetzt auch beim maunellen beenden des Ladevorgangs beachtet
 1.11.0.6 - Debug deaktiviert
 1.11.0.5 - Abhängigkeit auf sich selbst entfernt, damit wieder löschbar auf dem Dedi
 1.11.0.4 - Flüssigkeitstanks sind jetzt nicht mehr Stapelbar, egal welche Ladehöhe verfügbar ist
