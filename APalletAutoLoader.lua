@@ -1012,6 +1012,7 @@ function APalletAutoLoader:onLoad(savegame)
 			function()
 				self:loadAllInRange();
 			end);
+		spec.isGrabbingBale = false;
 
 		spec.triggerId = self.xmlFile:getValue(baseXmlPath .. ".trigger#node", nil, self.components, self.i3dMappings)
 		if spec.triggerId ~= nil then
@@ -1732,7 +1733,7 @@ function APalletAutoLoader:loadAllInRange()
 	local spec = self.spec_aPalletAutoLoader
 
 	local loaded = false;
-	local unloadedInList = false;
+	local unloadedInList = false;	
 
 	for _, object in pairs(spec.objectsToLoad) do
 		unloadedInList = true
@@ -1763,8 +1764,7 @@ function APalletAutoLoader:loadAllInRange()
 
 	if loaded then
 		spec.loadTimer:start(false);
-		-- spec.hasLoadedSinceBeltsUsing = true;
-		-- spec.beltsTimer:reset();
+		spec.isGrabbingBale = true;
 	else
 		if self.isClient then
 			APalletAutoLoader.updateActionText(self);
@@ -2538,9 +2538,16 @@ end
 
 function APalletAutoLoader:PalIsGrabbingBale()
 	local spec = self.spec_aPalletAutoLoader
+	
 
-	local result = spec.loadTimer:getIsRunning();
-	-- print("PalIsGrabbingBale:" .. tostring(result));
+	local result = spec.isGrabbingBale;
+	APalletAutoLoader.print("PalIsGrabbingBale: %s", result, spec.isGrabbingBale);
+	
+	-- Das aufladen eines Ballens setzt das auf true. nach der ersten anfragen von CP auch true zurück geben und dann false, damit mit CP merkt dass sich der Wert geändert hat
+	if spec.isGrabbingBale == true then
+		spec.isGrabbingBale = false;
+	end
+	
 	return result;
 end
 
