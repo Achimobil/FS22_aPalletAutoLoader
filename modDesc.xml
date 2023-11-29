@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="79">
 	<author>Achimobil</author>
-	<version>1.11.0.8</version>
+	<version>1.12.0.0</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -43,14 +43,14 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
-1.11.0.8 - Verbesserte Ladeerkennung mit Course Play
-1.11.0.7 - Spanngurteinstellung wird jetzt auch beim manuellen beenden des Ladevorgangs beachtet
-1.11.0.6 - Debug deaktiviert
-1.11.0.5 - Abhängigkeit auf sich selbst entfernt, damit wieder löschbar auf dem Dedi
-1.11.0.4 - Flüssigkeitstanks sind jetzt nicht mehr Stapelbar, egal welche Ladehöhe verfügbar ist
-1.11.0.3 - Auslesefehler von Lua gerundet für besseres Ladeergebniss
-1.11.0.2 - Gemüse Palette eingefügt, wenn Premium DLC vorhanden ist
-1.11.0.1 - M+ Futterpaletten als Übergroß definiert
+1.12.0.0
+- Verbesserte Ladeerkennung mit Course Play
+- Spanngurteinstellung wird jetzt auch beim manuellen beenden des Ladevorgangs beachtet
+- Abhängigkeit auf sich selbst entfernt, damit wieder löschbar auf dem Dedi
+- Flüssigkeitstanks sind jetzt nicht mehr Stapelbar, egal welche Ladehöhe verfügbar ist
+- Auslesefehler von Lua gerundet für besseres Ladeergebniss
+- Gemüse Palette eingefügt, wenn Premium DLC vorhanden ist
+- M+ Futterpaletten als Übergroß definiert
 
 1.11.0.0
 - Verbesserte Übersetzungen in verschiedenen Sprachen
@@ -121,6 +121,15 @@ Upload on other sites only by myself, linking only with original download link. 
 Modifying and re-uploading in whole or in part is not allowed!
 
 Changelog:
+1.12.0.0
+- Improved load detection with Course Play
+- Tensioning strap setting is now also taken into account when manually ending the loading process
+- Dependence on itself removed, so that it can be deleted again on the Dedi
+- Liquid tanks are now no longer stackable, regardless of the available loading height
+- Readout error of Lua rounded for better loading result
+- Vegetable pallet added if Premium DLC is available
+- M+ feed pallets defined as oversized
+
 1.11.0.0
 - Improved translations in different languages
 - Added LoadHeightOffset for pallets whose origin is not under the pallet
