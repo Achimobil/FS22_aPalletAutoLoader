@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="79">
 	<author>Achimobil</author>
-	<version>1.12.0.0</version>
+	<version>1.12.0.1</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -37,12 +37,18 @@ Ihr könnt die Entladeseite mit [U] wählen und mit [I] entladen.
 Das Laden schaltet sich automatisch ab, wenn kein Ladeplatz mehr gefunden wird.
 Ihr könnt es aber auch mit [B] wieder selbst abschalten.
 
+Wenn der Autoloader eine Meldung ins Log schreibt über korrigierte Trigger so ist dies kein Fehler des Autoload Mods.
+Hier wird korrigiert was im Model der vorherstehenden XML Datei falsch ist.
+Beschwerden bitte an den Modder des angegebenen Models.
+
 Anleitungen zum Einbau und Hilfe findest du auf dem <a href="https://github.com/Achimobil/FS22_aPalletAutoLoader/wiki">GitHub Wiki</a>
 
 Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Downloadlink. KEIN Ersatzlink!
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
+1.12.0.1 - Falsche Info Trigger Kollisions Masken und fehlerhafte Licht Trigger RigidBodyTypes werden jetzt mit Log Meldung korrigiert.
+
 1.12.0.0
 - Verbesserte Ladeerkennung mit Course Play
 - Spanngurteinstellung wird jetzt auch beim manuellen beenden des Ladevorgangs beachtet

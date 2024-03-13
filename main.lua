@@ -20,6 +20,8 @@ local function init()
     source(path)
     local path = modDirectory .. "APalletAutoLoaderShopConfigScreenExtension.lua";
     source(path)
+    local path = modDirectory .. "CorrectTrigger.lua";
+    source(path)
 end
 
 init()
