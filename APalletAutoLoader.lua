@@ -9,6 +9,9 @@ APalletAutoLoaderCoordinator.availableAutoloader = {}
 APalletAutoLoader = {}
 APalletAutoLoader.debug = false;
 APalletAutoLoader.defaultPickupTriggerCollisionMask = CollisionFlag.TRIGGER_DYNAMIC_OBJECT;
+APalletAutoLoader.modDir = g_currentModDirectory;
+APalletAutoLoader.objectTypes = {};
+APalletAutoLoader.palletobjectTypeNames = {};
 
 APalletAutoLoaderTipsides = {
 	LEFT = 1,
@@ -73,6 +76,47 @@ function APalletAutoLoader.initSpecialization()
 	local schemaSavegame = Vehicle.xmlSchemaSavegame
 	schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_aPalletAutoLoader.aPalletAutoLoader#lastUsedPalletTypeIndex", "Last used pallet type")
 	schemaSavegame:register(XMLValueType.INT, "vehicles.vehicle(?).FS22_aPalletAutoLoader.aPalletAutoLoader#lastUseTensionBelts", "Last used tension belts setting")
+	
+	-- load object types from XML into tables and use them for easier reading
+	local xmlFileObjects = XMLFile.load("objectTypesXML", APalletAutoLoader.modDir .. "objectTypes.xml");
+	
+	xmlFileObjects:iterate("objectTypes.objectType", function (_, key)
+		local typeName =  xmlFileObjects:getString(key .. "#typeName");
+		
+		Logging.info("Load from XML typeName: %s", typeName);
+		
+		if APalletAutoLoader.objectTypes[typeName] ~= nil then
+			Logging.xmlError(xmlFileObjects, "object type '%s' already defined!", typeName);
+		else
+			local autoLoadObject = {};
+			autoLoadObject.checkInfos = {};
+			
+			autoLoadObject.sizeX = xmlFileObjects:getFloat(key .. "#sizeX");
+			autoLoadObject.sizeY = xmlFileObjects:getFloat(key .. "#sizeY");
+			autoLoadObject.sizeZ = xmlFileObjects:getFloat(key .. "#sizeZ");
+			autoLoadObject.type = xmlFileObjects:getString(key .. "#type");
+			autoLoadObject.stackable = xmlFileObjects:getBool(key .. "#stackable");
+			local collisionMaskName = xmlFileObjects:getString(key .. "#pickupTriggerCollisionMask");
+			if collisionMaskName ~= nil then
+				autoLoadObject.pickupTriggerCollisionMask = CollisionFlag[collisionMaskName];
+			end
+			
+			xmlFileObjects:iterate(key .. ".checks.check", function (_, checkKey)
+				local checkInfo = {};
+				checkInfo.checkTarget = xmlFileObjects:getString(checkKey .. "#checkTarget");
+				checkInfo.checkMethod = xmlFileObjects:getString(checkKey .. "#checkMethod");
+				checkInfo.checkValue = xmlFileObjects:getString(checkKey .. "#checkValue");
+				checkInfo.checkValue2 = xmlFileObjects:getString(checkKey .. "#checkValue2");
+				checkInfo.checkResultOnMatch = xmlFileObjects:getBool(checkKey .. "#checkResultOnMatch");
+				table.insert(autoLoadObject.checkInfos, checkInfo);
+			end)
+			
+			APalletAutoLoader.objectTypes[typeName] = autoLoadObject;
+			table.insert(APalletAutoLoader.palletobjectTypeNames, typeName);
+		end
+	end)
+		
+	xmlFileObjects:delete(xmlFileObjects);
 end
 
 function APalletAutoLoader.registerFunctions(vehicleType)
@@ -1056,7 +1100,14 @@ function APalletAutoLoader:CreateAvailableTypeList()
 	local spec = self.spec_aPalletAutoLoader
 	
 	-- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-	local types = {"euroPallet","liquidTank","bigBagPallet","bigBag","euroPalletOversize"}
+	-- local types = {"euroPallet","liquidTank","bigBagPallet","bigBag","euroPalletOversize"}
+	local types = {}
+	
+	for _, typeName in ipairs(APalletAutoLoader.palletobjectTypeNames) do
+		
+		-- Logging.info("Add from XML typeName: %s", typeName);
+		table.insert(types, typeName);
+	end
 
 	if spec.useBales then
 		table.insert(types, "cottonRoundbale238");
@@ -1154,41 +1205,51 @@ function APalletAutoLoader:saveToXMLFile(xmlFile, key, usedModNames)
 	end
 end
 
+function mysplit (inputstr, sep)
+   if sep == nil then
+      sep = "|"
+   end
+   local t={}
+   for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+      table.insert(t, str)
+   end
+   return t
+end
+
 ---
 function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
-	if (name == "euroPallet") then
+
+	if APalletAutoLoader.objectTypes[name] ~= nil then
+		-- Logging.info("AddSupportedObjects: %s", name);
+		local objectType = APalletAutoLoader.objectTypes[name];
+		-- DebugUtil.printTableRecursively(objectType,"_",0,2);
 		local function CheckType(object)
-			if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return false end
-			if object.configFileName == "data/objects/pallets/grapePallet/grapePallet.xml" then return true end
-			if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return false end
-			-- platinum pallets
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/birdHousePallet/birdHousePallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/bowlsPallet/bowlsPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/bucketPallet/bucketPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/catTreePallet/catTreePallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/chairPallet/chairPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/easelPallet/easelPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/floorTilesPallet/floorTilesPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/pepperGrinderPallet/pepperGrinderPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/pictureFramePallet/pictureFramePallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/shingleGenericPallet/shingleGenericPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/staircaseRailingPallet/staircaseRailingPallet.xml") then return true end
-			-- ignore pump&hoses pallet
-			if object.configFileName ~= nil and string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return false end
-			-- M+ deuka pallets are oversized
-			if object.configFileName ~= nil and string.find(object.configFileName, "FS22_MaizePlus/data/deuka/bagPallet") and object.configFileName ~= nil and string.find(object.configFileName, "_pallet.xml") then return false end
-			
-			if string.find(object.i3dFilename, "FS22_HoT_pommesFactory/placeable/pallets") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPallets/") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletsOversized/") then return false end
-
-			if object.i3dMappings == nil then
-				return false;
-			end
-
-			for mappingName, _ in pairs(object.i3dMappings) do
-				if (mappingName == "euroPalletVis") or (mappingName == "pallet_vis") or (mappingName == "grapePallet_vis") then
-				return true;
+			for _,checkInfo in ipairs(objectType.checkInfos) do
+				-- checkInfo.checkTarget = xmlFileObjects:getString(checkKey .. "#checkTarget");
+				-- checkInfo.checkMethod = xmlFileObjects:getString(checkKey .. "#checkMethod");
+				-- checkInfo.checkValue = xmlFileObjects:getString(checkKey .. "#checkValue");
+				-- checkInfo.checkResultOnMatch = xmlFileObjects:getBool(checkKey .. "#checkResultOnMatch");
+				if checkInfo.checkMethod == "find" then
+					if object[checkInfo.checkTarget] ~= nil and string.find(object[checkInfo.checkTarget], checkInfo.checkValue) then return checkInfo.checkResultOnMatch end
+				elseif checkInfo.checkMethod == "findTwoValues" then
+					if object[checkInfo.checkTarget] ~= nil and string.find(object[checkInfo.checkTarget], checkInfo.checkValue) and string.find(object[checkInfo.checkTarget], checkInfo.checkValue2) then return checkInfo.checkResultOnMatch end
+				elseif checkInfo.checkMethod == "findKeyListPattern" then
+					-- Logging.info("findKeyListPattern");
+					if object[checkInfo.checkTarget] ~= nil and type(object[checkInfo.checkTarget]) == "table" then
+						-- Logging.info("isTable");
+						local checkStrings = mysplit(checkInfo.checkValue);
+						for key, _ in pairs(object[checkInfo.checkTarget]) do
+							-- Logging.info("key: %s", key);
+							
+							for _, checkString in ipairs(checkStrings) do
+								-- Logging.info("checkString: %s", checkString);
+								if string.find(key, checkString) then return checkInfo.checkResultOnMatch end
+								-- Logging.info("nomatch");
+							end
+						end
+					end
+				else
+					Logging.error("checkMethod '%s' unknown!", checkInfo.checkMethod);
 				end
 			end
 
@@ -1196,87 +1257,15 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 		end
 
 		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.2
-		autoLoadObject.sizeY = 1.0
-		autoLoadObject.sizeZ = 0.8
-		autoLoadObject.type = "pallet"
-	elseif (name == "euroPalletOversize") then
-		local function CheckType(object)
-			if object.configFileName == "data/objects/pallets/schaumann/schaumannPallet.xml" then return true end
-			if object.configFileName == "data/objects/ksAG/patentkali/patentkali.xml" then return true end
-			if object.configFileName == "data/objects/ksAG/epsoTop/epsoTop.xml" then return true end
-			if object.configFileName == "data/objects/pallets/pioneer/pioneerPallet.xml" then return true end
-			if string.find(object.i3dFilename, "FS22_Pallets_And_Bags_Pack/Pallets") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletsOversized/") then return true end
-			-- M+ deuka pallets are oversized
-			if object.configFileName ~= nil and string.find(object.configFileName, "FS22_MaizePlus/data/deuka/bagPallet") and object.configFileName ~= nil and string.find(object.configFileName, "_pallet.xml") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.3
-		autoLoadObject.sizeY = 1.0
-		autoLoadObject.sizeZ = 1.0
-		autoLoadObject.type = "pallet"
-	elseif (name == "liquidTank") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "data/objects/pallets/liquidTank") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/liquidTank/") then return true end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.34
-		autoLoadObject.sizeY = 1.56
-		autoLoadObject.sizeZ = 1.34
-		autoLoadObject.type = "pallet"
-		autoLoadObject.stackable = false
-	elseif (name == "bigBagPallet") then
-		local function CheckType(object)
-			if object.configFileName ~= nil and string.find(object.configFileName, "/bigBagPallet/") then return true end
-
-			if object.i3dMappings == nil then
-				return false;
-			end
-
-			for mappingName, _ in pairs(object.i3dMappings) do
-				if (mappingName == "bigBagPallet_vis") then
-				return true;
-				end
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.4
-		autoLoadObject.sizeY = 1.5
-		autoLoadObject.sizeZ = 1.2
-		autoLoadObject.type = "pallet"
-	elseif (name == "bigBag") then
-		local function CheckType(object)
-			if object.configFileName ~= nil and string.find(object.configFileName, "/bigBag/") then return true end
-
-			if object.i3dMappings == nil then
-				return false;
-			end
-
-			for mappingName, _ in pairs(object.i3dMappings) do
-				if (mappingName == "bigBag_vis") then
-				return true;
-				end
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1
-		autoLoadObject.sizeY = 1.55
-		autoLoadObject.sizeZ = 0.85
-		autoLoadObject.type = "bigBag"
-		autoLoadObject.stackable = false
-		autoLoadObject.pickupTriggerCollisionMask = CollisionFlag.TRIGGER_VEHICLE;
-	elseif (name == "cottonRoundbale238") then
+		autoLoadObject.sizeX = objectType.sizeX
+		autoLoadObject.sizeY = objectType.sizeY
+		autoLoadObject.sizeZ = objectType.sizeZ
+		autoLoadObject.type = objectType.type
+		autoLoadObject.stackable = objectType.stackable
+		autoLoadObject.pickupTriggerCollisionMask = objectType.pickupTriggerCollisionMask;
+	end
+	
+	if (name == "cottonRoundbale238") then
 		local function CheckType(object)
 			if string.find(object.i3dFilename, "Roundbale238.i3d") then return true end
 

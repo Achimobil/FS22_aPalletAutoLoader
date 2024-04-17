@@ -1,0 +1,62 @@
+<objectTypes>
+	<objectType typeName="euroPallet" sizeX="1.2" sizeY="1.0" sizeZ="0.8" type="pallet">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/pioneer/pioneerPallet.xml" checkResultOnMatch="false"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/grapePallet/grapePallet.xml" checkResultOnMatch="false"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/schaumann/schaumannPallet.xml" checkResultOnMatch="false"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/hosePallet/hosePallet.xml" checkResultOnMatch="false"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPalletsOversized/" checkResultOnMatch="false"/>
+			<check checkTarget="configFileName" checkMethod="findTwoValues" checkValue="FS22_MaizePlus/data/deuka/bagPallet" checkValue2="_pallet.xml" checkResultOnMatch="false"/>
+			
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/birdHousePallet/birdHousePallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/bowlsPallet/bowlsPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/bucketPallet/bucketPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/catTreePallet/catTreePallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/chairPallet/chairPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/easelPallet/easelPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/floorTilesPallet/floorTilesPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/pepperGrinderPallet/pepperGrinderPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/pictureFramePallet/pictureFramePallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/shingleGenericPallet/shingleGenericPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/staircaseRailingPallet/staircaseRailingPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPallets/" checkResultOnMatch="true"/>
+			
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="FS22_HoT_pommesFactory/placeable/pallets" checkResultOnMatch="true"/>
+			
+			<check checkTarget="i3dMappings" checkMethod="findKeyListPattern" checkValue="euroPalletVis|pallet_vis|grapePallet_vis" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="liquidTank" sizeX="1.34" sizeY="1.56" sizeZ="1.34" type="pallet" stackable="false">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="data/objects/pallets/liquidTank" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/liquidTank/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="bigBagPallet" sizeX="1.4" sizeY="1.5" sizeZ="1.2" type="pallet">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/bigBagPallet/" checkResultOnMatch="true"/>
+			
+			<check checkTarget="i3dMappings" checkMethod="findKeyListPattern" checkValue="bigBagPallet_vis" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="bigBag" sizeX="0.95" sizeY="1.55" sizeZ="0.8" type="bigBag" stackable="false" pickupTriggerCollisionMask="TRIGGER_VEHICLE">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/bigBag/" checkResultOnMatch="true"/>
+			
+			<check checkTarget="i3dMappings" checkMethod="findKeyListPattern" checkValue="bigBag_vis" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="euroPalletOversize" sizeX="1.3" sizeY="1.0" sizeZ="1.0" type="pallet">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/schaumann/schaumannPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/ksAG/patentkali/patentkali.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/ksAG/epsoTop/epsoTop.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/pioneer/pioneerPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPalletsOversized/" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPalletsOversized/" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="findTwoValues" checkValue="FS22_MaizePlus/data/deuka/bagPallet" checkValue2="_pallet.xml" checkResultOnMatch="true"/>
+			
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="FS22_Pallets_And_Bags_Pack/Pallets" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+</objectTypes>
