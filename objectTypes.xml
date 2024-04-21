@@ -59,4 +59,51 @@
 			<check checkTarget="i3dFilename" checkMethod="find" checkValue="FS22_Pallets_And_Bags_Pack/Pallets" checkResultOnMatch="true"/>
 		</checks>
 	</objectType>
+	<objectType typeName="cottonRoundbale238" sizeX="2.38" sizeY="2.38" sizeZ="2.38" type="roundbale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="Roundbale238.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="roundbale125" sizeX="1.25" sizeY="1.20" sizeZ="1.25" type="roundbale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="roundbale125.i3d" checkResultOnMatch="true"/>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="biomassBale125.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="roundbale150" sizeX="1.50" sizeY="1.20" sizeZ="1.50" type="roundbale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="roundbale150.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="roundbale180" sizeX="1.80" sizeY="1.20" sizeZ="1.80" type="roundbale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="roundbale180.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="cottonSquarebale488" sizeX="2.44" sizeY="2.44" sizeZ="4.88" type="cottonSquarebale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="Squarebale488.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="squarebale120" sizeX="1.20" sizeY="0.35" sizeZ="0.45" type="squarebale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="squarebale120.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="squarebale180" sizeX="1.80" sizeY="0.87" sizeZ="1.20" type="squarebale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="squarebale180.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="squarebale220" sizeX="2.20" sizeY="0.85" sizeZ="1.20" type="squarebale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="squarebale220.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="squarebale240" sizeX="2.40" sizeY="0.86" sizeZ="1.20" type="squarebale" requirements="useBales">
+		<checks>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="squarebale240.i3d" checkResultOnMatch="true"/>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="packedSquareBale120.i3d" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
 </objectTypes>

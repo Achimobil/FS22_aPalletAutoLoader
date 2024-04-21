@@ -96,6 +96,7 @@ function APalletAutoLoader.initSpecialization()
 			autoLoadObject.sizeZ = xmlFileObjects:getFloat(key .. "#sizeZ");
 			autoLoadObject.type = xmlFileObjects:getString(key .. "#type");
 			autoLoadObject.stackable = xmlFileObjects:getBool(key .. "#stackable");
+			autoLoadObject.requirements = xmlFileObjects:getString(key .. "#requirements"); -- multiple values with | possible. Possible values "useBales". When multiple then all needs to match to add type to loading list
 			local collisionMaskName = xmlFileObjects:getString(key .. "#pickupTriggerCollisionMask");
 			if collisionMaskName ~= nil then
 				autoLoadObject.pickupTriggerCollisionMask = CollisionFlag[collisionMaskName];
@@ -1099,26 +1100,32 @@ end
 function APalletAutoLoader:CreateAvailableTypeList()
 	local spec = self.spec_aPalletAutoLoader
 	
-	-- ,"cottonSquarebale488" Bauwollquaderballen können aktuell nicht befestigt werden und machen nur fehler, deshalb zwar implementiert, aber nicht aktiviert.
-	-- local types = {"euroPallet","liquidTank","bigBagPallet","bigBag","euroPalletOversize"}
 	local types = {}
 	
 	for _, typeName in ipairs(APalletAutoLoader.palletobjectTypeNames) do
 		
+		-- check if requirements are available and when so, then check them before adding
+		local requirements = APalletAutoLoader.objectTypes[typeName].requirements;
+		local typeAllowed = true;
+		if requirements ~= nil then
+			-- Logging.info("requirement found for: %s", typeName);
+			local requirementList = mysplit(requirements);
+			for _, requirement in ipairs(requirementList) do
+				-- Logging.info("requirement: %s", requirement);
+				-- when multiple requirements all need matching, so put on false when one is not matching
+				if requirement == "useBales" then 
+					if typeAllowed and not spec.useBales then
+						-- Logging.info("not allowed");
+						typeAllowed = false;
+					end
+				end
+			end
+		end
+		
 		-- Logging.info("Add from XML typeName: %s", typeName);
-		table.insert(types, typeName);
-	end
-
-	if spec.useBales then
-		table.insert(types, "cottonRoundbale238");
-		table.insert(types, "roundbale125");
-		table.insert(types, "roundbale150");
-		table.insert(types, "roundbale180");
-		table.insert(types, "cottonSquarebale488");
-		table.insert(types, "squarebale120");
-		table.insert(types, "squarebale180");
-		table.insert(types, "squarebale220");
-		table.insert(types, "squarebale240");
+		if typeAllowed then
+			table.insert(types, typeName);
+		end
 	end
 	
 	-- wenn PnH verfügbar ist
@@ -1265,128 +1272,7 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 		autoLoadObject.pickupTriggerCollisionMask = objectType.pickupTriggerCollisionMask;
 	end
 	
-	if (name == "cottonRoundbale238") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "Roundbale238.i3d") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.38
-		autoLoadObject.sizeY = 2.38
-		autoLoadObject.sizeZ = 2.38
-		autoLoadObject.type = "roundbale"
-	elseif (name == "cottonSquarebale488") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "Squarebale488.i3d") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.44
-		autoLoadObject.sizeY = 2.44
-		autoLoadObject.sizeZ = 4.88
-		autoLoadObject.type = "cottonSquarebale"
-	elseif (name == "roundbale125") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "roundbale125.i3d") then
-				return true;
-			end
-			if string.find(object.i3dFilename, "biomassBale125.i3d") then
-				return true;
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.25
-		autoLoadObject.sizeY = 1.20
-		autoLoadObject.sizeZ = 1.25
-		autoLoadObject.type = "roundbale"
-	elseif (name == "roundbale150") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "roundbale150.i3d") then
-				return true;
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.50
-		autoLoadObject.sizeY = 1.20
-		autoLoadObject.sizeZ = 1.50
-		autoLoadObject.type = "roundbale"
-	elseif (name == "roundbale180") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "roundbale180.i3d") then
-				return true;
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.80
-		autoLoadObject.sizeY = 1.20
-		autoLoadObject.sizeZ = 1.80
-		autoLoadObject.type = "roundbale"
-	elseif (name == "squarebale240") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "squarebale240.i3d") then
-				return true;
-			end
-			if string.find(object.i3dFilename, "packedSquareBale120.i3d") then
-				return true;
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.40
-		autoLoadObject.sizeY = 0.86
-		autoLoadObject.sizeZ = 1.20
-		autoLoadObject.type = "squarebale"
-	elseif (name == "squarebale220") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "squarebale220.i3d") then
-				return true;
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.20
-		autoLoadObject.sizeY = 0.85
-		autoLoadObject.sizeZ = 1.20
-		autoLoadObject.type = "squarebale"
-	elseif (name == "squarebale180") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "squarebale180.i3d") then
-				return true;
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.80
-		autoLoadObject.sizeY = 0.87
-		autoLoadObject.sizeZ = 1.20
-		autoLoadObject.type = "squarebale"
-	elseif (name == "squarebale120") then
-		local function CheckType(object)
-			if string.find(object.i3dFilename, "squarebale120.i3d") then
-				return true;
-			end
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.20
-		autoLoadObject.sizeY = 0.35
-		autoLoadObject.sizeZ = 0.45
-		autoLoadObject.type = "squarebale"
-	elseif (name == "hosePallet") then
+	if (name == "hosePallet") then
 		local function CheckType(object)
 			-- pump&hoses pallet
 			if object.configFileName ~= nil and string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return true end
