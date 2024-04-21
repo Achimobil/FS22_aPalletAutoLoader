@@ -91,9 +91,9 @@ function APalletAutoLoader.initSpecialization()
 			local autoLoadObject = {};
 			autoLoadObject.checkInfos = {};
 			
-			autoLoadObject.sizeX = xmlFileObjects:getFloat(key .. "#sizeX");
-			autoLoadObject.sizeY = xmlFileObjects:getFloat(key .. "#sizeY");
-			autoLoadObject.sizeZ = xmlFileObjects:getFloat(key .. "#sizeZ");
+			autoLoadObject.sizeX = MathUtil.round(xmlFileObjects:getFloat(key .. "#sizeX"), 2);
+			autoLoadObject.sizeY = MathUtil.round(xmlFileObjects:getFloat(key .. "#sizeY"), 2);
+			autoLoadObject.sizeZ = MathUtil.round(xmlFileObjects:getFloat(key .. "#sizeZ"), 2);
 			autoLoadObject.type = xmlFileObjects:getString(key .. "#type");
 			autoLoadObject.stackable = xmlFileObjects:getBool(key .. "#stackable");
 			autoLoadObject.requirements = xmlFileObjects:getString(key .. "#requirements"); -- multiple values with | possible. Possible values "useBales". When multiple then all needs to match to add type to loading list
