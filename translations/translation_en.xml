@@ -19,6 +19,7 @@
 		<text name="aPalletAutoLoader_3" text="Middle"/>
 		<text name="aPalletAutoLoader_4" text="Back"/>
 		<text name="configuration_aPalletAutoLoader" text="Pallet Autoload"/>
+		<text name="vehiclesAutload" text="Pallet Autoload"/>
 		<text name="input_AL_LOAD_PALLET" text="Load Pallets"/>
 		<text name="input_AL_TOGGLE_LOADINGTYPE" text="Next Loading Type"/>
 		<text name="input_AL_TOGGLE_LOADINGTYPEBACK" text="Previous Loading Type"/>

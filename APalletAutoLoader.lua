@@ -1131,7 +1131,6 @@ function APalletAutoLoader:CreateAvailableTypeList()
 			if g_modIsLoaded[requiredMods] == nil or not g_modIsLoaded[requiredMods] then
 				typeAllowed = false;
 			end
-			Logging.info("requiredMods '%s' allowed: %s", requiredMods, typeAllowed);
 		end
 		
 		-- Logging.info("Add from XML typeName: %s", typeName);
@@ -2287,3 +2286,25 @@ function APalletAutoLoader:SetPickupTriggerCollisionMask()
 		end
 	end
 end
+
+-- Add valid store items to the 'UNIVERSALAUTOLOAD' store pack if it exists.
+-- Using 'table.addElement' will avoid duplicates and errors if Store Pack does not load or exist for some reason ;-)
+-- I got this from Loki from the UAL to use. Thanks for that
+StoreManager.loadItem = Utils.overwrittenFunction(StoreManager.loadItem, function(self, superFunc, ...)
+	local storeItem = superFunc(self, ...)
+
+	if storeItem ~= nil and storeItem.isMod and storeItem.species == "vehicle" then
+		local xmlFile = XMLFile.load("loadItemXml", storeItem.xmlFilename, storeItem.xmlSchema)
+
+		-- @Loki Could do more checks if required but why would a mod have the XML key if not UAL?
+		if xmlFile:hasProperty("vehicle.aPalletAutoLoader") then
+		Logging.info("loadItem '%s'", xmlFile);
+			-- StoreManager.addPackItem' allows duplicates when using 'gsStoreItemsReload' so not used
+			table.addElement(g_storeManager:getPackItems("APALLETAUTOLOAD"), storeItem.xmlFilename)
+		end
+
+		xmlFile:delete()
+	end
+
+	return storeItem
+end)

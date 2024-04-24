@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="79">
 	<author>Achimobil</author>
-	<version>1.12.0.2</version>
+	<version>1.12.0.3</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -49,6 +49,7 @@ Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestatt
 Changelog:
 1.12.0.1 - Falsche Info Trigger Kollisions Masken und fehlerhafte Licht Trigger RigidBodyTypes werden jetzt mit Log Meldung korrigiert.
 1.12.0.2 - Definition für Standard Ladegut in XML ausgelagert um einfacher weitere einfügen zu können und eine bessere übersicht zu haben.
+1.12.0.3 - Packet eingefügt dass alle Fahrzeuge mit einer Konfiguration für den Autoloader anzeigt.
 
 1.12.0.0
 - Verbesserte Ladeerkennung mit Course Play
@@ -237,4 +238,7 @@ Changelog:
 		<action name="AL_UNLOADAREA_MOVE_FRONTBACK" axisType="FULL"/>
 	</actions>
 	<l10n filenamePrefix="translations/translation"/>
+	<storePacks>
+		<storePack name="APALLETAUTOLOAD" title="Autoload" image="storePack_AL.dds"/>
+	</storePacks>
 </modDesc>
