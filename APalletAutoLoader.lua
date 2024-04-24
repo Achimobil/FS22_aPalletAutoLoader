@@ -97,6 +97,9 @@ function APalletAutoLoader.initSpecialization()
 			autoLoadObject.type = xmlFileObjects:getString(key .. "#type");
 			autoLoadObject.stackable = xmlFileObjects:getBool(key .. "#stackable");
 			autoLoadObject.requirements = xmlFileObjects:getString(key .. "#requirements"); -- multiple values with | possible. Possible values "useBales". When multiple then all needs to match to add type to loading list
+			autoLoadObject.requiredMods = xmlFileObjects:getString(key .. "#requiredMods"); -- only add this type when the named mod is loaded. Full name required and DLC name can be used also. Currently only one mod is usable. Will be expanded later for mutliple mods with | splitting if needed
+			autoLoadObject.l10nText = xmlFileObjects:getString(key .. "#l10nText"); -- key for l10n, when not the type should be used
+			autoLoadObject.l10nMod = xmlFileObjects:getString(key .. "#l10nMod"); -- mod to lod the l10n from, when not the AL mod is used
 			local collisionMaskName = xmlFileObjects:getString(key .. "#pickupTriggerCollisionMask");
 			if collisionMaskName ~= nil then
 				autoLoadObject.pickupTriggerCollisionMask = CollisionFlag[collisionMaskName];
@@ -1122,31 +1125,19 @@ function APalletAutoLoader:CreateAvailableTypeList()
 			end
 		end
 		
+		-- when something should only be availabe when a certain mod/dlc is available
+		local requiredMods = APalletAutoLoader.objectTypes[typeName].requiredMods;
+		if typeAllowed and requiredMods ~= nil then
+			if g_modIsLoaded[requiredMods] == nil or not g_modIsLoaded[requiredMods] then
+				typeAllowed = false;
+			end
+			Logging.info("requiredMods '%s' allowed: %s", requiredMods, typeAllowed);
+		end
+		
 		-- Logging.info("Add from XML typeName: %s", typeName);
 		if typeAllowed then
 			table.insert(types, typeName);
 		end
-	end
-	
-	-- wenn PnH verfügbar ist
-	if g_modIsLoaded["pdlc_pumpsAndHosesPack"] ~= nil and g_modIsLoaded["pdlc_pumpsAndHosesPack"] then
-		table.insert(types, "hosePallet");
-	end
-	
-	-- wenn platinum verfügbar
-	if g_modIsLoaded["pdlc_forestryPack"] ~= nil and g_modIsLoaded["pdlc_forestryPack"] then
-		table.insert(types, "euroPalletDoubleLength");
-		table.insert(types, "barrelPallet");
-		table.insert(types, "euroPalletQuadro");
-		table.insert(types, "prefabWallPallet");
-		table.insert(types, "smallBundledStack");
-		table.insert(types, "dogHousePallet");
-		table.insert(types, "metalPallet");
-	end
-	
-	-- wenn platinum verfügbar
-	if g_modIsLoaded["pdlc_premiumExpansion"] ~= nil and g_modIsLoaded["pdlc_premiumExpansion"] then
-		table.insert(types, "vegetablesPallet");
 	end
 	
 	return types;
@@ -1227,31 +1218,19 @@ end
 function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 
 	if APalletAutoLoader.objectTypes[name] ~= nil then
-		-- Logging.info("AddSupportedObjects: %s", name);
 		local objectType = APalletAutoLoader.objectTypes[name];
-		-- DebugUtil.printTableRecursively(objectType,"_",0,2);
 		local function CheckType(object)
 			for _,checkInfo in ipairs(objectType.checkInfos) do
-				-- checkInfo.checkTarget = xmlFileObjects:getString(checkKey .. "#checkTarget");
-				-- checkInfo.checkMethod = xmlFileObjects:getString(checkKey .. "#checkMethod");
-				-- checkInfo.checkValue = xmlFileObjects:getString(checkKey .. "#checkValue");
-				-- checkInfo.checkResultOnMatch = xmlFileObjects:getBool(checkKey .. "#checkResultOnMatch");
 				if checkInfo.checkMethod == "find" then
 					if object[checkInfo.checkTarget] ~= nil and string.find(object[checkInfo.checkTarget], checkInfo.checkValue) then return checkInfo.checkResultOnMatch end
 				elseif checkInfo.checkMethod == "findTwoValues" then
 					if object[checkInfo.checkTarget] ~= nil and string.find(object[checkInfo.checkTarget], checkInfo.checkValue) and string.find(object[checkInfo.checkTarget], checkInfo.checkValue2) then return checkInfo.checkResultOnMatch end
 				elseif checkInfo.checkMethod == "findKeyListPattern" then
-					-- Logging.info("findKeyListPattern");
 					if object[checkInfo.checkTarget] ~= nil and type(object[checkInfo.checkTarget]) == "table" then
-						-- Logging.info("isTable");
 						local checkStrings = mysplit(checkInfo.checkValue);
 						for key, _ in pairs(object[checkInfo.checkTarget]) do
-							-- Logging.info("key: %s", key);
-							
 							for _, checkString in ipairs(checkStrings) do
-								-- Logging.info("checkString: %s", checkString);
 								if string.find(key, checkString) then return checkInfo.checkResultOnMatch end
-								-- Logging.info("nomatch");
 							end
 						end
 					end
@@ -1270,151 +1249,16 @@ function APalletAutoLoader:AddSupportedObjects(autoLoadObject, name)
 		autoLoadObject.type = objectType.type
 		autoLoadObject.stackable = objectType.stackable
 		autoLoadObject.pickupTriggerCollisionMask = objectType.pickupTriggerCollisionMask;
+		
+		if objectType.l10nText ~= nil then
+			if objectType.l10nMod ~= nil then
+				autoLoadObject.nameTranslated = g_i18n:getText(objectType.l10nText, objectType.l10nMod)
+			else
+				autoLoadObject.nameTranslated = g_i18n:getText(objectType.l10nText)
+			end
+		end
+		
 	end
-	
-	if (name == "hosePallet") then
-		local function CheckType(object)
-			-- pump&hoses pallet
-			if object.configFileName ~= nil and string.find(object.configFileName, "data/objects/pallets/hosePallet/hosePallet.xml") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 0.8
-		autoLoadObject.sizeY = 1.9
-		autoLoadObject.sizeZ = 1.8
-		autoLoadObject.type = "pallet"
-	elseif (name == "euroPalletDoubleLength") then
-		local function CheckType(object)
-			-- platinum pack, 2 europlatten längs aneinander
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/bathtubPallet/bathtubPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/tablePallet/tablePallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletDoubleLength/") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.4
-		autoLoadObject.sizeY = 1.0
-		autoLoadObject.sizeZ = 0.8
-		autoLoadObject.type = "pallet"
-	elseif (name == "barrelPallet") then
-		local function CheckType(object)
-			-- platinum pack, 2 europlatten quer aneinander
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/barrelPallet/barrelPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/barrelPallet/") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.6
-		autoLoadObject.sizeY = 1.0
-		autoLoadObject.sizeZ = 1.2
-		autoLoadObject.type = "pallet"
-	elseif (name == "euroPalletQuadro") then
-		local function CheckType(object)
-			-- platinum pack, 2 europlatten quer aneinander
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/cartonRollPallet/cartonRollPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/paperRollPallet/paperRollPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/armoirePallet/armoirePallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/euroPalletQuadro/") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.4
-		autoLoadObject.sizeY = 2.2
-		autoLoadObject.sizeZ = 1.6
-		autoLoadObject.type = "pallet"
-	elseif (name == "prefabWallPallet") then
-		local function CheckType(object)
-			-- platinum pack, 2 europlatten quer aneinander
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/prefabWallPallet/prefabWallPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/prefabWallPallet/") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.46
-		autoLoadObject.sizeY = 2.2
-		autoLoadObject.sizeZ = 1.75
-		autoLoadObject.type = "pallet"
-	elseif (name == "smallBundledStack") then
-		local function CheckType(object)
-			-- platinum pack, 2 europlatten quer aneinander
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/planksPallet/planksPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/woodBeamPallet/woodBeamPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/smallBundledStack/") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 2.65
-		autoLoadObject.sizeY = 1.0
-		autoLoadObject.sizeZ = 0.88
-		autoLoadObject.type = "pallet"
-	elseif (name == "dogHousePallet") then
-		local function CheckType(object)
-			-- platinum pack, 2 europlatten quer aneinander
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/dogHousePallet/dogHousePallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/dogHousePallet/") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.2
-		autoLoadObject.sizeY = 1.0
-		autoLoadObject.sizeZ = 0.9
-		autoLoadObject.type = "pallet"
-		autoLoadObject.stackable = false
-	elseif (name == "metalPallet") then
-		local function CheckType(object)
-			-- platinum pack, 2 europlatten quer aneinander
-			if object.configFileName ~= nil and string.find(object.configFileName, "objects/pallets/metalPallet/metalPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/metalPallet/") then return true end
-
-			return false;
-		end
-
-		autoLoadObject.CheckTypeMethod = CheckType
-		autoLoadObject.sizeX = 1.2
-		autoLoadObject.sizeY = 1.0
-		autoLoadObject.sizeZ = 0.8
-		autoLoadObject.type = "pallet"
-		autoLoadObject.stackable = false
-	elseif (name == "vegetablesPallet") then
-		local function CheckType(object)
-			-- premium pack new pallet
-			if object.configFileName ~= nil and string.find(object.configFileName, "vegetablesPallet.xml") then return true end
-			if object.configFileName ~= nil and string.find(object.configFileName, "/vegetablesPallet/") then return true end
-
-			return false;
-		end
-		autoLoadObject.CheckTypeMethod = CheckType		
-		APalletAutoLoader:fillAutoLoadObject(autoLoadObject, 1.6, 1.16, 1.12, "pallet", g_i18n:getText("storeItem_vegetablesPallet", "pdlc_premiumExpansion"), false, true)
-	end
-end
-
--- help funktion for easier fill the list with the needed data
-function APalletAutoLoader:fillAutoLoadObject(autoLoadObject, sizeX, sizeY, sizeZ, type, translatedName, withVehicleTrigger, stackable)
-		autoLoadObject.sizeX = sizeX
-		autoLoadObject.sizeY = sizeY
-		autoLoadObject.sizeZ = sizeZ
-		autoLoadObject.type = type
-		if translatedName ~= nil then
-			autoLoadObject.nameTranslated = translatedName
-		end
-		if withVehicleTrigger then
-			autoLoadObject.pickupTriggerCollisionMask = CollisionFlag.TRIGGER_VEHICLE;
-		end
-		autoLoadObject.stackable = stackable;
 end
 
 ---

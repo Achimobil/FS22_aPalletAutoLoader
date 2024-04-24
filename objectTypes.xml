@@ -106,4 +106,60 @@
 			<check checkTarget="i3dFilename" checkMethod="find" checkValue="packedSquareBale120.i3d" checkResultOnMatch="true"/>
 		</checks>
 	</objectType>
+	<!-- PnH pallet -->
+	<objectType typeName="hosePallet" sizeX="0.8" sizeY="1.9" sizeZ="1.8" type="pallet" requiredMods="pdlc_pumpsAndHosesPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/hosePallet/hosePallet.xml" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<!-- platinum pallets -->
+	<objectType typeName="euroPalletDoubleLength" sizeX="2.4" sizeY="1.0" sizeZ="0.8" type="pallet" requiredMods="pdlc_forestryPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/bathtubPallet/bathtubPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/tablePallet/tablePallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPalletDoubleLength/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="barrelPallet" sizeX="1.6" sizeY="1.0" sizeZ="1.2" type="pallet" requiredMods="pdlc_forestryPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/barrelPallet/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="euroPalletQuadro" sizeX="2.4" sizeY="2.2" sizeZ="1.6" type="pallet" requiredMods="pdlc_forestryPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/cartonRollPallet/cartonRollPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/paperRollPallet/paperRollPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/armoirePallet/armoirePallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPalletQuadro/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="prefabWallPallet" sizeX="2.46" sizeY="2.2" sizeZ="1.75" type="pallet" requiredMods="pdlc_forestryPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/prefabWallPallet/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="smallBundledStack" sizeX="2.65" sizeY="1.0" sizeZ="0.88" type="pallet" requiredMods="pdlc_forestryPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/planksPallet/planksPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/woodBeamPallet/woodBeamPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/smallBundledStack/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="dogHousePallet" sizeX="1.2" sizeY="1.0" sizeZ="0.9" type="pallet" stackable="false" requiredMods="pdlc_forestryPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/dogHousePallet/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<objectType typeName="metalPallet" sizeX="1.2" sizeY="1.0" sizeZ="0.8" type="pallet" stackable="false" requiredMods="pdlc_forestryPack">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/metalPallet/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
+	<!-- premium dlc pallet -->
+	<objectType typeName="vegetablesPallet" sizeX="1.6" sizeY="1.16" sizeZ="1.12" type="pallet" requiredMods="pdlc_premiumExpansion" l10nText="storeItem_vegetablesPallet" l10nMod="pdlc_premiumExpansion">
+		<checks>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="vegetablesPallet.xml" checkResultOnMatch="true"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/vegetablesPallet/" checkResultOnMatch="true"/>
+		</checks>
+	</objectType>
 </objectTypes>
