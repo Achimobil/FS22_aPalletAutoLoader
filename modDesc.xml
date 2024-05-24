@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="80">
 	<author>Achimobil</author>
-	<version>1.12.0.4</version>
+	<version>1.13.0.0</version>
 	<title>
 		<de>Paletten Autoloader Spezialisierung</de>
 		<en>Pallet Autoload Specialization</en>
@@ -47,10 +47,11 @@ Upload auf anderen Seiten nur durch mich selbst, Verlinkung nur mit Original Dow
 Das verändern oder erneutes hochladen, ob ganz oder in Teilen ist nicht gestattet!
 
 Changelog:
-1.12.0.1 - Falsche Info Trigger Kollisions Masken und fehlerhafte Licht Trigger RigidBodyTypes werden jetzt mit Log Meldung korrigiert.
-1.12.0.2 - Definition für Standard Ladegut in XML ausgelagert um einfacher weitere einfügen zu können und eine bessere übersicht zu haben.
-1.12.0.3 - Packet eingefügt dass alle Fahrzeuge mit einer Konfiguration für den Autoloader anzeigt.
-1.12.0.4 - Flüssigkeitstank aus Farm Produktions DLC können jetzt geladen werden wie andere Flüssigkeitstanks auch
+1.13.0.0
+- Falsche Info Trigger Kollisions Masken und fehlerhafte Licht Trigger RigidBodyTypes werden jetzt mit Log Meldung korrigiert. (Achtung, dies wird vom Mod mit Infos in der Log gemeldet. Es kann aber sein das je nach Konstellation der LS dann zusätzliche eine Warnung anzeigt. Die Infos enthalten Daten über den Mod der die Falschen Trigger enthält. Diese Fehler müssen vom Modder des jeweiligen Mods behoben werden.)
+- Definition für Standard Ladegut in XML ausgelagert um einfacher weitere einfügen zu können und eine bessere übersicht zu haben.
+- Packet eingefügt dass alle Fahrzeuge mit einer Konfiguration für den Autoloader anzeigt.
+- Flüssigkeitstank aus Farm Produktions DLC können jetzt geladen werden wie andere Flüssigkeitstanks auch
 
 1.12.0.0
 - Verbesserte Ladeerkennung mit Course Play
@@ -67,36 +68,6 @@ Changelog:
 - Per konfigurierbarer Taste (Standard STRG+ALT+Y) kann das Ladegut automatisch ausgewählt werden anhand dessen was in Ladereichweite ist
 - Im Kaufmenü wird eine Auswahl der Ladbaren Objekte angezeigt.
 - Beim Laden auf einen AL werden die geladenen Objekte bei den anderen AL aus der Ladeliste genommen (Fix für Giants Trigger Fehler)
-
-1.10.0.0
-- Verbessertes Ladeverhalten. Solange der Ladevorgang aktiv ist wird alles virtuell festgehalten, was das laden auf dem Feld verbessern sollte.
-- Mit dem Autoloader ausgestattete Fahrzeuge haben jetzt stärkere Spanngurte
-- Ballen werden nur noch erkannt, wenn sie registriert sind
-- Überarbeitung der Pickup Kollisionen für AI Verkehr. (Wenn Bigbags aktiviert waren muss Ladegut neu angefahren werden)
-- Problem mit zu schnellem Laden an den neuen Objekt Lagern durch Verzögerung behoben
-- Ballen und Paletten werden erst geladen, wenn sie an keinem anderen Attacher mehr hängen
-
-1.9.0.0
-- Rümänische Übersetzung hinzugefügt
-- usePalletWeightReduction gefixed
-- Ladefläche kann nun pro Ladegut unterschiedliche Größen haben
-
-1.8.7.2
-- Kollision für joint beim laden aktiviert nach Vorbild der Spanngurte aus dem Patch 1.8
-- Unload lua Fehler umgangen und Log Einträge eingefügt. Beim Auftreten der Warnung soll die ganze Log in den Discord Kanal des Autoloaders geposted werden.
-- Platinum DLC Palettengrößen jetzt auch für andere Paletten nutzbar, wenn das Platinum DLC aktiv ist
-
-1.8.7.1
-- Datei modIcon.dds umbenannt in icon_mod.dds wegen Änderung der Giants Guidelines
-
-1.8.7.0
-- Palette vom Pump&Hoses als eigenes Ladegut eingefügt
-- Paletten des Platinum DCL mit LS22 Standard Euro Paletten Größe können jetzt als solch auch geladen werden
-- Sondergrößen der Paletten des Platinum DCL als eigenes Ladegut eingefügt
-- 120er Ballen Stacks können jetzt als 240er Ballen geladen werden
-- Baumwollquaderballen können jetzt geladen werden (Base game Ballen verursachen Log Warnungen mit Spanngurten, diese einfach nicht mit Spanngurten befestigen)
-- Das Paletten Gewicht wird beim abladen jetzt korrekt wiederhergestellt
-- Bei Rundballen wird nur noch quadratisch geprüft ob Platz da ist, weil die Engine das nicht rund kann und den Prüfbereich selbst drehen je nach Himmelsrichtung nicht funktioniert
 ]]>
 		</de>
 		<en>
@@ -130,6 +101,12 @@ Upload on other sites only by myself, linking only with original download link. 
 Modifying and re-uploading in whole or in part is not allowed!
 
 Changelog:
+1.13.0.0
+- Incorrect info trigger collision masks and incorrect light trigger RigidBodyTypes are now corrected with log message. (Attention, this is reported by the mod with info in the log. However, depending on the constellation, the LS may then display an additional warning. The information contains data about the mod that contains the wrong triggers. These errors must be corrected by the modder of the respective mod).
+- Definition for standard cargo moved to XML to make it easier to add more and have a better overview.
+- Packet added that shows all vehicles with a configuration for the autoloader.
+- Liquid tanks from Farm Production DLC can now be loaded like other liquid tanks
+
 1.12.0.0
 - Improved load detection with Course Play
 - Tensioning strap setting is now also taken into account when manually ending the loading process
@@ -153,28 +130,6 @@ Changelog:
 - Revision of pickup collisions for AI traffic. (If bigbags were activated, load has to be approached again)
 - Problem with too fast loading at the new object storages fixed with adding adelay on load
 - Bales and pallets are only loaded when they are no longer attached to another Attacher
-
-1.9.0.0
-- Romanian translation added
-- usePalletWeightReduction fixed
-- Loading area can now have different sizes per load
-
-1.8.7.2
-- Activated collision for joint during loading following the example of the tension belts from patch 1.8.
-- Unload lua error bypassed and log entries inserted. When the warning occurs, the whole log should be posted in the Discord channel of the autoloader.
-- Platinum DLC palette sizes can now also be used for other palettes if the Platinum DLC is active.
-
-1.8.7.1
-- Renamed modIcon.dds to icon_mod.dds because of change of Giants Guidelines
-
-1.8.7.0
-- Pallet of Pumps&Hoses DLC added as own load
-- Pallets of the Platinum DLC with FS22 standard Euro pallet size can now be loaded as such as well
-- Special sizes of the Platinum DLC pallets added as own load
-- 120 bale stacks can now be loaded as 240 bales
-- Cotton square bales can now be loaded (Base game bales cause log warnings with tension belts, just do not tie them down with tension belts)
-- Pallet weight is now correctly restored on unloading
-- Round bales are now only checked square for space, because the engine can not do this round and rotate the check area itself depending on the compass direction does not work
 ]]>
 		</en>
 	</description>
