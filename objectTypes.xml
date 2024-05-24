@@ -30,6 +30,7 @@
 		<checks>
 			<check checkTarget="i3dFilename" checkMethod="find" checkValue="data/objects/pallets/liquidTank" checkResultOnMatch="true"/>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="/liquidTank/" checkResultOnMatch="true"/>
+			<check checkTarget="i3dFilename" checkMethod="find" checkValue="sulphuricAcidTank.i3d" checkResultOnMatch="true"/>
 		</checks>
 	</objectType>
 	<objectType typeName="bigBagPallet" sizeX="1.4" sizeY="1.5" sizeZ="1.2" type="pallet">
