@@ -241,4 +241,18 @@ Changelog:
 	<storePacks>
 		<storePack name="APALLETAUTOLOAD" title="Autoload" image="storePack_AL.dds"/>
 	</storePacks>
+	<helpLines>
+		<category title="$l10n_PalletAutoload_Trailer" id="1">
+			<page title="$l10n_function_PalletAutoload_Trailer">
+				<paragraph noSpacing="true">
+					<title text="$l10n_aPalletAutoLoader_LoadingType"/>
+					<text text="$l10n_aPalletAutoLoader_liquidTank"/>
+				</paragraph>
+				<paragraph noSpacing="true">
+					<title text="$l10n_aPalletAutoLoader_LoadingType"/>
+					<text text="$l10n_aPalletAutoLoader_cottonRoundbale238"/>
+				</paragraph>
+			</page>
+		</category>
+	</helpLines>
 </modDesc>
