@@ -6,6 +6,7 @@
 			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/schaumann/schaumannPallet.xml" checkResultOnMatch="false"/>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/hosePallet/hosePallet.xml" checkResultOnMatch="false"/>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPalletsOversized/" checkResultOnMatch="false"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="/metalPallet/" checkResultOnMatch="false"/>
 			<check checkTarget="configFileName" checkMethod="findTwoValues" checkValue="FS22_MaizePlus/data/deuka/bagPallet" checkValue2="_pallet.xml" checkResultOnMatch="false"/>
 			
 			<check checkTarget="configFileName" checkMethod="find" checkValue="objects/pallets/birdHousePallet/birdHousePallet.xml" checkResultOnMatch="true"/>
