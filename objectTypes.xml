@@ -2,9 +2,9 @@
 	<objectType typeName="euroPallet" sizeX="1.2" sizeY="1.0" sizeZ="0.8" type="pallet">
 		<checks>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/pioneer/pioneerPallet.xml" checkResultOnMatch="false"/>
-			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/grapePallet/grapePallet.xml" checkResultOnMatch="false"/>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/schaumann/schaumannPallet.xml" checkResultOnMatch="false"/>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/hosePallet/hosePallet.xml" checkResultOnMatch="false"/>
+			<check checkTarget="configFileName" checkMethod="find" checkValue="data/objects/pallets/grapePallet/grapePallet.xml" checkResultOnMatch="true"/>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="/euroPalletsOversized/" checkResultOnMatch="false"/>
 			<check checkTarget="configFileName" checkMethod="find" checkValue="/metalPallet/" checkResultOnMatch="false"/>
 			<check checkTarget="configFileName" checkMethod="findTwoValues" checkValue="FS22_MaizePlus/data/deuka/bagPallet" checkValue2="_pallet.xml" checkResultOnMatch="false"/>
